@@ -1,6 +1,3 @@
-# IMPORTANT
-# some packetfields not yet defined.
-
 defmodule PacketEncoder do
   @structures File.read!(Path.join(__DIR__, "structures.exs")) |> Code.eval_string() |> elem(0)
 
@@ -13,9 +10,12 @@ defmodule PacketEncoder do
 
     # Encode each field in the structure
     encoded_fields = encode_structure(structure, data)
-    # IO.puts("Encoded Binary: #{inspect(header <> encoded_fields)}")
+    encoded_packet = header <> encoded_fields
 
-    header <> encoded_fields
+    # Print the encoded packet as a list of bytes
+    IO.inspect(:binary.bin_to_list(encoded_packet), label: "Encoded Packet", limit: :infinity)
+
+    encoded_packet
   end
 
   defp find_structure(structures, name) do
@@ -44,8 +44,6 @@ defmodule PacketEncoder do
     strlen = byte_size(value)
     <<0, strlen::little-32, value::binary>>
   end
-
-  # Add other encode_field clauses as necessary...
 end
 
 # Example usage:
@@ -73,5 +71,4 @@ data = %{
   "terminator" => 0
 }
 
-binary = PacketEncoder.encode_packet("InfoAuthenticate", data)
-IO.inspect(binary, label: "Encoded Packet")
+_binary = PacketEncoder.encode_packet("InfoAuthenticate", data)
