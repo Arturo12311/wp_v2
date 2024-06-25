@@ -6,14 +6,14 @@ defmodule PacketEncoder do
 
   def encode_packet(name, data) do
     structure = find_structure(@structures, name)
-    IO.puts("Encoding Structure: #{inspect(structure)}")
+    # IO.puts("Encoding Structure: #{inspect(structure)}")
 
     # Encode the header fields (opcode and hash)
     header = encode_header(data["opcode"], data["hash"])
 
     # Encode each field in the structure
     encoded_fields = encode_structure(structure, data)
-    IO.puts("Encoded Binary: #{inspect(header <> encoded_fields)}")
+    # IO.puts("Encoded Binary: #{inspect(header <> encoded_fields)}")
 
     header <> encoded_fields
   end
