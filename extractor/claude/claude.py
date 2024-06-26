@@ -3,8 +3,8 @@ import anthropic
 import time
 import re
 
-INPUT_FILE = r"C:\work\wp\proto\data\function_data.json"
-OUTPUT_FILE = r"C:\work\wp\proto\maps\analyzed_structures.exs"
+INPUT_FILE = r"C:\repos\wp\assets\data\function_data.json"
+OUTPUT_FILE = r"C:\repos\wp\maps\struct_map.exs"
 MAX_BATCH_SIZE = 15  # Adjust based on Claude's limits and your needs
 
 def chunk_data(data, max_size):

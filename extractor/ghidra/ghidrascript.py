@@ -4,8 +4,8 @@
 
 import json
 import re
-from ghidra.app.decompiler import DecompInterface
-from ghidra.util.task import TaskMonitor
+from ghidra.app.decompiler import DecompInterface # type: ignore
+from ghidra.util.task import TaskMonitor # type: ignore
 
 OUTPUT_FILE = r"C:\work\wp\function_data.json"
 
@@ -18,7 +18,7 @@ def is_likely_thunk(function):
     return False
 
 def find_related_functions():
-    function_manager = currentProgram.getFunctionManager()
+    function_manager = currentProgram.getFunctionManager() # type: ignore
     related_functions = []
     to_json_string_funcs = {}
 
@@ -45,7 +45,7 @@ def find_related_functions():
 
 def get_decompiled_function(function):
     decompiler = DecompInterface()
-    decompiler.openProgram(currentProgram)
+    decompiler.openProgram(currentProgram) # type: ignore
     result = decompiler.decompileFunction(function, 30, TaskMonitor.DUMMY)
     if result.decompileCompleted():
         return result.getDecompiledFunction().getC()

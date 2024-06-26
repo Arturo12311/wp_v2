@@ -11,7 +11,7 @@
 "AuthenticateInfo" => %{
   base: nil,
   fields: [
-    %{name: "TypeName", type: {:string, :dynamic}}, 
+    %{name: "TypeName", type: {:string, :dynamic}},
   ]
 },
 
@@ -26,4 +26,5 @@
     %{name: "FailureReason", type: {:integer, :dynamic}},
     %{name: "FailureReasonData", type: {:object, :dynamic}},
   ]
+}
 }
