@@ -78,8 +78,8 @@ Now, analyze the following function pairs and provide the structures in the form
         raw_output = message.content[0].text
 
         # Sanitize the output
-        # sanitized_output = sanitize_output(raw_output)
-        return raw_output
+        sanitized_output = sanitize_output(raw_output)
+        return sanitized_output
     except Exception as e:
         error_message = f"Error calling Claude API: {str(e)}"
         print(error_message)
