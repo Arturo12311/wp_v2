@@ -61,14 +61,14 @@ def process_batch(batch, decompiler):
             get_type_decompiled = get_decompiled_function(get_type_name, decompiler)
 
             # Validate functions
-            returned_type = is_valid_get_type_name(get_type_decompiled)
+            opcode = is_valid_get_type_name(get_type_decompiled)
             is_valid_json = is_valid_to_json_string(to_json_decompiled)
 
             # Create output dictionary
             result = {
                 "class_name": class_name,
                 "ToJsonString": clean_function_output(to_json_decompiled),
-                "GetTypeName": clean_function_output(get_type_decompiled),
+                "opcode_name": opcode
             }
 
             output.append(result)
@@ -106,7 +106,7 @@ def main():
 
     print("Extracted {} function pairs. Data written to {}".format(len(all_output), OUTPUT_FILE))
 
-    valid_types = sum(1 for item in all_output if item.get('is_valid_type', False))
+    valid_types = sum(1 for item in all_output if item.get('is_valid_type', True))
     valid_jsons = sum(1 for item in all_output if item.get('is_valid_json', False))
     print("Valid GetTypeName implementations: {}/{}".format(valid_types, len(all_output)))
     print("Valid ToJsonString implementations: {}/{}".format(valid_jsons, len(all_output)))

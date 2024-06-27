@@ -13,19 +13,29 @@ def chunk_data(data, batch_size):
 def process_with_claude(batch):
     client = Anthropic(api_key="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")
     
-    system_prompt = "You are an expert in analyzing decompiled C++ code and extracting structural information into Elixir format."
+    system_prompt = "You are an expert in analyzing decompiled C++ code and extracting structural information into Elixir format, with a deep understanding of complex data structures, inheritance, and Elixir syntax."
 
-    human_prompt = r"""Analyze the following C++ function pairs (ToJsonString and GetTypeName) and extract their structures into an Elixir-friendly format. Focus only on the structure information, not on separate Members or TypeName fields. Use the following format for each structure:
+    human_prompt = r"""Analyze the following C++ function pairs (ToJsonString and opcode_name) and extract their structures into an Elixir-friendly format. Focus on the structure information and inheritance. Use the following format for the entire output:
 
-{"StructureName",
-   [
-     %{name: "FieldName", type: field_type},
-     # ... more fields ...
-   ]},
+%{
+  "OpcodeName1" => [
+    %{name: "__base__", type: {:struct, "BaseStructureName"}},  # Include this if a base exists
+    %{name: "FieldName1", type: field_type1},
+    %{name: "FieldName2", type: field_type2},
+    # ... more fields ...
+  ],
+
+  "OpcodeName2" => [
+    %{name: "FieldName1", type: field_type1},
+    %{name: "FieldName2", type: field_type2},
+    # ... more fields ...
+  ],
+}
 
 Where:
-- "StructureName" is the name of the structure (use the class name if available, otherwise use the value returned by GetTypeName)
-- "FieldName" is the name of each field in the JSON structure
+- "OpcodeName" is the name provided in the opcode_name field of the input data
+- "__base__" is a special field that represents the base class. Include it if a base class exists or if the structure inherits from another class
+- "FieldName" is the name of each field in the JSON structure, inferred from the ToJsonString function
 - field_type is the Elixir equivalent of the C++ type, using the following conventions:
   - For integers (int or uint): {:int, size_in_bytes} or {:uint, size_in_bytes}
   - For floats: :float
@@ -34,32 +44,46 @@ Where:
   - For lists: {:list, element_type}
   - For structs: {:struct, "StructName"}
   - For nullable types: {:nullable, base_type}
+  - For message fields: :message
 
-Here are some examples of the expected output format:
+Important notes:
+1. Use the opcode_name provided in the input data as the key for each structure in the outer map.
+2. Infer the fields and their types from the ToJsonString function content.
+3. Always include the __base__ field if the structure inherits from another class, even if there are no other specific members.
+4. If a structure only inherits from a base class and has no specific members, still represent it with the __base__ field.
+5. Message fields are special fields where a hash must be read to map the fields to the correct structure. Use :message for these fields.
+6. When you encounter a message field in the ToJsonString function, it often looks like a nested structure or a call to another ToJsonString function.
 
-{"EntityRemoveBulkNotify",
-   [
-     %{name: "EntityGuids", type: {:list, {:uint, 8}}},
-     %{name: "EntityRemoveReason", type: {:uint, 1}}
-   ]},
+Here's an example of the expected output format, including cases of inheritance:
 
-{"OccupiableNpcBossSpawnInfo",
-   [
-     %{name: "BossSpawnInfo", type: {:nullable, {:struct, "BossSpawnInfo"}}},
-     %{name: "DespawnDateTime", type: {:nullable, {:struct, "FDateTime"}}}
-   ]},
+%{
+  "EntityRemoveBulkNotify" => [
+    %{name: "EntityGuids", type: {:list, {:uint, 8}}},
+    %{name: "EntityRemoveReason", type: {:uint, 1}}
+  ],
 
-{"OtherPlayerLootNotify",
-   [
-     %{name: "NpcGuid", type: {:uint, 8}},
-     %{name: "NpcLocation_cm", type: {:struct, "FVector"}},
-     %{name: "PlayerGuid", type: {:uint, 8}},
-     %{name: "PlayerLocation_cm", type: {:struct, "FVector"}},
-     %{name: "ItemIndexWithCounts", type: {:list, :message}},
-     %{name: "IsErosionInstallerReward", type: :bool}
-   ]},
+  "OccupiableNpcBossSpawnInfo" => [
+    %{name: "__base__", type: {:struct, "BaseSpawnInfo"}},
+    %{name: "BossSpawnInfo", type: {:nullable, {:struct, "BossSpawnInfo"}}},
+    %{name: "DespawnDateTime", type: {:nullable, {:struct, "FDateTime"}}}
+  ],
 
-Provide only the Elixir structures in your response, without any additional explanation. Ensure your response starts with %{ and ends with }.
+  "InheritedStructureWithNoMembers" => [
+    %{name: "__base__", type: {:struct, "BaseStructureName"}}
+  ],
+
+  "OtherPlayerLootNotify" => [
+    %{name: "__base__", type: {:struct, "BaseLootNotify"}},
+    %{name: "NpcGuid", type: {:uint, 8}},
+    %{name: "NpcLocation_cm", type: {:struct, "FVector"}},
+    %{name: "PlayerGuid", type: {:uint, 8}},
+    %{name: "PlayerLocation_cm", type: {:struct, "FVector"}},
+    %{name: "ItemIndexWithCounts", type: {:list, :message}},
+    %{name: "IsErosionInstallerReward", type: :bool}
+  ]
+}
+
+Provide only the Elixir structures in your response, without any additional explanation. Ensure your response is valid Elixir map fields. I will manually put the %{ and } once you finish. Always include the __base__ field if the structure inherits from another class, even if there are no other specific members.
 
 Now, analyze the following function pairs and provide the structures in the format shown above:
 
@@ -75,24 +99,13 @@ Now, analyze the following function pairs and provide the structures in the form
                 {"role": "user", "content": human_prompt}
             ]
         )
-        raw_output = message.content[0].text
-
-        # Sanitize the output
-        sanitized_output = sanitize_output(raw_output)
-        return sanitized_output
+        response = message.content[0].text
+        return response
     except Exception as e:
         error_message = f"Error calling Claude API: {str(e)}"
         print(error_message)
         return f"%{{\n  error: \"{error_message}\"\n}}"
 
-def sanitize_output(output):
-    # Ensure the output starts with %{ and ends with }
-    output = output.strip()
-    if not output.startswith('%{'):
-        output = '%{' + output
-    if not output.endswith('}'):
-        output += '}'
-    return output
 
 def main():
     with open(INPUT_FILE, 'r') as f:
@@ -107,9 +120,9 @@ def main():
         time.sleep(1)  # Add a short delay between API calls
     
     with open(OUTPUT_FILE, 'w') as f:
-        f.write("[\n")
+        f.write("%{\n")
         f.write(",\n".join(all_results))
-        f.write("\n]")
+        f.write("\n}")
     
     print(f"Processing complete. Results written to {OUTPUT_FILE}")
 
