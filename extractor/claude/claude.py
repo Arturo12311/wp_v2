@@ -1,91 +1,115 @@
 import json
-import anthropic
+from anthropic import Anthropic
 import time
-import re
 
 INPUT_FILE = r"C:\repos\wp\assets\data\function_data.json"
-OUTPUT_FILE = r"C:\repos\wp\maps\struct_map.exs"
-MAX_BATCH_SIZE = 15  # Adjust based on Claude's limits and your needs
+OUTPUT_FILE = r"C:\repos\wp\assets\poc\struct_poc\proto_struct_map3.exs"
+BATCH_SIZE = 10  # Adjust based on your needs and API limits
 
-def chunk_data(data, max_size):
-    for i in range(0, len(data), max_size):
-        yield data[i:i + max_size]
+def chunk_data(data, batch_size):
+    for i in range(0, len(data), batch_size):
+        yield data[i:i + batch_size]
 
 def process_with_claude(batch):
-    client = anthropic.Anthropic(api_key="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")
+    client = Anthropic(api_key="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")
     
-    system_prompt = """
-    You are an expert in analyzing decompiled code and extracting structural information. Your task is to analyze pairs of decompiled functions (ToJsonString and GetTypeName) and extract the structure of the class they represent into an Elixir-friendly format.
-    """
-    
-    human_prompt = f"""
-    Here are the function pairs to analyze:
+    system_prompt = "You are an expert in analyzing decompiled C++ code and extracting structural information into Elixir format."
 
-    {json.dumps(batch, indent=2)}
+    human_prompt = r"""Analyze the following C++ function pairs (ToJsonString and GetTypeName) and extract their structures into an Elixir-friendly format. Focus only on the structure information, not on separate Members or TypeName fields. Use the following format for each structure:
 
-    For each pair, provide a structure formatted as follows:
+{"StructureName",
+   [
+     %{name: "FieldName", type: field_type},
+     # ... more fields ...
+   ]},
 
-    "OpcodeName" => %{{
-      base: "BaseStructureName",  # If there's a base structure, otherwise nil
-      fields: [
-        %{{name: "field_name", type: {{:field_type, :size_or_dynamic}}}},
-        # ... more fields ...
-      ]
-    }},
+Where:
+- "StructureName" is the name of the structure (use the class name if available, otherwise use the value returned by GetTypeName)
+- "FieldName" is the name of each field in the JSON structure
+- field_type is the Elixir equivalent of the C++ type, using the following conventions:
+  - For integers (int or uint): {:int, size_in_bytes} or {:uint, size_in_bytes}
+  - For floats: :float
+  - For booleans: :bool
+  - For strings: :string
+  - For lists: {:list, element_type}
+  - For structs: {:struct, "StructName"}
+  - For nullable types: {:nullable, base_type}
 
-    Where:
-    - "OpcodeName" is the string or number returned by the GetTypeName function (use the value in "type_name_value")
-    - "BaseStructureName" is the name of the base structure if one exists, or nil if there isn't one
-    - "field_name" is the name of each field in the JSON structure from ToJsonString
-    - "field_type" is the Elixir equivalent of the C++ type (e.g., :string, :integer, :float, :boolean, :object, :array)
-    - "size_or_dynamic" is either a specific size for fixed-size types or :dynamic for variable-size types
+Here are some examples of the expected output format:
 
-    Please provide only the Elixir structures in your response, without any additional explanation.
-    Format the output as valid Elixir map entries, with each structure separated by a comma and newline.
-    If you can't determine a field's type, use {{:unknown, :dynamic}}.
-    Do not include the outer %{{ }} in your response, as we'll be appending multiple results.
-    """
+{"EntityRemoveBulkNotify",
+   [
+     %{name: "EntityGuids", type: {:list, {:uint, 8}}},
+     %{name: "EntityRemoveReason", type: {:uint, 1}}
+   ]},
+
+{"OccupiableNpcBossSpawnInfo",
+   [
+     %{name: "BossSpawnInfo", type: {:nullable, {:struct, "BossSpawnInfo"}}},
+     %{name: "DespawnDateTime", type: {:nullable, {:struct, "FDateTime"}}}
+   ]},
+
+{"OtherPlayerLootNotify",
+   [
+     %{name: "NpcGuid", type: {:uint, 8}},
+     %{name: "NpcLocation_cm", type: {:struct, "FVector"}},
+     %{name: "PlayerGuid", type: {:uint, 8}},
+     %{name: "PlayerLocation_cm", type: {:struct, "FVector"}},
+     %{name: "ItemIndexWithCounts", type: {:list, :message}},
+     %{name: "IsErosionInstallerReward", type: :bool}
+   ]},
+
+Provide only the Elixir structures in your response, without any additional explanation. Ensure your response starts with %{ and ends with }.
+
+Now, analyze the following function pairs and provide the structures in the format shown above:
+
+""" + f"{json.dumps(batch, indent=2)}"
 
     try:
-        response = client.completions.create(
-            model="claude-2.1",
-            prompt=f"{system_prompt}\n\nHuman: {human_prompt}\n\nAssistant: Certainly! I'll analyze the function pairs and provide the Elixir structures as requested. Here's the extracted information:\n\n",
-            max_tokens_to_sample=4000,
+        message = client.messages.create(
+            model="claude-3-5-sonnet-20240620",
+            max_tokens=4096,
             temperature=0,
+            system=system_prompt,
+            messages=[
+                {"role": "user", "content": human_prompt}
+            ]
         )
-        return response.completion
-    except Exception as e:
-        print(f"Error calling Claude API: {str(e)}")
-        return None
+        raw_output = message.content[0].text
 
-def clean_claude_response(response):
-    # Remove any leading/trailing whitespace and newlines
-    response = response.strip()
-    
-    # Remove any outer %{ } if present
-    response = re.sub(r'^\s*%\{\s*|\s*\}\s*$', '', response)
-    
-    return response
+        # Sanitize the output
+        # sanitized_output = sanitize_output(raw_output)
+        return raw_output
+    except Exception as e:
+        error_message = f"Error calling Claude API: {str(e)}"
+        print(error_message)
+        return f"%{{\n  error: \"{error_message}\"\n}}"
+
+def sanitize_output(output):
+    # Ensure the output starts with %{ and ends with }
+    output = output.strip()
+    if not output.startswith('%{'):
+        output = '%{' + output
+    if not output.endswith('}'):
+        output += '}'
+    return output
 
 def main():
     with open(INPUT_FILE, 'r') as f:
         data = json.load(f)
     
     all_results = []
-    for i, batch in enumerate(chunk_data(data, MAX_BATCH_SIZE)):
-        print(f"Processing batch {i+1} of {(len(data)-1)//MAX_BATCH_SIZE + 1}")
-        try:
-            result = process_with_claude(batch)
-            cleaned_result = clean_claude_response(result)
-            all_results.append(cleaned_result)
-        except Exception as e:
-            print(f"Error processing batch {i+1}: {str(e)}")
+    for i, batch in enumerate(chunk_data(data, BATCH_SIZE)):
+        print(f"Processing batch {i+1} of {(len(data)-1)//BATCH_SIZE + 1}")
+        result = process_with_claude(batch)
+        if result:
+            all_results.append(result)
         time.sleep(1)  # Add a short delay between API calls
     
     with open(OUTPUT_FILE, 'w') as f:
-        f.write("%{\n")
+        f.write("[\n")
         f.write(",\n".join(all_results))
-        f.write("\n}")
+        f.write("\n]")
     
     print(f"Processing complete. Results written to {OUTPUT_FILE}")
 
