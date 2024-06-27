@@ -2,7 +2,7 @@ import json
 from anthropic import Anthropic
 import time
 
-INPUT_FILE = r"C:\repos\wp\assets\data\function_data.json"
+INPUT_FILE = r"C:\repos\wp\assets\data\function_data_test.json"
 OUTPUT_FILE = r"C:\repos\wp\assets\poc\struct_poc\proto_struct_map3.exs"
 BATCH_SIZE = 10  # Adjust based on your needs and API limits
 
@@ -42,7 +42,7 @@ Where:
   - For booleans: :bool
   - For strings: :string
   - For lists: {:list, element_type}
-  - For structs: {:struct, "StructName"}
+  - For structs: {:struct, "StructName"}: dont include the FTz at the beginning of StructNames.
   - For nullable types: {:nullable, base_type}
   - For message fields: :message
 
