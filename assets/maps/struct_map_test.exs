@@ -55,46 +55,44 @@
   %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
   %{name: "LeadPlayerName", type: :string}
 ],
-%{
-  "ErosionInstallCancelFailResponse" => [
-    %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}}
-  ],
+"ErosionInstallCancelFailResponse" => [
+  %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
+],
 
-  "LocationForceSynchronizeNotify" => [
-    %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CharacterMoveStopInfo", type: {:struct, "CharacterMoveStopInfo"}}
-  ],
+"LocationForceSynchronizeNotify" => [
+  %{name: "__base__", type: {:struct, "ErTozMessage"}},
+  %{name: "CharacterMoveStopInfo", type: {:nullable, {:struct, "CharacterMoveStopInfo"}}}
+],
 
-  "StrongholdBattleBuildingStateInfo" => [
-    %{name: "SpawnerCuid", type: {:struct, "Cuid"}},
-    %{name: "BuildingCuid", type: {:struct, "Cuid"}},
-    %{name: "MaxHealthPoints", type: {:int, 8}},
-    %{name: "HealthPoints", type: {:int, 8}},
-    %{name: "FieldUid", type: {:struct, "FieldUid"}}
-  ],
+"StrongholdBattleBuildingStateInfo" => [
+  %{name: "SpawnerCuid", type: {:struct, "Cuid"}},
+  %{name: "BuildingCuid", type: {:struct, "Cuid"}},
+  %{name: "MaxHealthPoints", type: {:int, 8}},
+  %{name: "HealthPoints", type: {:int, 8}},
+  %{name: "FieldUid", type: {:struct, "FieldUid"}}
+],
 
-  "InteractionStartNotify" => [
-    %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "DoodadGuid", type: {:uint, 8}}
-  ],
+"InteractionStartNotify" => [
+  %{name: "__base__", type: {:struct, "ErTozMessage"}},
+  %{name: "PlayerGuid", type: {:uint, 8}},
+  %{name: "DoodadGuid", type: {:uint, 8}}
+],
 
-  "PartySharedFocusTargetNotify" => [
-    %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "SharedFocusTargetInfo", type: {:nullable, {:struct, "SharedFocusTargetInfo"}}}
-  ],
+"PartySharedFocusTargetNotify" => [
+  %{name: "__base__", type: {:struct, "ErTozMessage"}},
+  %{name: "SharedFocusTargetInfo", type: {:nullable, :message}}
+],
 
-  "CheatRestoreChatCovenantResponse" => [
-    %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}}
-  ],
+"CheatRestoreChatCovenantResponse" => [
+  %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}}
+],
 
-  "DeathPenaltyDeleteResponse" => [
-    %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "DeletedDeathPenaltyRecordGuids", type: {:list, {:uint, 8}}}
-  ],
+"DeathPenaltyDeleteResponse" => [
+  %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
+  %{name: "DeletedDeathPenaltyRecordGuids", type: {:list, {:uint, 8}}}
+],
 
-  "CheatResetDiscoveredSelfieDoodadSpawnersRequest" => [
-    %{name: "__base__", type: {:struct, "ErTozMessage"}}
-  ]
-}
+"CheatResetDiscoveredSelfieDoodadSpawnersRequest" => [
+  %{name: "__base__", type: {:struct, "ErTozMessage"}}
+]
 }

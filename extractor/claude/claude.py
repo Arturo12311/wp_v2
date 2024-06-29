@@ -3,7 +3,7 @@ from anthropic import Anthropic
 import time
 
 INPUT_FILE = r"C:\repos\wp\assets\data\function_data_test.json"
-OUTPUT_FILE = r"C:\repos\wp\assets\poc\struct_poc\proto_struct_map3.exs"
+OUTPUT_FILE = r"C:\repos\wp\assets\maps\struct_map_test.exs"
 BATCH_SIZE = 10  # Adjust based on your needs and API limits
 
 def chunk_data(data, batch_size):
@@ -53,6 +53,7 @@ Important notes:
 4. If a structure only inherits from a base class and has no specific members, still represent it with the __base__ field.
 5. Message fields are special fields where a hash must be read to map the fields to the correct structure. Use :message for these fields.
 6. When you encounter a message field in the ToJsonString function, it often looks like a nested structure or a call to another ToJsonString function.
+7. Dont include the map defining %{ and }. I will at it at the end once you finish processing all batches.
 
 Here's an example of the expected output format, including cases of inheritance:
 
@@ -83,7 +84,7 @@ Here's an example of the expected output format, including cases of inheritance:
   ]
 }
 
-Provide only the Elixir structures in your response, without any additional explanation. Ensure your response is valid Elixir map fields. I will manually put the %{ and } once you finish. Always include the __base__ field if the structure inherits from another class, even if there are no other specific members.
+Provide only the Elixir structures in your response, without any additional explanation. Ensure your response is valid Elixir map fields. Always include the __base__ field if the structure inherits from another class, even if there are no other specific members.
 
 Now, analyze the following function pairs and provide the structures in the format shown above:
 
