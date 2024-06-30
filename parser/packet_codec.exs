@@ -3,14 +3,26 @@ defmodule PacketCodec do
   Handles encoding and decoding of packet structures for network communication.
   Uses predefined structures and opcode mappings to process packets.
   """
+  Code.require_file("parser/structure_codec.exs")
 
-  @structures File.read!(Path.join(__DIR__, "structures.exs")) |> Code.eval_string() |> elem(0)
-  @opcode_map File.read!("opcode_map.exs") |> Code.eval_string() |> elem(0)
+  @root_dir Path.expand("..", __DIR__)
+
+  @structures_map Path.join([@root_dir, "assets", "data", "maps", "test_structure_map.exs"])
+                  |> File.read!()
+                  |> Code.eval_string()
+                  |> elem(0)
+
+  @opcode_map Path.join([@root_dir, "data", "maps", "opcode_map.exs"])
+              |> File.read!()
+              |> Code.eval_string()
+              |> elem(0)
 
   @type packet_name :: String.t()
   @type packet_data :: map()
   @type binary_packet :: binary()
   @type opcode :: non_neg_integer()
+
+  Code.require_file("structure_codec.exs")
 
   @doc """
   Encodes a packet given its name and data.
@@ -50,7 +62,7 @@ defmodule PacketCodec do
 
   @spec find_structure(packet_name()) :: {:ok, list(map())} | {:error, :unknown_structure}
   defp find_structure(name) do
-    case Map.get(@structures, name) do
+    case Map.get(@structures_map, name) do
       nil -> {:error, :unknown_structure}
       structure -> {:ok, structure}
     end

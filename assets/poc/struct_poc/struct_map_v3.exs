@@ -55,6 +55,7 @@
   %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
   %{name: "LeadPlayerName", type: :string}
 ],
+}
 %{
   "ErosionInstallCancelFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}}
@@ -96,5 +97,4 @@
   "CheatResetDiscoveredSelfieDoodadSpawnersRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}}
   ]
-}
 }

@@ -2,6 +2,7 @@ defmodule StructureCodec do
   @moduledoc """
   Handles encoding and decoding of packet structures.
   """
+  Code.require_file("parser/packet_codec.exs")
 
   @spec encode_structure(list(map()), map()) :: {:ok, binary()} | {:error, atom()}
   def encode_structure(structure, data) do
@@ -20,20 +21,21 @@ defmodule StructureCodec do
 
   @spec decode_structure(binary(), list(map())) :: {:ok, map()} | {:error, atom()}
   def decode_structure(binary, structure) do
-    Enum.reduce_while(structure, {binary, %{}}, fn field, {binary, acc} ->
+    case Enum.reduce_while(structure, {binary, %{}}, fn field, {binary, acc} ->
       case decode_field(binary, field) do
         {:ok, {value, rest}} ->
           {:cont, {rest, Map.put(acc, field.name, value)}}
         {:error, reason} ->
           {:halt, {:error, reason}}
       end
-    end)
-    |> case do
+    end) do
       {<<>>, decoded} -> {:ok, decoded}
-      {_rest, _incomplete_decode} -> {:error, :incomplete_decode}
       {:error, reason} -> {:error, reason}
+      {_rest, _incomplete_decode} -> {:error, :incomplete_decode}
     end
   end
+
+
 
 # Field encoding/decoding functions
 
@@ -95,7 +97,7 @@ defp encode_field(%{type: {:nullable, inner_type}}, value) do
 end
 
 defp encode_field(%{type: {:struct, struct_name}}, value) when is_map(value) do
-  with {:ok, structure} <- find_structure(struct_name),
+  with {:ok, structure} <- PacketCodec.find_structure(struct_name),
        {:ok, encoded} <- encode_structure(structure, value) do
     {:ok, encoded}
   end
@@ -103,12 +105,16 @@ end
 
 defp encode_field(_, _), do: {:error, :invalid_field}
 
-defp decode_field(<<value::little-integer-size(size)-unit(8), rest::binary>>, %{
-       type: {int_type, size}
-     })
+defp decode_field(binary, %{type: {int_type, size}})
      when int_type in [:uint, :int] and size in [1, 2, 4, 8] do
-  {:ok, {value, rest}}
+  case binary do
+    <<value::little-integer-size(size)-unit(8), rest::binary>> ->
+      {:ok, {value, rest}}
+    _ ->
+      {:error, :insufficient_data}
+  end
 end
+
 
 defp decode_field(<<value::8, rest::binary>>, %{type: :bool}) do
   {:ok, {value != 0, rest}}
@@ -156,7 +162,7 @@ defp decode_field(<<1::8, rest::binary>>, %{type: {:nullable, inner_type}}) do
 end
 
 defp decode_field(binary, %{type: {:struct, struct_name}}) do
-  with {:ok, structure} <- find_structure(struct_name),
+  with {:ok, structure} <- PacketCodec.find_structure(struct_name),
        {:ok, decoded_struct} <- decode_structure(binary, structure) do
     {:ok, {decoded_struct, <<>>}}
   end
