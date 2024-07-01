@@ -2,8 +2,8 @@ import json
 from anthropic import Anthropic
 import time
 
-INPUT_FILE = r"C:\repos\wp\assets\data\function_data_test.json"
-OUTPUT_FILE = r"C:\repos\wp\assets\maps\struct_map_test.exs"
+INPUT_FILE = r"C:\repos\wp\assets\data\function_data_full.json"
+OUTPUT_FILE = r"C:\repos\wp\assets\maps\structures_map.exs"
 BATCH_SIZE = 10  # Adjust based on your needs and API limits
 
 def chunk_data(data, batch_size):
@@ -53,7 +53,11 @@ Important notes:
 4. If a structure only inherits from a base class and has no specific members, still represent it with the __base__ field.
 5. Message fields are special fields where a hash must be read to map the fields to the correct structure. Use :message for these fields.
 6. When you encounter a message field in the ToJsonString function, it often looks like a nested structure or a call to another ToJsonString function.
-7. Dont include the map defining %{ and }. I will at it at the end once you finish processing all batches.
+7. Don't include the map defining %{ and }. I will add it at the end once you finish processing all batches.
+8. Do not include any introductory text before the structures. Start directly with the first structure.
+9. Use consistent indentation for all structures. Indent each field with two spaces from the structure name.
+10. Separate each structure with a single blank line.
+11. Ensure there's a space after the comma following each structure (except for the last one).
 
 Here's an example of the expected output format, including cases of inheritance:
 
@@ -112,18 +116,34 @@ def main():
     with open(INPUT_FILE, 'r') as f:
         data = json.load(f)
     
-    all_results = []
-    for i, batch in enumerate(chunk_data(data, BATCH_SIZE)):
-        print(f"Processing batch {i+1} of {(len(data)-1)//BATCH_SIZE + 1}")
-        result = process_with_claude(batch)
-        if result:
-            all_results.append(result)
-        time.sleep(1)  # Add a short delay between API calls
+    total_batches = (len(data)-1)//BATCH_SIZE + 1
     
+    # Write the opening of the Elixir map
     with open(OUTPUT_FILE, 'w') as f:
         f.write("%{\n")
-        f.write(",\n".join(all_results))
-        f.write("\n}")
+    
+    is_first_batch = True
+    
+    for i, batch in enumerate(chunk_data(data, BATCH_SIZE)):
+        print(f"Processing batch {i+1} of {total_batches}")
+        result = process_with_claude(batch)
+        
+        if result:
+            # Append the result to the file
+            with open(OUTPUT_FILE, 'a') as f:
+                if not is_first_batch:
+                    f.write("\n")  # Add newline before new batch (except for the first one)
+                f.write(result.strip())  # Write the batch result
+                if i < total_batches - 1:  # If it's not the last batch
+                    f.write(",")  # Add a comma
+                f.write("\n")  # Add newline after each batch
+            
+            is_first_batch = False
+        time.sleep(1)  # Add a short delay between API calls
+    
+    # Write the closing of the Elixir map
+    with open(OUTPUT_FILE, 'a') as f:
+        f.write("}")
     
     print(f"Processing complete. Results written to {OUTPUT_FILE}")
 
