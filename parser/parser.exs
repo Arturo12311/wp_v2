@@ -102,7 +102,8 @@ defmodule PacketCodec do
 
   @spec decode_structure(binary(), list(map())) :: {:ok, map()} | {:error, atom()}
   defp decode_structure(binary, structure) do
-    IO.inspect {"decode_structure ", structure}
+    IO.inspect({"decode_structure ", structure})
+
     Enum.reduce_while(structure, {:ok, {binary, %{}}}, fn field, {:ok, {binary, acc}} ->
       case decode_field(binary, field) do
         {:ok, {value, rest}} ->
@@ -191,7 +192,6 @@ defmodule PacketCodec do
     {:error, :invalid_field}
   end
 
-
   defp decode_field(<<value::little-integer-32-unsigned, rest::binary>>, %{type: {:uint, 4}}) do
     {:ok, {value, rest}}
   end
@@ -220,7 +220,7 @@ defmodule PacketCodec do
 
   defp decode_field(data, %{type: :message}) do
     with {:ok, {value, rest}} <- decode_packet(data) do
-      IO.puts "did decode msg #{inspect value}"
+      IO.puts("did decode msg #{inspect(value)}")
       {:ok, {value, rest}}
     end
   end
@@ -254,7 +254,8 @@ defmodule PacketCodec do
   end
 
   defp decode_field(binary, %{type: {:struct, struct_name}}) do
-    IO.inspect "decoding structure"
+    IO.inspect("decoding structure")
+
     with {:ok, structure} <- find_structure(struct_name),
          {:ok, decoded_struct} <- decode_structure(binary, structure) do
       {:ok, {decoded_struct, <<>>}}
@@ -281,8 +282,33 @@ defmodule PacketCodecTest do
     IO.puts("Starting PacketCodec test...")
 
     # The packet bytes to test
+    packet =
+      <<0, 208, 13, 160, 235, 0, 12, 6, 189, 254, 0, 32, 0, 0, 0, 91, 102, 101, 56, 48, 58, 58,
+        56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
+        57, 55, 51, 53, 128, 4, 182, 68>>
 
-    _packet =
+    IO.puts("Starting PacketCodec test...")
+    IO.puts("Packet size: #{byte_size(packet)} bytes")
+
+    case PacketCodec.decode_packet(packet) do
+      {:ok, decoded} ->
+        IO.puts("Packet decoded successfully!")
+        IO.inspect(decoded, label: "Decoded packet", limit: :infinity)
+
+      {:error, reason} ->
+        IO.puts("Error decoding packet: #{inspect(reason)}")
+    end
+
+    IO.puts("Test completed.")
+  end
+end
+
+defmodule PacketCodecTest1 do
+  def run_test do
+    IO.puts("Starting PacketCodec test...")
+
+    # The packet bytes to test
+    packet =
       <<0, 208, 13, 160, 235, 0, 64, 134, 244, 147, 0, 32, 0, 0, 0, 91, 102, 101, 56, 48, 58, 58,
         56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
         57, 55, 52, 49, 2, 0, 0, 0, 103, 0, 0, 0, 2, 0, 0, 0, 0, 6, 0, 0, 0, 49, 52, 46, 55, 46,
@@ -301,14 +327,6 @@ defmodule PacketCodecTest do
         13, 0, 0, 0, 48, 84, 55, 48, 48, 87, 48, 49, 48, 52, 48, 50, 48, 240, 46, 17, 0, 0, 0, 0,
         0>>
 
-    packet =
-      <<0, 208, 13, 160, 235, 0, 12, 6, 189, 254, 0, 
-      32, 0, 0, 0, 
-      91, 102, 101, 56, 48, 58, 58,
-        56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
-        57, 55, 51, 53, 
-        128, 4, 182, 68>>
-
     IO.puts("Starting PacketCodec test...")
     IO.puts("Packet size: #{byte_size(packet)} bytes")
 
@@ -326,4 +344,4 @@ defmodule PacketCodecTest do
 end
 
 # Run the test
-PacketCodecTest.run_test()
+PacketCodecTest1.run_test()
