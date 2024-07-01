@@ -184,7 +184,10 @@ defmodule PacketCodec do
     end
   end
 
-  defp encode_field(_, _), do: {:error, :invalid_field}
+  defp encode_field(_, ftype) do
+    IO.inspect({:unknown_field_type, ftype})
+    {:error, :invalid_field}
+  end
 
   defp decode_field(<<value::little-integer-32, rest::binary>>, %{type: {:int, 4}}) do
     {:ok, {value, rest}}
@@ -244,7 +247,10 @@ defmodule PacketCodec do
     end
   end
 
-  defp decode_field(_, _), do: {:error, :invalid_field}
+  defp decode_field(_, ftype) do
+    IO.inspect({:unknown_field_type, ftype})
+    {:error, :invalid_field}
+  end
 
   defp decode_list(rest, 0, _element_type, acc), do: {:ok, {Enum.reverse(acc), rest}}
 
