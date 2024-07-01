@@ -102,15 +102,17 @@ defmodule PacketCodec do
 
   @spec decode_structure(binary(), list(map())) :: {:ok, map()} | {:error, atom()}
   defp decode_structure(binary, structure) do
-    Enum.reduce_while(structure, {binary, %{}}, fn field, {binary, acc} ->
+    IO.inspect {"decode_structure ", structure}
+    Enum.reduce_while(structure, {:ok, {binary, %{}}}, fn field, {:ok, {binary, acc}} ->
       case decode_field(binary, field) do
         {:ok, {value, rest}} ->
-          {:cont, {rest, Map.put(acc, field.name, value)}}
+          {:cont, {:ok, {rest, Map.put(acc, field.name, value)}}}
 
         {:error, reason} ->
           {:halt, {:error, reason}}
       end
     end)
+    |> IO.inspect()
     |> case do
       {:ok, {rest, decoded}} -> {:ok, {decoded, rest}}
       {:error, reason} -> {:error, reason}
@@ -189,6 +191,11 @@ defmodule PacketCodec do
     {:error, :invalid_field}
   end
 
+
+  defp decode_field(<<value::little-integer-32-unsigned, rest::binary>>, %{type: {:uint, 4}}) do
+    {:ok, {value, rest}}
+  end
+
   defp decode_field(<<value::little-integer-32, rest::binary>>, %{type: {:int, 4}}) do
     {:ok, {value, rest}}
   end
@@ -213,6 +220,7 @@ defmodule PacketCodec do
 
   defp decode_field(data, %{type: :message}) do
     with {:ok, {value, rest}} <- decode_packet(data) do
+      IO.puts "did decode msg #{inspect value}"
       {:ok, {value, rest}}
     end
   end
@@ -224,9 +232,9 @@ defmodule PacketCodec do
     {:ok, {{x, y, z}, rest}}
   end
 
-  defp decode_field(<<0, value::little-32, rest::binary>>, %{type: :string}) do
+  defp decode_field(<<0, len::little-32, str::binary-size(len), rest::binary>>, %{type: :string}) do
     # strings always prepemd a zero marking non null value 
-    {:ok, {value, rest}}
+    {:ok, {str, rest}}
   end
 
   defp decode_field(<<value::little-32, rest::binary>>, %{type: {:struct, "Cuid"}}) do
@@ -246,6 +254,7 @@ defmodule PacketCodec do
   end
 
   defp decode_field(binary, %{type: {:struct, struct_name}}) do
+    IO.inspect "decoding structure"
     with {:ok, structure} <- find_structure(struct_name),
          {:ok, decoded_struct} <- decode_structure(binary, structure) do
       {:ok, {decoded_struct, <<>>}}
@@ -293,9 +302,12 @@ defmodule PacketCodecTest do
         0>>
 
     packet =
-      <<0, 208, 13, 160, 235, 0, 12, 6, 189, 254, 0, 32, 0, 0, 0, 91, 102, 101, 56, 48, 58, 58,
+      <<0, 208, 13, 160, 235, 0, 12, 6, 189, 254, 0, 
+      32, 0, 0, 0, 
+      91, 102, 101, 56, 48, 58, 58,
         56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
-        57, 55, 51, 53, 128, 4, 182, 68>>
+        57, 55, 51, 53, 
+        128, 4, 182, 68>>
 
     IO.puts("Starting PacketCodec test...")
     IO.puts("Packet size: #{byte_size(packet)} bytes")
