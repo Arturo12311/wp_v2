@@ -4,8 +4,12 @@ defmodule PacketCodec do
   Uses predefined structures and opcode mappings to process packets.
   """
 
-  @structures File.read!(Path.join([__DIR__, "../assets/maps/test_structure_map.exs"])) |> Code.eval_string() |> elem(0)
-  @opcode_map File.read!(Path.join([__DIR__, "../assets/maps/opcode_map.exs"])) |> Code.eval_string() |> elem(0)
+  @structures File.read!(Path.join([__DIR__, "../assets/maps/test_structure_map.exs"]))
+              |> Code.eval_string()
+              |> elem(0)
+  @opcode_map File.read!(Path.join([__DIR__, "../assets/maps/opcode_map.exs"]))
+              |> Code.eval_string()
+              |> elem(0)
 
   @type packet_name :: String.t()
   @type packet_data :: map()
@@ -36,11 +40,11 @@ defmodule PacketCodec do
     with {:ok, {opcode, message}} <- extract_header(binary),
          {:ok, name} <- find_name(opcode),
          {:ok, structure} <- find_structure(name),
-         {:ok, parsed_data} <- decode_structure(message, structure) do
-      result = %{opcode => parsed_data}
+         {:ok, {parsed_data, rest}} <- decode_structure(message, structure) do
+      result = %{:_op => opcode, :msg => parsed_data}
 
       IO.inspect(result, label: name)
-      {:ok, result}
+      {:ok, {result, rest}}
     else
       {:error, reason} -> {:error, reason}
     end
@@ -69,22 +73,26 @@ defmodule PacketCodec do
     null_byte = if is_null, do: 1, else: 0
     {:ok, <<null_byte::8, opcode::little-32>>}
   end
+
   defp encode_opcode(_, _), do: {:error, :invalid_header_data}
 
   @spec extract_header(binary()) :: {:ok, {opcode(), binary()}} | {:error, :invalid_header}
   defp extract_header(<<0, opcode::little-32, message::binary>>) do
+    IO.inspect({:extract_header, opcode})
     {:ok, {opcode, message}}
   end
+
   defp extract_header(_), do: {:error, :invalid_header}
 
   @spec encode_structure(list(map()), map()) :: {:ok, binary()} | {:error, atom()}
   defp encode_structure(structure, data) do
-    result = Enum.reduce_while(structure, <<>>, fn field, acc ->
-      case encode_field(field, Map.get(data, field.name)) do
-        {:ok, encoded} -> {:cont, acc <> encoded}
-        {:error, reason} -> {:halt, {:error, reason}}
-      end
-    end)
+    result =
+      Enum.reduce_while(structure, <<>>, fn field, acc ->
+        case encode_field(field, Map.get(data, field.name)) do
+          {:ok, encoded} -> {:cont, acc <> encoded}
+          {:error, reason} -> {:halt, {:error, reason}}
+        end
+      end)
 
     case result do
       {:error, reason} -> {:error, reason}
@@ -98,14 +106,14 @@ defmodule PacketCodec do
       case decode_field(binary, field) do
         {:ok, {value, rest}} ->
           {:cont, {rest, Map.put(acc, field.name, value)}}
+
         {:error, reason} ->
           {:halt, {:error, reason}}
       end
     end)
     |> case do
-      {<<>>, decoded} -> {:ok, decoded}
+      {rest, decoded} -> {:ok, {decoded, rest}}
       {:error, reason} -> {:error, reason}
-      {_rest, _incomplete_decode} -> {:error, :incomplete_decode}
     end
   end
 
@@ -130,7 +138,11 @@ defmodule PacketCodec do
   end
 
   defp encode_field(%{type: {:list, element_type}}, values) when is_list(values) do
-    with {:ok, encoded_values} <- Enum.map(values, &encode_field(%{type: element_type}, &1)) |> Enum.all?(&match?({:ok, _}, &1)) && {:ok, Enum.map(values, fn {:ok, val} -> val end)} || {:error, :invalid_list_element} do
+    with {:ok, encoded_values} <-
+           (Enum.map(values, &encode_field(%{type: element_type}, &1))
+            |> Enum.all?(&match?({:ok, _}, &1)) &&
+              {:ok, Enum.map(values, fn {:ok, val} -> val end)}) ||
+             {:error, :invalid_list_element} do
       length = length(values)
       {:ok, <<length::little-32, IO.iodata_to_binary(encoded_values)::binary>>}
     end
@@ -141,7 +153,8 @@ defmodule PacketCodec do
     {:ok, <<byte_size::little-32, value::binary>>}
   end
 
-  defp encode_field(%{type: {:struct, "Vector"}}, {x, y, z}) when is_float(x) and is_float(y) and is_float(z) do
+  defp encode_field(%{type: {:struct, "Vector"}}, {x, y, z})
+       when is_float(x) and is_float(y) and is_float(z) do
     {:ok, <<x::little-float-32, y::little-float-32, z::little-float-32>>}
   end
 
@@ -185,7 +198,9 @@ defmodule PacketCodec do
     {:ok, {value, rest}}
   end
 
-  defp decode_field(<<length::little-32, value::binary-size(length), rest::binary>>, %{type: {:string, :dynamic}}) do
+  defp decode_field(<<length::little-32, value::binary-size(length), rest::binary>>, %{
+         type: {:string, :dynamic}
+       }) do
     {:ok, {value, rest}}
   end
 
@@ -193,11 +208,16 @@ defmodule PacketCodec do
     decode_list(values, length, element_type, [])
   end
 
-  defp decode_field(<<length::little-32, value::binary-size(length), rest::binary>>, %{type: :message}) do
-    {:ok, {value, rest}}
+  defp decode_field(data, %{type: :message}) do
+    with {:ok, {value, rest}} <- decode_packet(data) do
+      {:ok, {value, rest}}
+    end
   end
 
-  defp decode_field(<<x::little-float-32, y::little-float-32, z::little-float-32, rest::binary>>, %{type: {:struct, "Vector"}}) do
+  defp decode_field(
+         <<x::little-float-32, y::little-float-32, z::little-float-32, rest::binary>>,
+         %{type: {:struct, "Vector"}}
+       ) do
     {:ok, {{x, y, z}, rest}}
   end
 
@@ -209,11 +229,11 @@ defmodule PacketCodec do
     {:ok, {DateTime.from_unix!(unix_timestamp), rest}}
   end
 
-  defp decode_field(<<0::8, rest::binary>>, %{type: {:nullable, _inner_type}}) do
+  defp decode_field(<<1::8, rest::binary>>, %{type: {:nullable, _inner_type}}) do
     {:ok, {nil, rest}}
   end
 
-  defp decode_field(<<1::8, rest::binary>>, %{type: {:nullable, inner_type}}) do
+  defp decode_field(<<0::8, rest::binary>>, %{type: {:nullable, inner_type}}) do
     decode_field(rest, %{type: inner_type})
   end
 
@@ -227,6 +247,7 @@ defmodule PacketCodec do
   defp decode_field(_, _), do: {:error, :invalid_field}
 
   defp decode_list(rest, 0, _element_type, acc), do: {:ok, {Enum.reverse(acc), rest}}
+
   defp decode_list(binary, count, element_type, acc) do
     case decode_field(binary, %{type: element_type}) do
       {:ok, {value, rest}} -> decode_list(rest, count - 1, element_type, [value | acc])
@@ -235,30 +256,35 @@ defmodule PacketCodec do
   end
 end
 
-
 defmodule PacketCodecTest do
   def run_test do
     IO.puts("Starting PacketCodec test...")
 
     # The packet bytes to test
-    packet = <<0,198,43,38,151,0,58,0,0,0,93,209,248,9,18,8,104,34,133,128,51,123,33,
-        17,163,221,246,94,76,56,251,167,193,100,75,61,186,165,10,169,46,67,
-        189,139,224,112,34,191,20,77,114,19,92,45,43,232,211,55,172,127,8,209,
-        4,114,241,181,16,148,0,3,0,0,0,1,0,1,0,0,1,0,0,157,170,165,170,107,91,
-        127,66,35,31,37,207,104,152,6,54,226,155,191,135,33,144,211,29,143,
-        134,200,151,205,209,159,204,85,89,51,227,146,37,222,227,208,118,167,
-        247,152,231,88,56,179,129,111,153,137,109,193,212,167,158,82,144,186,
-        150,96,161,211,87,213,159,4,177,109,113,58,68,31,163,187,74,171,54,
-        111,188,236,154,152,144,145,234,110,40,97,41,201,101,151,240,194,47,
-        76,250,18,170,111,148,158,20,227,208,237,30,250,234,195,68,61,23,120,
-        0,89,105,4,16,96,114,98,40,132,248,67,55,218,237,130,102,102,173,3,
-        199,242,217,83,7,0,178,179,58,64,235,21,29,123,23,201,126,96,52,7,166,
-        114,50,220,8,80,61,58,193,251,169,100,11,99,79,14,20,87,248,241,176,
-        199,132,80,208,205,199,187,146,97,51,249,133,237,59,125,163,66,187,9,
-        1,29,244,55,171,125,236,106,204,28,64,70,72,125,218,192,217,60,247,
-        126,205,95,135,183,70,81,251,149,88,90,152,52,132,185,186,81,195,213,
-        64,187,60,86,193,48,12,43,248,57,116,233,24,25,115,205,114,252,108,
-        162,17>>
+
+    packet =
+      <<0, 208, 13, 160, 235, 0, 64, 134, 244, 147, 0, 32, 0, 0, 0, 91, 102, 101, 56, 48, 58, 58,
+        56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
+        57, 55, 52, 49, 2, 0, 0, 0, 103, 0, 0, 0, 2, 0, 0, 0, 0, 6, 0, 0, 0, 49, 52, 46, 55, 46,
+        49, 0, 10, 0, 0, 0, 105, 80, 104, 111, 110, 101, 49, 50, 44, 49, 0, 0, 0, 0, 0, 0, 36, 0,
+        0, 0, 53, 56, 53, 54, 56, 55, 50, 55, 45, 67, 69, 48, 49, 45, 52, 68, 48, 67, 45, 56, 52,
+        69, 70, 45, 53, 48, 51, 57, 50, 65, 65, 54, 50, 68, 57, 56, 0, 2, 0, 0, 0, 67, 78, 0, 5,
+        0, 0, 0, 122, 104, 95, 84, 87, 0, 9, 0, 0, 0, 49, 46, 49, 57, 48, 49, 46, 50, 48, 1, 0, 0,
+        0, 0, 10, 0, 0, 0, 105, 79, 83, 32, 49, 52, 46, 55, 46, 49, 0, 17, 0, 0, 0, 50, 51, 55,
+        52, 48, 48, 48, 48, 48, 48, 48, 49, 55, 51, 57, 53, 55, 0, 33, 0, 0, 0, 84, 79, 85, 97,
+        100, 114, 70, 119, 114, 68, 56, 49, 106, 122, 68, 50, 67, 86, 71, 118, 70, 90, 74, 69,
+        118, 105, 79, 71, 106, 104, 100, 89, 110, 0, 88, 0, 0, 0, 54, 86, 103, 74, 90, 111, 53,
+        86, 76, 99, 75, 120, 121, 110, 122, 111, 116, 98, 84, 114, 67, 71, 120, 113, 50, 79, 49,
+        49, 52, 115, 77, 49, 119, 113, 57, 66, 70, 106, 103, 67, 86, 105, 50, 117, 100, 54, 80,
+        117, 98, 105, 97, 89, 85, 87, 52, 52, 81, 79, 66, 102, 73, 116, 73, 88, 47, 97, 75, 86,
+        54, 88, 120, 52, 86, 52, 122, 112, 103, 57, 108, 51, 112, 75, 84, 116, 67, 81, 61, 61, 0,
+        13, 0, 0, 0, 48, 84, 55, 48, 48, 87, 48, 49, 48, 52, 48, 50, 48, 240, 46, 17, 0, 0, 0, 0,
+        0>>
+
+    packet =
+      <<0, 208, 13, 160, 235, 0, 12, 6, 189, 254, 0, 32, 0, 0, 0, 91, 102, 101, 56, 48, 58, 58,
+        56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
+        57, 55, 51, 53, 128, 4, 182, 68>>
 
     IO.puts("Starting PacketCodec test...")
     IO.puts("Packet size: #{byte_size(packet)} bytes")
