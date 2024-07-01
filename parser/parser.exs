@@ -192,12 +192,24 @@ defmodule PacketCodec do
     {:error, :invalid_field}
   end
 
-  defp decode_field(<<value::little-integer-32-unsigned, rest::binary>>, %{type: {:uint, 4}}) do
-    {:ok, {value, rest}}
+  defp decode_field(data, %{type: {:uint, bytes}}) do
+    case data do
+      <<value::little-size(bytes * 8)-unsigned, rest::binary>> ->
+        {:ok, {value, rest}}
+
+      _ ->
+        {:error, :eof}
+    end
   end
 
-  defp decode_field(<<value::little-integer-32, rest::binary>>, %{type: {:int, 4}}) do
-    {:ok, {value, rest}}
+  defp decode_field(data, %{type: {:int, bytes}}) do
+    case data do
+      <<value::little-size(bytes * 8), rest::binary>> ->
+        {:ok, {value, rest}}
+
+      _ ->
+        {:error, :eof}
+    end
   end
 
   defp decode_field(<<value::8, rest::binary>>, %{type: :bool}) do
@@ -205,12 +217,6 @@ defmodule PacketCodec do
   end
 
   defp decode_field(<<value::little-float-32, rest::binary>>, %{type: :float}) do
-    {:ok, {value, rest}}
-  end
-
-  defp decode_field(<<length::little-32, value::binary-size(length), rest::binary>>, %{
-         type: {:string, :dynamic}
-       }) do
     {:ok, {value, rest}}
   end
 
@@ -257,13 +263,13 @@ defmodule PacketCodec do
     IO.inspect("decoding structure")
 
     with {:ok, structure} <- find_structure(struct_name),
-         {:ok, decoded_struct} <- decode_structure(binary, structure) do
-      {:ok, {decoded_struct, <<>>}}
+         {:ok, {decoded_struct, rest}} <- decode_structure(binary, structure) do
+      {:ok, {decoded_struct, rest}}
     end
   end
 
-  defp decode_field(_, ftype) do
-    IO.inspect({:unknown_field_type, ftype})
+  defp decode_field(data, ftype) do
+    IO.inspect({:unknown_field_type, ftype, data})
     {:error, :invalid_field}
   end
 
