@@ -224,6 +224,11 @@ defmodule PacketCodec do
     {:ok, {{x, y, z}, rest}}
   end
 
+  defp decode_field(<<0, value::little-32, rest::binary>>, %{type: :string}) do
+    # strings always prepemd a zero marking non null value 
+    {:ok, {value, rest}}
+  end
+
   defp decode_field(<<value::little-32, rest::binary>>, %{type: {:struct, "Cuid"}}) do
     {:ok, {value, rest}}
   end
