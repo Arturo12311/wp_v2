@@ -112,7 +112,7 @@ defmodule PacketCodec do
       end
     end)
     |> case do
-      {rest, decoded} -> {:ok, {decoded, rest}}
+      {:ok, {rest, decoded}} -> {:ok, {decoded, rest}}
       {:error, reason} -> {:error, reason}
     end
   end
@@ -262,7 +262,7 @@ defmodule PacketCodecTest do
 
     # The packet bytes to test
 
-    packet =
+    _packet =
       <<0, 208, 13, 160, 235, 0, 64, 134, 244, 147, 0, 32, 0, 0, 0, 91, 102, 101, 56, 48, 58, 58,
         56, 51, 53, 58, 99, 51, 98, 100, 58, 55, 98, 55, 101, 58, 49, 50, 102, 100, 93, 58, 52,
         57, 55, 52, 49, 2, 0, 0, 0, 103, 0, 0, 0, 2, 0, 0, 0, 0, 6, 0, 0, 0, 49, 52, 46, 55, 46,
