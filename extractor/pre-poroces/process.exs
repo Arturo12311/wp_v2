@@ -164,8 +164,8 @@ defmodule ChunkClassifier do
         type
       type = extract_boolean_type(chunk) ->
         type
-      # type = extract_list_type(chunk) ->
-      #   type
+      type = extract_list_type(chunk) ->
+        type
       info = extract_if_else_info(chunk) ->
         case classify(info) do
           :unknown -> {:nullable, info}
@@ -176,42 +176,64 @@ defmodule ChunkClassifier do
     end
   end
 
-  # defp extract_list_type(chunk) do
-  #   case Regex.run(~r/TozSerializableMessageLibNative::JsonSerializer<(TArray<.*?>(?:,\s*TSizedDefaultAllocator<\d+>)*),void>::Serialize/, chunk) do
-  #     [_, array_type] ->
-  #       {:list, parse_array_type(array_type)}
-  #     _ ->
-  #       nil
-  #   end
-  # end
+  defp extract_list_type(chunk) do
+    cond do
+      Regex.match?(~r/TArray<.*?>/, chunk) ->
+        [array_type] = Regex.run(~r/TArray<.*?>/, chunk)
+        parse_array_type(array_type)
 
-  # defp parse_array_type(array_type) do
-  #   case Regex.run(~r/TArray<(.*)>/, array_type) do
-  #     [_, inner_type] ->
-  #       cleaned_type = String.replace(inner_type, ~r/,\s*TSizedDefaultAllocator<\d+>/, "")
-  #       classify_inner_type(cleaned_type)
-  #     _ ->
-  #       :unknown
-  #   end
-  # end
+      true ->
+        nil
+    end
+  end
 
-  # defp classify_inner_type(type) do
-  #   cond do
-  #     String.contains?(type, "TSharedPtr") ->
-  #       case Regex.run(~r/TSharedPtr<([^,]+)/, type) do
-  #         [_, shared_type] -> {:shared_ptr, remove_ftz_prefix(shared_type)}
-  #         _ -> :unknown
-  #       end
-  #     String.contains?(type, "TArray") ->
-  #       {:list, parse_array_type(type)}
-  #     type == "long_long" -> {:uint, 8}
-  #     type == "long" -> {:uint, 4}
-  #     type == "int" -> {:int, 4}
-  #     type == "FString" -> :string
-  #     type == "float" -> :float
-  #     true -> :unknown
-  #   end
-  # end
+  defp parse_array_type(array_type) do
+    case Regex.run(~r/TArray<(.*)>/, array_type) do
+      [_, inner_type] ->
+        cleaned_type = inner_type
+          |> String.replace(~r/,\s*(?:TSizedDefaultAllocator<\d+>|FDefaultAllocator).*/, "")
+          |> String.trim()
+        inner_classified = classify_inner_type(cleaned_type)
+        {:list, inner_classified}
+      _ ->
+        {:list, :unknown}
+    end
+  end
+
+  defp classify_inner_type(type) do
+    cond do
+      String.contains?(type, "TArray") ->
+        parse_array_type(type)
+      type == "Cuid" ->
+        :cuid
+      String.starts_with?(type, "TSharedPtr<") ->
+        inner_type = Regex.run(~r/TSharedPtr<([^,>]+)/, type)
+        case inner_type do
+          [_, inner] -> classify_inner_type(inner)
+          _ -> {:struct, remove_ftz_prefix(type)}
+        end
+      String.starts_with?(type, "FTz") || String.starts_with?(type, "F") ->
+        {:struct, remove_ftz_prefix(type)}
+      type == "FString" ->
+        :string
+      type == "int" || type == "int32" ->
+        {:int, 4}
+      type == "long" ->
+        {:uint, 4}
+      type == "long_long" ->
+        {:uint, 8}
+      type == "FVector" ->
+        :vector
+      type == "FDateTime" ->
+        :datetime
+      String.starts_with?(type, "E") ->
+        {:enum, type}
+      extract_structure_info(type) != nil ->
+        {:struct, remove_ftz_prefix(extract_structure_info(type))}
+      true ->
+        {:struct, remove_ftz_prefix(type)}  # Default to treating unknown types as structs
+    end
+  end
 
   defp extract_serializer_type(chunk) do
     case Regex.run(
@@ -230,10 +252,15 @@ defmodule ChunkClassifier do
   end
 
   defp extract_structure_info(chunk) do
-    case Regex.run(~r/^(\w+)::ToJsonString\(\);/, chunk) do
-      [_, class_name] ->
+    cond do
+      Regex.match?(~r/^(\w+)::ToJsonString\(\);/, chunk) ->
+        [_, class_name] = Regex.run(~r/^(\w+)::ToJsonString\(\);/, chunk)
         remove_ftz_prefix(class_name)
-      _ -> nil
+      Regex.match?(~r/^(\w+)$/, chunk) ->
+        [_, class_name] = Regex.run(~r/^(\w+)$/, chunk)
+        remove_ftz_prefix(class_name)
+      true ->
+        nil
     end
   end
 
@@ -367,6 +394,13 @@ defmodule DataProcessorAndWriter do
         %{name: name, type: type}
       end)
       |> filter_fields(opcode_name)
+
+      # Handle empty structures
+      fields = if Enum.empty?(fields) do
+        [%{name: nil, type: :empty_struct}]
+      else
+        fields
+      end
 
       # Handle the base field
       {base_field, other_fields} = Enum.split_with(fields, fn %{name: name} ->

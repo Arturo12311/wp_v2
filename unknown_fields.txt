@@ -1,30 +1,3 @@
-Opcode: AnniversaryAchievementInitializeDataNotify
-Field: AnniversaryAchievementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzAnniversaryAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzAnniversaryAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopCashMerchandiseReceiveRequest
-Field: ReceiveGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: PartySharedFocusTargetNotify
 Field: SharedFocusTargetInfo
 Code:
@@ -45,61 +18,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: DeathPenaltyDeleteResponse
-Field: DeletedDeathPenaltyRecordGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: AllRealmInfoPubSubChannelInitialDataNotify
-Field: RealmInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TArray<TSharedPtr<FTzRealmInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: SpellstoneAdditionalSkillStatsInfo
-Field: CharacterStatChangesDuringSkillProgress
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerCashShopInfo
-Field: MerchandiseBuyCountInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMerchandiseBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CovenantSynchronizeLivingTotemInfoNotify
 Field: CovenantLivingTotemInfo
@@ -224,20 +142,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: InventoryInfo
-Field: ItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: MarketGoodsSummaryInfoQueryNotify
 Field: MarketGoodsSummaryQueryInfo
 Code:
@@ -258,33 +162,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: MarketGoodsSummaryInfoQueryNotify
-Field: MarketGoodsSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketGoodsSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantInvitationInfoUpdatedNotify
-Field: InvitedCovenantGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CheatAcquireStanceResponse
 Field: IsStanceInstallFreeChanceEnabled
@@ -375,47 +252,6 @@ if (*(long **)(in_x0 + 0x90) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: GearBatchCraftRequest
-Field: CraftTargetGrades
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzItemGradeType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: GearBatchCraftRequest
-Field: CraftTargetGearCategories
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzGearCategoryKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantRankingViewInfo
-Field: OccupiedStrongholdCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x68));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar7 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
 Opcode: MarketSellReregisterResponse
 Field: IsSuccessByGoodsGuids
 Code:
@@ -450,20 +286,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<long_long,TSharedPtr<FTzCovenantDiplomacyInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,TSharedPtr<FTzCovenantDiplomacyInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x58));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantHistoryCheckCompleteArchitectureResponse
-Field: CovenantHistoryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantHistoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -668,19 +490,6 @@ pcVar10 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: CovenantRejectInvitationsRequest
-Field: CovenantGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: CheatRegisterCheatEnabledPlayerNameResponse
 Field: CheatEnabledPlayerNames
 Code:
@@ -694,19 +503,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: DeathPenaltyRecoverResponse
-Field: RecoveredDeathPenaltyGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: DeathPenaltyRecoverResponse
 Field: DeathPenaltyFreeRecoveryInfo
@@ -728,20 +524,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: MonsterBookExperiencePointsItemConsumeRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CovenantBattalionInfo
 Field: ExpeditionInfo
@@ -805,61 +587,6 @@ if (*(long **)(in_x0 + 0x30) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: NavMeshTileCheckRequest
-Field: CheckRequestedTiles
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzNavMeshTileInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmInfoListResponse
-Field: RealmInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TArray<TSharedPtr<FTzRealmInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmInfoListResponse
-Field: RealmAccountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzUniverseAccountRealmAccountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmInfoListResponse
-Field: AppliedRealmAccountGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: BattalionCreateNotify
 Field: BattalionInfo
@@ -1114,20 +841,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantRecommendResourceKindFailResponse
-Field: RecommendedResourceKinds
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzResourceKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ContaminationInfo
 Field: ContaminationNaturalDecreaseInfos
 Code:
@@ -1230,20 +943,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: UpdateLastViewedChatRecordsIndexRequest
-Field: ChatRecordsIndices
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzChatRecordsIndex,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: RealmAccountRealmTransferLimitedItemCountResponse
 Field: ItemCountByCuid
@@ -1350,20 +1049,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: RealmIntegrationSelectRealmAccountResponse
-Field: RealmIntegrationRealmAccountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationRealmAccountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x88));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__nd
-
 Opcode: OccupiableNpcRandomBuffStateUpdateNotify
 Field: IsRandomBuffNpc
 Code:
@@ -1411,21 +1096,6 @@ if (*(long **)(in_x0 + 0x58) == (long *)0x0) {
   std::__ndk1::__p
 
 Opcode: ChatOptionInfo
-Field: ChatTabFilter
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzChatKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 8));
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  uVar4 = (ulong)((byte)local_198 >> 1);
-  pcVar1 = pcVar9;
-  if ((local_198 & 1) != 0) {
-    uVar4 = local_190;
-    pcVar1 = local_188;
-  }
-  std::__ndk
-
-Opcode: ChatOptionInfo
 Field: CovenantRewardAcquireNotifyDisplayOption
 Code:
 pcVar9 = (char *)((ulong)&local_198 | 1);
@@ -1461,47 +1131,6 @@ TozSerializableMessageLibNative::
     pcVar1 = local_188;
   }
   std::__nd
-
-Opcode: GearSlotPresetModifyRequest
-Field: EquipGearSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: GearSlotPresetModifyRequest
-Field: UnequipGearSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: NpcSpeechBalloonTextFormatInfo
-Field: TextFormatParameters
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FString,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar4 = (ulong)(local_198[0] >> 1);
-  pcVar6 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar4 = local_190;
-    pcVar6 = local_188;
-  }
-  std::__n
 
 Opcode: AutoDonateSettingOptionInfo
 Field: ItemFilterCuidToItemGrade
@@ -1562,33 +1191,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: AllRealmInfoPubSubChannelUpdateDataNotify
-Field: RealmStateInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmStateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: TutorialsInfo
-Field: CompletedTutorialCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: RankingInfo
 Field: ViewInfo
 Code:
@@ -1609,34 +1211,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: GearSlotPresetModifyResponse
-Field: EquipGearSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: GearSlotPresetModifyResponse
-Field: UnequipGearSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: BattalionSummaryInfo
 Field: IsJoinable
@@ -1659,19 +1233,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatRemoveAllWorldMapMarkerResponse
-Field: RemovedGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
 Opcode: RealmAccountLoginRequest
 Field: IsFastLogin
 Code:
@@ -1692,20 +1253,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PlayerStrongholdBattleStatisticsInfo
-Field: SkillUseStatisticsNxLogInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPlayerSkillUseStatisticsNxLogInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: ServerDrivenPlayStateNotify
 Field: StateInfo
@@ -1878,20 +1425,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: QueryChatRoomRecordsInitializationInfoResponse
-Field: ChatRoomRecordsInitializationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzChatRoomRecordsInitializationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantGiftReceiveInfo
 Field: ReceiveRewardInfo
 Code:
@@ -1927,34 +1460,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatCreateAndEquipGearsResponse
-Field: EquipGearSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CheatCreateAndEquipGearsResponse
-Field: UnequipGearSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: PaidAttendanceInfo
 Field: IsVisibleNotificationMarker
 Code:
@@ -1979,20 +1484,6 @@ bVar8 = *(char *)(in_x0 + 0x30) == '\0';
     pcVar11 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: CashShopRefundableMerchandiseStorageBoxInfo
-Field: SlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCashShopRefundableMerchandiseStorageBoxSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar4 = (ulong)(local_198[0] >> 1);
-  pcVar6 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar4 = local_190;
-    pcVar6 = local_188;
-  }
-  std::__nd
 
 Opcode: TozTimeAdjustment
 Field: Adjustment
@@ -2051,20 +1542,6 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: StrongholdBattleSummaryInfo
-Field: StrongholdBattleJoinedCovenantInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStrongholdBattleJoinedCovenantInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: AnniversaryInfo
 Field: AnniversaryStrongholdOccupationCovenantInfos
 Code:
@@ -2079,67 +1556,12 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: ChatRoomListUpdateNotify
-Field: AddedChatRoomRecordsInitializationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzChatRoomRecordsInitializationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ChatRoomListUpdateNotify
-Field: DeletedChatRoomGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: RewardInfo
 Field: CurrencyCuidToAmount
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,long_long,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,long_long,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x18));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar10 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar10 = local_188;
-  }
-  std::__nd
-
-Opcode: RewardInfo
-Field: RewardItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x68));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar10 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar10 = local_188;
-  }
-  std::__nd
-
-Opcode: RewardInfo
-Field: SortedRewardItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRewardItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x78));
   uVar3 = local_198 >> 1 & 0x7f;
   pcVar10 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
@@ -2199,20 +1621,6 @@ TozSerializableMessageLibNative::
   if ((local_198 & 1) != 0) {
     uVar3 = local_190;
     pcVar10 = local_188;
-  }
-  std::__nd
-
-Opcode: CheatEnchantItemRequest
-Field: GearEnchantSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearEnchantSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar9 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
   }
   std::__nd
 
@@ -2306,19 +1714,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatAcquireAllUsableSkillsResponse
-Field: AcquiredSkillCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: FavoriteCraftRecipeRegisterRequest
 Field: IsRegistered
@@ -2538,20 +1933,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CovenantGoodsRegistrationManagementModeCommandResponse
-Field: RegisteredGoodsList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRegisteredGoodsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: AlertPlayerRegisterResponse
 Field: RegisteredPlayerInfo
 Code:
@@ -2629,20 +2010,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantWatchInfo
-Field: CovenantWatchKillingInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantWatchKillingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ItemLockSwitchRequest
 Field: IsInRealmAccountWarehouse
 Code:
@@ -2686,20 +2053,6 @@ pcVar8 = (char *)((ulong)&local_198 | 1);
     pcVar7 = local_188;
   }
   std::__ndk1::__put
-
-Opcode: RealmAccountPresentQueryResponse
-Field: RealmAccountPresentInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmAccountPresentSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: ExpeditionInfo
 Field: JoinedBattalionCovenantGuids
@@ -2887,46 +2240,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CovenantSynchronizeMemberRefreshedContributionInfosNotify
-Field: CovenantMemberContributionInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantMemberContributionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantRealmTransferRegisterRequest
-Field: PlayerGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: PlayerSkillAcquireResponse
-Field: AutoUseRootSkillCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: PlayerCovenantSupportInfo
 Field: HasCovenantSupportableFollower
 Code:
@@ -2988,20 +2301,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: StackableItemMultipleUseResponse
-Field: PlayerInventoryItemAddInfo
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x98));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar11 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar11 = local_188;
-  }
-  std::__nd
-
-Opcode: StackableItemMultipleUseResponse
 Field: IsUpgradeSlayingGrade
 Code:
 bVar8 = *(char *)(in_x0 + 0xb0) == '\0';
@@ -3039,20 +2338,6 @@ TozSerializableMessageLibNative::
     pcVar11 = local_188;
   }
   std::__n
-
-Opcode: ItemAcquireNotify
-Field: ItemIndices
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndex,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar7 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__nd
 
 Opcode: PartySharedAttackTargetNotify
 Field: SharedAttackTargetInfo
@@ -3188,20 +2473,6 @@ pcVar10 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: CovenantLivingTotemStatsInfoQueryResponse
-Field: LivingTotemStatsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantLivingTotemWithStatsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: TimeCreviceCovenantPvpScoreRankingViewInfo
 Field: AdditionalSourceInfo
 Code:
@@ -3222,20 +2493,6 @@ if (*(long **)(in_x0 + 0x68) == (long *)0x0) {
     pcVar7 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantSynchronizeMemberContributionInfoNotify
-Field: CovenantMemberContributionInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantMemberContributionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: PushNotificationOptionModifyRequest
 Field: IsEnabled
@@ -3301,20 +2558,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: MonsterBookInfoUpdateNotify
-Field: CategoryCuidToNodeStateInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzMonsterBookNodeStateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzMonsterBookNodeStateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: MonsterBookInfoUpdateNotify
 Field: CategoryCuidToCollectionInfo
@@ -3432,20 +2675,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: RealmIntegrationBattleResultInitialDataNotify
-Field: RealmResults
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationBattleRealmResult,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: BattalionLeaderChangeRequest
 Field: IsAccept
@@ -3688,47 +2917,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: SpellstoneAdditionalInfo
-Field: SubOptionCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: MailAttachmentsInfo
-Field: Items
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MailAttachmentsInfo
-Field: Currencies
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMailAttachmentCurrencyInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantDiplomacyAddOrUpdateNotify
 Field: CovenantDiplomacyInfo
 Code:
@@ -3750,40 +2938,12 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: RealmAccountWarehouseItemRetrieveRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ExpeditionInitialDataNotify
 Field: ExpeditionSummaryInfos
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<long_long,TSharedPtr<FTzExpeditionSummaryInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,TSharedPtr<FTzExpeditionSummaryInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerCampaignInfo
-Field: ActiveCampaignProgressInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<FTzCuid,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<FTzCuid,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -3805,58 +2965,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: FollowerMovePathInfo
-Field: RoadJunctionIds
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: FollowerMovePathInfo
-Field: PathToFirstRoadJunction
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: FollowerMovePathInfo
-Field: PathFromLastRoadJunctionToDestination
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x50));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: ShopCashMerchandiseReceiveResponse
-Field: ReceiveGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: FollowerCoreInfo
 Field: ReturnReasonAdditionalInfo
@@ -3935,48 +3043,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: PartySummaryInfo
-Field: PartyMemberCoreInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPartyMemberCoreInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__nd
-
-Opcode: PartySummaryInfo
-Field: TargetLocationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzTargetLocationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantCampaignInfo
-Field: ActiveCampaignProgressInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<FTzCuid,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<FTzCuid,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantCampaignInfo
 Field: CovenantCampaignProgressInfo
 Code:
@@ -4024,75 +3090,6 @@ bVar8 = *(char *)(in_x0 + 0x2c) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CovenantBattalionExpeditionFailNotify
-Field: GainedItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGainedItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: SkillStageInfo
-Field: SkillAffectTargetGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: SkillStageInfo
-Field: SkillAffectTargetAffectInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSkillAffectTargetAffectInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: SkillStageInfo
-Field: SkillShieldWallAffectInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSkillShieldWallAffectInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x48));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: SkillStageInfo
-Field: SkillTargetingInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSkillTargetingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: StanceAcquireNotify
 Field: IsStanceInstallFreeChanceEnabled
 Code:
@@ -4118,19 +3115,6 @@ bVar10 = *(char *)(in_x0 + 0x21) == '\0';
     pcVar7 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CovenantSupportApplyResponse
-Field: CovenantSupportedFollowerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: SchemaColumn
 Field: DeployType
@@ -4218,20 +3202,6 @@ TozSerializableMessageLibNative::
   std::__ndk
 
 Opcode: MonsterBookInfo
-Field: CategoryCuidToNodeStateInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzMonsterBookNodeStateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzMonsterBookNodeStateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MonsterBookInfo
 Field: CategoryCuidToCollectionInfo
 Code:
 TozSerializableMessageLibNative::
@@ -4256,34 +3226,6 @@ TozSerializableMessageLibNative::
   if ((local_198[0] & 1) != 0) {
     uVar1 = local_190;
     pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MonsterBookInfo
-Field: CategoryCuidToAnalysisStatChangeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0xf8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PartyQuerySummaryInfoListResponse
-Field: PartySummaryInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPartySummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
   }
   std::__nd
 
@@ -4397,20 +3339,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: BuffStatsInfo
-Field: CharacterStatChanges
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar10 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar10 = local_188;
-  }
-  std::__nd
-
 Opcode: ContentsUnlockInitializeNotify
 Field: UnusedContentsUnlockKinds
 Code:
@@ -4460,20 +3388,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: ErFrontServerSessionInitializeInfoNotify
-Field: RealmIntegrationRealmAccountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationRealmAccountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x80));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__nd
-
 Opcode: FollowerCollectionInfo
 Field: CollectionStatus
 Code:
@@ -4513,20 +3427,6 @@ bVar8 = *(char *)(in_x0 + 0x14) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: MarketStrongholdTaxInfoResponse
-Field: MarketStrongholdTaxInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketStrongholdTaxInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: ReinforcementInfo
 Field: IsInBattle
@@ -4698,19 +3598,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: MailsReceiveAttachmentsInTabResponse
-Field: ReceivedMailGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
 Opcode: StrongholdBattleStatisticsUpdateInfo
 Field: StrongholdBattleStatisticsInfo
 Code:
@@ -4731,20 +3618,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantWatchDetailInfoQueryResponse
-Field: CovenantWatchDetailInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantWatchDetailInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: DeathPenaltyAutoRecoveryInfo
 Field: IsFreeRecovery
@@ -4792,34 +3665,6 @@ if (*(long **)(in_x0 + 0x50) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PlayerMarketSaleGoodsListResponse
-Field: MarketSellerGoodsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketSellerGoodsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmIntegrationQueryRealmAccountInfoResponse
-Field: RealmIntegrationRealmAccountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationRealmAccountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CovenantCurrencyInfo
 Field: PointCurrencyContainerInfo
@@ -4878,20 +3723,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: CovenantInfo
-Field: CovenantMemberRoleInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantMemberRoleInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x1e8));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar12 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar12 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantInfo
 Field: CovenantHighestUpgradedBuildingLevelInfos
 Code:
 TozSerializableMessageLibNative::
@@ -4906,39 +3737,11 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: CovenantInfo
-Field: CovenantLivingTotemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantLivingTotemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x250));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar12 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar12 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantInfo
 Field: CovenantResearchInfos
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,TSharedPtr<FTzCovenantResearchInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TSharedPtr<FTzCovenantResearchInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x260));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar12 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar12 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantInfo
-Field: PlayerLocationMonitoringInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPlayerLocationMonitoringInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x2c0));
   uVar11 = local_198 >> 1 & 0x7f;
   pcVar12 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
@@ -5104,19 +3907,6 @@ lVar1 = 4;
   std::__ndk1::__p
 
 Opcode: CovenantSearchInfo
-Field: OccupiedStrongholdCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x78));
-  uVar12 = local_198 >> 1 & 0x7f;
-  pcVar13 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar12 = local_190;
-    pcVar13 = local_188;
-  }
-  std::__n
-
-Opcode: CovenantSearchInfo
 Field: IsJoinApplied
 Code:
 bVar9 = *(char *)(in_x0 + 0x98) == '\0';
@@ -5162,33 +3952,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantSupportApplyRequest
-Field: FollowerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: PlayerStanceInfo
-Field: AcquiredStances
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzStanceType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 8));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar12 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar12 = local_188;
-  }
-  std::__nd
-
 Opcode: PlayerStanceInfo
 Field: IsStanceInstallFreeChanceEnabled
 Code:
@@ -5213,20 +3976,6 @@ bVar9 = *(char *)(in_x0 + 0x30) == '\0';
     pcVar12 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: OccupiableNpcInfoBulkUpdateNotify
-Field: OccupiableNpcInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzOccupiableNpcInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: OccupiableNpcInfoBulkUpdateNotify
 Field: NxLogBaseParameterInfo
@@ -5354,33 +4103,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatClearGearResponse
-Field: UnequipGearSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzEquipmentPresetIndexType,TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzEquipmentPresetIndexType,TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: InGameNotificationDeleteCategoryNotify
-Field: DeletedGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
 Opcode: FieldEnterCompleteRequest
 Field: CharacterMoveInfo
 Code:
@@ -5401,34 +4123,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: DiplomacyChatCovenantSummaryInfoUpdateNotify
-Field: DiplomacyChatCovenantSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzDiplomacyChatCovenantSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantQueryJoinAppliedCovenantSummaryInfoListResponse
-Field: CovenantSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: StrongholdBuildingDemolishRequest
 Field: IsCompleteImmediately
@@ -5528,20 +4222,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: RealmIntegrationRealmAccountInfo
-Field: PlayerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationPlayerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar8 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar8 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ShopRegisteredGoodsUpdateNotify
 Field: RegisteredGoodsInfos
 Code:
@@ -5636,20 +4316,6 @@ bVar8 = *(char *)(in_x0 + 0xf8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CspSupporterInfo
-Field: ChannelInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCspChannelInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__nd
-
 Opcode: ExpeditionBossNpcLocationInfoSynchronizeNotify
 Field: IsAlive
 Code:
@@ -5696,47 +4362,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CovenantTradeCategoryQueryResponse
-Field: CategoryItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantTradeCategoryItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CraftRequest
-Field: MaterialGroupOrderList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: CraftRequest
-Field: MaterialCuidToItemSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzItemSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzItemSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: SkillUseOptionInfo
 Field: UseCycle
 Code:
@@ -5781,20 +4406,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantJoinedStrongholdBattleInfoAddNotify
-Field: JoinedStrongholdBattleInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantJoinedStrongholdBattleInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: MailUnreadNotify
 Field: UnreadCounts
 Code:
@@ -5829,33 +4440,6 @@ if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: GearMultipleEnhanceResponse
-Field: GearEnhancementResultInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearEnhancementResultInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: InGameNotificationInfo
-Field: AdditionalCuidParams
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x18));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
 
 Opcode: CovenantTradeSalesListUpdateNotify
 Field: AddedOrUpdatedGoodsSalesInfo
@@ -5920,20 +4504,6 @@ pcVar8 = (char *)((ulong)&local_198 | 1);
     pcVar8 = local_188;
   }
   std::__ndk1::__pu
-
-Opcode: CrossRealmCovenantSearchResponse
-Field: CovenantSearchInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSearchInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: SeasonPassLevelRewardParameter
 Field: RewardedLevels
@@ -6078,20 +4648,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantBattalionExpeditionCompleteNotify
-Field: GainedItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGainedItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CheatGetEnvironmentVariablesResponse
 Field: Variables
 Code:
@@ -6107,7 +4663,7 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: TlsLikeEncryptClientHello
-Field: 
+Field: unknown_name
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<std::__ndk1::vector<unsigned_char,toz::DefaultAllocator<unsigned_char>>,void>::
@@ -6218,20 +4774,6 @@ TozSerializableMessageLibNative::
   if ((local_198 & 1) != 0) {
     uVar1 = local_190;
     pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: ServerDrivenPlayRecordsInfo
-Field: GainedItems
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x50));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
   }
   std::__nd
 
@@ -6459,20 +5001,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: HavenOperationInfo
-Field: RecommendedResourceKinds
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzResourceKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: AttackerListNotify
 Field: AttackerPlayerGuids
 Code:
@@ -6522,20 +5050,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: InventoryOverflowInfo
-Field: OverflowedItemInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar4 = (ulong)(local_198[0] >> 1);
-  pcVar6 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar4 = local_190;
-    pcVar6 = local_188;
-  }
-  std::__nd
-
 Opcode: ContentsUnlockNotify
 Field: ContentsUnlockKinds
 Code:
@@ -6549,21 +5063,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantRealmTransferCheckInfo
-Field: CovenantTradeGoodsSalesInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantTradeGoodsSalesInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  uVar4 = (ulong)((byte)local_198 >> 1);
-  pcVar1 = pcVar9;
-  if ((local_198 & 1) != 0) {
-    uVar4 = local_190;
-    pcVar1 = local_188;
-  }
-  std::__ndk
 
 Opcode: CovenantRealmTransferCheckInfo
 Field: HasRegisteredShopGoodsInGeneralShop
@@ -6641,20 +5140,6 @@ TozSerializableMessageLibNative::
   pcVar3 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
     uVar8 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ExpeditionJoinedBattalionsInitialDataNotify
-Field: ExpeditionJoinedBattalionList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantBattalionPublicSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
     pcVar3 = local_188;
   }
   std::__nd
@@ -6847,20 +5332,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: PlayerItemUseNotify
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x90));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar11 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar11 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerItemUseNotify
 Field: IsUpgradeSlayingGrade
 Code:
 bVar8 = *(char *)(in_x0 + 0xa8) == '\0';
@@ -6920,19 +5391,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: StrategicObjectiveInfo
-Field: SquadOrderList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: PlayerLocationMonitoringRegisterResponse
 Field: PlayerLocationMonitoringInfo
 Code:
@@ -6953,19 +5411,6 @@ if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantCancelInvitationRequest
-Field: PlayerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: GoldHistoryInfo
 Field: IncomeHistories
@@ -6992,20 +5437,6 @@ TozSerializableMessageLibNative::
   if ((local_198[0] & 1) != 0) {
     uVar1 = local_190;
     pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PartyMemberLootNotify
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
   }
   std::__nd
 
@@ -7051,90 +5482,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantCompleteCampaignNotify
-Field: GainedItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGainedItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x38));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__nd
-
-Opcode: ItemTransmuteResponse
-Field: ItemTransmutationResultInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemTransmutationResultInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: AnniversaryRecordHistoryQueryResponse
-Field: AnniversaryRecordHistoryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAnniversaryRecordHistoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MarketFavoriteItemInfoQueryResponse
-Field: MarketFavoriteItemInfosOnSale
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketFavoriteItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: MarketFavoriteItemInfoQueryResponse
-Field: MarketFavoriteItemInfosNotOnSale
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketFavoriteItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantAddInvitationsNotify
-Field: CovenantInvitationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantInvitationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CharacterMoveToLocationInfo
 Field: MoveToDestinationParameterInfo
 Code:
@@ -7178,20 +5525,6 @@ if (*(long **)(in_x0 + 0x40) == (long *)0x0) {
   std::__ndk1::__p
 
 Opcode: GearBatchCraftResponse
-Field: CraftResultInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCraftResultInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: GearBatchCraftResponse
 Field: CraftCountInfos
 Code:
 TozSerializableMessageLibNative::
@@ -7211,20 +5544,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,TSharedPtr<FTzCovenantRubyShopInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TSharedPtr<FTzCovenantRubyShopInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantRubyShopInitialDataNotify
-Field: ShopMerchandiseInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzCovenantRubyShopMerchandiseInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzCovenantRubyShopMerchandiseInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x78));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -7259,33 +5578,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: ItemUpdateInfo
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ItemUpdateInfo
-Field: RemovedItemCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: StrongholdBattleUpdateSiegeWeaponSlotNotify
 Field: StrongholdBattleAttackSiegeWeaponSlotInfo
 Code:
@@ -7306,21 +5598,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantDonationRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  uVar3 = (ulong)((byte)local_198 >> 1);
-  pcVar5 = pcVar9;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__ndk
 
 Opcode: CovenantDonationRequest
 Field: DonateEvenIfHavenInventoryIsFull
@@ -7370,19 +5647,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: SkillAutoUseInfoUpdateNotify
-Field: RootSkillCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CheatChangeCashShopCheckBuyLimitOptionResponse
 Field: IsIgnoreToCheckBuyLimit
@@ -7437,20 +5701,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<long_long,TSharedPtr<FTzPartyMemberInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,TSharedPtr<FTzPartyMemberInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x28));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PartyInfo
-Field: TargetLocationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzTargetLocationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x78));
   uVar1 = local_198 >> 1 & 0x7f;
   pcVar3 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
@@ -7686,20 +5936,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: SeasonPassAchievementInitializeDataNotify
-Field: SeasonPassAchievementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSeasonPassAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: DefaultPreprocessResult
 Field: Success
 Code:
@@ -7725,34 +5961,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: CheatCreateAndEquipGearResponse
-Field: EquipGearSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: CheatCreateAndEquipGearResponse
-Field: UnequipGearSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x38));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
 Opcode: FavoriteCollectionRegisterRequest
 Field: IsRegistered
 Code:
@@ -7773,20 +5981,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: BulkCharacterMoveNotify
-Field: CharacterMoveInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<long_long,TArray<TSharedPtr<FTzCharacterMoveInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,TArray<TSharedPtr<FTzCharacterMoveInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: TozTimeReconcile
 Field: TozNetwork.Protocol.TozTimeReconcile
@@ -7821,58 +6015,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: FindShortestTravelPathResponse
-Field: PathToNearestRoadJunctionToStartLocation
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x78));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: FindShortestTravelPathResponse
-Field: PathFromLastRoadJunctionToDestination
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x88));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: FindShortestTravelPathResponse
-Field: PathNotByRoad
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x98));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: FindShortestTravelPathResponse
-Field: PathNotByRoadOneShotSpecialMoveIndices
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 200));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
 Opcode: CheatChangeActivationSpawnLayerRequest
 Field: IsActivated
 Code:
@@ -7895,7 +6037,7 @@ lVar1 = 4;
   std::__ndk1::__p
 
 Opcode: SessionInitializeInfo
-Field: 
+Field: unknown_name
 Code:
 
 
@@ -7959,61 +6101,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: BattalionQueryMemberCandidateListResponse
-Field: BattalionMemberCandidateList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBattalionMemberSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MailBuildingCraftLayoutInfo
-Field: CraftItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdBuildingQueryInfosResponse
-Field: BuildingInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBuildingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantSummaryInfo
-Field: OccupiedStrongholdCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x78));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__n
 
 Opcode: CovenantSummaryInfo
 Field: MainLivingTotemInfo
@@ -8097,20 +6184,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: RealmIntegrationBattleResultUpdateDataNotify
-Field: RealmResults
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationBattleRealmResult,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: BattalionInfo
 Field: AllianceCovenantGuids
 Code:
@@ -8131,20 +6204,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TSet<FTzCuid,DefaultKeyFuncs<FTzCuid,false>,FDefaultSetAllocator>,void>::Serialize
             ((TSet *)(in_x0 + 0x78));
-  uVar10 = local_198 >> 1 & 0x7f;
-  pcVar11 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar10 = local_190;
-    pcVar11 = local_188;
-  }
-  std::__nd
-
-Opcode: BattalionInfo
-Field: SquadInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSquadInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0xe0));
   uVar10 = local_198 >> 1 & 0x7f;
   pcVar11 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
@@ -8282,19 +6341,6 @@ if (*(long **)(in_x0 + 0x120) == (long *)0x0) {
   std::__ndk1::__p
 
 Opcode: StrongholdCampaignBattleInfo
-Field: TargetMissionCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x130));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: StrongholdCampaignBattleInfo
 Field: CampaignConditionProgressInfos
 Code:
 TozSerializableMessageLibNative::
@@ -8321,19 +6367,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ItemAutoUseInfoUpdateNotify
-Field: ItemCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CovenantSynchronizeMemberInfosResponse
 Field: CovenantMemberInfos
@@ -8412,19 +6445,6 @@ if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: ItemTransmuteRequest
-Field: ItemGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar9 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__n
-
 Opcode: CheatTestGearEnchantOptionRequest
 Field: GearEnchantOptionGrades
 Code:
@@ -8481,34 +6501,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: FindRoadPathResultInfo
-Field: RoadPathInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<FTzRoadPathInfo,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__nd
-
-Opcode: FindRoadPathResultInfo
-Field: PathNodeInfosToFirstRoadJunctionInfo
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<FTzPathNodeInfo,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__nd
-
 Opcode: BlockBuildingNotify
 Field: IsBlock
 Code:
@@ -8534,20 +6526,6 @@ bVar8 = *(char *)(in_x0 + 0x10) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: CheatClearSkillSlotQuickSlotAutoUseResponse
-Field: AppliedPlayerSkillSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPlayerSkillSlotUpdateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: GatheringSiteInfo
 Field: GatheringFollowerWorkInfos
 Code:
@@ -8566,47 +6544,6 @@ Opcode: ErServerSessionInitializeInfo
 Field: __base__
 Code:
 
-
-Opcode: RealmTransferRealmInfoListResponse
-Field: RealmInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TArray<TSharedPtr<FTzRealmInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmTransferRealmInfoListResponse
-Field: RealmAccountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzUniverseAccountRealmAccountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmTransferRealmInfoListResponse
-Field: AppliedRealmAccountGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: RewardItemIndexWithCount
 Field: IsCovenantReward
@@ -8654,37 +6591,10 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: AlertPlayerRemoveNotify
-Field: DeletedPlayerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: TlsLikeEncryptHandshakeResult
 Field: TozNetwork.Handshake.TlsLikeEncryptor.TlsLikeEncryptHandshakeResult
 Code:
 
-
-Opcode: ClanSponsorRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CovenantRealmTransferExecuteRequest
 Field: UseItem
@@ -8732,34 +6642,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantRewardInfo
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantRewardInfo
-Field: DiscardedIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CheatSetUrfModeResponse
 Field: IsUrfMode
@@ -9016,33 +6898,6 @@ lVar1 = 4;
   std::__ndk1::__p
 
 Opcode: SquadInfo
-Field: MemberGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: SquadInfo
-Field: TargetLocationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzTargetLocationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: SquadInfo
 Field: SharedAttackTargetInfo
 Code:
 if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
@@ -9083,19 +6938,6 @@ if (*(long **)(in_x0 + 0x38) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatAnniversaryAchievementAccomplishRequest
-Field: MissionProgressCounts
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: ItemInfoUpdateNotify
 Field: ItemInfo
@@ -9143,47 +6985,6 @@ bVar8 = *(char *)(in_x0 + 0x46) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: InventoryUpdateInfo
-Field: AddedItemInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: InventoryUpdateInfo
-Field: RemovedItemGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: InventoryUpdateInfo
-Field: StackableItemUpdateInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStackableItemUpdateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: RealmAccountRealmTransferExecuteRequest
 Field: UseItem
@@ -9249,34 +7050,6 @@ lVar1 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: NavMeshTileDataRequest
-Field: CheckRequestedTiles
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzNavMeshTileInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CheatMonsterBookSetAcquisitionProgressResponse
-Field: AnalysisStatChangeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CharacterPublicStatsInfoSynchronizeNotify
 Field: CharacterPublicStatsInfo
@@ -9419,20 +7192,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: MailStrongholdBattleEndResultLogLayoutInfo
-Field: StrongholdBattleJoinedCovenantHistoryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStrongholdBattleJoinedCovenantHistoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
 Opcode: CheatCovenantRealmTransferBlockRequest
 Field: ApplyAll
 Code:
@@ -9532,19 +7291,6 @@ bVar8 = *(char *)(in_x0 + 0x28) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: StrongholdBattleAttackLadderCarSiegeWeaponSlotInfo
-Field: LadderCarPillarNpcGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: PlayerRealmIntegrationBattleInfo
 Field: SeasonInfos
 Code:
@@ -9556,20 +7302,6 @@ TozSerializableMessageLibNative::
   if ((local_198[0] & 1) != 0) {
     uVar4 = local_190;
     pcVar6 = local_188;
-  }
-  std::__nd
-
-Opcode: AnniversaryPointRankingRecordQueryResponse
-Field: RankingInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRankingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x38));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar3 = local_188;
   }
   std::__nd
 
@@ -9594,68 +7326,12 @@ if (*(long **)(in_x0 + 0x48) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: AnniversaryPointRankingRecordQueryResponse
-Field: CovenantMemberAnniversaryPointInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantMemberAnniversaryPointInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantRubyShopInfo
-Field: BuyCountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: EnvironmentVariablesNotify
 Field: Variables
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FString,FString,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FString,FString,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantReinforcementInfoSynchronizeNotify
-Field: ReinforcementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzReinforcementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantReinforcementInfoSynchronizeNotify
-Field: ReceivedReinforcementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzReinforcementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -9675,20 +7351,6 @@ TozSerializableMessageLibNative::
   if ((local_198[0] & 1) != 0) {
     uVar1 = local_190;
     pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PartyQueryMemberCandidateListResponse
-Field: PartyMemberCandidateList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPartyMemberCoreInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
   }
   std::__nd
 
@@ -9717,34 +7379,6 @@ Opcode: TozMessage
 Field: TozNetwork.Protocol.TozMessage
 Code:
 
-
-Opcode: SeasonPassQueryResponse
-Field: SeasonPassAchievementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSeasonPassAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantGiftReceiveResponse
-Field: ReceiveGiftInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantGiftReceiveInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: DataTable
 Field: DataHeader
@@ -9860,48 +7494,6 @@ if (*(long **)(in_x0 + 0x40) == (long *)0x0) {
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatApplySkillSlotQuickSlotAutoUsePresetResponse
-Field: AppliedPlayerSkillSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPlayerSkillSlotUpdateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FavorRefreshResponse
-Field: FavorList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzFavorInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FavorRefreshResponse
-Field: FavorMissionList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzFavorMissionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: NpcActionNotify
 Field: NpcSpeechBalloonInfo
@@ -10065,46 +7657,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: DiplomacyChatRoomKickCovenantsRequest
-Field: CovenantGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: RedrawableItemInventoryInfo
-Field: RedrawableItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRedrawableItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar4 = (ulong)(local_198[0] >> 1);
-  pcVar6 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar4 = local_190;
-    pcVar6 = local_188;
-  }
-  std::__nd
-
-Opcode: DeathPenaltyDeleteRequest
-Field: DeathPenaltyRecordGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: FollowerSquadUpdateResponse
 Field: FollowerSquadSlots
 Code:
@@ -10118,19 +7670,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: BoundAndErodedInheritanceBatchCraftRequest
-Field: MaterialGroupOrderList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CheatChangeLevelRequest
 Field: ShowAllLevelUpEffect
@@ -10363,20 +7902,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: ShopAutoBuySettingUpdateRequest
-Field: AutoBuyInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAutoBuyInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
 Opcode: CollectionCompleteNotify
 Field: IsAnyRewardSentByMail
 Code:
@@ -10471,90 +7996,6 @@ bVar8 = *(char *)(in_x0 + 9) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatMonsterBookSetNodeLevelResponse
-Field: AnalysisStatChangeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PaidAttendanceInfosUpdateNotify
-Field: PaidAttendanceInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPaidAttendanceInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopShoppingModeCommandResponse
-Field: RegisteredGoodsList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRegisteredGoodsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar9 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopShoppingModeCommandResponse
-Field: BuyCountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar9 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopShoppingModeCommandResponse
-Field: RegisteredGoodsBuyCountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzRegisteredGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzRegisteredGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x70));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar9 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopShoppingModeCommandResponse
-Field: AutoBuySettings
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAutoBuyInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0xc0));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar9 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantOrganizationStatsDetailInfo
 Field: Stats
 Code:
@@ -10582,19 +8023,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: PlayerInitializeInfoNotify
-Field: ContentsActivationFlags
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<bool,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x98));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: TerritoryErosionItemConfigurationInfo
 Field: IsPermitted
@@ -10729,33 +8157,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: ShopCashMerchandiseUpdateRealmTotalBuyCountInfoNotify
-Field: UpdatedRealmTotalMerchandiseBuyCountInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMerchandiseBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: DeathPenaltyRecoverRequest
-Field: DeathPenaltyRecordGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: StrongholdBuildingUpgradeRequest
 Field: IsCompleteImmediately
@@ -10903,88 +8304,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: EntityRemoveBulkNotify
-Field: EntityGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
-Opcode: CovenantHistoryQueryResponse
-Field: CovenantHistoryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantHistoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: CrossRealmCovenantQuerySummaryInfoListResponse
-Field: CovenantSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantSearchResponse
-Field: CovenantSearchInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSearchInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: UniverseAccountRealmAccountInfo
-Field: UniverseAccountPlayerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzUniverseAccountPlayerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantBattalionExpeditionJoinNotify
-Field: AnotherBattalionGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
 Opcode: CovenantBattalionExpeditionJoinNotify
 Field: BattalionExpeditionInfo
 Code:
@@ -11040,58 +8359,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: IntraRegionPathResultInfo
-Field: PathToNearestRoadJunctionToStartLocation
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x68));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
-Opcode: IntraRegionPathResultInfo
-Field: PathFromLastRoadJunctionToDestination
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x78));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
-Opcode: IntraRegionPathResultInfo
-Field: PathNotByRoad
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x88));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
-Opcode: IntraRegionPathResultInfo
-Field: PathNotByRoadOneShotSpecialMoveIndices
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0xb8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
 
 Opcode: RegisteredGoodsInfo
 Field: IsBound
@@ -11166,75 +8433,6 @@ bVar9 = *(char *)(in_x0 + 0xd) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CovenantGiftSynchronizeNotify
-Field: AddedGiftBoxInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantGiftBoxInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantGiftSynchronizeNotify
-Field: RemovedGiftBoxInfos
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: CovenantGiftSynchronizeNotify
-Field: UpdateGiftBoxInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantGiftBoxInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdInitialDataNotify
-Field: BuildingSubscriptionInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBuildingSubscriptionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantTradeSalesListQueryResponse
-Field: GoodsSalesInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantTradeGoodsSalesInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: MarketTransactionInfo
 Field: ItemAdditionalInfo
 Code:
@@ -11302,19 +8500,6 @@ bVar8 = *(char *)(in_x0 + 0x20) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: AnniversaryStrongholdOccupationCovenantInfo
-Field: AttackGroupInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantDisplayInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar3 = local_198 >> 1 & 0x7f;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar11 = local_188;
-  }
-  std::__n
 
 Opcode: CheatClearFollowerResponse
 Field: CollectionInfos
@@ -11464,20 +8649,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: NavMeshTileInfo
-Field: LayerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzNavMeshTileLayerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantResearchResetNotify
 Field: CovenantResearchInfos
 Code:
@@ -11608,20 +8779,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatMonsterBookSetAnalysisInfoResponse
-Field: AnalysisStatChangeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: MailFollowerGatheringWorkLayoutInfo
 Field: GainedRewardItemIndexWithCount
 Code:
@@ -11750,34 +8907,6 @@ if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: MarketGoodsInfoQueryResponse
-Field: MarketGoodsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketGoodsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmAccountWarehouseItemStoreRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: StrongholdBuildingUpdateBuildingAccessPermissionsRequest
 Field: BuildingAccessPermissionKinds
 Code:
@@ -11791,19 +8920,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: FollowerMovePathInfoRequest
-Field: FollowerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: StrongholdBattleCovenantBattalionMemberDisplayInfo
 Field: IsHeadPieceDisplayed
@@ -11825,19 +8941,6 @@ lVar1 = 4;
     pcVar12 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantGiftReceiveRequest
-Field: ReceiveGiftGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CovenantRecommendBuildingWorkRequest
 Field: IsRecommended
@@ -11968,34 +9071,6 @@ bVar8 = *(char *)(in_x0 + 0x28) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: RoadJunctionDetailedInfo
-Field: RoadLinks
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<FTzRoadLinkInfo,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x40));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FollowerExperiencePointsItemConsumeRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: ServerDrivenPlayResupplyingStateInfo
 Field: IsAutoResupplying
@@ -12165,20 +9240,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatResetCashShopMerchandiseBuyLimitCountResponse
-Field: UpdatedMerchandiseBuyCountInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMerchandiseBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantBuildingWorkInitialDataNotify
 Field: BuildingWorkInfos
 Code:
@@ -12306,34 +9367,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: ShopBuyResponse
-Field: BuyCountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopBuyResponse
-Field: RegisteredGoodsBuyCountInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzRegisteredGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzBuyOrCraftLimitLevelType,TArray<TSharedPtr<FTzRegisteredGoodsBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x80));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopBuyResponse
 Field: RegisterShopBuyFailItems
 Code:
 TozSerializableMessageLibNative::
@@ -12368,20 +9401,6 @@ if (*(long **)(in_x0 + 0x120) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CrossRealmRankingQueryResponse
-Field: RankingInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRankingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x30));
-  uVar8 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar8 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: MissionInfo
 Field: RewardAcquiredDateTimes
 Code:
@@ -12412,20 +9431,6 @@ TozSerializableMessageLibNative::
   if ((local_198[0] & 1) != 0) {
     uVar1 = local_190;
     pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdSummaryInitialDataNotify
-Field: BuildingSubscriptionSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBuildingSubscriptionSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x70));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar7 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
   }
   std::__nd
 
@@ -12529,20 +9534,6 @@ pcVar8 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: MailFollowerDeathLayoutInfo
-Field: LootedRewardItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar7 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__nd
-
 Opcode: CheatUnlockAllContentsResponse
 Field: UnusedContentsUnlockKinds
 Code:
@@ -12552,20 +9543,6 @@ TozSerializableMessageLibNative::
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: OccupiableNpcBossBattleRewardNotify
-Field: ReceivedRewardInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzReceivedRewardInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
     uVar1 = local_190;
     pcVar3 = local_188;
   }
@@ -12627,46 +9604,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: FavorMissionInfo
-Field: HuntingSiteCuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x48));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: FavorMissionInfo
-Field: TargetCuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x58));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: CovenantTradeDealRecordQueryResponse
-Field: GoodsDealInfo
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantTradeGoodsDealInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: DiplomacyChatRoomRecordsInitializationInfo
 Field: DiplomacyChatCovenantSummaryInfos
 Code:
@@ -12680,19 +9617,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__nd
-
-Opcode: AchievementInfo
-Field: MissionProgressCounts
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar10 = local_198 >> 1 & 0x7f;
-  pcVar11 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar10 = local_190;
-    pcVar11 = local_188;
-  }
-  std::__n
 
 Opcode: AchievementInfo
 Field: IsRewarded
@@ -12746,20 +9670,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,long_long,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,long_long,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantAssetMigrationInfo
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -12839,20 +9749,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: PvpBattleInfo
-Field: PvpBattleKillDeathInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPvpBattleKillDeathInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: PvpBattleInfo
 Field: PvpBattleKillDeathCountInfos
 Code:
 TozSerializableMessageLibNative::
@@ -12893,19 +9789,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CollectionCategoryActiveNotify
-Field: CollectionCategoryCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: BattalionChangePurposeNotify
 Field: BattalionInfo
@@ -12963,20 +9846,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantBattalionQuerySummaryInfoListResponse
-Field: SummaryInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBattalionSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CheatSetInvulnerableRequest
 Field: IsInvulnerable
 Code:
@@ -13023,34 +9892,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ItemAddInfo
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar4 = (ulong)(local_198[0] >> 1);
-  pcVar6 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar4 = local_190;
-    pcVar6 = local_188;
-  }
-  std::__nd
-
-Opcode: RealmIntegrationRealmInfoNotify
-Field: RealmIntegrationRealmInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationRealmInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: DistrictFavorBossInfo
 Field: IsFavorBossActivated
@@ -13112,19 +9953,6 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
-
-Opcode: CovenantWorldMapMarkerRemoveAllNotify
-Field: RemovedGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: RsaPublicKeyNotify
 Field: PublicKeyXmlString
@@ -13201,19 +10029,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: FieldMigrationReadyRequest
-Field: SeamlessNpcGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__n
 
 Opcode: CheatSetExperiencePointsBlockedResponse
 Field: IsExperiencePointsBlocked
@@ -13296,34 +10111,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: PlayerMarketInfo
-Field: TransactionHistories
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketTransactionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0xa8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerMarketInfo
-Field: FavoriteItemInfosByMarketKind
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzMarketKindType,TArray<TSharedPtr<FTzMarketFavoriteItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzMarketKindType,TArray<TSharedPtr<FTzMarketFavoriteItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0xb8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerMarketInfo
 Field: PlayerMarketTransactionProcessInfos
 Code:
 TozSerializableMessageLibNative::
@@ -13364,46 +10151,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<long_long,TSharedPtr<FTzDestroyerInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,TSharedPtr<FTzDestroyerInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: SkillStageFlowNotify
-Field: SubTargetingLocations_cm
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: SkillStageFlowNotify
-Field: AffectExemptLocations_cm
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector2D,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: SkillStageFlowNotify
-Field: SkillStageInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzSkillStageInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x48));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -13531,34 +10278,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: MonsterBookAnalyzeResponse
-Field: AnalyzedStateInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMonsterBookNodeStateInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MonsterBookAnalyzeResponse
-Field: AnalysisStatChangeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ClasseChangeItemUseParameterInfo
 Field: BeforeGearGuidToAfterGearCuids
 Code:
@@ -13587,20 +10306,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantQueryRecommendCovenantSummaryInfoListResponse
-Field: CovenantSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: BuildingBaseBuildingExistenceSynchronizeNotify
 Field: IsBaseBuildingExist
 Code:
@@ -13626,20 +10331,6 @@ bVar8 = *(char *)(in_x0 + 0x10) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CovenantSynchronizeRecommendedResourceKindNotify
-Field: RecommendedResourceKinds
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzResourceKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: WarehouseInfo
 Field: PointCurrencyContainerInfo
@@ -13786,20 +10477,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: ServerDrivenPlayRewardInfo
-Field: GainedItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGainedItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x68));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ProtocolConstants
 Field: TozNetwork.Protocol.ProtocolConstants
 Code:
@@ -13846,20 +10523,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: BoundAndErodedInheritanceBatchCraftResponse
-Field: CraftResultInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCraftResultInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: PlayerLoginResponse
 Field: CanCheatCommand
@@ -13943,61 +10606,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CashShopRefundableMerchandiseStorageBoxUpdateInfo
-Field: AddSlotInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCashShopRefundableMerchandiseStorageBoxSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CashShopRefundableMerchandiseStorageBoxUpdateInfo
-Field: DeleteSlotGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: FavorQueryResponse
-Field: FavorList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzFavorInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: FavorQueryResponse
-Field: FavorMissionList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzFavorMissionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
 Opcode: FavorQueryResponse
 Field: IsFavorBossActivated
 Code:
@@ -14071,40 +10679,12 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: ErLoginServerSessionInitializeInfo
-Field: RealmIntegrationRealmInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRealmIntegrationRealmInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x60));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar7 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantGiftReceiveRewardInfo
 Field: CurrencyCuidToAmount
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,long_long,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,long_long,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantGiftReceiveRewardInfo
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -14170,20 +10750,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<long_long,TSharedPtr<FTzCuidAndCountInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,TSharedPtr<FTzCuidAndCountInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantWorldMapMarkerInitialDataNotify
-Field: WorldMapMarkerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzWorldMapMarkerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -14281,33 +10847,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: MonsterBookNodeAcquireResponse
-Field: AnalysisStatChangeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCharacterStatChangeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x50));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdBattleCovenantBattalionStrategicObjectiveSetNotify
-Field: StrategicObjectiveTargetGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: SkillAutoUseManaPointsRestrictOptionInfo
 Field: IsForceUseSkillsInPvp
@@ -14458,20 +10997,6 @@ bVar8 = *(char *)(in_x0 + 9) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CovenantTradeGoodsListQueryResponse
-Field: GoodsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantTradeGoodsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: OccupiableNpcOccupationCovenantInfoUpdateNotify
 Field: NxLogBaseParameterInfo
 Code:
@@ -14493,20 +11018,6 @@ if (*(long **)(in_x0 + 0x70) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CovenantWarehouseSummaryInitialDataNotify
-Field: ItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCuidAndCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantCreateCovenantMemberRoleNotify
 Field: CovenantMemberRoleInfo
 Code:
@@ -14527,33 +11038,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: RedrawableItemInventoryUpdateInfo
-Field: AddedRedrawableItemInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRedrawableItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: RedrawableItemInventoryUpdateInfo
-Field: RemovedRedrawableItemGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: ProtocolCheckRequest
 Field: Hash
@@ -14673,20 +11157,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: MailCovenantWeeklyRubyDonationLayoutInfo
-Field: CovenantWeeklyRubyDonationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantWeeklyRubyDonationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: GameNotificationOptionInfo
 Field: DistrictBossSpawnNotifyDisplayOption
 Code:
@@ -14794,20 +11264,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: BuffAttachNotify
-Field: BuffAffectInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBuffAffectInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: KickPreexistingSessionConfirmResponse
 Field: KickPreexistingSession
 Code:
@@ -14902,34 +11358,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: MailServerDrivenPlayLayoutInfo
-Field: GainedItemInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGainedItemInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x88));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: AnniversaryQueryResponse
-Field: AnniversaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAnniversaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: AnniversaryQueryResponse
 Field: AnniversaryPointAndRankingInfos
 Code:
@@ -14957,72 +11385,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantParticipationInfoQueryResponse
-Field: CovenantParticipationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantParticipationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MovePathInfo
-Field: RoadJunctionIds
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: MovePathInfo
-Field: PathToFirstRoadJunction
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: MovePathInfo
-Field: PathFromLastRoadJunctionToDestination
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar7 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar7 = local_188;
-  }
-  std::__n
-
-Opcode: ContentsActivationUpdateNotify
-Field: ContentsActivationFlags
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<bool,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: PushNotificationOptionInfo
 Field: IsEnabled
@@ -15223,19 +11585,6 @@ bVar9 = *(char *)(in_x0 + 0xd) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: ClientDrivenQuestMissionCompleteNotify
-Field: TargetGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: MountUpdateSkillSlotInfoRequest
 Field: IsUsedForContinuousCombat
 Code:
@@ -15262,32 +11611,6 @@ bVar9 = *(char *)(in_x0 + 9) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: GearMultipleEnhanceRequest
-Field: GearGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: GearMultipleEnhanceRequest
-Field: MaterialItemGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: SpawnLayerAlreadyActivatedNotify
 Field: IsPermanentSpawnLayer
 Code:
@@ -15313,18 +11636,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: SpawnLayerAlreadyActivatedNotify
-Field: SpawnLayerCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar10 = local_188;
-  }
-  std::__
 
 Opcode: CharacterStateSynchronizeNotify
 Field: AffectSourceInfo
@@ -15388,32 +11699,6 @@ if (*(long **)(in_x0 + 0x58) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: DeathPenaltyRecordInfoRemoveNotify
-Field: DeathPenaltyRecordGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: KickCovenantsFromDiplomacyChatRoomRequest
-Field: CovenantGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: SeekHidingAttackTargetStateNotify
 Field: IsSeekHidingAttackTargetState
@@ -15526,20 +11811,6 @@ TozSerializableMessageLibNative::
   }
   std::__ndk
 
-Opcode: PvpRecordInfo
-Field: CharacterInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPvpRecordCharacterInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: RealmAccountInfo
 Field: PlayedCutSceneCuids
 Code:
@@ -15549,20 +11820,6 @@ TozSerializableMessageLibNative::
   uVar1 = local_198 >> 1 & 0x7f;
   pcVar3 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantCampInfoListResponse
-Field: CovenantCampInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantCampInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
     uVar1 = local_190;
     pcVar3 = local_188;
   }
@@ -15690,33 +11947,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatCreateAndEquipGearSetResponse
-Field: EquipGearSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantRejectInvitationsFailResponse
-Field: RejectFailedCovenantGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: LZ4CompressHandshakeResult
 Field: __base__
 Code:
@@ -15767,20 +11997,6 @@ bVar8 = *(char *)(in_x0 + 0x20) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: BasicAchievementInitializeDataNotify
-Field: BasicAchievementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBasicOrGrowthGuideAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CraftResultInfo
 Field: ItemInfo
 Code:
@@ -15801,20 +12017,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: StrongholdWorldMapGeneralShopInfo
-Field: RegisteredGoodsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRegisteredGoodsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
 
 Opcode: CovenantDiplomacyReinforcementInvitationRejectNotify
 Field: IsCallByExpired
@@ -15894,34 +12096,6 @@ lVar1 = 4;
   std::__ndk1::__p
 
 Opcode: GearAdditionalInfo
-Field: GearEnchantSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearEnchantSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar10 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar10 = local_188;
-  }
-  std::__nd
-
-Opcode: GearAdditionalInfo
-Field: GearSubOptionInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSubOptionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar10 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar10 = local_188;
-  }
-  std::__nd
-
-Opcode: GearAdditionalInfo
 Field: SpecialGearEnhancementUseInfoByCuid
 Code:
 TozSerializableMessageLibNative::
@@ -15998,20 +12172,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantCurrencyInitialDataNotify
-Field: CovenantTaxAcquireInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantTaxAcquireInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CheatToggleShowQuestDebugResponse
 Field: IsEnabled
 Code:
@@ -16064,20 +12224,6 @@ Field: __base__
 Code:
 
 
-Opcode: CheatTestRewardResponse
-Field: RewardItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRewardItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: ProtocolCheckHandshakeResult
 Field: ClientHash
 Code:
@@ -16092,19 +12238,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__ndk
-
-Opcode: TutorialBeginFirstOneRequest
-Field: TutorialCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CovenantAcquireCovenantMemberRoleRewardResponse
 Field: IsAnyRewardSentByMail
@@ -16126,20 +12259,6 @@ lVar1 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantRecommendResourceKindRequest
-Field: RecommendedResourceKinds
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzResourceKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: SeasonPassLevelRewardAllResponse
 Field: RewardedLevels
@@ -16211,72 +12330,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__n
-
-Opcode: FindPathResponse
-Field: PathToNearestRoadJunctionToStartLocation
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: FindPathResponse
-Field: PathFromLastRoadJunctionToDestination
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: FindPathResponse
-Field: PathNotByRoad
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: FindPathResponse
-Field: PathNotByRoadOneShotSpecialMoveIndices
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x68));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: EquipmentPresetInfo
-Field: GearSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: PlayerRealmTransferCheckInfo
 Field: IsMarketCheckNeeded
@@ -16385,124 +12438,12 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: GearEnchantResponse
-Field: GearEnchantSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearEnchantSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: CraftResponse
-Field: CraftResultInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCraftResultInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: PlayerCampaignTicketInfoNotify
 Field: CampaignTicketInfos
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,TSharedPtr<FTzCampaignTicketInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TSharedPtr<FTzCampaignTicketInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerMissionRewardResponse
-Field: MissionRewardInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMissionRewardInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FieldInitializeInfo
-Field: TerritoryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzTerritoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FieldInitializeInfo
-Field: ZoneInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzZoneInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FieldInitializeInfo
-Field: BossSpawnInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzBossSpawnInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzBossSpawnInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FieldInitializeInfo
-Field: OccupiableNpcBossSpawnInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzOccupiableNpcBossSpawnInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzOccupiableNpcBossSpawnInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x78));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: FieldInitializeInfo
-Field: OccupiableNpcInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzOccupiableNpcInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 200));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -16560,40 +12501,12 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: GearSlotPresetUnequipNotify
-Field: UnequipGearSlots
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzGearSlotType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: PlayerBattalionOptionInfo
 Field: PurposeTexts
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<int,FString,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<int,FString,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopCashMerchandiseResetMerchandiseBuyCountInfoNotify
-Field: UpdatedMerchandiseBuyCountInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMerchandiseBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -16829,20 +12742,6 @@ auVar8 = XorEncryptor::to_string(*(XorHandshakeMessageType *)(in_x0 + 0x38));
   }
   std::__ndk
 
-Opcode: StrongholdBattleSiegeWeaponLocationInfoNotify
-Field: StrongholdBattleSiegeWeaponLocationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStrongholdBattleSiegeWeaponLocationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: BattalionConfirmInvitationRequest
 Field: BattalionInfo
 Code:
@@ -16863,19 +12762,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: RedrawableItemAdditionalInfo
-Field: ExcludedItemCuidsWhenRedrawing
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: FollowerSquadUpdateNotify
 Field: FollowerSquadSlots
@@ -17033,20 +12919,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: ShopSellRequest
-Field: ItemGuidSelectors
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemGuidSelector,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
 Opcode: QueryPlayerBattalionJoinableResponse
 Field: IsJoinableBattalion
 Code:
@@ -17068,19 +12940,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: FavorInfo
-Field: FavorRandomRewardCuidCandidates
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x58));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: ErFrontServerSessionWaitingQueueNotify
 Field: RealmHasSpaceAvailable
 Code:
@@ -17101,34 +12960,6 @@ lVar1 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: AlertPlayerQueryResponse
-Field: AlertPlayerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAlertPlayerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: AlertPlayerQueryResponse
-Field: CrossRealmAlertPlayerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAlertPlayerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CrossRealmSeasonInfoNotify
 Field: CrossRealmSeasonInfos
@@ -17169,20 +13000,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CovenantAddJoinApplicationsNotify
-Field: CovenantJoinApplicationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantJoinApplicationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CheatAddOnScreenDebugMessageNotify
 Field: NewerOnTop
@@ -17281,21 +13098,6 @@ if (*(long **)(in_x0 + 0x50) == (long *)0x0) {
   std::__ndk1::__p
 
 Opcode: OtherPlayerLootNotify
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  uVar3 = (ulong)((byte)local_198 >> 1);
-  pcVar8 = pcVar9;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__ndk
-
-Opcode: OtherPlayerLootNotify
 Field: IsErosionInstallerReward
 Code:
 lVar1 = 4;
@@ -17376,47 +13178,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzVuid,TSharedPtr<FTzFavorDatabaseInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzVuid,TSharedPtr<FTzFavorDatabaseInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: AnniversaryStrongholdOccupationRecordInfo
-Field: AnniversaryStrongholdOccupationCovenantInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAnniversaryStrongholdOccupationCovenantInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantCancelInvitationFailResponse
-Field: CancelFailedPlayerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: CovenantQuerySummaryInfoListResponse
-Field: CovenantSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -17610,20 +13371,6 @@ Field: __base__
 Code:
 
 
-Opcode: CovenantRubyShopMerchandiseInfoNotify
-Field: MerchandiseInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantRubyShopMerchandiseInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x38));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: HeadPieceDisplayOptionModifyRequest
 Field: IsHeadPieceDisplayed
 Code:
@@ -17713,19 +13460,6 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   std::__ndk1::__put
 
 Opcode: CombatTargetOptionInfo
-Field: AutoAttackTargetOnKinds
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzAutoAttackTargetKindType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar12 = local_188;
-  }
-  std::__n
-
-Opcode: CombatTargetOptionInfo
 Field: AutoCounterAttackNpc
 Code:
 pcVar12 = (char *)((ulong)&local_198 | 1);
@@ -17747,19 +13481,6 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
     pcVar6 = local_188;
   }
   std::__ndk1::__put
-
-Opcode: CombatTargetOptionInfo
-Field: AutoAttackTargetOnNpcGrades
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzAutoAttackTargetNpcGradeType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0x28));
-  uVar3 = local_198 >> 1 & 0x7f;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar12 = local_188;
-  }
-  std::__n
 
 Opcode: CombatTargetOptionInfo
 Field: CancelAttackOrFocusTargetButtonVisible
@@ -18123,20 +13844,6 @@ if (*(long **)(in_x0 + 0x38) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: NgsNotify
-Field: Data
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<unsigned_char,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: AutoSellSettingsInfo
 Field: Settings
 Code:
@@ -18182,20 +13889,6 @@ TozSerializableMessageLibNative::
   pcVar3 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
     uVar9 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: QueryChatRecordsResponse
-Field: ChatMessageInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzChatMessageInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
     pcVar3 = local_188;
   }
   std::__nd
@@ -18252,20 +13945,6 @@ bVar8 = *(char *)(in_x0 + 0xc) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: GearEnchantPreserveItemAdditionalInfo
-Field: GearEnchantSlotInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzGearEnchantSlotInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
 Opcode: ShopCashMerchandiseInitialDataNotify
 Field: CashShopMainCategoryInfos
 Code:
@@ -18309,20 +13988,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: ShopCashMerchandiseInitialDataNotify
-Field: CashShopWindowDressingInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCashShopWindowDressingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x118));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ShopCashMerchandiseInitialDataNotify
 Field: CashShopNameTextInfos
 Code:
 TozSerializableMessageLibNative::
@@ -18350,54 +14015,12 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: ShopCashMerchandiseInitialDataNotify
-Field: RealmTotalMerchandiseBuyCountInfoList
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMerchandiseBuyCountInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x1c8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: ServerDrivenPlayRecordsResponse
-Field: Infos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzServerDrivenPlayRecordsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: CovenantSupportQueryInfo
 Field: BuildingWorkOrderInfos
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<FTzCuid,TSharedPtr<FTzBuildingWorkOrderInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TSharedPtr<FTzBuildingWorkOrderInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: CovenantSupportQueryInfo
-Field: CovenantSupportInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCovenantSupportInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -18417,20 +14040,6 @@ TozSerializableMessageLibNative::
   if ((local_198 & 1) != 0) {
     uVar8 = local_190;
     pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdBattleAttackPhaseStartNotify
-Field: BattalionMemberStatisticsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStrongholdBattleCovenantBattalionMemberStatisticsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar8 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
   }
   std::__nd
 
@@ -18657,35 +14266,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: OccupiableNpcSummaryBulkUpdateDataNotify
-Field: OccupiableNpcSummaryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzOccupiableNpcSummaryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x28));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: MailQueryResponse
-Field: Mails
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMailInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  pcVar10 = (char *)((ulong)&local_198 | 1);
-  uVar3 = (ulong)((byte)local_198 >> 1);
-  pcVar9 = pcVar10;
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__ndk
-
 Opcode: MailQueryResponse
 Field: HasMore
 Code:
@@ -18761,32 +14341,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: PlayerAutoUseInfo
-Field: ItemCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: PlayerAutoUseInfo
-Field: RootSkillCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: CheatTestGearEnchantOptionResponse
 Field: GearEnchantOptionGrades
 Code:
@@ -18861,19 +14415,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: MailReservedStrongholdProtectionFailLayoutInfo
-Field: AttackCovenantNames
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FString,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x30));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
 
 Opcode: CheatAcceptQuestRequest
 Field: TeleportToQuestMissionLocation
@@ -18960,34 +14501,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ErosionInstalledWithoutPermissionAddNotify
-Field: ErosionInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzErosionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: NavMeshTileCheckResponse
-Field: CheckedTiles
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzNavMeshTileInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CovenantJoinAtFrontNotify
 Field: CovenantMemberRoleInfo
@@ -19162,20 +14675,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantHistoryShowArrivalNotify
-Field: CovenantHistoryInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<ETzCovenantHistoryCategoryType,TArray<TSharedPtr<FTzCovenantHistoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzCovenantHistoryCategoryType,TArray<TSharedPtr<FTzCovenantHistoryInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: StrongholdBattleAttackResourceInfo
 Field: SiegeWeaponCounts
 Code:
@@ -19211,20 +14710,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: StrongholdBattleCampaignConditionProgressSynchronizeNotify
-Field: CampaignConditionProgressInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzCampaignConditionProgressInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: BattalionVolunteerParticipationNotify
 Field: VolunteerParticipationInfo
 Code:
@@ -19245,33 +14730,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatUpdateAchievementMissionProgressCountsRequest
-Field: MissionProgressCounts
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
-Opcode: BattalionMemberLootNotify
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
-  uVar3 = local_198 >> 1 & 0x7f;
-  pcVar5 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar3 = local_190;
-    pcVar5 = local_188;
-  }
-  std::__nd
 
 Opcode: BattalionMemberLootNotify
 Field: IsErosionInstallerReward
@@ -19442,33 +14900,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: PlayerInitializeInfo
-Field: FavoriteCraftRecipeInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzFavoriteCraftRecipeInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x218));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerInitializeInfo
-Field: CompletedTutorialCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x238));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__n
-
-Opcode: PlayerInitializeInfo
 Field: BattalionInfo
 Code:
 if (*(long **)(in_x0 + 600) == (long *)0x0) {
@@ -19488,20 +14919,6 @@ if (*(long **)(in_x0 + 600) == (long *)0x0) {
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PlayerInitializeInfo
-Field: InGameNotificationInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzInGameNotificationInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x268));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
 
 Opcode: PlayerInitializeInfo
 Field: AmityInfos
@@ -19588,48 +15005,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: PlayerInitializeInfo
-Field: BasicOrGrowthGuideAchievementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBasicOrGrowthGuideAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x4c8));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerInitializeInfo
-Field: AnniversaryAchievementInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TMap<FTzCuid,TArray<TSharedPtr<FTzAnniversaryAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<FTzCuid,TArray<TSharedPtr<FTzAnniversaryAchievementInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,false>>,void>
-  ::Serialize((TMap *)(in_x0 + 0x4d8));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerInitializeInfo
-Field: AnniversaryAchievementPointInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzAnniversaryAchievementPointInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x528));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerInitializeInfo
 Field: DiscoveredSelfieDoodadSpawnerCuids
 Code:
 TozSerializableMessageLibNative::
@@ -19663,20 +15038,6 @@ if (*(long **)(in_x0 + 0x588) == (long *)0x0) {
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PlayerInitializeInfo
-Field: DeathPenaltyRecordInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzDeathPenaltyRecordInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x598));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
 
 Opcode: PlayerInitializeInfo
 Field: DeathPenaltyFreeRecoveryInfo
@@ -19756,20 +15117,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: PlayerInitializeInfo
-Field: PlayerLocationMonitoringInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPlayerLocationMonitoringInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x708));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerInitializeInfo
 Field: PlayerHarmfulTextOnChatViolationInfo
 Code:
 if (*(long **)(in_x0 + 0x718) == (long *)0x0) {
@@ -19812,32 +15159,6 @@ if (*(long **)(in_x0 + 0x740) == (long *)0x0) {
   std::__ndk1::__p
 
 Opcode: PlayerInitializeInfo
-Field: UnSettledGoodsGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x760));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__n
-
-Opcode: PlayerInitializeInfo
-Field: ExpiredGoodsGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x770));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__n
-
-Opcode: PlayerInitializeInfo
 Field: GiftBoxInfos
 Code:
 TozSerializableMessageLibNative::
@@ -19871,20 +15192,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TSet<ETzAdjustableStatKindType,DefaultKeyFuncs<ETzAdjustableStatKindType,false>,FDefaultSetAllocator>,void>
   ::Serialize((TSet *)(in_x0 + 0x840));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerInitializeInfo
-Field: WorldMapMarkerInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzWorldMapMarkerInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x8b0));
   uVar11 = local_198 >> 1 & 0x7f;
   pcVar9 = (char *)((ulong)&local_198 | 1);
   if ((local_198 & 1) != 0) {
@@ -19984,53 +15291,12 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: PlayerInitializeInfo
-Field: PaidAttendanceInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzPaidAttendanceInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0xa80));
-  uVar11 = local_198 >> 1 & 0x7f;
-  pcVar9 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar11 = local_190;
-    pcVar9 = local_188;
-  }
-  std::__nd
-
-Opcode: CheatInstallAllArquirunesResponse
-Field: InstalledArquiruneCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x10));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: DeathPenaltyRecordInfoChangedNotify
 Field: GuidToChangedRecordKinds
 Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<long_long,ETzDeathPenaltyRecordKindType,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<long_long,ETzDeathPenaltyRecordKindType,false>>,void>
   ::Serialize((TMap *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: PlayerMarketTransactionHistoryResponse
-Field: MarketTransactionInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzMarketTransactionInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x10));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -20148,20 +15414,6 @@ bVar8 = *(char *)(in_x0 + 0x68) == '\0';
     pcVar10 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: StrongholdBattleRewardInfo
-Field: RewardItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x18));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: StrongholdBattleRewardInfo
 Field: CurrencyCuidToAmount
@@ -20288,62 +15540,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: StrongholdBattleEndNotify
-Field: BattalionMemberCoreInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBattalionMemberCoreInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x30));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdBattleEndNotify
-Field: BattalionMemberStatisticsInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStrongholdBattleCovenantBattalionMemberStatisticsInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: StrongholdBattleEndNotify
-Field: BattalionMemberDisplayInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzStrongholdBattleCovenantBattalionMemberDisplayInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x50));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
-
-Opcode: RankingQueryResponse
-Field: RankingInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzRankingInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x30));
-  uVar9 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar9 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: RankingQueryResponse
 Field: SelfRankingInfo
@@ -20506,19 +15702,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: PlayerLocationMonitoringDeregisterNotify
-Field: DeregisterPlayerGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: CheatSetInvulnerableResponse
 Field: IsInvulnerable
 Code:
@@ -20544,20 +15727,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: ChatRoomRecordsInitializationInfo
-Field: ChatMessageInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzChatMessageInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__nd
 
 Opcode: StrongholdBattleAttackDeclareInfo
 Field: IsVolunteerJoinApplicationAutomaticApproval
@@ -20693,19 +15862,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CovenantQuerySummaryInfoListRequest
-Field: CovenantGuidList
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
-
 Opcode: DisplayOptionInfo
 Field: IsAllianceCovenantVisibleInMiniMap
 Code:
@@ -20821,20 +15977,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: WarehouseMigrationInfo
-Field: ItemIndexWithCounts
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzItemIndexWithCount,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x58));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: QuestCinePlayingSynchronizeNotify
 Field: IsQuestCinePlaying
 Code:
@@ -20861,20 +16003,6 @@ bVar8 = *(char *)(in_x0 + 0x10) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: ErChatServerSessionInitializeInfo
-Field: BlockedChatEntityInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzBlockedChatEntityInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x20));
-  uVar1 = local_198 >> 1 & 0x7f;
-  pcVar3 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: NpcSpeechBalloonInfo
 Field: NpcSpeechBalloonTextFormatInfo
 Code:
@@ -20895,20 +16023,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ChatMessageNotify
-Field: ChatMessageInfos
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzChatMessageInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
 
 Opcode: CheatCovenantPayDividendRequest
 Field: DividendInfo
@@ -20951,20 +16065,6 @@ Code:
 TozSerializableMessageLibNative::
   JsonSerializer<TMap<ETzQuickSlotIndexType,TSharedPtr<FTzQuickSlotInfo,(ESPMode)1>,FDefaultSetAllocator,TDefaultMapHashableKeyFuncs<ETzQuickSlotIndexType,TSharedPtr<FTzQuickSlotInfo,(ESPMode)1>,false>>,void>
   ::Serialize((TMap *)(in_x0 + 0x58));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
-Opcode: QuickSlotUpdateInfo
-Field: RemovedQuickSlotIndices
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<ETzQuickSlotIndexType,TSizedDefaultAllocator<32>>,void>::Serialize
-            ((TArray *)(in_x0 + 0xa8));
   uVar1 = (ulong)(local_198[0] >> 1);
   pcVar3 = (char *)((ulong)local_198 | 1);
   if ((local_198[0] & 1) != 0) {
@@ -21134,19 +16234,6 @@ bVar9 = *(char *)(in_x0 + 0x70) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: CovenantBattalionExpeditionInfo
-Field: AnotherBattalionGuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 0x40));
-  uVar10 = local_198 >> 1 & 0x7f;
-  pcVar8 = (char *)((ulong)&local_198 | 1);
-  if ((local_198 & 1) != 0) {
-    uVar10 = local_190;
-    pcVar8 = local_188;
-  }
-  std::__n
-
 Opcode: QuestsInfo
 Field: RewardedQuests
 Code:
@@ -21257,20 +16344,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: NavMeshTileDataResponse
-Field: CheckedTiles
-Code:
-TozSerializableMessageLibNative::
-  JsonSerializer<TArray<TSharedPtr<FTzNavMeshTileInfo,(ESPMode)1>,TSizedDefaultAllocator<32>>,void>
-  ::Serialize((TArray *)(in_x0 + 8));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__nd
-
 Opcode: MarketGoodsInfo
 Field: IsStorable
 Code:
@@ -21344,19 +16417,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantWarehouseSummaryUpdateInfoNotify
-Field: RemovedItemCuids
-Code:
-TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllocator<32>>,void>::
-  Serialize((TArray *)(in_x0 + 0x78));
-  uVar1 = (ulong)(local_198[0] >> 1);
-  pcVar3 = (char *)((ulong)local_198 | 1);
-  if ((local_198[0] & 1) != 0) {
-    uVar1 = local_190;
-    pcVar3 = local_188;
-  }
-  std::__n
 
 Opcode: CheatSetLoggingRequest
 Field: IsLogging
