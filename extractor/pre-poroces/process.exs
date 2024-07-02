@@ -4,7 +4,7 @@ Mix.install([{:exjsx, "~> 4.0.0"}])
 data = JSX.decode!(File.read!("C:/repos/wp/assets/data/function_data_full.json"))
 
 # Load the structures map (if you still need this)
-{par, _} = Code.eval_string(File.read!("C:/repos/wp/assets/maps/structures_map.exs"))
+{par, _} = Code.eval_string(File.read!("C:/repos/wp/assets/maps/claude_structures_map.exs"))
 par = Map.new(par)
 
 IO.puts("Total structures: #{Enum.count(par)}")
@@ -366,6 +366,7 @@ defmodule DataProcessorAndWriter do
         type = classify_and_adjust_type(code)
         %{name: name, type: type}
       end)
+      |> filter_fields(opcode_name)
 
       # Handle the base field
       {base_field, other_fields} = Enum.split_with(fields, fn %{name: name} ->
@@ -385,6 +386,12 @@ defmodule DataProcessorAndWriter do
       end)
 
       update_in(acc, [:unknown_fields], &(&1 ++ unknown_fields))
+    end)
+  end
+
+  defp filter_fields(fields, opcode_name) do
+    Enum.reject(fields, fn %{name: name} ->
+      name == "TypeName" || name == opcode_name
     end)
   end
 

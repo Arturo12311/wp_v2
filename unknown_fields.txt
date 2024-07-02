@@ -12,36 +12,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: MountItemChangeFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: MountItemChangeFailResponse
-Field: MountItemChangeFailResponse
-Code:
-
-
-Opcode: PubSubChannelInitialDataNotify
-Field: TypeName
-Code:
-
-
-Opcode: PubSubChannelInitialDataNotify
-Field: PubSubChannelInitialDataNotify
-Code:
-
-
-Opcode: CovenantCampBuildingCraftCancelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantCampBuildingCraftCancelResponse
-Field: CovenantCampBuildingCraftCancelResponse
-Code:
-
-
 Opcode: ShopCashMerchandiseReceiveRequest
 Field: ReceiveGuidList
 Code:
@@ -54,16 +24,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: ErosionInstallCancelFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: ErosionInstallCancelFailResponse
-Field: ErosionInstallCancelFailResponse
-Code:
-
 
 Opcode: PartySharedFocusTargetNotify
 Field: SharedFocusTargetInfo
@@ -86,16 +46,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatRestoreChatCovenantResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRestoreChatCovenantResponse
-Field: CheatRestoreChatCovenantResponse
-Code:
-
-
 Opcode: DeathPenaltyDeleteResponse
 Field: DeletedDeathPenaltyRecordGuids
 Code:
@@ -108,26 +58,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatResetDiscoveredSelfieDoodadSpawnersRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetDiscoveredSelfieDoodadSpawnersRequest
-Field: CheatResetDiscoveredSelfieDoodadSpawnersRequest
-Code:
-
-
-Opcode: ThreatListClearNotify
-Field: TypeName
-Code:
-
-
-Opcode: ThreatListClearNotify
-Field: ThreatListClearNotify
-Code:
-
 
 Opcode: AllRealmInfoPubSubChannelInitialDataNotify
 Field: RealmInfos
@@ -142,46 +72,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: SelfieDoodadInfo
-Field: TypeName
-Code:
-
-
-Opcode: SelfieDoodadInfo
-Field: SelfieDoodadInfo
-Code:
-
-
-Opcode: CheatEnterCovenantCampaignRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatEnterCovenantCampaignRequest
-Field: CheatEnterCovenantCampaignRequest
-Code:
-
-
-Opcode: CheatStrongholdApplyTaxResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdApplyTaxResponse
-Field: CheatStrongholdApplyTaxResponse
-Code:
-
-
-Opcode: RankingViewInfo
-Field: TypeName
-Code:
-
-
-Opcode: RankingViewInfo
-Field: RankingViewInfo
-Code:
-
 
 Opcode: SpellstoneAdditionalSkillStatsInfo
 Field: CharacterStatChangesDuringSkillProgress
@@ -257,16 +147,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: RealmAccountLogoutRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountLogoutRequest
-Field: RealmAccountLogoutRequest
-Code:
-
-
 Opcode: RankingQueryByNameResponse
 Field: TargetRankingInfo
 Code:
@@ -329,46 +209,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatChangeAllFollowersLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeAllFollowersLevelResponse
-Field: CheatChangeAllFollowersLevelResponse
-Code:
-
-
-Opcode: CheatPlayerLocationMonitoringDeleteAllRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatPlayerLocationMonitoringDeleteAllRequest
-Field: CheatPlayerLocationMonitoringDeleteAllRequest
-Code:
-
-
-Opcode: CovenantUpdateCovenantMemberRoleNameFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateCovenantMemberRoleNameFailResponse
-Field: CovenantUpdateCovenantMemberRoleNameFailResponse
-Code:
-
-
-Opcode: CovenantBattalionExpeditionDeployStopLivingTotemRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantBattalionExpeditionDeployStopLivingTotemRequest
-Field: CovenantBattalionExpeditionDeployStopLivingTotemRequest
-Code:
-
 
 Opcode: CheatAnniversaryAchievementResetResponse
 Field: AnniversaryAchievementPointInfos
@@ -472,26 +312,6 @@ bVar9 = *(char *)(in_x0 + 0x21) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatClearRealmIntegrationBattleScoreResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleScoreResponse
-Field: CheatClearRealmIntegrationBattleScoreResponse
-Code:
-
-
-Opcode: CovenantUpdateIntroductionFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateIntroductionFailResponse
-Field: CovenantUpdateIntroductionFailResponse
-Code:
-
-
 Opcode: StrongholdBattleInfo
 Field: BuildingStateInfos
 Code:
@@ -534,16 +354,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantRubyShopMerchandiseResetResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRubyShopMerchandiseResetResponse
-Field: CovenantRubyShopMerchandiseResetResponse
-Code:
-
-
 Opcode: CovenantBattalionSummaryInfo
 Field: ExpeditionSummaryInfo
 Code:
@@ -564,16 +374,6 @@ if (*(long **)(in_x0 + 0x90) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ServerDrivenPlayWaitingForResupplyStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayWaitingForResupplyStateInfo
-Field: ServerDrivenPlayWaitingForResupplyStateInfo
-Code:
-
 
 Opcode: GearBatchCraftRequest
 Field: CraftTargetGrades
@@ -881,16 +681,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
   }
   std::__n
 
-Opcode: CheatChangeTerritoryEntanglementGaugeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeTerritoryEntanglementGaugeResponse
-Field: CheatChangeTerritoryEntanglementGaugeResponse
-Code:
-
-
 Opcode: CheatRegisterCheatEnabledPlayerNameResponse
 Field: CheatEnabledPlayerNames
 Code:
@@ -904,16 +694,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatClearRealmIntegrationBattleAllScoreRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleAllScoreRequest
-Field: CheatClearRealmIntegrationBattleAllScoreRequest
-Code:
-
 
 Opcode: DeathPenaltyRecoverResponse
 Field: RecoveredDeathPenaltyGuids
@@ -984,26 +764,6 @@ if (*(long **)(in_x0 + 0x178) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatChangeSpiritualBondPowerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeSpiritualBondPowerResponse
-Field: CheatChangeSpiritualBondPowerResponse
-Code:
-
-
-Opcode: HonorableDieRequest
-Field: TypeName
-Code:
-
-
-Opcode: HonorableDieRequest
-Field: HonorableDieRequest
-Code:
-
-
 Opcode: CovenantLivingTotemWithStatsInfo
 Field: CharacterPublicStatsInfo
 Code:
@@ -1059,26 +819,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ServerDrivenPlayRecordsRequest
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayRecordsRequest
-Field: ServerDrivenPlayRecordsRequest
-Code:
-
-
-Opcode: CheatResetGoodsBuyCountRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetGoodsBuyCountRequest
-Field: CheatResetGoodsBuyCountRequest
-Code:
-
 
 Opcode: RealmInfoListResponse
 Field: RealmInfos
@@ -1141,26 +881,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatDetachAllBuffsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDetachAllBuffsResponse
-Field: CheatDetachAllBuffsResponse
-Code:
-
-
-Opcode: WarpReturnResponse
-Field: TypeName
-Code:
-
-
-Opcode: WarpReturnResponse
-Field: WarpReturnResponse
-Code:
-
 
 Opcode: QuestAcceptNotify
 Field: StartByItem
@@ -1238,16 +958,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CrossRealmCovenantDiplomacyWithdrawAllianceFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CrossRealmCovenantDiplomacyWithdrawAllianceFailResponse
-Field: CrossRealmCovenantDiplomacyWithdrawAllianceFailResponse
-Code:
-
 
 Opcode: CovenantGiftBoxInfo
 Field: IsReceived
@@ -1375,16 +1085,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: GuiseUnequipFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: GuiseUnequipFailResponse
-Field: GuiseUnequipFailResponse
-Code:
-
-
 Opcode: RPCExceptionMessage
 Field: ErrorString
 Code:
@@ -1399,16 +1099,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__ndk
-
-Opcode: CovenantRealmTransferRegisterResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRealmTransferRegisterResponse
-Field: CovenantRealmTransferRegisterResponse
-Code:
-
 
 Opcode: AutoBuySettingsInfo
 Field: Settings
@@ -1438,16 +1128,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatClearCollectionByCollectionCategoryCuidFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCollectionByCollectionCategoryCuidFailResponse
-Field: CheatClearCollectionByCollectionCategoryCuidFailResponse
-Code:
-
-
 Opcode: ContaminationInfo
 Field: ContaminationNaturalDecreaseInfos
 Code:
@@ -1476,16 +1156,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantBattalionExpeditionDeployStopLivingTotemFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantBattalionExpeditionDeployStopLivingTotemFailResponse
-Field: CovenantBattalionExpeditionDeployStopLivingTotemFailResponse
-Code:
-
-
 Opcode: HavenOrganizationStatsDetailInfo
 Field: Stats
 Code:
@@ -1500,16 +1170,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: RealmIntegrationBattleWarpReturnResponse
-Field: TypeName
-Code:
-
-
-Opcode: RealmIntegrationBattleWarpReturnResponse
-Field: RealmIntegrationBattleWarpReturnResponse
-Code:
-
-
 Opcode: FollowerCollectionUpdateNotify
 Field: CollectionInfos
 Code:
@@ -1523,16 +1183,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatClearDeathPenaltyRecordResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearDeathPenaltyRecordResponse
-Field: CheatClearDeathPenaltyRecordResponse
-Code:
-
 
 Opcode: CovenantRealmTransferReadyToRealmTransferRequest
 Field: UseItem
@@ -1580,26 +1230,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ErosionInstallCancelRequest
-Field: TypeName
-Code:
-
-
-Opcode: ErosionInstallCancelRequest
-Field: ErosionInstallCancelRequest
-Code:
-
-
-Opcode: CrossRealmCovenantDiplomacyDeclareHostilityFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CrossRealmCovenantDiplomacyDeclareHostilityFailResponse
-Field: CrossRealmCovenantDiplomacyDeclareHostilityFailResponse
-Code:
-
 
 Opcode: UpdateLastViewedChatRecordsIndexRequest
 Field: ChatRecordsIndices
@@ -1734,16 +1364,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: UniverseAccountLogoutResponse
-Field: TypeName
-Code:
-
-
-Opcode: UniverseAccountLogoutResponse
-Field: UniverseAccountLogoutResponse
-Code:
-
-
 Opcode: OccupiableNpcRandomBuffStateUpdateNotify
 Field: IsRandomBuffNpc
 Code:
@@ -1789,16 +1409,6 @@ if (*(long **)(in_x0 + 0x58) == (long *)0x0) {
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ContaminationActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: ContaminationActionInfo
-Field: ContaminationActionInfo
-Code:
-
 
 Opcode: ChatOptionInfo
 Field: ChatTabFilter
@@ -1880,16 +1490,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatInitializeQuestDataRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatInitializeQuestDataRequest
-Field: CheatInitializeQuestDataRequest
-Code:
-
-
 Opcode: NpcSpeechBalloonTextFormatInfo
 Field: TextFormatParameters
 Code:
@@ -1902,16 +1502,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FString,TSizedDefaultAllo
     pcVar6 = local_188;
   }
   std::__n
-
-Opcode: CovenantDiplomacyConfirmReinforcementInvitationResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantDiplomacyConfirmReinforcementInvitationResponse
-Field: CovenantDiplomacyConfirmReinforcementInvitationResponse
-Code:
-
 
 Opcode: AutoDonateSettingOptionInfo
 Field: ItemFilterCuidToItemGrade
@@ -1999,26 +1589,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
   }
   std::__n
 
-Opcode: CheatSpawnTerritoryBossResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnTerritoryBossResponse
-Field: CheatSpawnTerritoryBossResponse
-Code:
-
-
-Opcode: CheatUnlockAllContentsRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatUnlockAllContentsRequest
-Field: CheatUnlockAllContentsRequest
-Code:
-
-
 Opcode: RankingInfo
 Field: ViewInfo
 Code:
@@ -2039,16 +1609,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: RegionContentPlayInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: RegionContentPlayInfoRequest
-Field: RegionContentPlayInfoRequest
-Code:
-
 
 Opcode: GearSlotPresetModifyResponse
 Field: EquipGearSlotInfos
@@ -2077,26 +1637,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantRecommendBuildingWorkResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRecommendBuildingWorkResponse
-Field: CovenantRecommendBuildingWorkResponse
-Code:
-
-
-Opcode: CheatFillHealthPointsAndManaPointsToFullResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatFillHealthPointsAndManaPointsToFullResponse
-Field: CheatFillHealthPointsAndManaPointsToFullResponse
-Code:
-
 
 Opcode: BattalionSummaryInfo
 Field: IsJoinable
@@ -2188,76 +1728,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatSpawnFromSpawnerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnFromSpawnerResponse
-Field: CheatSpawnFromSpawnerResponse
-Code:
-
-
-Opcode: CheatCancelAllStrongholdProtectionResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCancelAllStrongholdProtectionResponse
-Field: CheatCancelAllStrongholdProtectionResponse
-Code:
-
-
-Opcode: CheatAccomplishAchievementResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAccomplishAchievementResponse
-Field: CheatAccomplishAchievementResponse
-Code:
-
-
-Opcode: DeleteFromChatBlockListResponse
-Field: TypeName
-Code:
-
-
-Opcode: DeleteFromChatBlockListResponse
-Field: DeleteFromChatBlockListResponse
-Code:
-
-
-Opcode: InteractionResponse
-Field: TypeName
-Code:
-
-
-Opcode: InteractionResponse
-Field: InteractionResponse
-Code:
-
-
-Opcode: CheatResetAllAetherOptionResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetAllAetherOptionResponse
-Field: CheatResetAllAetherOptionResponse
-Code:
-
-
-Opcode: CheatChangeFollowerLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeFollowerLevelResponse
-Field: CheatChangeFollowerLevelResponse
-Code:
-
-
 Opcode: CovenantJoinedStrongholdBattleInfoRemoveNotify
 Field: CovenantJoinedStrongholdBattleInfo
 Code:
@@ -2279,26 +1749,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatEnterCovenantCampaignResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatEnterCovenantCampaignResponse
-Field: CheatEnterCovenantCampaignResponse
-Code:
-
-
-Opcode: CheatClearSeasonPassAchievementsRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearSeasonPassAchievementsRequest
-Field: CheatClearSeasonPassAchievementsRequest
-Code:
-
-
 Opcode: ContentsRelockNotify
 Field: ContentsUnlockKinds
 Code:
@@ -2312,16 +1762,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatCraftCovenantLivingTotemResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCraftCovenantLivingTotemResponse
-Field: CheatCraftCovenantLivingTotemResponse
-Code:
-
 
 Opcode: BattalionChangeJoinableNotify
 Field: IsJoinable
@@ -2348,56 +1788,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: StrongholdBuildingCraftResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingCraftResponse
-Field: StrongholdBuildingCraftResponse
-Code:
-
-
-Opcode: ErFrontServerSessionCancelWaitingQueueResponse
-Field: TypeName
-Code:
-
-
-Opcode: ErFrontServerSessionCancelWaitingQueueResponse
-Field: ErFrontServerSessionCancelWaitingQueueResponse
-Code:
-
-
-Opcode: ChatFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: ChatFailResponse
-Field: ChatFailResponse
-Code:
-
-
-Opcode: KickPreexistingSessionConfirmRequest
-Field: TypeName
-Code:
-
-
-Opcode: KickPreexistingSessionConfirmRequest
-Field: KickPreexistingSessionConfirmRequest
-Code:
-
-
-Opcode: ErLoginServerInitialDevBotAuthenticateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ErLoginServerInitialDevBotAuthenticateInfo
-Field: ErLoginServerInitialDevBotAuthenticateInfo
-Code:
-
 
 Opcode: SkillShieldWallAffectInfo
 Field: IsHit
@@ -2488,36 +1878,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatChangeCovenantNameResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeCovenantNameResponse
-Field: CheatChangeCovenantNameResponse
-Code:
-
-
-Opcode: RealmAccountPresentRegisterResponse
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountPresentRegisterResponse
-Field: RealmAccountPresentRegisterResponse
-Code:
-
-
-Opcode: PubSubChannelUpdateDataNotify
-Field: TypeName
-Code:
-
-
-Opcode: PubSubChannelUpdateDataNotify
-Field: PubSubChannelUpdateDataNotify
-Code:
-
-
 Opcode: QueryChatRoomRecordsInitializationInfoResponse
 Field: ChatRoomRecordsInitializationInfos
 Code:
@@ -2531,16 +1891,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatUninstallAllArquirunesResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUninstallAllArquirunesResponse
-Field: CheatUninstallAllArquirunesResponse
-Code:
-
 
 Opcode: CovenantGiftReceiveInfo
 Field: ReceiveRewardInfo
@@ -2657,16 +2007,6 @@ TozSerializableMessageLibNative::JsonSerializer<TozSerializableMessageLibNative:
   }
   std::__n
 
-Opcode: CrossRealmSeasonEntryUpdateDataNotify
-Field: TypeName
-Code:
-
-
-Opcode: CrossRealmSeasonEntryUpdateDataNotify
-Field: CrossRealmSeasonEntryUpdateDataNotify
-Code:
-
-
 Opcode: MountRendezvousInfo
 Field: IsImmediateBoarding
 Code:
@@ -2711,26 +2051,6 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: PowerSavingModeEndRequest
-Field: TypeName
-Code:
-
-
-Opcode: PowerSavingModeEndRequest
-Field: PowerSavingModeEndRequest
-Code:
-
-
-Opcode: CheatCheckServerTimeRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatCheckServerTimeRequest
-Field: CheatCheckServerTimeRequest
-Code:
-
-
 Opcode: StrongholdBattleSummaryInfo
 Field: StrongholdBattleJoinedCovenantInfos
 Code:
@@ -2759,16 +2079,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: BattalionCompleteAssembleNotify
-Field: TypeName
-Code:
-
-
-Opcode: BattalionCompleteAssembleNotify
-Field: BattalionCompleteAssembleNotify
-Code:
-
-
 Opcode: ChatRoomListUpdateNotify
 Field: AddedChatRoomRecordsInitializationInfos
 Code:
@@ -2795,26 +2105,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: SpawnLayerActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: SpawnLayerActionInfo
-Field: SpawnLayerActionInfo
-Code:
-
-
-Opcode: CheatAcquireAllUsableSkillsRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireAllUsableSkillsRequest
-Field: CheatAcquireAllUsableSkillsRequest
-Code:
-
 
 Opcode: RewardInfo
 Field: CurrencyCuidToAmount
@@ -3030,16 +2320,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
   }
   std::__n
 
-Opcode: StrongholdBattleCovenantBattalionConfirmConveneRequest
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleCovenantBattalionConfirmConveneRequest
-Field: StrongholdBattleCovenantBattalionConfirmConveneRequest
-Code:
-
-
 Opcode: FavoriteCraftRecipeRegisterRequest
 Field: IsRegistered
 Code:
@@ -3081,16 +2361,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatResetContentsUnlockRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetContentsUnlockRequest
-Field: CheatResetContentsUnlockRequest
-Code:
-
 
 Opcode: NameTagHealthBarDisplayOptionDetailInfo
 Field: IsOwnCovenantNameDisplayed
@@ -3345,16 +2615,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: BaseGameOptionInfo
-Field: TypeName
-Code:
-
-
-Opcode: BaseGameOptionInfo
-Field: BaseGameOptionInfo
-Code:
-
-
 Opcode: TargetScanShareRequest
 Field: ScannedTargetGuids
 Code:
@@ -3368,16 +2628,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatBatchBossSpawnTimeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatBatchBossSpawnTimeResponse
-Field: CheatBatchBossSpawnTimeResponse
-Code:
-
 
 Opcode: CovenantWatchInfo
 Field: CovenantWatchKillingInfos
@@ -3465,16 +2715,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: InteractionCancelResponse
-Field: TypeName
-Code:
-
-
-Opcode: InteractionCancelResponse
-Field: InteractionCancelResponse
-Code:
-
-
 Opcode: TozPong
 Field: ServerUtcNow
 Code:
@@ -3487,26 +2727,6 @@ TozSerializableMessageLibNative::JsonSerializer<TozSerializableMessageLibNative:
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatStrongholdBattleAttackDeclareResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleAttackDeclareResponse
-Field: CheatStrongholdBattleAttackDeclareResponse
-Code:
-
-
-Opcode: CheatSummonNpcResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSummonNpcResponse
-Field: CheatSummonNpcResponse
-Code:
-
 
 Opcode: RealmIntegrationBattleScoreUpdateNotify
 Field: ScoreInfo
@@ -3584,16 +2804,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CheatSetRealmAccountPresentRegisterBlockResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetRealmAccountPresentRegisterBlockResponse
-Field: CheatSetRealmAccountPresentRegisterBlockResponse
-Code:
-
 
 Opcode: PartyConfirmJoinApplicationResponse
 Field: IsApproved
@@ -3691,16 +2901,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: PowerSavingModeRewardInfo
-Field: TypeName
-Code:
-
-
-Opcode: PowerSavingModeRewardInfo
-Field: PowerSavingModeRewardInfo
-Code:
-
-
 Opcode: CovenantRealmTransferRegisterRequest
 Field: PlayerGuidList
 Code:
@@ -3713,16 +2913,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: WorldEventInfo
-Field: TypeName
-Code:
-
-
-Opcode: WorldEventInfo
-Field: WorldEventInfo
-Code:
-
 
 Opcode: PlayerSkillAcquireResponse
 Field: AutoUseRootSkillCuids
@@ -3761,36 +2951,6 @@ bVar7 = *(char *)(in_x0 + 8) == '\0';
     pcVar10 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: BattalionLeaveFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionLeaveFailResponse
-Field: BattalionLeaveFailResponse
-Code:
-
-
-Opcode: BattalionCreateResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionCreateResponse
-Field: BattalionCreateResponse
-Code:
-
-
-Opcode: InstanceEventAffectSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: InstanceEventAffectSourceInfo
-Field: InstanceEventAffectSourceInfo
-Code:
-
 
 Opcode: CovenantPayDividendRequest
 Field: DividendInfo
@@ -3880,26 +3040,6 @@ TozSerializableMessageLibNative::
   }
   std::__n
 
-Opcode: ItemAdditionalInfo
-Field: TypeName
-Code:
-
-
-Opcode: ItemAdditionalInfo
-Field: ItemAdditionalInfo
-Code:
-
-
-Opcode: CheatAcquireAllFollowersResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireAllFollowersResponse
-Field: CheatAcquireAllFollowersResponse
-Code:
-
-
 Opcode: ItemAcquireNotify
 Field: ItemIndices
 Code:
@@ -3913,16 +3053,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__nd
-
-Opcode: BasicAchievementPrivateChannelOpenRequest
-Field: TypeName
-Code:
-
-
-Opcode: BasicAchievementPrivateChannelOpenRequest
-Field: BasicAchievementPrivateChannelOpenRequest
-Code:
-
 
 Opcode: PartySharedAttackTargetNotify
 Field: SharedAttackTargetInfo
@@ -4093,66 +3223,6 @@ if (*(long **)(in_x0 + 0x68) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: BattalionTargetLocationSetFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionTargetLocationSetFailResponse
-Field: BattalionTargetLocationSetFailResponse
-Code:
-
-
-Opcode: CovenantCampBuildingCraftResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantCampBuildingCraftResponse
-Field: CovenantCampBuildingCraftResponse
-Code:
-
-
-Opcode: BattalionBattalionWarpRequest
-Field: TypeName
-Code:
-
-
-Opcode: BattalionBattalionWarpRequest
-Field: BattalionBattalionWarpRequest
-Code:
-
-
-Opcode: CheatOverwriteCrossRealmRankingBoardResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatOverwriteCrossRealmRankingBoardResponse
-Field: CheatOverwriteCrossRealmRankingBoardResponse
-Code:
-
-
-Opcode: LastDeathRecordDeleteResponse
-Field: TypeName
-Code:
-
-
-Opcode: LastDeathRecordDeleteResponse
-Field: LastDeathRecordDeleteResponse
-Code:
-
-
-Opcode: CheatChangeLastLevelForLevelUpNotifyResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeLastLevelForLevelUpNotifyResponse
-Field: CheatChangeLastLevelForLevelUpNotifyResponse
-Code:
-
-
 Opcode: CovenantSynchronizeMemberContributionInfoNotify
 Field: CovenantMemberContributionInfos
 Code:
@@ -4211,16 +3281,6 @@ pcVar8 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: CheatApplyCollectionSetFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatApplyCollectionSetFailResponse
-Field: CheatApplyCollectionSetFailResponse
-Code:
-
-
 Opcode: CharacterMoveNotify
 Field: CharacterMoveInfo
 Code:
@@ -4269,16 +3329,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatCovenantRubyShopResetMerchandiseBuyCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantRubyShopResetMerchandiseBuyCountResponse
-Field: CheatCovenantRubyShopResetMerchandiseBuyCountResponse
-Code:
-
 
 Opcode: DeathPenaltyRecordInfoAddNotify
 Field: DeathPenaltyRecordInfo
@@ -4444,16 +3494,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatAccountAffectDetachAllResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAccountAffectDetachAllResponse
-Field: CheatAccountAffectDetachAllResponse
-Code:
-
-
 Opcode: ShopCashMerchandiseBuyRequest
 Field: MerchandisePaymentInfo
 Code:
@@ -4474,16 +3514,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatDeleteChatCovenantResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDeleteChatCovenantResponse
-Field: CheatDeleteChatCovenantResponse
-Code:
-
 
 Opcode: SessionKickNotify
 Field: BanInfo
@@ -4531,26 +3561,6 @@ bVar9 = *(char *)(in_x0 + 0x34) == '\0';
     pcVar6 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CheatDiscoverAllSelfieDoodadSpawnersResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDiscoverAllSelfieDoodadSpawnersResponse
-Field: CheatDiscoverAllSelfieDoodadSpawnersResponse
-Code:
-
-
-Opcode: StrongholdTaxUpdateResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdTaxUpdateResponse
-Field: StrongholdTaxUpdateResponse
-Code:
-
 
 Opcode: SpellstoneAdditionalBuffStatsInfo
 Field: IsImmuneToHealthPointsGain
@@ -4660,22 +3670,7 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: ZlibCompressHandshakeResult
-Field: TypeName
-Code:
-
-
-Opcode: ZlibCompressHandshakeResult
 Field: TozNetwork.Handshake.Compressor.ZlibCompressHandshakeResult
-Code:
-
-
-Opcode: CoreMaterialItemInfo
-Field: TypeName
-Code:
-
-
-Opcode: CoreMaterialItemInfo
-Field: CoreMaterialItemInfo
 Code:
 
 
@@ -4692,16 +3687,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ErFrontServerSessionCancelWaitingQueueRequest
-Field: TypeName
-Code:
-
-
-Opcode: ErFrontServerSessionCancelWaitingQueueRequest
-Field: ErFrontServerSessionCancelWaitingQueueRequest
-Code:
-
 
 Opcode: SpellstoneAdditionalInfo
 Field: SubOptionCuids
@@ -4860,36 +3845,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FVector,TSizedDefaultAllo
   }
   std::__n
 
-Opcode: PlayerFieldEnterNotify
-Field: TypeName
-Code:
-
-
-Opcode: PlayerFieldEnterNotify
-Field: PlayerFieldEnterNotify
-Code:
-
-
-Opcode: PlayerMarketTransactionDelayedSellRegisterProcessNotify
-Field: TypeName
-Code:
-
-
-Opcode: PlayerMarketTransactionDelayedSellRegisterProcessNotify
-Field: PlayerMarketTransactionDelayedSellRegisterProcessNotify
-Code:
-
-
-Opcode: CovenantJoinApplyInfoUpdatedNotify
-Field: TypeName
-Code:
-
-
-Opcode: CovenantJoinApplyInfoUpdatedNotify
-Field: CovenantJoinApplyInfoUpdatedNotify
-Code:
-
-
 Opcode: ShopCashMerchandiseReceiveResponse
 Field: ReceiveGuidList
 Code:
@@ -5043,26 +3998,6 @@ if (*(long **)(in_x0 + 0x60) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatPvpScoreRankingSourceInfoChangeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatPvpScoreRankingSourceInfoChangeResponse
-Field: CheatPvpScoreRankingSourceInfoChangeResponse
-Code:
-
-
-Opcode: CheatRealmIntegrationPreprocessingRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatRealmIntegrationPreprocessingRequest
-Field: CheatRealmIntegrationPreprocessingRequest
-Code:
-
-
 Opcode: CheatAccomplishQuestRequest
 Field: ReceiveReward
 Code:
@@ -5088,16 +4023,6 @@ bVar8 = *(char *)(in_x0 + 0x2c) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: RealmAccountWarehouseAutoStoreSettingUpdateResponse
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountWarehouseAutoStoreSettingUpdateResponse
-Field: RealmAccountWarehouseAutoStoreSettingUpdateResponse
-Code:
-
 
 Opcode: CovenantBattalionExpeditionFailNotify
 Field: GainedItemInfos
@@ -5206,16 +4131,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: BasicAchievementPrivateChannelCloseResponse
-Field: TypeName
-Code:
-
-
-Opcode: BasicAchievementPrivateChannelCloseResponse
-Field: BasicAchievementPrivateChannelCloseResponse
-Code:
-
 
 Opcode: SchemaColumn
 Field: DeployType
@@ -5461,46 +4376,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatAcquireFollowerSetResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireFollowerSetResponse
-Field: CheatAcquireFollowerSetResponse
-Code:
-
-
-Opcode: CheatSetStrongholdOccupyingCovenantResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetStrongholdOccupyingCovenantResponse
-Field: CheatSetStrongholdOccupyingCovenantResponse
-Code:
-
-
-Opcode: FollowerSquadResetRequest
-Field: TypeName
-Code:
-
-
-Opcode: FollowerSquadResetRequest
-Field: FollowerSquadResetRequest
-Code:
-
-
-Opcode: BasicAchievementPrivateChannelCloseRequest
-Field: TypeName
-Code:
-
-
-Opcode: BasicAchievementPrivateChannelCloseRequest
-Field: BasicAchievementPrivateChannelCloseRequest
-Code:
-
-
 Opcode: MountInteractionStateNotify
 Field: Info
 Code:
@@ -5535,16 +4410,6 @@ TozSerializableMessageLibNative::
     pcVar10 = local_188;
   }
   std::__nd
-
-Opcode: CheatDetachAllBuffsRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatDetachAllBuffsRequest
-Field: CheatDetachAllBuffsRequest
-Code:
-
 
 Opcode: ContentsUnlockInitializeNotify
 Field: UnusedContentsUnlockKinds
@@ -5609,16 +4474,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: StrongholdBuildingConstructResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingConstructResponse
-Field: StrongholdBuildingConstructResponse
-Code:
-
-
 Opcode: FollowerCollectionInfo
 Field: CollectionStatus
 Code:
@@ -5632,16 +4487,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: TerritoryErosionItemConfigurationModifyResponse
-Field: TypeName
-Code:
-
-
-Opcode: TerritoryErosionItemConfigurationModifyResponse
-Field: TerritoryErosionItemConfigurationModifyResponse
-Code:
-
 
 Opcode: CharacterMoveOrbitalToLocationParameterInfo
 Field: IsClockwise
@@ -5682,16 +4527,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatClearCovenantResearchResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCovenantResearchResponse
-Field: CheatClearCovenantResearchResponse
-Code:
-
 
 Opcode: ReinforcementInfo
 Field: IsInBattle
@@ -5823,16 +4658,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: ServerDrivenPlayRecoveringHealthPointsStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayRecoveringHealthPointsStateInfo
-Field: ServerDrivenPlayRecoveringHealthPointsStateInfo
-Code:
-
-
 Opcode: ServerDrivenPlayStartRequest
 Field: ResupplyOnStart
 Code:
@@ -5859,26 +4684,6 @@ bVar8 = *(char *)(in_x0 + 0x30) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: ErInterServerMigrationAuthenticateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ErInterServerMigrationAuthenticateInfo
-Field: ErInterServerMigrationAuthenticateInfo
-Code:
-
-
-Opcode: CovenantBattalionQuerySummaryInfoListRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantBattalionQuerySummaryInfoListRequest
-Field: CovenantBattalionQuerySummaryInfoListRequest
-Code:
-
-
 Opcode: ExpeditionNpcSummonWaveInfo
 Field: NpcDeathCounts
 Code:
@@ -5892,16 +4697,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: MarketStrongholdTaxInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: MarketStrongholdTaxInfoRequest
-Field: MarketStrongholdTaxInfoRequest
-Code:
-
 
 Opcode: MailsReceiveAttachmentsInTabResponse
 Field: ReceivedMailGuids
@@ -5936,36 +4731,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatFinishFollowerWorkResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatFinishFollowerWorkResponse
-Field: CheatFinishFollowerWorkResponse
-Code:
-
-
-Opcode: AlertPlayerQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: AlertPlayerQueryRequest
-Field: AlertPlayerQueryRequest
-Code:
-
-
-Opcode: RealmIntegrationHidePopupRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmIntegrationHidePopupRequest
-Field: RealmIntegrationHidePopupRequest
-Code:
-
 
 Opcode: CovenantWatchDetailInfoQueryResponse
 Field: CovenantWatchDetailInfos
@@ -6007,26 +4772,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CovenantSynchronizeMemberInfosRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantSynchronizeMemberInfosRequest
-Field: CovenantSynchronizeMemberInfosRequest
-Code:
-
-
-Opcode: ErTozInitializeMessage
-Field: TypeName
-Code:
-
-
-Opcode: ErTozInitializeMessage
-Field: ErTozInitializeMessage
-Code:
-
-
 Opcode: PvpScoreRankingViewInfo
 Field: AdditionalSourceInfo
 Code:
@@ -6047,16 +4792,6 @@ if (*(long **)(in_x0 + 0x50) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatAddServerTimeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddServerTimeResponse
-Field: CheatAddServerTimeResponse
-Code:
-
 
 Opcode: PlayerMarketSaleGoodsListResponse
 Field: MarketSellerGoodsInfos
@@ -6321,26 +5056,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: StrongholdBuildingPurifyResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingPurifyResponse
-Field: StrongholdBuildingPurifyResponse
-Code:
-
-
-Opcode: CheatSkillTableReloadRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatSkillTableReloadRequest
-Field: CheatSkillTableReloadRequest
-Code:
-
-
 Opcode: PartyOptionInfo
 Field: CanInviteOrJoinApplyOnlyFriendOrSameCovenant
 Code:
@@ -6388,26 +5103,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatAnniversaryAchievementAccomplishAllResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAnniversaryAchievementAccomplishAllResponse
-Field: CheatAnniversaryAchievementAccomplishAllResponse
-Code:
-
-
-Opcode: PlayerSlotExpandRequest
-Field: TypeName
-Code:
-
-
-Opcode: PlayerSlotExpandRequest
-Field: PlayerSlotExpandRequest
-Code:
-
-
 Opcode: CovenantSearchInfo
 Field: OccupiedStrongholdCuids
 Code:
@@ -6445,26 +5140,6 @@ bVar9 = *(char *)(in_x0 + 0x98) == '\0';
     pcVar13 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: CheatClearCollectionRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCollectionRequest
-Field: CheatClearCollectionRequest
-Code:
-
-
-Opcode: CheatUpdateAchievementMissionProgressCountsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUpdateAchievementMissionProgressCountsResponse
-Field: CheatUpdateAchievementMissionProgressCountsResponse
-Code:
-
 
 Opcode: FavoriteCollectionRegisterResponse
 Field: IsRegistered
@@ -6539,16 +5214,6 @@ bVar9 = *(char *)(in_x0 + 0x30) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: CheatUpgradeBuildingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUpgradeBuildingResponse
-Field: CheatUpgradeBuildingResponse
-Code:
-
-
 Opcode: OccupiableNpcInfoBulkUpdateNotify
 Field: OccupiableNpcInfos
 Code:
@@ -6583,46 +5248,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantReturnHavenChangeFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantReturnHavenChangeFailResponse
-Field: CovenantReturnHavenChangeFailResponse
-Code:
-
-
-Opcode: CovenantDiplomacyWithdrawAllianceFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantDiplomacyWithdrawAllianceFailResponse
-Field: CovenantDiplomacyWithdrawAllianceFailResponse
-Code:
-
-
-Opcode: CheatResetDiscoveredSelfieDoodadSpawnersResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetDiscoveredSelfieDoodadSpawnersResponse
-Field: CheatResetDiscoveredSelfieDoodadSpawnersResponse
-Code:
-
-
-Opcode: RealmIntegrationBattleWarpRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmIntegrationBattleWarpRequest
-Field: RealmIntegrationBattleWarpRequest
-Code:
-
 
 Opcode: SpawnLayerDeactivateNotify
 Field: IsPermanentSpawnLayer
@@ -6743,26 +5368,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: FollowerReturnReasonAdditionalInfo
-Field: TypeName
-Code:
-
-
-Opcode: FollowerReturnReasonAdditionalInfo
-Field: FollowerReturnReasonAdditionalInfo
-Code:
-
-
-Opcode: PowerSavingModeEndNotify
-Field: TypeName
-Code:
-
-
-Opcode: PowerSavingModeEndNotify
-Field: PowerSavingModeEndNotify
-Code:
-
-
 Opcode: InGameNotificationDeleteCategoryNotify
 Field: DeletedGuids
 Code:
@@ -6775,26 +5380,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar8 = local_188;
   }
   std::__n
-
-Opcode: StrongholdBattleCovenantBattalionStrategicObjectiveResetFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleCovenantBattalionStrategicObjectiveResetFailResponse
-Field: StrongholdBattleCovenantBattalionStrategicObjectiveResetFailResponse
-Code:
-
-
-Opcode: SingleItemSelector
-Field: TypeName
-Code:
-
-
-Opcode: SingleItemSelector
-Field: SingleItemSelector
-Code:
-
 
 Opcode: FieldEnterCompleteRequest
 Field: CharacterMoveInfo
@@ -6831,16 +5416,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: SkillAffectInfo
-Field: TypeName
-Code:
-
-
-Opcode: SkillAffectInfo
-Field: SkillAffectInfo
-Code:
-
-
 Opcode: CovenantQueryJoinAppliedCovenantSummaryInfoListResponse
 Field: CovenantSummaryInfos
 Code:
@@ -6875,16 +5450,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: StrongholdBuildingRepairResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingRepairResponse
-Field: StrongholdBuildingRepairResponse
-Code:
-
 
 Opcode: WorldMapPvpBattleKillDeathInfoUpdateNotify
 Field: VictimPvpBattleKillDeathCountInfo
@@ -6963,16 +5528,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatAccountAffectDetachAllRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAccountAffectDetachAllRequest
-Field: CheatAccountAffectDetachAllRequest
-Code:
-
-
 Opcode: RealmIntegrationRealmAccountInfo
 Field: PlayerInfos
 Code:
@@ -7000,16 +5555,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CheatChangeBulkCharacterMoveNotifyIntervalResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeBulkCharacterMoveNotifyIntervalResponse
-Field: CheatChangeBulkCharacterMoveNotifyIntervalResponse
-Code:
-
 
 Opcode: StrongholdBuildingDowngradeRequest
 Field: IsCompleteImmediately
@@ -7090,26 +5635,6 @@ bVar8 = *(char *)(in_x0 + 0xf8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CovenantLeaveRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantLeaveRequest
-Field: CovenantLeaveRequest
-Code:
-
-
-Opcode: CheatChangeStrongholdTaxRateResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeStrongholdTaxRateResponse
-Field: CheatChangeStrongholdTaxRateResponse
-Code:
-
 
 Opcode: CspSupporterInfo
 Field: ChannelInfos
@@ -7284,16 +5809,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatClearEquippedSpellstonesRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearEquippedSpellstonesRequest
-Field: CheatClearEquippedSpellstonesRequest
-Code:
-
-
 Opcode: OccupiableNpcSummaryUpdateDataNotify
 Field: OccupiableNpcSummaryInfo
 Code:
@@ -7363,16 +5878,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: NpcKillCountActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: NpcKillCountActionInfo
-Field: NpcKillCountActionInfo
-Code:
-
-
 Opcode: CostumeInfo
 Field: HasPreviouslyEquippedGuise
 Code:
@@ -7429,26 +5934,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantUpdateJoinKindFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateJoinKindFailResponse
-Field: CovenantUpdateJoinKindFailResponse
-Code:
-
-
-Opcode: CovenantLeaderDividendResultInfo
-Field: TypeName
-Code:
-
-
-Opcode: CovenantLeaderDividendResultInfo
-Field: CovenantLeaderDividendResultInfo
-Code:
-
 
 Opcode: SeasonPassLevelRewardParameter
 Field: RewardedLevels
@@ -7546,26 +6031,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatSkillTableReloadResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSkillTableReloadResponse
-Field: CheatSkillTableReloadResponse
-Code:
-
-
-Opcode: CheatResurrectAllFollowerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResurrectAllFollowerResponse
-Field: CheatResurrectAllFollowerResponse
-Code:
-
-
 Opcode: RealmAccountIntegrationInfo
 Field: HidePopup
 Code:
@@ -7627,26 +6092,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatInventoryIncreaseWeightLimitResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatInventoryIncreaseWeightLimitResponse
-Field: CheatInventoryIncreaseWeightLimitResponse
-Code:
-
-
-Opcode: PartyLeaveFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: PartyLeaveFailResponse
-Field: PartyLeaveFailResponse
-Code:
-
-
 Opcode: CheatGetEnvironmentVariablesResponse
 Field: Variables
 Code:
@@ -7690,32 +6135,7 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: TlsLikeEncryptServerCompleted
-Field: TypeName
-Code:
-
-
-Opcode: TlsLikeEncryptServerCompleted
 Field: TozNetwork.Handshake.TlsLikeEncryptor.TlsLikeEncryptServerCompleted
-Code:
-
-
-Opcode: CovenantBattalionExpeditionLivingTotemDepartureFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantBattalionExpeditionLivingTotemDepartureFailResponse
-Field: CovenantBattalionExpeditionLivingTotemDepartureFailResponse
-Code:
-
-
-Opcode: GuiseUnequipRequest
-Field: TypeName
-Code:
-
-
-Opcode: GuiseUnequipRequest
-Field: GuiseUnequipRequest
 Code:
 
 
@@ -7744,16 +6164,6 @@ bVar9 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: StrongholdBattleAttackSpireStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleAttackSpireStartNotify
-Field: StrongholdBattleAttackSpireStartNotify
-Code:
-
 
 Opcode: PushNotificationOptionModifyResponse
 Field: ModifiedPushNotificationOptionIsEnabled
@@ -7839,26 +6249,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatFavorDailyCheckDateTimeResetRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatFavorDailyCheckDateTimeResetRequest
-Field: CheatFavorDailyCheckDateTimeResetRequest
-Code:
-
-
-Opcode: FieldMigrationReadyResponse
-Field: TypeName
-Code:
-
-
-Opcode: FieldMigrationReadyResponse
-Field: FieldMigrationReadyResponse
-Code:
-
-
 Opcode: MountCallingInfo
 Field: IsImmediateBoarding
 Code:
@@ -7907,16 +6297,6 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
     pcVar5 = local_188;
   }
   std::__ndk1::__put
-
-Opcode: CheatAddCovenantGiftSpecialGiftBoxPointsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddCovenantGiftSpecialGiftBoxPointsResponse
-Field: CheatAddCovenantGiftSpecialGiftBoxPointsResponse
-Code:
-
 
 Opcode: StrongholdBuildingConstructRequest
 Field: IsCompleteImmediately
@@ -8037,16 +6417,6 @@ pcVar11 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: StrongholdBattleDefenseGunAttackStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleDefenseGunAttackStartNotify
-Field: StrongholdBattleDefenseGunAttackStartNotify
-Code:
-
-
 Opcode: ChatQueryEntityInfoResponse
 Field: LoggedIn
 Code:
@@ -8089,16 +6459,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: MailCustomerServiceReplyLayoutInfo
-Field: TypeName
-Code:
-
-
-Opcode: MailCustomerServiceReplyLayoutInfo
-Field: MailCustomerServiceReplyLayoutInfo
-Code:
-
-
 Opcode: HavenOperationInfo
 Field: RecommendedResourceKinds
 Code:
@@ -8112,36 +6472,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatFavorDailyCheckDateTimeResetResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatFavorDailyCheckDateTimeResetResponse
-Field: CheatFavorDailyCheckDateTimeResetResponse
-Code:
-
-
-Opcode: CrossRealmSeasonEntryInitialDataNotify
-Field: TypeName
-Code:
-
-
-Opcode: CrossRealmSeasonEntryInitialDataNotify
-Field: CrossRealmSeasonEntryInitialDataNotify
-Code:
-
-
-Opcode: CheatCloseAllFogResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCloseAllFogResponse
-Field: CheatCloseAllFogResponse
-Code:
-
 
 Opcode: AttackerListNotify
 Field: AttackerPlayerGuids
@@ -8301,16 +6631,6 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: CheatCovenantCompleteCampaignResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantCompleteCampaignResponse
-Field: CheatCovenantCompleteCampaignResponse
-Code:
-
-
 Opcode: StrongholdSummonWaveDefenseInfo
 Field: CurrentWaveNpcKnockOutProgress
 Code:
@@ -8324,26 +6644,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: SessionLogoutResponse
-Field: TypeName
-Code:
-
-
-Opcode: SessionLogoutResponse
-Field: SessionLogoutResponse
-Code:
-
-
-Opcode: CheatAccomplishAllFavorRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAccomplishAllFavorRequest
-Field: CheatAccomplishAllFavorRequest
-Code:
-
 
 Opcode: ExpeditionJoinedBattalionsInitialDataNotify
 Field: ExpeditionJoinedBattalionList
@@ -8427,26 +6727,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatAddStrongholdTaxAmountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddStrongholdTaxAmountResponse
-Field: CheatAddStrongholdTaxAmountResponse
-Code:
-
-
-Opcode: CheatChangeRankingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeRankingResponse
-Field: CheatChangeRankingResponse
-Code:
-
-
 Opcode: MountBoardingInfo
 Field: IsImmediateBoarding
 Code:
@@ -8490,66 +6770,6 @@ lVar2 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatClearGearRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearGearRequest
-Field: CheatClearGearRequest
-Code:
-
-
-Opcode: ArquiruneInfo
-Field: TypeName
-Code:
-
-
-Opcode: ArquiruneInfo
-Field: ArquiruneInfo
-Code:
-
-
-Opcode: SpecialMovePointsExhaustionAffectSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: SpecialMovePointsExhaustionAffectSourceInfo
-Field: SpecialMovePointsExhaustionAffectSourceInfo
-Code:
-
-
-Opcode: CheatResetAllCooldownRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetAllCooldownRequest
-Field: CheatResetAllCooldownRequest
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleScoreRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleScoreRequest
-Field: CheatClearRealmIntegrationBattleScoreRequest
-Code:
-
-
-Opcode: CheatRemoveVeilResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRemoveVeilResponse
-Field: CheatRemoveVeilResponse
-Code:
-
 
 Opcode: MountUpdateSkillSlotInfoResponse
 Field: IsUsedForContinuousCombat
@@ -8679,16 +6899,6 @@ TozSerializableMessageLibNative::
   }
   std::__n
 
-Opcode: CheatUpdatePlayerMissionCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUpdatePlayerMissionCountResponse
-Field: CheatUpdatePlayerMissionCountResponse
-Code:
-
-
 Opcode: CovenantStartCampaignNotify
 Field: CovenantCampaignProgressInfo
 Code:
@@ -8722,26 +6932,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocato
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatCovenantCreateRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantCreateRequest
-Field: CheatCovenantCreateRequest
-Code:
-
-
-Opcode: CraftQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: CraftQueryRequest
-Field: CraftQueryRequest
-Code:
-
 
 Opcode: PlayerLocationMonitoringRegisterResponse
 Field: PlayerLocationMonitoringInfo
@@ -8804,16 +6994,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatTutorialResetAllResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatTutorialResetAllResponse
-Field: CheatTutorialResetAllResponse
-Code:
-
 
 Opcode: PartyMemberLootNotify
 Field: ItemIndexWithCounts
@@ -8885,16 +7065,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: StrongholdBattleCovenantBattalionStrategicObjectiveSetFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleCovenantBattalionStrategicObjectiveSetFailResponse
-Field: StrongholdBattleCovenantBattalionStrategicObjectiveSetFailResponse
-Code:
-
-
 Opcode: ItemTransmuteResponse
 Field: ItemTransmutationResultInfos
 Code:
@@ -8922,16 +7092,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: OccupiableNpcUnOccupationUpdateDataNotify
-Field: TypeName
-Code:
-
-
-Opcode: OccupiableNpcUnOccupationUpdateDataNotify
-Field: OccupiableNpcUnOccupationUpdateDataNotify
-Code:
-
 
 Opcode: MarketFavoriteItemInfoQueryResponse
 Field: MarketFavoriteItemInfosOnSale
@@ -9017,16 +7177,6 @@ if (*(long **)(in_x0 + 0x40) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: ReturnPlaceDoodadInfo
-Field: TypeName
-Code:
-
-
-Opcode: ReturnPlaceDoodadInfo
-Field: ReturnPlaceDoodadInfo
-Code:
-
-
 Opcode: GearBatchCraftResponse
 Field: CraftResultInfos
 Code:
@@ -9109,16 +7259,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: RealmAccountPresentCancelResponse
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountPresentCancelResponse
-Field: RealmAccountPresentCancelResponse
-Code:
-
-
 Opcode: ItemUpdateInfo
 Field: ItemIndexWithCounts
 Code:
@@ -9146,26 +7286,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
   }
   std::__n
 
-Opcode: CheatTerritoryContaminationChangeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatTerritoryContaminationChangeResponse
-Field: CheatTerritoryContaminationChangeResponse
-Code:
-
-
-Opcode: CovenantCampInfoListRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantCampInfoListRequest
-Field: CovenantCampInfoListRequest
-Code:
-
-
 Opcode: StrongholdBattleUpdateSiegeWeaponSlotNotify
 Field: StrongholdBattleAttackSiegeWeaponSlotInfo
 Code:
@@ -9186,26 +7306,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: StrongholdBattleTeleportToSpireResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleTeleportToSpireResponse
-Field: StrongholdBattleTeleportToSpireResponse
-Code:
-
-
-Opcode: CheatClearSeasonPassAchievementsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearSeasonPassAchievementsResponse
-Field: CheatClearSeasonPassAchievementsResponse
-Code:
-
 
 Opcode: CovenantDonationRequest
 Field: ItemGuidSelectors
@@ -9242,16 +7342,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ResurrectorSelectionExpiredNotify
-Field: TypeName
-Code:
-
-
-Opcode: ResurrectorSelectionExpiredNotify
-Field: ResurrectorSelectionExpiredNotify
-Code:
-
 
 Opcode: CheatCollectionUpdateNotify
 Field: ActivatedCollectionCategoryCuids
@@ -9320,16 +7410,6 @@ bVar8 = *(char *)(in_x0 + 0xc) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: StrongholdBattleDefenseGunBulletNotEnoughNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleDefenseGunBulletNotEnoughNotify
-Field: StrongholdBattleDefenseGunBulletNotEnoughNotify
-Code:
-
-
 Opcode: BossSpawnInfoUpdatedNotify
 Field: BossSpawnInfo
 Code:
@@ -9350,16 +7430,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatAddRegionContentRechargedPlayTimeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddRegionContentRechargedPlayTimeResponse
-Field: CheatAddRegionContentRechargedPlayTimeResponse
-Code:
-
 
 Opcode: PartyInfo
 Field: PartyMemberInfos
@@ -9430,16 +7500,6 @@ if (*(long **)(in_x0 + 0x98) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PartyTargetLocationSetFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: PartyTargetLocationSetFailResponse
-Field: PartyTargetLocationSetFailResponse
-Code:
-
 
 Opcode: QuestProgressInfo
 Field: StartByItem
@@ -9729,11 +7789,6 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: TozTimeReconcile
-Field: TypeName
-Code:
-
-
-Opcode: TozTimeReconcile
 Field: TozNetwork.Protocol.TozTimeReconcile
 Code:
 
@@ -9765,16 +7820,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ItemUseParameterInfo
-Field: TypeName
-Code:
-
-
-Opcode: ItemUseParameterInfo
-Field: ItemUseParameterInfo
-Code:
-
 
 Opcode: FindShortestTravelPathResponse
 Field: PathToNearestRoadJunctionToStartLocation
@@ -9849,31 +7894,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: FavorMissionDatabaseInfo
-Field: TypeName
-Code:
-
-
-Opcode: FavorMissionDatabaseInfo
-Field: FavorMissionDatabaseInfo
-Code:
-
-
-Opcode: CheatClearDeathPenaltyRecordRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearDeathPenaltyRecordRequest
-Field: CheatClearDeathPenaltyRecordRequest
-Code:
-
-
-Opcode: SessionInitializeInfo
-Field: TypeName
-Code:
-
-
 Opcode: SessionInitializeInfo
 Field: 
 Code:
@@ -9905,26 +7925,6 @@ bVar8 = *(char *)(in_x0 + 0x30) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatCovenantRealmTransferBlockResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantRealmTransferBlockResponse
-Field: CheatCovenantRealmTransferBlockResponse
-Code:
-
-
-Opcode: CheatBatchBossSpawnTimeRollbackRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatBatchBossSpawnTimeRollbackRequest
-Field: CheatBatchBossSpawnTimeRollbackRequest
-Code:
-
-
 Opcode: FollowerDispatchOverallInfoSynchronizeNotify
 Field: DispatchOverallInfos
 Code:
@@ -9938,16 +7938,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: SendChatMessageFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: SendChatMessageFailResponse
-Field: SendChatMessageFailResponse
-Code:
-
 
 Opcode: ChatNotify
 Field: ChatInfo
@@ -9998,16 +7988,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatCancelAllStrongholdProtectionRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatCancelAllStrongholdProtectionRequest
-Field: CheatCancelAllStrongholdProtectionRequest
-Code:
-
-
 Opcode: StrongholdBuildingQueryInfosResponse
 Field: BuildingInfoList
 Code:
@@ -10021,26 +8001,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatFissionPointsChangeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatFissionPointsChangeResponse
-Field: CheatFissionPointsChangeResponse
-Code:
-
-
-Opcode: StrongholdReserveProtectionResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdReserveProtectionResponse
-Field: StrongholdReserveProtectionResponse
-Code:
-
 
 Opcode: CovenantSummaryInfo
 Field: OccupiedStrongholdCuids
@@ -10075,26 +8035,6 @@ if (*(long **)(in_x0 + 0xb8) == (long *)0x0) {
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatChangeBuildingHealthPointsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeBuildingHealthPointsResponse
-Field: CheatChangeBuildingHealthPointsResponse
-Code:
-
-
-Opcode: SkillCancelChargingRequest
-Field: TypeName
-Code:
-
-
-Opcode: SkillCancelChargingRequest
-Field: SkillCancelChargingRequest
-Code:
-
 
 Opcode: CheatSetExperiencePointsBlockedRequest
 Field: IsExperiencePointsBlocked
@@ -10136,16 +8076,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatDespawnBuildingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDespawnBuildingResponse
-Field: CheatDespawnBuildingResponse
-Code:
-
-
 Opcode: MarketFavoriteItemRegisterResponse
 Field: IsOnSaleMarketFavoriteItemInfo
 Code:
@@ -10180,16 +8110,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatSpawnGuardTowersAtOccupyingStrongholdsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnGuardTowersAtOccupyingStrongholdsResponse
-Field: CheatSpawnGuardTowersAtOccupyingStrongholdsResponse
-Code:
-
 
 Opcode: BattalionInfo
 Field: AllianceCovenantGuids
@@ -10402,16 +8322,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: BattalionBattalionWarpConfirmRequest
-Field: TypeName
-Code:
-
-
-Opcode: BattalionBattalionWarpConfirmRequest
-Field: BattalionBattalionWarpConfirmRequest
-Code:
-
-
 Opcode: ItemAutoUseInfoUpdateNotify
 Field: ItemCuids
 Code:
@@ -10424,16 +8334,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatUnOccupyOccupiableNpcResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUnOccupyOccupiableNpcResponse
-Field: CheatUnOccupyOccupiableNpcResponse
-Code:
-
 
 Opcode: CovenantSynchronizeMemberInfosResponse
 Field: CovenantMemberInfos
@@ -10469,26 +8369,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ServerDrivenPlayEndRequest
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayEndRequest
-Field: ServerDrivenPlayEndRequest
-Code:
-
-
-Opcode: CovenantRealmTransferExecuteResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRealmTransferExecuteResponse
-Field: CovenantRealmTransferExecuteResponse
-Code:
-
 
 Opcode: CovenantTradeGoodsInfo
 Field: ItemIndexWithCount
@@ -10559,36 +8439,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: BattalionLeaderChangeFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionLeaderChangeFailResponse
-Field: BattalionLeaderChangeFailResponse
-Code:
-
-
-Opcode: CheatAddDeathPenaltyRecordResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddDeathPenaltyRecordResponse
-Field: CheatAddDeathPenaltyRecordResponse
-Code:
-
-
-Opcode: ChatServerLoginRequest
-Field: TypeName
-Code:
-
-
-Opcode: ChatServerLoginRequest
-Field: ChatServerLoginRequest
-Code:
-
-
 Opcode: ExpeditionJoinedBattalionsAddOrUpdateNotify
 Field: CovenantBattalionPublicSummaryInfo
 Code:
@@ -10609,16 +8459,6 @@ if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatClearRealmIntegrationBattleAllScoreResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleAllScoreResponse
-Field: CheatClearRealmIntegrationBattleAllScoreResponse
-Code:
-
 
 Opcode: InGameNotificationNotify
 Field: InGameNotificationInfo
@@ -10694,16 +8534,6 @@ bVar8 = *(char *)(in_x0 + 0x10) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: PvpRecordQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: PvpRecordQueryRequest
-Field: PvpRecordQueryRequest
-Code:
-
-
 Opcode: CheatClearSkillSlotQuickSlotAutoUseResponse
 Field: AppliedPlayerSkillSlots
 Code:
@@ -10717,16 +8547,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatAnniversaryAchievementResetAllRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAnniversaryAchievementResetAllRequest
-Field: CheatAnniversaryAchievementResetAllRequest
-Code:
-
 
 Opcode: GatheringSiteInfo
 Field: GatheringFollowerWorkInfos
@@ -10813,16 +8633,6 @@ bVar7 = *(char *)(in_x0 + 0x40) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: CheatInstanceEventRunActionsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatInstanceEventRunActionsResponse
-Field: CheatInstanceEventRunActionsResponse
-Code:
-
-
 Opcode: StrongholdBuildingCraftRequest
 Field: IsCompleteImmediately
 Code:
@@ -10844,16 +8654,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantRubyShopBuyResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRubyShopBuyResponse
-Field: CovenantRubyShopBuyResponse
-Code:
-
-
 Opcode: AlertPlayerRemoveNotify
 Field: DeletedPlayerGuids
 Code:
@@ -10866,21 +8666,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: ErLoginServerAuthenticateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ErLoginServerAuthenticateInfo
-Field: ErLoginServerAuthenticateInfo
-Code:
-
-
-Opcode: TlsLikeEncryptHandshakeResult
-Field: TypeName
-Code:
-
 
 Opcode: TlsLikeEncryptHandshakeResult
 Field: TozNetwork.Handshake.TlsLikeEncryptor.TlsLikeEncryptHandshakeResult
@@ -10900,26 +8685,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: RealmAccountPresentQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountPresentQueryRequest
-Field: RealmAccountPresentQueryRequest
-Code:
-
-
-Opcode: CheatRemoveRankingDummyDataResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRemoveRankingDummyDataResponse
-Field: CheatRemoveRankingDummyDataResponse
-Code:
-
 
 Opcode: CovenantRealmTransferExecuteRequest
 Field: UseItem
@@ -10968,46 +8733,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: StrongholdPlayerCancelTeleportNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdPlayerCancelTeleportNotify
-Field: StrongholdPlayerCancelTeleportNotify
-Code:
-
-
-Opcode: CheatClearOccupiableNpcOccupationScoreResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearOccupiableNpcOccupationScoreResponse
-Field: CheatClearOccupiableNpcOccupationScoreResponse
-Code:
-
-
-Opcode: OneShotSpecialMoveDoodadInfo
-Field: TypeName
-Code:
-
-
-Opcode: OneShotSpecialMoveDoodadInfo
-Field: OneShotSpecialMoveDoodadInfo
-Code:
-
-
-Opcode: StrongholdBuildingDemolishResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingDemolishResponse
-Field: StrongholdBuildingDemolishResponse
-Code:
-
-
 Opcode: CovenantRewardInfo
 Field: ItemIndexWithCounts
 Code:
@@ -11035,16 +8760,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ServerDrivenPlayStartWithResupplyStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayStartWithResupplyStateInfo
-Field: ServerDrivenPlayStartWithResupplyStateInfo
-Code:
-
 
 Opcode: CheatSetUrfModeResponse
 Field: IsUrfMode
@@ -11097,16 +8812,6 @@ bVar9 = *(char *)(in_x0 + 9) == '\0';
     pcVar6 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: QuickSlotModifyFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: QuickSlotModifyFailResponse
-Field: QuickSlotModifyFailResponse
-Code:
-
 
 Opcode: PvpRecordKillerPlayerInfo
 Field: HasTeased
@@ -11228,11 +8933,6 @@ lVar1 = 4;
   std::__ndk1::__p
 
 Opcode: RPCCancellingMessage
-Field: TypeName
-Code:
-
-
-Opcode: RPCCancellingMessage
 Field: TozRPC.RPCCancellingMessage
 Code:
 
@@ -11314,26 +9014,6 @@ lVar1 = 4;
     pcVar12 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CastAffectSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: CastAffectSourceInfo
-Field: CastAffectSourceInfo
-Code:
-
-
-Opcode: CheatTerritoryContaminationDecrementChangeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatTerritoryContaminationDecrementChangeResponse
-Field: CheatTerritoryContaminationDecrementChangeResponse
-Code:
-
 
 Opcode: SquadInfo
 Field: MemberGuids
@@ -11417,16 +9097,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
   }
   std::__n
 
-Opcode: CheatRankingResetResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRankingResetResponse
-Field: CheatRankingResetResponse
-Code:
-
-
 Opcode: ItemInfoUpdateNotify
 Field: ItemInfo
 Code:
@@ -11447,16 +9117,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatSpawnStrongholdBuildingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnStrongholdBuildingResponse
-Field: CheatSpawnStrongholdBuildingResponse
-Code:
-
 
 Opcode: CovenantMarketHistoryInfo
 Field: IsRegister
@@ -11604,16 +9264,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatSetCovenantWithdrawalDateTimeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetCovenantWithdrawalDateTimeResponse
-Field: CheatSetCovenantWithdrawalDateTimeResponse
-Code:
-
-
 Opcode: CheatMonsterBookSetAcquisitionProgressResponse
 Field: AnalysisStatChangeInfos
 Code:
@@ -11702,16 +9352,6 @@ TozSerializableMessageLibNative::
   }
   std::__n
 
-Opcode: CovenantDiplomacyInviteReinforcementResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantDiplomacyInviteReinforcementResponse
-Field: CovenantDiplomacyInviteReinforcementResponse
-Code:
-
-
 Opcode: ErosionItemUseParameterInfo
 Field: IsWithoutPermission
 Code:
@@ -11732,16 +9372,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: TimeTriggerWorldActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: TimeTriggerWorldActionInfo
-Field: TimeTriggerWorldActionInfo
-Code:
-
 
 Opcode: OccupiableNpcSummaryInfo
 Field: IsRandomBuffNpc
@@ -11767,26 +9397,6 @@ bVar8 = *(char *)(in_x0 + 0x80) == '\0';
     pcVar12 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: CovenantQueryJoinAppliedCovenantSummaryInfoListRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantQueryJoinAppliedCovenantSummaryInfoListRequest
-Field: CovenantQueryJoinAppliedCovenantSummaryInfoListRequest
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleDeathCountRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleDeathCountRequest
-Field: CheatClearRealmIntegrationBattleDeathCountRequest
-Code:
-
 
 Opcode: InfoAuthenticate
 Field: AuthenticateInfo
@@ -11823,16 +9433,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatOpenAllFogResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatOpenAllFogResponse
-Field: CheatOpenAllFogResponse
-Code:
-
-
 Opcode: CheatCovenantRealmTransferBlockRequest
 Field: ApplyAll
 Code:
@@ -11858,16 +9458,6 @@ bVar7 = *(char *)(in_x0 + 8) == '\0';
     pcVar9 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: PartyQuickJoinFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: PartyQuickJoinFailResponse
-Field: PartyQuickJoinFailResponse
-Code:
-
 
 Opcode: CheatSetUrfModeRequest
 Field: IsUrfMode
@@ -11895,16 +9485,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: StackableItemQuickSlotDetailInfo
-Field: TypeName
-Code:
-
-
-Opcode: StackableItemQuickSlotDetailInfo
-Field: StackableItemQuickSlotDetailInfo
-Code:
-
-
 Opcode: CheatSetLoggingResponse
 Field: IsLogging
 Code:
@@ -11925,16 +9505,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatPlayerRealmTransferBlockResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatPlayerRealmTransferBlockResponse
-Field: CheatPlayerRealmTransferBlockResponse
-Code:
-
 
 Opcode: CrossRealmSeasonTimeCreviceEntryInitialDataNotify
 Field: IsFull
@@ -12038,26 +9608,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: TerritoryBossActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: TerritoryBossActionInfo
-Field: TerritoryBossActionInfo
-Code:
-
-
-Opcode: DisplayRealmTransferQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: DisplayRealmTransferQueryRequest
-Field: DisplayRealmTransferQueryRequest
-Code:
-
-
 Opcode: CovenantRubyShopInfo
 Field: BuyCountInfos
 Code:
@@ -12114,16 +9664,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatStrongholdBattleCancelAttackResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleCancelAttackResponse
-Field: CheatStrongholdBattleCancelAttackResponse
-Code:
-
-
 Opcode: ThreatPointsNotify
 Field: ThreatPoints
 Code:
@@ -12137,16 +9677,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: BattalionBattalionWarpFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionBattalionWarpFailResponse
-Field: BattalionBattalionWarpFailResponse
-Code:
-
 
 Opcode: PartyQueryMemberCandidateListResponse
 Field: PartyMemberCandidateList
@@ -12184,22 +9714,7 @@ lVar1 = 4;
   std::__ndk1::__p
 
 Opcode: TozMessage
-Field: TypeName
-Code:
-
-
-Opcode: TozMessage
 Field: TozNetwork.Protocol.TozMessage
-Code:
-
-
-Opcode: CheatTutorialCompleteAllResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatTutorialCompleteAllResponse
-Field: CheatTutorialCompleteAllResponse
 Code:
 
 
@@ -12216,36 +9731,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerRequest
-Field: CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerRequest
-Code:
-
-
-Opcode: CheatOccupyOccupiableNpcResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatOccupyOccupiableNpcResponse
-Field: CheatOccupyOccupiableNpcResponse
-Code:
-
-
-Opcode: CheatAcquireAllCovenantResearchRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireAllCovenantResearchRequest
-Field: CheatAcquireAllCovenantResearchRequest
-Code:
-
 
 Opcode: CovenantGiftReceiveResponse
 Field: ReceiveGiftInfos
@@ -12329,16 +9814,6 @@ lVar1 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantUpdateOutLinkFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateOutLinkFailResponse
-Field: CovenantUpdateOutLinkFailResponse
-Code:
-
 
 Opcode: SkillAffectTargetAffectInfo
 Field: IsHit
@@ -12449,16 +9924,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatDeleteChatEntityResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDeleteChatEntityResponse
-Field: CheatDeleteChatEntityResponse
-Code:
-
-
 Opcode: SpellstoneSlotPageInfo
 Field: SpellstoneSlotInfos
 Code:
@@ -12472,16 +9937,6 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
-
-Opcode: CheatResetCovenantCampaignTicketCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetCovenantCampaignTicketCountResponse
-Field: CheatResetCovenantCampaignTicketCountResponse
-Code:
-
 
 Opcode: FollowerDispatchInfo
 Field: BuildingWorkObjectiveInfo
@@ -12517,36 +9972,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: StrongholdBattleAttackOuterGateStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleAttackOuterGateStartNotify
-Field: StrongholdBattleAttackOuterGateStartNotify
-Code:
-
-
-Opcode: MountDeboardingFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: MountDeboardingFailResponse
-Field: MountDeboardingFailResponse
-Code:
-
-
-Opcode: CheatAcquireAllFollowerPieceResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireAllFollowerPieceResponse
-Field: CheatAcquireAllFollowerPieceResponse
-Code:
-
 
 Opcode: CharacterInfo
 Field: CharacterPublicStatsInfo
@@ -12640,16 +10065,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: TargetScanShareResponse
-Field: TypeName
-Code:
-
-
-Opcode: TargetScanShareResponse
-Field: TargetScanShareResponse
-Code:
-
-
 Opcode: DiplomacyChatRoomKickCovenantsRequest
 Field: CovenantGuids
 Code:
@@ -12677,46 +10092,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: MailSendConfirmRequest
-Field: TypeName
-Code:
-
-
-Opcode: MailSendConfirmRequest
-Field: MailSendConfirmRequest
-Code:
-
-
-Opcode: CheatForceSynchronizeBuildingWorkResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatForceSynchronizeBuildingWorkResponse
-Field: CheatForceSynchronizeBuildingWorkResponse
-Code:
-
-
-Opcode: CheatResetAllCooldownResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetAllCooldownResponse
-Field: CheatResetAllCooldownResponse
-Code:
-
-
-Opcode: CheatResetCashShopMerchandiseTotalBuyLimitCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetCashShopMerchandiseTotalBuyLimitCountResponse
-Field: CheatResetCashShopMerchandiseTotalBuyLimitCountResponse
-Code:
-
-
 Opcode: DeathPenaltyDeleteRequest
 Field: DeathPenaltyRecordGuids
 Code:
@@ -12729,16 +10104,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: BattalionCheckReadyRequest
-Field: TypeName
-Code:
-
-
-Opcode: BattalionCheckReadyRequest
-Field: BattalionCheckReadyRequest
-Code:
-
 
 Opcode: FollowerSquadUpdateResponse
 Field: FollowerSquadSlots
@@ -12766,36 +10131,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatCommandPresetEndNotify
-Field: TypeName
-Code:
-
-
-Opcode: CheatCommandPresetEndNotify
-Field: CheatCommandPresetEndNotify
-Code:
-
-
-Opcode: CheatClearFollowerRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearFollowerRequest
-Field: CheatClearFollowerRequest
-Code:
-
-
-Opcode: GuiseEquipFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: GuiseEquipFailResponse
-Field: GuiseEquipFailResponse
-Code:
-
 
 Opcode: CheatChangeLevelRequest
 Field: ShowAllLevelUpEffect
@@ -12899,26 +10234,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: MountStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: MountStateInfo
-Field: MountStateInfo
-Code:
-
-
-Opcode: RankingAdditionalSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: RankingAdditionalSourceInfo
-Field: RankingAdditionalSourceInfo
-Code:
-
-
 Opcode: SkillItemUseParameterInfo
 Field: SkillTargetingInfo
 Code:
@@ -12939,16 +10254,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatClearRealmIntegrationBattleDeathCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleDeathCountResponse
-Field: CheatClearRealmIntegrationBattleDeathCountResponse
-Code:
-
 
 Opcode: PlayerInfo
 Field: IsFissioned
@@ -13037,26 +10342,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: WeeklyContributionPointsDividendInfo
-Field: TypeName
-Code:
-
-
-Opcode: WeeklyContributionPointsDividendInfo
-Field: WeeklyContributionPointsDividendInfo
-Code:
-
-
-Opcode: CovenantAcquireCovenantMemberRoleRewardRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantAcquireCovenantMemberRoleRewardRequest
-Field: CovenantAcquireCovenantMemberRoleRewardRequest
-Code:
-
-
 Opcode: StanceInstallResponse
 Field: IsStanceInstallFreeChanceEnabled
 Code:
@@ -13112,26 +10397,6 @@ lVar1 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: ChatServerReadyNotify
-Field: TypeName
-Code:
-
-
-Opcode: ChatServerReadyNotify
-Field: ChatServerReadyNotify
-Code:
-
-
-Opcode: BattalionBattalionWarpConfirmFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionBattalionWarpConfirmFailResponse
-Field: BattalionBattalionWarpConfirmFailResponse
-Code:
-
 
 Opcode: ExpeditionJoinRequestInfo
 Field: IsAllowVolunteerJoinApply
@@ -13205,16 +10470,6 @@ bVar8 = *(char *)(in_x0 + 9) == '\0';
     pcVar10 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CheatCancelStrongholdProtectionResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCancelStrongholdProtectionResponse
-Field: CheatCancelStrongholdProtectionResponse
-Code:
-
 
 Opcode: CheatMonsterBookSetNodeLevelResponse
 Field: AnalysisStatChangeInfos
@@ -13300,16 +10555,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: EqualDistributionDividendInfo
-Field: TypeName
-Code:
-
-
-Opcode: EqualDistributionDividendInfo
-Field: EqualDistributionDividendInfo
-Code:
-
-
 Opcode: CovenantOrganizationStatsDetailInfo
 Field: Stats
 Code:
@@ -13323,16 +10568,6 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
-
-Opcode: CheatOpenSeasonPassAchievementsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatOpenSeasonPassAchievementsResponse
-Field: CheatOpenSeasonPassAchievementsResponse
-Code:
-
 
 Opcode: PlayerInitializeInfoNotify
 Field: CovenantBattalionInfos
@@ -13361,16 +10596,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<bool,TSizedDefaultAllocat
   }
   std::__n
 
-Opcode: CheatSetEnvironmentVariableResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetEnvironmentVariableResponse
-Field: CheatSetEnvironmentVariableResponse
-Code:
-
-
 Opcode: TerritoryErosionItemConfigurationInfo
 Field: IsPermitted
 Code:
@@ -13396,16 +10621,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: VeilAffectSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: VeilAffectSourceInfo
-Field: VeilAffectSourceInfo
-Code:
-
 
 Opcode: DestroyerInfoUpdateNotify
 Field: DestroyerInfo
@@ -13529,26 +10744,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatRestoreChatCovenantRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatRestoreChatCovenantRequest
-Field: CheatRestoreChatCovenantRequest
-Code:
-
-
-Opcode: CheatSetStatResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetStatResponse
-Field: CheatSetStatResponse
-Code:
-
-
 Opcode: DeathPenaltyRecoverRequest
 Field: DeathPenaltyRecordGuids
 Code:
@@ -13587,16 +10782,6 @@ bVar8 = *(char *)(in_x0 + 0x1c) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CheatInstallAllArquirunesRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatInstallAllArquirunesRequest
-Field: CheatInstallAllArquirunesRequest
-Code:
-
 
 Opcode: FavorSummaryInfoQueryResponse
 Field: FavorBossInfosByDistrictCuid
@@ -13661,16 +10846,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: QuickSlotPageUpdateResponse
-Field: TypeName
-Code:
-
-
-Opcode: QuickSlotPageUpdateResponse
-Field: QuickSlotPageUpdateResponse
-Code:
-
-
 Opcode: CrossRealmCovenantQueryResponse
 Field: IsJoinApplied
 Code:
@@ -13714,16 +10889,6 @@ pcVar11 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: ErInterServerMigrationSessionInitializeInfo
-Field: TypeName
-Code:
-
-
-Opcode: ErInterServerMigrationSessionInitializeInfo
-Field: ErInterServerMigrationSessionInitializeInfo
-Code:
-
-
 Opcode: PlayerLimitedCounterInfo
 Field: LimitedCountingInfos
 Code:
@@ -13737,16 +10902,6 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
-
-Opcode: MultipleItemSelector
-Field: TypeName
-Code:
-
-
-Opcode: MultipleItemSelector
-Field: MultipleItemSelector
-Code:
-
 
 Opcode: EntityRemoveBulkNotify
 Field: EntityGuids
@@ -13802,16 +10957,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ShopAutoSellSettingUpdateResponse
-Field: TypeName
-Code:
-
-
-Opcode: ShopAutoSellSettingUpdateResponse
-Field: ShopAutoSellSettingUpdateResponse
-Code:
-
 
 Opcode: UniverseAccountRealmAccountInfo
 Field: UniverseAccountPlayerInfos
@@ -13995,26 +11140,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: AnniversaryAchievementPrivateChannelKeepaliveFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelKeepaliveFailResponse
-Field: AnniversaryAchievementPrivateChannelKeepaliveFailResponse
-Code:
-
-
-Opcode: CheatChangeCampaignConditionResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeCampaignConditionResponse
-Field: CheatChangeCampaignConditionResponse
-Code:
-
-
 Opcode: CheatKillSurroundingCharactersRequest
 Field: IsSkipDyingAndFinishable
 Code:
@@ -14191,56 +11316,6 @@ TozSerializableMessageLibNative::
   }
   std::__n
 
-Opcode: ServerDrivenPlayMovingToHuntingLocationStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayMovingToHuntingLocationStateInfo
-Field: ServerDrivenPlayMovingToHuntingLocationStateInfo
-Code:
-
-
-Opcode: CheatUninstallAllArquirunesRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatUninstallAllArquirunesRequest
-Field: CheatUninstallAllArquirunesRequest
-Code:
-
-
-Opcode: CheatCastVeilResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCastVeilResponse
-Field: CheatCastVeilResponse
-Code:
-
-
-Opcode: CovenantResearchResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantResearchResponse
-Field: CovenantResearchResponse
-Code:
-
-
-Opcode: CheatStartCovenantCampaignResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStartCovenantCampaignResponse
-Field: CheatStartCovenantCampaignResponse
-Code:
-
-
 Opcode: CheatClearFollowerResponse
 Field: CollectionInfos
 Code:
@@ -14303,26 +11378,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: StrongholdBattleCovenantBattalionConfirmConveneFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleCovenantBattalionConfirmConveneFailResponse
-Field: StrongholdBattleCovenantBattalionConfirmConveneFailResponse
-Code:
-
-
-Opcode: CovenantQueryRecommendCovenantSummaryInfoListRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantQueryRecommendCovenantSummaryInfoListRequest
-Field: CovenantQueryRecommendCovenantSummaryInfoListRequest
-Code:
-
 
 Opcode: CovenantQueryResponse
 Field: IsJoinApplied
@@ -14609,16 +11664,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatCovenantGiftPaidItemResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantGiftPaidItemResponse
-Field: CheatCovenantGiftPaidItemResponse
-Code:
-
-
 Opcode: PlayerSummaryInfo
 Field: IsInServerDrivenPlay
 Code:
@@ -14719,26 +11764,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: AnniversaryAchievementPrivateChannelOpenRequest
-Field: TypeName
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelOpenRequest
-Field: AnniversaryAchievementPrivateChannelOpenRequest
-Code:
-
-
-Opcode: QuestCinePlayEndNotify
-Field: TypeName
-Code:
-
-
-Opcode: QuestCinePlayEndNotify
-Field: QuestCinePlayEndNotify
-Code:
-
-
 Opcode: RealmAccountWarehouseItemStoreRequest
 Field: ItemGuidSelectors
 Code:
@@ -14767,16 +11792,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: ServerDrivenPlayResurrectingStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayResurrectingStateInfo
-Field: ServerDrivenPlayResurrectingStateInfo
-Code:
-
-
 Opcode: FollowerMovePathInfoRequest
 Field: FollowerGuids
 Code:
@@ -14789,16 +11804,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatAddRegionContentBasePlayTimeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddRegionContentBasePlayTimeResponse
-Field: CheatAddRegionContentBasePlayTimeResponse
-Code:
-
 
 Opcode: StrongholdBattleCovenantBattalionMemberDisplayInfo
 Field: IsHeadPieceDisplayed
@@ -14821,16 +11826,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: StrongholdBattleDeclareAttackResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleDeclareAttackResponse
-Field: StrongholdBattleDeclareAttackResponse
-Code:
-
-
 Opcode: CovenantGiftReceiveRequest
 Field: ReceiveGiftGuids
 Code:
@@ -14843,26 +11838,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatClearSkillSlotQuickSlotAutoUseRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearSkillSlotQuickSlotAutoUseRequest
-Field: CheatClearSkillSlotQuickSlotAutoUseRequest
-Code:
-
-
-Opcode: CheatRealmIntegrationPreprocessingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRealmIntegrationPreprocessingResponse
-Field: CheatRealmIntegrationPreprocessingResponse
-Code:
-
 
 Opcode: CovenantRecommendBuildingWorkRequest
 Field: IsRecommended
@@ -14889,26 +11864,6 @@ bVar8 = *(char *)(in_x0 + 0x28) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: StrongholdBattleOccupyAltarStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleOccupyAltarStartNotify
-Field: StrongholdBattleOccupyAltarStartNotify
-Code:
-
-
-Opcode: FavorSummaryInfoQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: FavorSummaryInfoQueryRequest
-Field: FavorSummaryInfoQueryRequest
-Code:
-
 
 Opcode: FollowerDispatchReservationInfo
 Field: BuildingWorkObjectiveInfo
@@ -14953,16 +11908,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatSendSampleMailToMeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSendSampleMailToMeResponse
-Field: CheatSendSampleMailToMeResponse
-Code:
-
-
 Opcode: PartyConfirmInvitationResponse
 Field: IsApproved
 Code:
@@ -14998,16 +11943,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatChangeCrossRealmMaintenanceResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeCrossRealmMaintenanceResponse
-Field: CheatChangeCrossRealmMaintenanceResponse
-Code:
-
-
 Opcode: CovenantResearchRequest
 Field: IsCompleteImmediately
 Code:
@@ -15033,16 +11968,6 @@ bVar8 = *(char *)(in_x0 + 0x28) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CharacterStatsInfo
-Field: TypeName
-Code:
-
-
-Opcode: CharacterStatsInfo
-Field: CharacterStatsInfo
-Code:
-
 
 Opcode: RoadJunctionDetailedInfo
 Field: RoadLinks
@@ -15119,16 +12044,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CovenantSettleAccountInfoQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantSettleAccountInfoQueryRequest
-Field: CovenantSettleAccountInfoQueryRequest
-Code:
-
-
 Opcode: SkillResponse
 Field: IsExecutingBegun
 Code:
@@ -15149,16 +12064,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatClearSeasonPassLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearSeasonPassLevelResponse
-Field: CheatClearSeasonPassLevelResponse
-Code:
-
 
 Opcode: WorldMapPvpBattlePublishNotify
 Field: PvpBattleInfo
@@ -15194,16 +12099,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: FollowerSquadSlotExpandRequest
-Field: TypeName
-Code:
-
-
-Opcode: FollowerSquadSlotExpandRequest
-Field: FollowerSquadSlotExpandRequest
-Code:
-
 
 Opcode: CampaignStartOptionInfo
 Field: IsVolunteerJoinApplicationAutomaticApproval
@@ -15270,16 +12165,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: LastDeathRecordDeleteRequest
-Field: TypeName
-Code:
-
-
-Opcode: LastDeathRecordDeleteRequest
-Field: LastDeathRecordDeleteRequest
-Code:
-
-
 Opcode: CheatResetCashShopMerchandiseBuyLimitCountResponse
 Field: UpdatedMerchandiseBuyCountInfoList
 Code:
@@ -15307,16 +12192,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: UpdateLastViewedChatRecordsIndexResponse
-Field: TypeName
-Code:
-
-
-Opcode: UpdateLastViewedChatRecordsIndexResponse
-Field: UpdateLastViewedChatRecordsIndexResponse
-Code:
-
 
 Opcode: PlayerSkillInfo
 Field: RootSkillCuids
@@ -15507,16 +12382,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantLeaderDividendInfo
-Field: TypeName
-Code:
-
-
-Opcode: CovenantLeaderDividendInfo
-Field: CovenantLeaderDividendInfo
-Code:
-
-
 Opcode: MissionInfo
 Field: RewardAcquiredDateTimes
 Code:
@@ -15530,11 +12395,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ProtocolCheckResponse
-Field: TypeName
-Code:
-
 
 Opcode: ProtocolCheckResponse
 Field: TozNetwork.Handshake.ProtocolChecker.ProtocolCheckResponse
@@ -15746,16 +12606,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatDowngradeBuildingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDowngradeBuildingResponse
-Field: CheatDowngradeBuildingResponse
-Code:
-
-
 Opcode: VolunteerParticipationInfo
 Field: ParticipationCountInfo
 Code:
@@ -15776,16 +12626,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatExpeditionLivingTotemTeleportToPlayerRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatExpeditionLivingTotemTeleportToPlayerRequest
-Field: CheatExpeditionLivingTotemTeleportToPlayerRequest
-Code:
-
 
 Opcode: FavorMissionInfo
 Field: HuntingSiteCuidList
@@ -15812,26 +12652,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatForceSynchronizeBuildingWorkRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatForceSynchronizeBuildingWorkRequest
-Field: CheatForceSynchronizeBuildingWorkRequest
-Code:
-
-
-Opcode: CovenantWatchDetailInfoQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantWatchDetailInfoQueryRequest
-Field: CovenantWatchDetailInfoQueryRequest
-Code:
-
 
 Opcode: CovenantTradeDealRecordQueryResponse
 Field: GoodsDealInfo
@@ -15860,16 +12680,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__nd
-
-Opcode: CovenantJoinedStrongholdCampaignBattleInfo
-Field: TypeName
-Code:
-
-
-Opcode: CovenantJoinedStrongholdCampaignBattleInfo
-Field: CovenantJoinedStrongholdCampaignBattleInfo
-Code:
-
 
 Opcode: AchievementInfo
 Field: MissionProgressCounts
@@ -15908,16 +12718,6 @@ bVar8 = *(char *)(in_x0 + 0x38) == '\0';
     pcVar11 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: CheatAbandonStrongholdResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAbandonStrongholdResponse
-Field: CheatAbandonStrongholdResponse
-Code:
-
 
 Opcode: HarmfulTextOnChatViolationUpdateNotify
 Field: PlayerHarmfulTextOnChatViolationInfo
@@ -15968,26 +12768,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantUpdateForbiddenAetherBoxCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateForbiddenAetherBoxCountResponse
-Field: CovenantUpdateForbiddenAetherBoxCountResponse
-Code:
-
-
-Opcode: RealmIntegrationHidePopupResponse
-Field: TypeName
-Code:
-
-
-Opcode: RealmIntegrationHidePopupResponse
-Field: RealmIntegrationHidePopupResponse
-Code:
-
-
 Opcode: WorldMapPvpBattleMergeNotify
 Field: PvpBattleInfo
 Code:
@@ -16008,36 +12788,6 @@ if (*(long **)(in_x0 + 0x48) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: HonorableDieFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: HonorableDieFailResponse
-Field: HonorableDieFailResponse
-Code:
-
-
-Opcode: CovenantTradeSalesRegisterResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantTradeSalesRegisterResponse
-Field: CovenantTradeSalesRegisterResponse
-Code:
-
-
-Opcode: CheatAddRankingDummyDataResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddRankingDummyDataResponse
-Field: CheatAddRankingDummyDataResponse
-Code:
-
 
 Opcode: RealmIntegrationBattleScoreInitializeDataNotify
 Field: ScoreInfos
@@ -16143,16 +12893,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CheatCovenantPayDividendResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantPayDividendResponse
-Field: CheatCovenantPayDividendResponse
-Code:
-
 
 Opcode: CollectionCategoryActiveNotify
 Field: CollectionCategoryCuids
@@ -16263,46 +13003,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: PlayerMarketTransactionDelayedSellReregisterProcessNotify
-Field: TypeName
-Code:
-
-
-Opcode: PlayerMarketTransactionDelayedSellReregisterProcessNotify
-Field: PlayerMarketTransactionDelayedSellReregisterProcessNotify
-Code:
-
-
-Opcode: CheatServerDrivenPlayResupplyResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatServerDrivenPlayResupplyResponse
-Field: CheatServerDrivenPlayResupplyResponse
-Code:
-
-
-Opcode: CheatTeleportFollowerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatTeleportFollowerResponse
-Field: CheatTeleportFollowerResponse
-Code:
-
-
-Opcode: BattalionDismissFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionDismissFailResponse
-Field: BattalionDismissFailResponse
-Code:
-
-
 Opcode: PlayerLocationMonitoringRegisterNotify
 Field: PlayerLocationMonitoringInfo
 Code:
@@ -16323,26 +13023,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PartyLeaveRequest
-Field: TypeName
-Code:
-
-
-Opcode: PartyLeaveRequest
-Field: PartyLeaveRequest
-Code:
-
-
-Opcode: ErLoginServerInitialToyBotAuthenticateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ErLoginServerInitialToyBotAuthenticateInfo
-Field: ErLoginServerInitialToyBotAuthenticateInfo
-Code:
-
 
 Opcode: ItemAddInfo
 Field: ItemIndexWithCounts
@@ -16372,16 +13052,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatExpeditionLivingTotemTeleportToPlayerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatExpeditionLivingTotemTeleportToPlayerResponse
-Field: CheatExpeditionLivingTotemTeleportToPlayerResponse
-Code:
-
-
 Opcode: DistrictFavorBossInfo
 Field: IsFavorBossActivated
 Code:
@@ -16402,16 +13072,6 @@ lVar1 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: RealmIntegrationBattleWarpReturnRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmIntegrationBattleWarpReturnRequest
-Field: RealmIntegrationBattleWarpReturnRequest
-Code:
-
 
 Opcode: CheatRealmAccountRealmTransferBlockRequest
 Field: ApplyAll
@@ -16439,26 +13099,6 @@ bVar7 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatUnsetStatResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUnsetStatResponse
-Field: CheatUnsetStatResponse
-Code:
-
-
-Opcode: TrustedDeviceRegisterNotify
-Field: TypeName
-Code:
-
-
-Opcode: TrustedDeviceRegisterNotify
-Field: TrustedDeviceRegisterNotify
-Code:
-
-
 Opcode: RealmAccountOptionInfo
 Field: PushNotificationOptionInfos
 Code:
@@ -16473,16 +13113,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatSetLocalServerPushResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetLocalServerPushResponse
-Field: CheatSetLocalServerPushResponse
-Code:
-
-
 Opcode: CovenantWorldMapMarkerRemoveAllNotify
 Field: RemovedGuids
 Code:
@@ -16495,36 +13125,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: HeroBossSpawnInfo
-Field: TypeName
-Code:
-
-
-Opcode: HeroBossSpawnInfo
-Field: HeroBossSpawnInfo
-Code:
-
-
-Opcode: CheatTeleportToQuestMissionLocationResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatTeleportToQuestMissionLocationResponse
-Field: CheatTeleportToQuestMissionLocationResponse
-Code:
-
-
-Opcode: PowerSavingModeEndResponse
-Field: TypeName
-Code:
-
-
-Opcode: PowerSavingModeEndResponse
-Field: PowerSavingModeEndResponse
-Code:
-
 
 Opcode: RsaPublicKeyNotify
 Field: PublicKeyXmlString
@@ -16540,16 +13140,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__ndk
-
-Opcode: CheatRegenerateHealthPointsAndManaPointsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRegenerateHealthPointsAndManaPointsResponse
-Field: CheatRegenerateHealthPointsAndManaPointsResponse
-Code:
-
 
 Opcode: MarketGoodsDeletedNotify
 Field: GoodsGuids
@@ -16768,16 +13358,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CovenantBattalionExpeditionJoinResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantBattalionExpeditionJoinResponse
-Field: CovenantBattalionExpeditionJoinResponse
-Code:
-
-
 Opcode: DestroyerInfosInitializeDataNotify
 Field: DestroyerInfos
 Code:
@@ -16791,16 +13371,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: BuildingRepairRequestInfo
-Field: TypeName
-Code:
-
-
-Opcode: BuildingRepairRequestInfo
-Field: BuildingRepairRequestInfo
-Code:
-
 
 Opcode: SkillStageFlowNotify
 Field: SubTargetingLocations_cm
@@ -16961,16 +13531,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: PlayerSlotExpansionCostCurrencyAmountRequest
-Field: TypeName
-Code:
-
-
-Opcode: PlayerSlotExpansionCostCurrencyAmountRequest
-Field: PlayerSlotExpansionCostCurrencyAmountRequest
-Code:
-
-
 Opcode: MonsterBookAnalyzeResponse
 Field: AnalyzedStateInfos
 Code:
@@ -16998,26 +13558,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantUpdateEmblemInfoFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateEmblemInfoFailResponse
-Field: CovenantUpdateEmblemInfoFailResponse
-Code:
-
-
-Opcode: BattalionChangeOptionResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionChangeOptionResponse
-Field: BattalionChangeOptionResponse
-Code:
-
 
 Opcode: ClasseChangeItemUseParameterInfo
 Field: BeforeGearGuidToAfterGearCuids
@@ -17232,16 +13772,6 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: CheatAcquireCovenantLeaderResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireCovenantLeaderResponse
-Field: CheatAcquireCovenantLeaderResponse
-Code:
-
-
 Opcode: ServerDrivenPlayRewardInfo
 Field: GainedCurrencies
 Code:
@@ -17271,22 +13801,7 @@ TozSerializableMessageLibNative::
   std::__nd
 
 Opcode: ProtocolConstants
-Field: TypeName
-Code:
-
-
-Opcode: ProtocolConstants
 Field: TozNetwork.Protocol.ProtocolConstants
-Code:
-
-
-Opcode: CheatSpawnDoodadResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnDoodadResponse
-Field: CheatSpawnDoodadResponse
 Code:
 
 
@@ -17345,46 +13860,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatClearCovenantWarehouseResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCovenantWarehouseResponse
-Field: CheatClearCovenantWarehouseResponse
-Code:
-
-
-Opcode: CheatClearCovenantResearchRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCovenantResearchRequest
-Field: CheatClearCovenantResearchRequest
-Code:
-
-
-Opcode: ServerDrivenPlayAppCloseResponse
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayAppCloseResponse
-Field: ServerDrivenPlayAppCloseResponse
-Code:
-
-
-Opcode: CheatStartOccupiableNpcBossBattleResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStartOccupiableNpcBossBattleResponse
-Field: CheatStartOccupiableNpcBossBattleResponse
-Code:
-
 
 Opcode: PlayerLoginResponse
 Field: CanCheatCommand
@@ -17454,16 +13929,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatKillFocusedCharacterResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatKillFocusedCharacterResponse
-Field: CheatKillFocusedCharacterResponse
-Code:
-
-
 Opcode: PlayerCovenantWatchSynchronizeNotify
 Field: CovenantGuids
 Code:
@@ -17504,26 +13969,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: BasicAchievementPrivateChannelKeepaliveRequest
-Field: TypeName
-Code:
-
-
-Opcode: BasicAchievementPrivateChannelKeepaliveRequest
-Field: BasicAchievementPrivateChannelKeepaliveRequest
-Code:
-
-
-Opcode: CheatResetAchievementResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetAchievementResponse
-Field: CheatResetAchievementResponse
-Code:
-
 
 Opcode: FavorQueryResponse
 Field: FavorList
@@ -17640,26 +14085,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatExpeditionRepeatScheduleOpenResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatExpeditionRepeatScheduleOpenResponse
-Field: CheatExpeditionRepeatScheduleOpenResponse
-Code:
-
-
-Opcode: ResuscitatePleaRequest
-Field: TypeName
-Code:
-
-
-Opcode: ResuscitatePleaRequest
-Field: ResuscitatePleaRequest
-Code:
-
-
 Opcode: CovenantGiftReceiveRewardInfo
 Field: CurrencyCuidToAmount
 Code:
@@ -17687,16 +14112,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatPlayerLocationChangeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatPlayerLocationChangeResponse
-Field: CheatPlayerLocationChangeResponse
-Code:
-
 
 Opcode: CovenantTradeSalesRegisterRequest
 Field: ItemIndexWithCount
@@ -17748,16 +14163,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__ndk
-
-Opcode: WarpCancelRequest
-Field: TypeName
-Code:
-
-
-Opcode: WarpCancelRequest
-Field: WarpCancelRequest
-Code:
-
 
 Opcode: MarketSellReregisterRequest
 Field: RegistrationFeeCurrencyInfoByGoodsGuid
@@ -17855,26 +14260,6 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
     pcVar12 = local_188;
   }
   std::__ndk1::__pu
-
-Opcode: SeamlessDoodadInfo
-Field: TypeName
-Code:
-
-
-Opcode: SeamlessDoodadInfo
-Field: SeamlessDoodadInfo
-Code:
-
-
-Opcode: EmergencyEscapeRequest
-Field: TypeName
-Code:
-
-
-Opcode: EmergencyEscapeRequest
-Field: EmergencyEscapeRequest
-Code:
-
 
 Opcode: SkillEndNotify
 Field: IsAllStagesComplete
@@ -18047,16 +14432,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatAddCovenantGiftLevelExperiencePointsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAddCovenantGiftLevelExperiencePointsResponse
-Field: CheatAddCovenantGiftLevelExperiencePointsResponse
-Code:
-
-
 Opcode: MountDeboardingInfo
 Field: IsImmediateMountDespawn
 Code:
@@ -18118,16 +14493,6 @@ if (*(long **)(in_x0 + 0x70) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatSpawnBuildingResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnBuildingResponse
-Field: CheatSpawnBuildingResponse
-Code:
-
-
 Opcode: CovenantWarehouseSummaryInitialDataNotify
 Field: ItemInfos
 Code:
@@ -18162,46 +14527,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatChangeStrongholdAllBuildingLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeStrongholdAllBuildingLevelResponse
-Field: CheatChangeStrongholdAllBuildingLevelResponse
-Code:
-
-
-Opcode: CheatExpeditionExecuteNextWaveResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatExpeditionExecuteNextWaveResponse
-Field: CheatExpeditionExecuteNextWaveResponse
-Code:
-
-
-Opcode: PowerSavingModeStartRequest
-Field: TypeName
-Code:
-
-
-Opcode: PowerSavingModeStartRequest
-Field: PowerSavingModeStartRequest
-Code:
-
-
-Opcode: StrongholdBattleMarchingStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleMarchingStartNotify
-Field: StrongholdBattleMarchingStartNotify
-Code:
-
 
 Opcode: RedrawableItemInventoryUpdateInfo
 Field: AddedRedrawableItemInfoList
@@ -18406,16 +14731,6 @@ pcVar10 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
-Opcode: RegionContentPlayInfoFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: RegionContentPlayInfoFailResponse
-Field: RegionContentPlayInfoFailResponse
-Code:
-
-
 Opcode: InstanceEventActionCompleteNotify
 Field: IsSuccess
 Code:
@@ -18573,16 +14888,6 @@ bVar8 = *(char *)(in_x0 + 0xc) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: BattalionLeaveRequest
-Field: TypeName
-Code:
-
-
-Opcode: BattalionLeaveRequest
-Field: BattalionLeaveRequest
-Code:
-
-
 Opcode: MailServerDrivenPlayLayoutInfo
 Field: GainedCurrencies
 Code:
@@ -18666,16 +14971,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: FavorBossQuestAllAcceptResponse
-Field: TypeName
-Code:
-
-
-Opcode: FavorBossQuestAllAcceptResponse
-Field: FavorBossQuestAllAcceptResponse
-Code:
-
 
 Opcode: MovePathInfo
 Field: RoadJunctionIds
@@ -18772,16 +15067,6 @@ pcVar8 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: ServerDrivenPlayStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayStateInfo
-Field: ServerDrivenPlayStateInfo
-Code:
-
-
 Opcode: ChatBattalionRequest
 Field: IsNotice
 Code:
@@ -18809,11 +15094,6 @@ bVar8 = *(char *)(in_x0 + 0x30) == '\0';
   std::__ndk1::__put_ch
 
 Opcode: GracefulShutdownMessage
-Field: TypeName
-Code:
-
-
-Opcode: GracefulShutdownMessage
 Field: TozNetwork.ServerGroup.GracefulShutdownMessage
 Code:
 
@@ -18839,26 +15119,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatNpcCombatLogResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatNpcCombatLogResponse
-Field: CheatNpcCombatLogResponse
-Code:
-
-
-Opcode: CovenantDiplomacyAdditionalInfo
-Field: TypeName
-Code:
-
-
-Opcode: CovenantDiplomacyAdditionalInfo
-Field: CovenantDiplomacyAdditionalInfo
-Code:
-
-
 Opcode: CheatCharacterPrivateStatsInfoResponse
 Field: CharacterPrivateStatsInfo
 Code:
@@ -18879,46 +15139,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatChangeCovenantLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeCovenantLevelResponse
-Field: CheatChangeCovenantLevelResponse
-Code:
-
-
-Opcode: StrongholdBattleAttackAltarStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleAttackAltarStartNotify
-Field: StrongholdBattleAttackAltarStartNotify
-Code:
-
-
-Opcode: CheatShowLocationAndFacingDirectionRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatShowLocationAndFacingDirectionRequest
-Field: CheatShowLocationAndFacingDirectionRequest
-Code:
-
-
-Opcode: CovenantDiplomacyDeclareHostilityFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantDiplomacyDeclareHostilityFailResponse
-Field: CovenantDiplomacyDeclareHostilityFailResponse
-Code:
-
 
 Opcode: SchemaTable
 Field: RegDate
@@ -18976,26 +15196,6 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__nd
-
-Opcode: CheatCovenantCompleteCampaignRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantCompleteCampaignRequest
-Field: CheatCovenantCompleteCampaignRequest
-Code:
-
-
-Opcode: EntanglementTriggerWorldActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: EntanglementTriggerWorldActionInfo
-Field: EntanglementTriggerWorldActionInfo
-Code:
-
 
 Opcode: FavoriteStatKindChangeResponse
 Field: IsRegistered
@@ -19126,26 +15326,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
   }
   std::__
 
-Opcode: PartyOptionUpdateFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: PartyOptionUpdateFailResponse
-Field: PartyOptionUpdateFailResponse
-Code:
-
-
-Opcode: CheatChangeFocusTargetHealthPointsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeFocusTargetHealthPointsResponse
-Field: CheatChangeFocusTargetHealthPointsResponse
-Code:
-
-
 Opcode: CharacterStateSynchronizeNotify
 Field: AffectSourceInfo
 Code:
@@ -19209,26 +15389,6 @@ if (*(long **)(in_x0 + 0x58) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatPlayerLocationMonitoringDeleteAllResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatPlayerLocationMonitoringDeleteAllResponse
-Field: CheatPlayerLocationMonitoringDeleteAllResponse
-Code:
-
-
-Opcode: ServerDrivenPlayFleeingStateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayFleeingStateInfo
-Field: ServerDrivenPlayFleeingStateInfo
-Code:
-
-
 Opcode: DeathPenaltyRecordInfoRemoveNotify
 Field: DeathPenaltyRecordGuids
 Code:
@@ -19241,36 +15401,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
     pcVar3 = local_188;
   }
   std::__n
-
-Opcode: CheatChangeCrossRealmSeasonMaxEnterablePlayerCapacityResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeCrossRealmSeasonMaxEnterablePlayerCapacityResponse
-Field: CheatChangeCrossRealmSeasonMaxEnterablePlayerCapacityResponse
-Code:
-
-
-Opcode: CheatUpdateCovenantMissionCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUpdateCovenantMissionCountResponse
-Field: CheatUpdateCovenantMissionCountResponse
-Code:
-
-
-Opcode: CheatAcquireAllCovenantResearchResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireAllCovenantResearchResponse
-Field: CheatAcquireAllCovenantResearchResponse
-Code:
-
 
 Opcode: KickCovenantsFromDiplomacyChatRoomRequest
 Field: CovenantGuids
@@ -19334,26 +15464,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: PlayerResurrectionResponse
-Field: TypeName
-Code:
-
-
-Opcode: PlayerResurrectionResponse
-Field: PlayerResurrectionResponse
-Code:
-
-
-Opcode: MountDeboardingRequest
-Field: TypeName
-Code:
-
-
-Opcode: MountDeboardingRequest
-Field: MountDeboardingRequest
-Code:
-
-
 Opcode: BattalionChatInfo
 Field: IsNotice
 Code:
@@ -19401,16 +15511,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatStrongholdBattleCompleteAttackPhaseResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleCompleteAttackPhaseResponse
-Field: CheatStrongholdBattleCompleteAttackPhaseResponse
-Code:
-
-
 Opcode: SessionKeyAuthenticate
 Field: SessionKey
 Code:
@@ -19454,26 +15554,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatToggleShowQuestDebugRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatToggleShowQuestDebugRequest
-Field: CheatToggleShowQuestDebugRequest
-Code:
-
-
-Opcode: CheatChangeLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeLevelResponse
-Field: CheatChangeLevelResponse
-Code:
-
-
 Opcode: CovenantCampInfoListResponse
 Field: CovenantCampInfoList
 Code:
@@ -19501,16 +15581,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: BattalionDismissRequest
-Field: TypeName
-Code:
-
-
-Opcode: BattalionDismissRequest
-Field: BattalionDismissRequest
-Code:
-
 
 Opcode: CheatPlayerRealmTransferBlockRequest
 Field: ApplyAll
@@ -19558,36 +15628,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatResetTerritoryBossResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetTerritoryBossResponse
-Field: CheatResetTerritoryBossResponse
-Code:
-
-
-Opcode: CheatDestroyPointsChangeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDestroyPointsChangeResponse
-Field: CheatDestroyPointsChangeResponse
-Code:
-
-
-Opcode: BasicOrGrowthGuideAchievementInfo
-Field: TypeName
-Code:
-
-
-Opcode: BasicOrGrowthGuideAchievementInfo
-Field: BasicOrGrowthGuideAchievementInfo
-Code:
-
 
 Opcode: RealmAccountPresentApplicationCheckInfoResponse
 Field: IsLoginedWithSafeDevice
@@ -19664,16 +15704,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatFillHealthPointsAndManaPointsToFullRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatFillHealthPointsAndManaPointsToFullRequest
-Field: CheatFillHealthPointsAndManaPointsToFullRequest
-Code:
-
-
 Opcode: CovenantRejectInvitationsFailResponse
 Field: RejectFailedCovenantGuids
 Code:
@@ -19689,11 +15719,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<long_long,TSizedDefaultAl
 
 Opcode: LZ4CompressHandshakeResult
 Field: __base__
-Code:
-
-
-Opcode: LZ4CompressHandshakeResult
-Field: TypeName
 Code:
 
 
@@ -19715,16 +15740,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatRealmAccountRealmTransferBlockResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRealmAccountRealmTransferBlockResponse
-Field: CheatRealmAccountRealmTransferBlockResponse
-Code:
-
 
 Opcode: CovenantDiplomacyConfirmReinforcementInvitationRequest
 Field: IsApproved
@@ -19787,26 +15802,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatUpsertGoodsBuyCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUpsertGoodsBuyCountResponse
-Field: CheatUpsertGoodsBuyCountResponse
-Code:
-
-
-Opcode: CheatAcquireCovenantResearchResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireCovenantResearchResponse
-Field: CheatAcquireCovenantResearchResponse
-Code:
-
-
 Opcode: StrongholdWorldMapGeneralShopInfo
 Field: RegisteredGoodsInfos
 Code:
@@ -19820,16 +15815,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: StrongholdTeleportToAltarResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdTeleportToAltarResponse
-Field: StrongholdTeleportToAltarResponse
-Code:
-
 
 Opcode: CovenantDiplomacyReinforcementInvitationRejectNotify
 Field: IsCallByExpired
@@ -19873,16 +15858,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: PartyQuickJoinRequest
-Field: TypeName
-Code:
-
-
-Opcode: PartyQuickJoinRequest
-Field: PartyQuickJoinRequest
-Code:
-
-
 Opcode: FollowerSquadSlotExpandResponse
 Field: FollowerSquadSlots
 Code:
@@ -19896,36 +15871,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: BasicAchievementPrivateChannelKeepaliveFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BasicAchievementPrivateChannelKeepaliveFailResponse
-Field: BasicAchievementPrivateChannelKeepaliveFailResponse
-Code:
-
-
-Opcode: PlayerMarketSaleGoodsListRequest
-Field: TypeName
-Code:
-
-
-Opcode: PlayerMarketSaleGoodsListRequest
-Field: PlayerMarketSaleGoodsListRequest
-Code:
-
-
-Opcode: ShopAutoBuySettingUpdateResponse
-Field: TypeName
-Code:
-
-
-Opcode: ShopAutoBuySettingUpdateResponse
-Field: ShopAutoBuySettingUpdateResponse
-Code:
-
 
 Opcode: GearAdditionalInfo
 Field: IsEroded
@@ -20004,16 +15949,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: BattalionSetAssemblyLocationFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionSetAssemblyLocationFailResponse
-Field: BattalionSetAssemblyLocationFailResponse
-Code:
-
-
 Opcode: CovenantTradeSalesManageRequest
 Field: GoodsGuidWithItemCuidInfos
 Code:
@@ -20077,56 +16012,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantCurrencyInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantCurrencyInfoRequest
-Field: CovenantCurrencyInfoRequest
-Code:
-
-
-Opcode: CheatResetAllAetherOptionRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetAllAetherOptionRequest
-Field: CheatResetAllAetherOptionRequest
-Code:
-
-
-Opcode: CheatClearPlayerMissionRewardResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearPlayerMissionRewardResponse
-Field: CheatClearPlayerMissionRewardResponse
-Code:
-
-
-Opcode: SynchronizeStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: SynchronizeStartNotify
-Field: SynchronizeStartNotify
-Code:
-
-
-Opcode: CheatAnniversaryAchievementAccomplishAllRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAnniversaryAchievementAccomplishAllRequest
-Field: CheatAnniversaryAchievementAccomplishAllRequest
-Code:
-
-
 Opcode: CheatToggleShowQuestDebugResponse
 Field: IsEnabled
 Code:
@@ -20174,28 +16059,8 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: ItemSelector
-Field: TypeName
-Code:
-
-
-Opcode: ItemSelector
-Field: ItemSelector
-Code:
-
-
 Opcode: ErTozMessage
 Field: __base__
-Code:
-
-
-Opcode: ErTozMessage
-Field: TypeName
-Code:
-
-
-Opcode: ErTozMessage
-Field: ErTozMessage
 Code:
 
 
@@ -20275,16 +16140,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: BuildingDemolishRequestInfo
-Field: TypeName
-Code:
-
-
-Opcode: BuildingDemolishRequestInfo
-Field: BuildingDemolishRequestInfo
-Code:
-
 
 Opcode: SeasonPassLevelRewardAllResponse
 Field: RewardedLevels
@@ -20409,16 +16264,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<int,TSizedDefaultAllocato
   }
   std::__n
 
-Opcode: CheatTutorialResetAllRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatTutorialResetAllRequest
-Field: CheatTutorialResetAllRequest
-Code:
-
-
 Opcode: EquipmentPresetInfo
 Field: GearSlotInfos
 Code:
@@ -20432,16 +16277,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: FollowerSquadResetResponse
-Field: TypeName
-Code:
-
-
-Opcode: FollowerSquadResetResponse
-Field: FollowerSquadResetResponse
-Code:
-
 
 Opcode: PlayerRealmTransferCheckInfo
 Field: IsMarketCheckNeeded
@@ -20592,16 +16427,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatDeleteChatEntityRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatDeleteChatEntityRequest
-Field: CheatDeleteChatEntityRequest
-Code:
-
-
 Opcode: PlayerMissionRewardResponse
 Field: MissionRewardInfos
 Code:
@@ -20686,36 +16511,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatChangeStrongholdBuildingLevelResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeStrongholdBuildingLevelResponse
-Field: CheatChangeStrongholdBuildingLevelResponse
-Code:
-
-
-Opcode: BattalionCheckReadyResponse
-Field: TypeName
-Code:
-
-
-Opcode: BattalionCheckReadyResponse
-Field: BattalionCheckReadyResponse
-Code:
-
-
-Opcode: CheatStrongholdApplyTaxRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdApplyTaxRequest
-Field: CheatStrongholdApplyTaxRequest
-Code:
-
-
 Opcode: PlayerItemUseFailResponse
 Field: ParameterInfo
 Code:
@@ -20736,56 +16531,6 @@ if (*(long **)(in_x0 + 0x28) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: PartyDismissRequest
-Field: TypeName
-Code:
-
-
-Opcode: PartyDismissRequest
-Field: PartyDismissRequest
-Code:
-
-
-Opcode: CheatOverwriteRankingBoardResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatOverwriteRankingBoardResponse
-Field: CheatOverwriteRankingBoardResponse
-Code:
-
-
-Opcode: CheatAccomplishAllFavorResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAccomplishAllFavorResponse
-Field: CheatAccomplishAllFavorResponse
-Code:
-
-
-Opcode: StrongholdCancelProtectionReservationResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdCancelProtectionReservationResponse
-Field: StrongholdCancelProtectionReservationResponse
-Code:
-
-
-Opcode: AddToChatBlockListResponse
-Field: TypeName
-Code:
-
-
-Opcode: AddToChatBlockListResponse
-Field: AddToChatBlockListResponse
-Code:
-
 
 Opcode: TozTcpWelcome
 Field: EngineData
@@ -20902,16 +16647,6 @@ TozSerializableMessageLibNative::
   }
   std::__ndk
 
-Opcode: StrongholdBattleActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleActionInfo
-Field: StrongholdBattleActionInfo
-Code:
-
-
 Opcode: SerializedMessageCacheElement
 Field: message
 Code:
@@ -20925,26 +16660,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerResponse
-Field: CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerResponse
-Code:
-
-
-Opcode: CheatStrongholdBattlePhaseTransitionEventResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattlePhaseTransitionEventResponse
-Field: CheatStrongholdBattlePhaseTransitionEventResponse
-Code:
-
 
 Opcode: CombinedInventoryInfo
 Field: InventoryInfosByInventoryKind
@@ -21023,26 +16738,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatClearRealmIntegrationBattleParticipationResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleParticipationResponse
-Field: CheatClearRealmIntegrationBattleParticipationResponse
-Code:
-
-
-Opcode: CheatReleaseOccupiableNpcInactivityResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatReleaseOccupiableNpcInactivityResponse
-Field: CheatReleaseOccupiableNpcInactivityResponse
-Code:
-
-
 Opcode: BuildingInfo
 Field: IsBaseBuildingExist
 Code:
@@ -21089,16 +16784,6 @@ lVar1 = 4;
     pcVar11 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: SeasonPassQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: SeasonPassQueryRequest
-Field: SeasonPassQueryRequest
-Code:
-
 
 Opcode: XorHandshake
 Field: xorStaticKey
@@ -21179,16 +16864,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatBatchBossSpawnTimeRollbackResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatBatchBossSpawnTimeRollbackResponse
-Field: CheatBatchBossSpawnTimeRollbackResponse
-Code:
-
-
 Opcode: RedrawableItemAdditionalInfo
 Field: ExcludedItemCuidsWhenRedrawing
 Code:
@@ -21216,16 +16891,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatStrongholdBattleCancelAttackRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleCancelAttackRequest
-Field: CheatStrongholdBattleCancelAttackRequest
-Code:
-
-
 Opcode: CovenantTradeSalesManageResponse
 Field: GoodsGuidsAndResultCodes
 Code:
@@ -21239,16 +16904,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CovenantSupportInfoQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantSupportInfoQueryRequest
-Field: CovenantSupportInfoQueryRequest
-Code:
-
 
 Opcode: PlayerPvpInfo
 Field: AlertPlayers
@@ -21298,26 +16953,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
     pcVar8 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatNpcCombatLogRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatNpcCombatLogRequest
-Field: CheatNpcCombatLogRequest
-Code:
-
-
-Opcode: CovenantDiplomacyCancelReinforcementInvitationResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantDiplomacyCancelReinforcementInvitationResponse
-Field: CovenantDiplomacyCancelReinforcementInvitationResponse
-Code:
-
 
 Opcode: ItemBoundAndErodedSelector
 Field: IsStorable
@@ -21383,16 +17018,6 @@ if (*(long **)(in_x0 + 0x18) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatPromoteAllFollowerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatPromoteAllFollowerResponse
-Field: CheatPromoteAllFollowerResponse
-Code:
-
 
 Opcode: MarketGoodsExpireDateTimeUpdateNotify
 Field: GoodsGuids
@@ -21477,16 +17102,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatUpdatePlayerCampaignTicketCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatUpdatePlayerCampaignTicketCountResponse
-Field: CheatUpdatePlayerCampaignTicketCountResponse
-Code:
-
-
 Opcode: AlertPlayerQueryResponse
 Field: AlertPlayerInfos
 Code:
@@ -21528,16 +17143,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: ErFrontServerAuthenticateInfo
-Field: TypeName
-Code:
-
-
-Opcode: ErFrontServerAuthenticateInfo
-Field: ErFrontServerAuthenticateInfo
-Code:
-
 
 Opcode: CovenantSupportInfoChangeNotify
 Field: HasCovenantSupportableFollower
@@ -21605,36 +17210,6 @@ bVar8 = *(char *)(in_x0 + 0x24) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatResetTerritoryBossRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetTerritoryBossRequest
-Field: CheatResetTerritoryBossRequest
-Code:
-
-
-Opcode: SkillTargetingInfo
-Field: TypeName
-Code:
-
-
-Opcode: SkillTargetingInfo
-Field: SkillTargetingInfo
-Code:
-
-
-Opcode: CheatClearCovenantWarehouseRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCovenantWarehouseRequest
-Field: CheatClearCovenantWarehouseRequest
-Code:
-
-
 Opcode: PointCurrencyContainerUpdateInfo
 Field: CuidToAmountDelta
 Code:
@@ -21662,16 +17237,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatClearRealmIntegrationBattleParticipationRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearRealmIntegrationBattleParticipationRequest
-Field: CheatClearRealmIntegrationBattleParticipationRequest
-Code:
-
 
 Opcode: ServerDrivenPlayInfo
 Field: RewardInfo
@@ -21777,16 +17342,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: UnknownAffectSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: UnknownAffectSourceInfo
-Field: UnknownAffectSourceInfo
-Code:
-
-
 Opcode: BattalionCovenantDiplomacyNotify
 Field: AllianceCovenantGuids
 Code:
@@ -21814,16 +17369,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatCovenantRubyShopResetUseResetCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatCovenantRubyShopResetUseResetCountResponse
-Field: CheatCovenantRubyShopResetUseResetCountResponse
-Code:
-
 
 Opcode: DistrictFavorDatabaseInfo
 Field: CurrentAvailableFavorDatabaseInfos
@@ -21853,36 +17398,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: FavorBossQuestAllAcceptRequest
-Field: TypeName
-Code:
-
-
-Opcode: FavorBossQuestAllAcceptRequest
-Field: FavorBossQuestAllAcceptRequest
-Code:
-
-
-Opcode: CheatAcquireCovenantLeaderRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireCovenantLeaderRequest
-Field: CheatAcquireCovenantLeaderRequest
-Code:
-
-
-Opcode: CheatGetEnvironmentVariablesRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatGetEnvironmentVariablesRequest
-Field: CheatGetEnvironmentVariablesRequest
-Code:
-
-
 Opcode: CovenantCancelInvitationFailResponse
 Field: CancelFailedPlayerGuids
 Code:
@@ -21909,16 +17424,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatDistrictBlockResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatDistrictBlockResponse
-Field: CheatDistrictBlockResponse
-Code:
-
 
 Opcode: CheatTeleportToNpcRequest
 Field: IsRegularOnly
@@ -21969,16 +17474,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CovenantBattalionExpeditionLivingTotemDepartureRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantBattalionExpeditionLivingTotemDepartureRequest
-Field: CovenantBattalionExpeditionLivingTotemDepartureRequest
-Code:
-
-
 Opcode: RoadPathInfo
 Field: IsOneShotSpecialMove
 Code:
@@ -22003,26 +17498,6 @@ bVar8 = *(char *)(in_x0 + 0x34) == '\0';
     pcVar10 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: StrongholdBattleStatisticsKnockOutEventInfo
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleStatisticsKnockOutEventInfo
-Field: StrongholdBattleStatisticsKnockOutEventInfo
-Code:
-
-
-Opcode: CheatStartStrongholdSummonWaveDefenseResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatStartStrongholdSummonWaveDefenseResponse
-Field: CheatStartStrongholdSummonWaveDefenseResponse
-Code:
-
 
 Opcode: BaseInfo
 Field: Token
@@ -22130,36 +17605,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatClearCollectionFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearCollectionFailResponse
-Field: CheatClearCollectionFailResponse
-Code:
-
-
-Opcode: RealmAccountPresentApplicationCheckInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountPresentApplicationCheckInfoRequest
-Field: RealmAccountPresentApplicationCheckInfoRequest
-Code:
-
-
-Opcode: CheatChangeFocusTargetManaPointsResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeFocusTargetManaPointsResponse
-Field: CheatChangeFocusTargetManaPointsResponse
-Code:
-
-
 Opcode: ErServerAuthenticateInfo
 Field: __base__
 Code:
@@ -22178,36 +17623,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantRealmTransferCheckInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRealmTransferCheckInfoRequest
-Field: CovenantRealmTransferCheckInfoRequest
-Code:
-
-
-Opcode: QuestTeleportToQuestWayPointResponse
-Field: TypeName
-Code:
-
-
-Opcode: QuestTeleportToQuestWayPointResponse
-Field: QuestTeleportToQuestWayPointResponse
-Code:
-
-
-Opcode: CheatAcquireFollowerPieceResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAcquireFollowerPieceResponse
-Field: CheatAcquireFollowerPieceResponse
-Code:
-
 
 Opcode: HeadPieceDisplayOptionModifyRequest
 Field: IsHeadPieceDisplayed
@@ -22229,16 +17644,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantRealmTransferReadyToRealmTransferResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantRealmTransferReadyToRealmTransferResponse
-Field: CovenantRealmTransferReadyToRealmTransferResponse
-Code:
-
 
 Opcode: CombatTargetOptionInfo
 Field: KeepContinuousCombatAndAutoMoveOnManualMove
@@ -22466,26 +17871,6 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: StrongholdBuildingDowngradeResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingDowngradeResponse
-Field: StrongholdBuildingDowngradeResponse
-Code:
-
-
-Opcode: CovenantUpdateNoticeFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantUpdateNoticeFailResponse
-Field: CovenantUpdateNoticeFailResponse
-Code:
-
-
 Opcode: ItemIndex
 Field: IsStorable
 Code:
@@ -22530,16 +17915,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatClearSeasonPassLevelRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearSeasonPassLevelRequest
-Field: CheatClearSeasonPassLevelRequest
-Code:
-
-
 Opcode: StrongholdBattleDeclarePrerequisitesQueryResponse
 Field: HavenCuidToTotalTravelDistances
 Code:
@@ -22553,16 +17928,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: AcquireSourceAdditionalParameter
-Field: TypeName
-Code:
-
-
-Opcode: AcquireSourceAdditionalParameter
-Field: AcquireSourceAdditionalParameter
-Code:
-
 
 Opcode: CovenantRealmTransferCheckInfoResponse
 Field: RealmTransferInfo
@@ -22619,16 +17984,6 @@ lVar1 = 4;
     pcVar11 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: VolatileInGameNotificationInfo
-Field: TypeName
-Code:
-
-
-Opcode: VolatileInGameNotificationInfo
-Field: VolatileInGameNotificationInfo
-Code:
-
 
 Opcode: PlayerMissionRewardRequest
 Field: MissionCuidAndSteps
@@ -22768,26 +18123,6 @@ if (*(long **)(in_x0 + 0x38) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatServerDrivenPlayResupplyRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatServerDrivenPlayResupplyRequest
-Field: CheatServerDrivenPlayResupplyRequest
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelCloseResponse
-Field: TypeName
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelCloseResponse
-Field: AnniversaryAchievementPrivateChannelCloseResponse
-Code:
-
-
 Opcode: NgsNotify
 Field: Data
 Code:
@@ -22850,16 +18185,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatSpawnNormalDoodadResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnNormalDoodadResponse
-Field: CheatSpawnNormalDoodadResponse
-Code:
-
 
 Opcode: QueryChatRecordsResponse
 Field: ChatMessageInfos
@@ -22926,16 +18251,6 @@ bVar8 = *(char *)(in_x0 + 0xc) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: StrongholdBuildingWorkCancelResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingWorkCancelResponse
-Field: StrongholdBuildingWorkCancelResponse
-Code:
-
 
 Opcode: GearEnchantPreserveItemAdditionalInfo
 Field: GearEnchantSlotInfos
@@ -23091,16 +18406,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatApplyCovenantResearchSetResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatApplyCovenantResearchSetResponse
-Field: CheatApplyCovenantResearchSetResponse
-Code:
-
-
 Opcode: CovenantRealmTransferInfo
 Field: CovenantRealmTransferMemberReadyChecks
 Code:
@@ -23235,26 +18540,6 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
-Opcode: MailSendCountQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: MailSendCountQueryRequest
-Field: MailSendCountQueryRequest
-Code:
-
-
-Opcode: CovenantGiftQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantGiftQueryRequest
-Field: CovenantGiftQueryRequest
-Code:
-
-
 Opcode: MarketSellSettleRequest
 Field: GoodsGuids
 Code:
@@ -23283,16 +18568,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: EndedWorldEventActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: EndedWorldEventActionInfo
-Field: EndedWorldEventActionInfo
-Code:
-
-
 Opcode: RealmAccountWarehouseAutoStoreSettingsInfo
 Field: Settings
 Code:
@@ -23306,16 +18581,6 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
-
-Opcode: MountCallingFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: MountCallingFailResponse
-Field: MountCallingFailResponse
-Code:
-
 
 Opcode: StrongholdBuildingUpdateBuildingAccessPermissionsResponse
 Field: BuildingAccessPermissionKinds
@@ -23344,36 +18609,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatStrongholdBattleCompleteAttackPhaseRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatStrongholdBattleCompleteAttackPhaseRequest
-Field: CheatStrongholdBattleCompleteAttackPhaseRequest
-Code:
-
-
-Opcode: ServerDrivenPlayAppCloseRequest
-Field: TypeName
-Code:
-
-
-Opcode: ServerDrivenPlayAppCloseRequest
-Field: ServerDrivenPlayAppCloseRequest
-Code:
-
-
-Opcode: AchievementSourceInfo
-Field: TypeName
-Code:
-
-
-Opcode: AchievementSourceInfo
-Field: AchievementSourceInfo
-Code:
-
 
 Opcode: SkillGroundTargetingInfo
 Field: IsOriginatedAtCasterLocationProxy
@@ -23422,26 +18657,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatRespawnNpcResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRespawnNpcResponse
-Field: CheatRespawnNpcResponse
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelCloseRequest
-Field: TypeName
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelCloseRequest
-Field: AnniversaryAchievementPrivateChannelCloseRequest
-Code:
-
-
 Opcode: OccupiableNpcSummaryBulkUpdateDataNotify
 Field: OccupiableNpcSummaryInfos
 Code:
@@ -23455,26 +18670,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: AnniversaryAchievementPrivateChannelKeepaliveRequest
-Field: TypeName
-Code:
-
-
-Opcode: AnniversaryAchievementPrivateChannelKeepaliveRequest
-Field: AnniversaryAchievementPrivateChannelKeepaliveRequest
-Code:
-
-
-Opcode: CheatClearAllStanceAndSkillRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearAllStanceAndSkillRequest
-Field: CheatClearAllStanceAndSkillRequest
-Code:
-
 
 Opcode: MailQueryResponse
 Field: Mails
@@ -23592,16 +18787,6 @@ TozSerializableMessageLibNative::JsonSerializer<TArray<FTzCuid,TSizedDefaultAllo
   }
   std::__n
 
-Opcode: CheatChangeActivationSpawnLayerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeActivationSpawnLayerResponse
-Field: CheatChangeActivationSpawnLayerResponse
-Code:
-
-
 Opcode: CheatTestGearEnchantOptionResponse
 Field: GearEnchantOptionGrades
 Code:
@@ -23629,16 +18814,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: CheatOccupyStrongholdResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatOccupyStrongholdResponse
-Field: CheatOccupyStrongholdResponse
-Code:
-
 
 Opcode: SeamlessNpcInfo
 Field: IsInVillage
@@ -23765,16 +18940,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: CheatClearAllStanceAndSkillResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatClearAllStanceAndSkillResponse
-Field: CheatClearAllStanceAndSkillResponse
-Code:
-
-
 Opcode: MarketGoodsSummaryInfoQueryResponse
 Field: MarketGoodsSummaryQueryInfo
 Code:
@@ -23796,26 +18961,6 @@ if (*(long **)(in_x0 + 0x10) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: SkillUseOptionModifyResponse
-Field: TypeName
-Code:
-
-
-Opcode: SkillUseOptionModifyResponse
-Field: SkillUseOptionModifyResponse
-Code:
-
-
-Opcode: PlayerLogoutRequest
-Field: TypeName
-Code:
-
-
-Opcode: PlayerLogoutRequest
-Field: PlayerLogoutRequest
-Code:
-
-
 Opcode: ErosionInstalledWithoutPermissionAddNotify
 Field: ErosionInfos
 Code:
@@ -23829,16 +18974,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatPromoteFollowerResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatPromoteFollowerResponse
-Field: CheatPromoteFollowerResponse
-Code:
-
 
 Opcode: NavMeshTileCheckResponse
 Field: CheckedTiles
@@ -23940,16 +19075,6 @@ if (*(long **)(in_x0 + 0x78) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: CheatSpawnOccupiableNpcBossResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnOccupiableNpcBossResponse
-Field: CheatSpawnOccupiableNpcBossResponse
-Code:
-
-
 Opcode: CheatChangeCashShopCheckBuyLimitOptionRequest
 Field: IsIgnoreToCheckBuyLimit
 Code:
@@ -23989,16 +19114,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatOpenAllFogRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatOpenAllFogRequest
-Field: CheatOpenAllFogRequest
-Code:
-
 
 Opcode: CollisionFreeSynchronizeNotify
 Field: IsCollisionFree
@@ -24047,26 +19162,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: SessionLogoutRequest
-Field: TypeName
-Code:
-
-
-Opcode: SessionLogoutRequest
-Field: SessionLogoutRequest
-Code:
-
-
-Opcode: CheatSetHavenBuildingAndItemResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSetHavenBuildingAndItemResponse
-Field: CheatSetHavenBuildingAndItemResponse
-Code:
-
-
 Opcode: CovenantHistoryShowArrivalNotify
 Field: CovenantHistoryInfos
 Code:
@@ -24081,16 +19176,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: PartyDismissFailResponse
-Field: TypeName
-Code:
-
-
-Opcode: PartyDismissFailResponse
-Field: PartyDismissFailResponse
-Code:
-
-
 Opcode: StrongholdBattleAttackResourceInfo
 Field: SiegeWeaponCounts
 Code:
@@ -24104,16 +19189,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CovenantTradeSalesListQueryRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantTradeSalesListQueryRequest
-Field: CovenantTradeSalesListQueryRequest
-Code:
-
 
 Opcode: HeadPieceDisplayOptionModifyResponse
 Field: IsHeadPieceDisplayed
@@ -24136,16 +19211,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: BattalionQueryMemberCandidateListRequest
-Field: TypeName
-Code:
-
-
-Opcode: BattalionQueryMemberCandidateListRequest
-Field: BattalionQueryMemberCandidateListRequest
-Code:
-
-
 Opcode: StrongholdBattleCampaignConditionProgressSynchronizeNotify
 Field: CampaignConditionProgressInfos
 Code:
@@ -24159,16 +19224,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatAccomplishSeasonPassAchievementResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAccomplishSeasonPassAchievementResponse
-Field: CheatAccomplishSeasonPassAchievementResponse
-Code:
-
 
 Opcode: BattalionVolunteerParticipationNotify
 Field: VolunteerParticipationInfo
@@ -24190,16 +19245,6 @@ if (*(long **)(in_x0 + 8) == (long *)0x0) {
     pcVar3 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatDestroyPointsCheckRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatDestroyPointsCheckRequest
-Field: CheatDestroyPointsCheckRequest
-Code:
-
 
 Opcode: CheatUpdateAchievementMissionProgressCountsRequest
 Field: MissionProgressCounts
@@ -24248,16 +19293,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CovenantQueryInvitedCovenantSummaryInfoListRequest
-Field: TypeName
-Code:
-
-
-Opcode: CovenantQueryInvitedCovenantSummaryInfoListRequest
-Field: CovenantQueryInvitedCovenantSummaryInfoListRequest
-Code:
-
 
 Opcode: RealmAccountRealmTransferExecuteResponse
 Field: RealmTransferInfo
@@ -24963,16 +19998,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatDiscoverAllSelfieDoodadSpawnersRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatDiscoverAllSelfieDoodadSpawnersRequest
-Field: CheatDiscoverAllSelfieDoodadSpawnersRequest
-Code:
-
-
 Opcode: CheatInstallAllArquirunesResponse
 Field: InstalledArquiruneCuids
 Code:
@@ -24999,16 +20024,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: SavedInGameNotificationInfo
-Field: TypeName
-Code:
-
-
-Opcode: SavedInGameNotificationInfo
-Field: SavedInGameNotificationInfo
-Code:
-
 
 Opcode: PlayerMarketTransactionHistoryResponse
 Field: MarketTransactionInfos
@@ -25188,16 +20203,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
   }
   std::__ndk1::__put_ch
 
-Opcode: CheatKillSurroundingCharactersResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatKillSurroundingCharactersResponse
-Field: CheatKillSurroundingCharactersResponse
-Code:
-
-
 Opcode: GearErodedRestorationResultInfo
 Field: IsBound
 Code:
@@ -25241,16 +20246,6 @@ lVar2 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: QuestTeleportToReentryLocationResponse
-Field: TypeName
-Code:
-
-
-Opcode: QuestTeleportToReentryLocationResponse
-Field: QuestTeleportToReentryLocationResponse
-Code:
-
 
 Opcode: TozMessageCacheElement
 Field: message
@@ -25335,16 +20330,6 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
-
-Opcode: QuickSlotDetailInfo
-Field: TypeName
-Code:
-
-
-Opcode: QuickSlotDetailInfo
-Field: QuickSlotDetailInfo
-Code:
-
 
 Opcode: RankingQueryResponse
 Field: RankingInfos
@@ -25444,26 +20429,6 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
-Opcode: BuffAffectInfo
-Field: TypeName
-Code:
-
-
-Opcode: BuffAffectInfo
-Field: BuffAffectInfo
-Code:
-
-
-Opcode: StrongholdBattleSummonOutpostStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleSummonOutpostStartNotify
-Field: StrongholdBattleSummonOutpostStartNotify
-Code:
-
-
 Opcode: SquadSharedFocusTargetNotify
 Field: SharedFocusTargetInfo
 Code:
@@ -25506,16 +20471,6 @@ if (*(long **)(in_x0 + 0x20) == (long *)0x0) {
   }
   std::__ndk1::__p
 
-Opcode: StrongholdBattleAttackInnerGateStartNotify
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBattleAttackInnerGateStartNotify
-Field: StrongholdBattleAttackInnerGateStartNotify
-Code:
-
-
 Opcode: CovenantStartCampaignRequest
 Field: CampaignStartOptionInfo
 Code:
@@ -25550,36 +20505,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: RealmAccountRealmTransferCheckInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmAccountRealmTransferCheckInfoRequest
-Field: RealmAccountRealmTransferCheckInfoRequest
-Code:
-
-
-Opcode: CheatCloseAllFogRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatCloseAllFogRequest
-Field: CheatCloseAllFogRequest
-Code:
-
-
-Opcode: CheatOpenSeasonPassAchievementsRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatOpenSeasonPassAchievementsRequest
-Field: CheatOpenSeasonPassAchievementsRequest
-Code:
-
 
 Opcode: PlayerLocationMonitoringDeregisterNotify
 Field: DeregisterPlayerGuids
@@ -25619,16 +20544,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: StrongholdBuildingUpgradeResponse
-Field: TypeName
-Code:
-
-
-Opcode: StrongholdBuildingUpgradeResponse
-Field: StrongholdBuildingUpgradeResponse
-Code:
-
 
 Opcode: ChatRoomRecordsInitializationInfo
 Field: ChatMessageInfos
@@ -25735,26 +20650,6 @@ bVar8 = *(char *)(in_x0 + 0x31) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CheatResetCovenantCampaignTicketCountRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetCovenantCampaignTicketCountRequest
-Field: CheatResetCovenantCampaignTicketCountRequest
-Code:
-
-
-Opcode: SelfieModeShootNotify
-Field: TypeName
-Code:
-
-
-Opcode: SelfieModeShootNotify
-Field: SelfieModeShootNotify
-Code:
-
 
 Opcode: RegionContentPlayTimeInfo
 Field: RegionContentPlayTimeInfo_sec
@@ -25980,26 +20875,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: TriggerWorldActionInfo
-Field: TypeName
-Code:
-
-
-Opcode: TriggerWorldActionInfo
-Field: TriggerWorldActionInfo
-Code:
-
-
-Opcode: RealmIntegrationQueryRealmAccountInfoRequest
-Field: TypeName
-Code:
-
-
-Opcode: RealmIntegrationQueryRealmAccountInfoRequest
-Field: RealmIntegrationQueryRealmAccountInfoRequest
-Code:
-
-
 Opcode: NpcSpeechBalloonInfo
 Field: NpcSpeechBalloonTextFormatInfo
 Code:
@@ -26034,16 +20909,6 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatChangeServerTimeResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatChangeServerTimeResponse
-Field: CheatChangeServerTimeResponse
-Code:
-
 
 Opcode: CheatCovenantPayDividendRequest
 Field: DividendInfo
@@ -26108,46 +20973,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatSpawnNpcResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatSpawnNpcResponse
-Field: CheatSpawnNpcResponse
-Code:
-
-
-Opcode: CheatAllStancesAcquireRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatAllStancesAcquireRequest
-Field: CheatAllStancesAcquireRequest
-Code:
-
-
-Opcode: PlayerMarketTransactionHistoryRequest
-Field: TypeName
-Code:
-
-
-Opcode: PlayerMarketTransactionHistoryRequest
-Field: PlayerMarketTransactionHistoryRequest
-Code:
-
-
-Opcode: CheatRealmIntegrationConvertToIntegratedRealmAccountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRealmIntegrationConvertToIntegratedRealmAccountResponse
-Field: CheatRealmIntegrationConvertToIntegratedRealmAccountResponse
-Code:
-
-
 Opcode: BuildingWorkRequestBaseInfo
 Field: IsRecommended
 Code:
@@ -26191,16 +21016,6 @@ pcVar8 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
-Opcode: CovenantLeaveResponse
-Field: TypeName
-Code:
-
-
-Opcode: CovenantLeaveResponse
-Field: CovenantLeaveResponse
-Code:
-
-
 Opcode: CheatAllStancesAcquireResponse
 Field: IsStanceInstallFreeChanceEnabled
 Code:
@@ -26226,16 +21041,6 @@ bVar8 = *(char *)(in_x0 + 0x21) == '\0';
   }
   std::__ndk1::__put_c
 
-Opcode: CheatCommandPresetBeginNotify
-Field: TypeName
-Code:
-
-
-Opcode: CheatCommandPresetBeginNotify
-Field: CheatCommandPresetBeginNotify
-Code:
-
-
 Opcode: BattalionConfirmJoinApplicationRequest
 Field: IsConfirmJoinApplication
 Code:
@@ -26256,26 +21061,6 @@ lVar1 = 4;
     pcVar9 = local_188;
   }
   std::__ndk1::__p
-
-Opcode: CheatAnniversaryAchievementAccomplishResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatAnniversaryAchievementAccomplishResponse
-Field: CheatAnniversaryAchievementAccomplishResponse
-Code:
-
-
-Opcode: FollowerExperiencePointsItemConsumeResponse
-Field: TypeName
-Code:
-
-
-Opcode: FollowerExperiencePointsItemConsumeResponse
-Field: FollowerExperiencePointsItemConsumeResponse
-Code:
-
 
 Opcode: SessionKeyAuthenticateComplete
 Field: Success
@@ -26348,16 +21133,6 @@ bVar9 = *(char *)(in_x0 + 0x70) == '\0';
     pcVar12 = local_188;
   }
   std::__ndk1::__put_c
-
-Opcode: SkillCancelChargingResponse
-Field: TypeName
-Code:
-
-
-Opcode: SkillCancelChargingResponse
-Field: SkillCancelChargingResponse
-Code:
-
 
 Opcode: CovenantBattalionExpeditionInfo
 Field: AnotherBattalionGuids
@@ -26456,16 +21231,6 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
-Opcode: CheatResetGoodsBuyCountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatResetGoodsBuyCountResponse
-Field: CheatResetGoodsBuyCountResponse
-Code:
-
-
 Opcode: CheatEnabledModificationNotify
 Field: CheatEnabled
 Code:
@@ -26491,16 +21256,6 @@ bVar8 = *(char *)(in_x0 + 8) == '\0';
     pcVar5 = local_188;
   }
   std::__ndk1::__put_ch
-
-Opcode: CheatTutorialCompleteAllRequest
-Field: TypeName
-Code:
-
-
-Opcode: CheatTutorialCompleteAllRequest
-Field: CheatTutorialCompleteAllRequest
-Code:
-
 
 Opcode: NavMeshTileDataResponse
 Field: CheckedTiles
@@ -26637,12 +21392,3 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
-
-Opcode: CheatRealmIntegrationAddRealmAccountResponse
-Field: TypeName
-Code:
-
-
-Opcode: CheatRealmIntegrationAddRealmAccountResponse
-Field: CheatRealmIntegrationAddRealmAccountResponse
-Code:
