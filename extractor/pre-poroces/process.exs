@@ -4,10 +4,10 @@ Mix.install([{:exjsx, "~> 4.0.0"}])
 data = JSX.decode!(File.read!("C:/repos/wp/assets/data/function_data_full.json"))
 
 # Load the structures map (if you still need this)
-{par, _} = Code.eval_string(File.read!("C:/repos/wp/assets/maps/claude_structures_map.exs"))
-par = Map.new(par)
+# {par, _} = Code.eval_string(File.read!("C:/repos/wp/assets/maps/claude_structures_map.exs"))
+# par = Map.new(par)
 
-IO.puts("Total structures: #{Enum.count(par)}")
+# IO.puts("Total structures: #{Enum.count(par)}")
 
 defmodule TextSegmenter do
   def segment_and_extract(text) do
@@ -153,7 +153,7 @@ defmodule TextSegmenter do
   end
 end
 
-defmodule CChunkClassifier do
+defmodule ChunkClassifier do
   def classify(chunk) do
     cond do
       type = extract_serializer_type(chunk) ->
@@ -164,8 +164,8 @@ defmodule CChunkClassifier do
         type
       type = extract_boolean_type(chunk) ->
         type
-      type = extract_list_type(chunk) ->
-        type
+      # type = extract_list_type(chunk) ->
+      #   type
       info = extract_if_else_info(chunk) ->
         case classify(info) do
           :unknown -> {:nullable, info}
@@ -176,42 +176,42 @@ defmodule CChunkClassifier do
     end
   end
 
-  defp extract_list_type(chunk) do
-    case Regex.run(~r/TozSerializableMessageLibNative::JsonSerializer<(TArray<.*?>(?:,\s*TSizedDefaultAllocator<\d+>)*),void>::Serialize/, chunk) do
-      [_, array_type] ->
-        {:list, parse_array_type(array_type)}
-      _ ->
-        nil
-    end
-  end
+  # defp extract_list_type(chunk) do
+  #   case Regex.run(~r/TozSerializableMessageLibNative::JsonSerializer<(TArray<.*?>(?:,\s*TSizedDefaultAllocator<\d+>)*),void>::Serialize/, chunk) do
+  #     [_, array_type] ->
+  #       {:list, parse_array_type(array_type)}
+  #     _ ->
+  #       nil
+  #   end
+  # end
 
-  defp parse_array_type(array_type) do
-    case Regex.run(~r/TArray<(.*)>/, array_type) do
-      [_, inner_type] ->
-        cleaned_type = String.replace(inner_type, ~r/,\s*TSizedDefaultAllocator<\d+>/, "")
-        classify_inner_type(cleaned_type)
-      _ ->
-        :unknown
-    end
-  end
+  # defp parse_array_type(array_type) do
+  #   case Regex.run(~r/TArray<(.*)>/, array_type) do
+  #     [_, inner_type] ->
+  #       cleaned_type = String.replace(inner_type, ~r/,\s*TSizedDefaultAllocator<\d+>/, "")
+  #       classify_inner_type(cleaned_type)
+  #     _ ->
+  #       :unknown
+  #   end
+  # end
 
-  defp classify_inner_type(type) do
-    cond do
-      String.contains?(type, "TSharedPtr") ->
-        case Regex.run(~r/TSharedPtr<([^,]+)/, type) do
-          [_, shared_type] -> {:shared_ptr, remove_ftz_prefix(shared_type)}
-          _ -> :unknown
-        end
-      String.contains?(type, "TArray") ->
-        {:list, parse_array_type(type)}
-      type == "long_long" -> {:uint, 8}
-      type == "long" -> {:uint, 4}
-      type == "int" -> {:int, 4}
-      type == "FString" -> :string
-      type == "float" -> :float
-      true -> :unknown
-    end
-  end
+  # defp classify_inner_type(type) do
+  #   cond do
+  #     String.contains?(type, "TSharedPtr") ->
+  #       case Regex.run(~r/TSharedPtr<([^,]+)/, type) do
+  #         [_, shared_type] -> {:shared_ptr, remove_ftz_prefix(shared_type)}
+  #         _ -> :unknown
+  #       end
+  #     String.contains?(type, "TArray") ->
+  #       {:list, parse_array_type(type)}
+  #     type == "long_long" -> {:uint, 8}
+  #     type == "long" -> {:uint, 4}
+  #     type == "int" -> {:int, 4}
+  #     type == "FString" -> :string
+  #     type == "float" -> :float
+  #     true -> :unknown
+  #   end
+  # end
 
   defp extract_serializer_type(chunk) do
     case Regex.run(
@@ -328,13 +328,13 @@ end
 #    _ -> str
 #   end
 #   IO.puts("Field: #{name}")
-#   class = CChunkClassifier.classify(code)
+#   class = ChunkClassifier.classify(code)
 
 #   if class == :unknown do
 #     IO.puts("Following code:")
 #     IO.puts("#{code}")
 #   else
-#     IO.puts("#{inspect(CChunkClassifier.classify(code))}")
+#     IO.puts("#{inspect(ChunkClassifier.classify(code))}")
 #   end
 
 #   IO.puts("---")
@@ -368,13 +368,6 @@ defmodule DataProcessorAndWriter do
       end)
       |> filter_fields(opcode_name)
 
-      # Handle empty structures
-      fields = if Enum.empty?(fields) do
-        [%{name: nil, type: :empty_struct}]
-      else
-        fields
-      end
-
       # Handle the base field
       {base_field, other_fields} = Enum.split_with(fields, fn %{name: name} ->
         name && String.downcase(to_string(name)) == "base"
@@ -405,13 +398,14 @@ defmodule DataProcessorAndWriter do
   defp extract_field_name(str) do
     case Regex.run(~r/"(.+)\\"/, str) do
       [_, name] -> name
-      _ -> nil
+      _ -> "unknown_name"
     end
   end
 
   defp classify_and_adjust_type(code) do
-    case CChunkClassifier.classify(code) do
+    case ChunkClassifier.classify(code) do
       {:struct, "Cuid"} -> :cuid
+      {:struct, "FIntVector2D"} -> :fintvector2d
       :vector -> :vector
       "short" -> {:int, 2}  # Assuming short is a 16-bit integer
       other -> other
