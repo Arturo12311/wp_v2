@@ -368,6 +368,13 @@ defmodule DataProcessorAndWriter do
       end)
       |> filter_fields(opcode_name)
 
+      # Handle empty structures
+      fields = if Enum.empty?(fields) do
+        [%{name: nil, type: :empty_struct}]
+      else
+        fields
+      end
+
       # Handle the base field
       {base_field, other_fields} = Enum.split_with(fields, fn %{name: name} ->
         name && String.downcase(to_string(name)) == "base"

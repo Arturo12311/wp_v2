@@ -4,7 +4,7 @@ defmodule PacketCodec do
   Uses predefined structures and opcode mappings to process packets.
   """
 
-  @structures File.read!(Path.join([__DIR__, "../assets/maps/test_structure_map.exs"]))
+  @structures File.read!(Path.join([__DIR__, "../assets/maps/claude_structure_map.exs"]))
               |> Code.eval_string()
               |> elem(0)
   @opcode_map File.read!(Path.join([__DIR__, "../assets/maps/opcode_map.exs"]))
@@ -239,7 +239,7 @@ defmodule PacketCodec do
   end
 
   defp decode_field(<<0, len::little-32, str::binary-size(len), rest::binary>>, %{type: :string}) do
-    # strings always prepemd a zero marking non null value 
+    # strings always prepemd a zero marking non null value
     {:ok, {str, rest}}
   end
 

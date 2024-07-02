@@ -96,7 +96,7 @@
   ],
 
 "AchievementSourceInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "TerritoryErosionRemoveNotify" => [
@@ -1552,7 +1552,7 @@
   ],
 
 "MountStateInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "CrossRealmRankingQueryRequest" => [
@@ -2702,7 +2702,7 @@
   ],
 
 "BaseGameOptionInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "MarketSellReregisterRequest" => [
@@ -3445,7 +3445,7 @@
   ],
 
 "ItemAdditionalInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "BattalionCheckReadyResultNotify" => [
@@ -3751,7 +3751,7 @@
   ],
 
 "ItemUseParameterInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "StrongholdWorldMapFirstOccupationRewardEarliestReceivableDateTimeNotify" => [
@@ -4698,7 +4698,7 @@
   ],
 
 "CovenantDiplomacyAdditionalInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "DatatoolHandshakeResponse" => [
@@ -6484,7 +6484,7 @@
   ],
 
 "WorldEventInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "InGameNotificationDeleteCategoryRequest" => [
@@ -7363,7 +7363,7 @@
   ],
 
 "RankingViewInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "PartyBanishMemberFailResponse" => [
@@ -7696,7 +7696,7 @@
   ],
 
 "ItemSelector" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "PaidAttendanceInfo" => [
@@ -10660,7 +10660,7 @@
   ],
 
 "RankingAdditionalSourceInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "CheatCloseFogRequest" => [
@@ -10869,7 +10869,7 @@
   ],
 
 "FollowerReturnReasonAdditionalInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "StrongholdBuildingDowngradeRequest" => [
@@ -11180,7 +11180,7 @@
   ],
 
 "SkillTargetingInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "PlayerFollowerInfo" => [
@@ -11708,7 +11708,7 @@
   ],
 
 "AcquireSourceAdditionalParameter" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "RealmIntegrationPlayerInfo" => [
@@ -13492,7 +13492,7 @@
   ],
 
 "QuickSlotDetailInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "PushNotificationOptionModifyRequest" => [
@@ -14161,7 +14161,7 @@
   ],
 
 "TriggerWorldActionInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "PartySharedFocusTargetNotify" => [
@@ -15261,7 +15261,7 @@
   ],
 
 "SkillAffectInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "CovenantAppointCovenantMemberRoleResponse" => [
@@ -15301,7 +15301,7 @@
   ],
 
 "BuffAffectInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "CheatSetLocalServerPushRequest" => [
@@ -15841,7 +15841,7 @@
   ],
 
 "ServerDrivenPlayStateInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "CovenantDonationRequest" => [
@@ -16107,7 +16107,7 @@
   ],
 
 "CharacterStatsInfo" => [
-    
+    %{name: nil, type: :empty_struct}
   ],
 
 "ItemAcquireSourceInfo" => [
