@@ -1,14 +1,3 @@
-Mix.install([{:exjsx, "~> 4.0.0"}])
-
-# Load the JSON data
-data = JSX.decode!(File.read!("C:/repos/wp/assets/data/function_data_full.json"))
-
-# Load the structures map (if you still need this)
-# {par, _} = Code.eval_string(File.read!("C:/repos/wp/assets/maps/claude_structures_map.exs"))
-# par = Map.new(par)
-
-# IO.puts("Total structures: #{Enum.count(par)}")
-
 defmodule TextSegmenter do
   def segment_and_extract(text) do
     # [_, after_members] = String.split(text, ~s'\\"Members\\" : {', parts: 2)
@@ -375,47 +364,11 @@ defmodule ChunkClassifier do
     |> String.replace_prefix("Tz", "")
   end
 end
-# # Segment the text and extract information
-# extracted_data = TextSegmenter.segment_and_extract(input_text)
 
-# # Output the results
-# IO.puts("Extracted data:")
-
-# fields = Enum.map(extracted_data, fn %{
-#                                first_param: param,
-#                                string_constant: str,
-#                                length: len,
-#                                following_code: code
-#                              } ->
-#   # IO.puts "Function call:"
-#   # IO.puts "  First parameter: #{param}"
-#   # IO.puts "  String constant: #{str}"
-#   # IO.puts "  Length: #{len}"
-#   name = case (Regex.run(~r/"(.+)\\"/, str) |> IO.inspect()) do
-#    [_, n] -> n
-#    _ -> str
-#   end
-#   IO.puts("Field: #{name}")
-#   class = ChunkClassifier.classify(code)
-
-#   if class == :unknown do
-#     IO.puts("Following code:")
-#     IO.puts("#{code}")
-#   else
-#     IO.puts("#{inspect(ChunkClassifier.classify(code))}")
-#   end
-
-#   IO.puts("---")
-#   {name, class}
-# end)
-
-# fields = case :lists.reverse(fields) do
-#   [{"Base", b} | rest] ->
-#     [{"__base__", b} | :lists.reverse(rest)]
-#   _ -> fields
-# end
 
 defmodule DataProcessorAndWriter do
+
+  #programs main entry point
   def process_and_write(data) do
     processed_data = process_data(data)
     write_parsed_structures(processed_data.structures)
@@ -423,67 +376,59 @@ defmodule DataProcessorAndWriter do
   end
 
   defp process_data(data) do
-    Enum.reduce(data, %{structures: %{}, unknown_fields: []}, fn entry, acc ->
+    Enum.reduce(data, %{structures: %{}, unknown_fields: []}, fn entry, acc ->  #loops through each entry in data
       opcode_name = entry["opcode_name"]
       to_json_string = entry["ToJsonString"]
 
+      #returns list of raw chunks
       extracted_data = TextSegmenter.segment_and_extract(to_json_string)
 
-      fields = Enum.map(extracted_data, fn %{string_constant: str, following_code: code} ->
+      fields = Enum.map(extracted_data, fn %{string_constant: str, following_code: code} ->  #formats each raw chunk
         name = extract_field_name(str)
-        type = classify_and_adjust_type(code)
+        type = ChunkClassifier.classify(code) #calls classifier module
         %{name: name, type: type}
       end)
       |> filter_fields(opcode_name)
 
-      # Handle empty structures
-      fields = if Enum.empty?(fields) do
-        [%{name: nil, type: :empty_struct}]
-      else
-        fields
-      end
+      # might add or delete this function ... not sure yet
+      # # Handle empty structures
+      # fields = if Enum.empty?(fields) do
+      #   [%{name: nil, type: :empty_struct}]
+      # else
+      #   fields
+      # end
 
-      # Handle the base field
+      #handle base field
       {base_field, other_fields} = Enum.split_with(fields, fn %{name: name} ->
         name && String.downcase(to_string(name)) == "base"
       end)
-
       fields = case base_field do
         [base] -> [%{name: "__base__", type: base.type} | other_fields]
         _ -> fields
       end
 
-      acc = put_in(acc, [:structures, opcode_name], fields)
+      acc = put_in(acc, [:structures, opcode_name], fields) #update :structures accumulator map
 
+      #handle unknown fields
       unknown_fields = Enum.filter(fields, fn %{type: type} -> type == :unknown end)
       |> Enum.map(fn %{name: name} ->
         %{opcode_name: opcode_name, field_name: name, code: find_code_for_field(extracted_data, name)}
       end)
 
-      update_in(acc, [:unknown_fields], &(&1 ++ unknown_fields))
+      update_in(acc, [:unknown_fields], &(&1 ++ unknown_fields)) # update :unknown_fields accumulator list
     end)
   end
 
   defp filter_fields(fields, opcode_name) do
-    Enum.reject(fields, fn %{name: name} ->
+    Enum.reject(fields, fn %{name: name} ->  #filters out some fields
       name == "TypeName" || name == opcode_name
     end)
   end
 
   defp extract_field_name(str) do
-    case Regex.run(~r/"(.+)\\"/, str) do
+    case Regex.run(~r/"(.+)\\"/, str) do  #extracts name using regex
       [_, name] -> name
       _ -> "unknown_name"
-    end
-  end
-
-  defp classify_and_adjust_type(code) do
-    case ChunkClassifier.classify(code) do
-      {:struct, "Cuid"} -> :cuid
-      {:struct, "FIntVector2D"} -> :fintvector2d
-      :vector -> :vector
-      "short" -> {:int, 2}  # Assuming short is a 16-bit integer
-      other -> other
     end
   end
 
@@ -495,11 +440,11 @@ defmodule DataProcessorAndWriter do
   end
 
   defp write_parsed_structures(structures) do
-    content = Enum.map_join(structures, ",\n\n", fn {struct_name, fields} ->
+    content = Enum.map_join(structures, ",\n\n", fn {opcode_name, fields} ->
       fields_str = Enum.map_join(fields, ",\n    ", fn %{name: name, type: type} ->
         "%{name: #{inspect(name)}, type: #{inspect(type)}}"
       end)
-      "#{inspect(struct_name)} => [\n    #{fields_str}\n  ]"
+      "#{inspect(opcode_name)} => [\n    #{fields_str}\n  ]"
     end)
     File.write!("parsed_structures.exs", "%{\n  " <> content <> "\n}")
   end
@@ -511,6 +456,16 @@ defmodule DataProcessorAndWriter do
     File.write!("unknown_fields.txt", content)
   end
 end
+
+
+#
+# !!!Runs the program!!!
+#
+
+Mix.install([{:exjsx, "~> 4.0.0"}])
+
+# Load the JSON data
+data = JSX.decode!(File.read!("C:/repos/wp/assets/data/function_data_full.json"))
 
 # Process the data and write results
 DataProcessorAndWriter.process_and_write(data)
