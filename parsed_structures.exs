@@ -19,12 +19,12 @@
 
 "PlayerCampaignTicketInfoNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CampaignTicketInfos", type: :unknown}
+    %{name: "CampaignTicketInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCampaignTicketInfo"}}}
   ],
 
 "SpawnLayerDeactivateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsPermanentSpawnLayer", type: :unknown},
+    %{name: "IsPermanentSpawnLayer", type: :bool},
     %{name: "SpawnLayerCuid", type: :cuid}
   ],
 
@@ -40,22 +40,22 @@
   ],
 
 "BuffStatsInfo" => [
-    %{name: "Duration", type: "FTimespan"},
+    %{name: "Duration", type: {:struct, "FTimespan"}},
     %{name: "Interval_msec", type: {:int, 4}},
-    %{name: "IsImmuneToHealthPointsLoss", type: :boolean},
-    %{name: "IsImmuneToHealthPointsGain", type: :boolean},
-    %{name: "IsImmuneToManaPointsLoss", type: :boolean},
-    %{name: "IsImmuneToManaPointsGain", type: :boolean},
-    %{name: "HealthPointsAffectParam", type: "float"},
-    %{name: "ManaPointsAffectParam", type: "float"},
+    %{name: "IsImmuneToHealthPointsLoss", type: :bool},
+    %{name: "IsImmuneToHealthPointsGain", type: :unknown},
+    %{name: "IsImmuneToManaPointsLoss", type: :unknown},
+    %{name: "IsImmuneToManaPointsGain", type: :unknown},
+    %{name: "HealthPointsAffectParam", type: :float},
+    %{name: "ManaPointsAffectParam", type: :float},
     %{name: "CharacterStatChanges", type: {:list, {:struct, "CharacterStatChangeInfo"}}},
-    %{name: "ReflectDamageRatioBasedOnDamageTaken", type: "float"},
-    %{name: "ReflectDamageRatioBasedOnMaxHealthPoints", type: "float"},
-    %{name: "MaxReflectCount", type: "float"},
-    %{name: "HealthPointsGainAdjustRatio", type: "float"},
-    %{name: "HealthPointsLossAdjustRatio", type: "float"},
-    %{name: "ProtectHealthPointsSettingStatKind", type: {:enum, "ETzAdjustableStatKindType"}},
-    %{name: "ProtectHealthPointsSettingRatio", type: "float"},
+    %{name: "ReflectDamageRatioBasedOnDamageTaken", type: :float},
+    %{name: "ReflectDamageRatioBasedOnMaxHealthPoints", type: :float},
+    %{name: "MaxReflectCount", type: :float},
+    %{name: "HealthPointsGainAdjustRatio", type: :float},
+    %{name: "HealthPointsLossAdjustRatio", type: :float},
+    %{name: "ProtectHealthPointsSettingStatKind", type: {:enum, "AdjustableStatKindType"}},
+    %{name: "ProtectHealthPointsSettingRatio", type: :float},
     %{name: "ProtectHealthPointsSettingAmount", type: {:int, 4}}
   ],
 
@@ -122,7 +122,7 @@
 
 "FollowerDispatchOrderInfo" => [
     %{name: "WorkplaceCuid", type: :cuid},
-    %{name: "UseDispatchAutomation", type: :unknown}
+    %{name: "UseDispatchAutomation", type: :bool}
   ],
 
 "CheatBatchBossSpawnTimeRollbackRequest" => [
@@ -153,7 +153,7 @@
 
 "WorldMapMarkerEditSettingRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "Guid", type: {:uint, 8}},
     %{name: "Name", type: :string}
   ],
@@ -171,24 +171,24 @@
 "DestroyerInfoUpdateNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "DestroyerInfo", type: :unknown}
+    %{name: "DestroyerInfo", type: {:nullable, :message}}
   ],
 
 "MonsterBookNodeAcquireRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NodeCuid", type: :cuid},
-    %{name: "IsAcquireByItem", type: :unknown}
+    %{name: "IsAcquireByItem", type: :bool}
   ],
 
 "PartySynchronizeMemberCharacterStateNotify" => [
     %{name: "__base__", type: {:struct, "PartySynchronizeMemberNotify"}},
-    %{name: "State", type: {:enum, "ETzCharacterStateType"}}
+    %{name: "State", type: {:enum, "CharacterStateType"}}
   ],
 
 "ServerDrivenPlayEndedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerName", type: :string},
-    %{name: "RewardInfo", type: :unknown}
+    %{name: "RewardInfo", type: {:nullable, :message}}
   ],
 
 "CheatResetAetherOptionByCategoryRequest" => [
@@ -207,9 +207,9 @@
 
 "ClasseChangeItemUseParameterInfo" => [
     %{name: "__base__", type: {:struct, "ItemUseParameterInfo"}},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
-    %{name: "BeforeGearGuidToAfterGearCuids", type: :unknown},
-    %{name: "BeforeArquiruneCuidToAfterArquiruneCuids", type: :unknown}
+    %{name: "Classe", type: {:enum, "ClasseType"}},
+    %{name: "BeforeGearGuidToAfterGearCuids", type: {:map, {:uint, 8}, :cuid}},
+    %{name: "BeforeArquiruneCuidToAfterArquiruneCuids", type: {:map, :cuid, :cuid}}
   ],
 
 "TozTcpHello" => [
@@ -248,15 +248,15 @@
 
 "MonsterBookInfo" => [
     %{name: "CategoryCuidToNodeStateInfos", type: {:list, {:struct, "MonsterBookNodeStateInfo"}}},
-    %{name: "CategoryCuidToCollectionInfo", type: :unknown},
-    %{name: "CategoryCuidToFreeAnalysisCount", type: :unknown},
+    %{name: "CategoryCuidToCollectionInfo", type: {:map, :cuid, {:struct, "TSharedPtr<FTzMonsterBookCollectionInfo"}}},
+    %{name: "CategoryCuidToFreeAnalysisCount", type: {:map, :cuid, {:uint, 8}}},
     %{name: "CategoryCuidToAnalysisStatChangeInfos", type: {:list, {:struct, "CharacterStatChangeInfo"}}}
   ],
 
 "CheatPlayerRealmTransferBlockRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ApplyAll", type: :unknown},
-    %{name: "Block", type: :unknown}
+    %{name: "ApplyAll", type: :bool},
+    %{name: "Block", type: :bool}
   ],
 
 "CheatKillSurroundingCharactersResponse" => [
@@ -276,14 +276,14 @@
 
 "ShopShoppingModeKickoutNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "Reason", type: {:enum, "ETzShopKickoutReasonType"}}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "Reason", type: {:enum, "ShopKickoutReasonType"}}
   ],
 
 "CrossRealmSeasonInfo" => [
     %{name: "SeasonCuid", type: :cuid},
-    %{name: "RegionContentKind", type: {:enum, "ETzRegionContentKindType"}},
-    %{name: "IsUnderMaintenance", type: :unknown},
+    %{name: "RegionContentKind", type: {:enum, "RegionContentKindType"}},
+    %{name: "IsUnderMaintenance", type: :bool},
     %{name: "PreseasonStartUtcDateTime", type: :datetime},
     %{name: "StartUtcDateTime", type: :datetime},
     %{name: "EndUtcDateTime", type: :datetime},
@@ -296,13 +296,13 @@
 "CheatSetLoggingRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ErLogTag", type: :string},
-    %{name: "IsLogging", type: :unknown}
+    %{name: "IsLogging", type: :bool}
   ],
 
 "ItemBoundAndErodedSelector" => [
     %{name: "__base__", type: {:struct, "MultipleItemSelector"}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsBound", type: :boolean},
+    %{name: "IsBound", type: :bool},
     %{name: "IsStorable", type: :unknown},
     %{name: "IsEroded", type: :unknown},
     %{name: "ItemCount", type: {:nullable, {:uint, 8}}}
@@ -311,7 +311,7 @@
 "MerchandiseBuyCountInfo" => [
     %{name: "SubCategoryCuid", type: :cuid},
     %{name: "MerchandiseCuid", type: :cuid},
-    %{name: "BuyOrCraftLimitLevel", type: {:enum, "ETzBuyOrCraftLimitLevelType"}},
+    %{name: "BuyOrCraftLimitLevel", type: {:enum, "BuyOrCraftLimitLevelType"}},
     %{name: "Count", type: {:int, 4}},
     %{name: "UpdateDateTime", type: :datetime}
   ],
@@ -365,12 +365,12 @@
   ],
 
 "MarketTransactionInfo" => [
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
-    %{name: "MarketTransactionKind", type: {:enum, "ETzMarketTransactionKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
+    %{name: "MarketTransactionKind", type: {:enum, "MarketTransactionKindType"}},
     %{name: "GoodsGuid", type: {:uint, 8}},
     %{name: "ItemCuid", type: :cuid},
     %{name: "ItemStackCount", type: {:int, 4}},
-    %{name: "ItemAdditionalInfo", type: :unknown},
+    %{name: "ItemAdditionalInfo", type: {:nullable, :message}},
     %{name: "CurrencyCuid", type: :cuid},
     %{name: "CurrencyAmount", type: {:uint, 8}},
     %{name: "SettledCurrencyAmount", type: {:uint, 8}},
@@ -385,7 +385,7 @@
 "AccelerationUseFollowerWorkRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "FollowerGuid", type: {:uint, 8}},
-    %{name: "AccelerationActionKind", type: {:enum, "ETzAccelerationActionKindType"}},
+    %{name: "AccelerationActionKind", type: {:enum, "AccelerationActionKindType"}},
     %{name: "CuidAndCountInfo", type: {:nullable, {:struct, "CuidAndCountInfo"}}}
   ],
 
@@ -405,13 +405,13 @@
     %{name: "MovePatternCuid", type: :cuid},
     %{name: "AffiliatedBuildingGuid", type: {:uint, 8}},
     %{name: "AffiliatedBuildingCuid", type: :cuid},
-    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "SummonerGuid", type: {:uint, 8}},
     %{name: "FactionProxyInfo", type: {:nullable, {:struct, "FactionProxyInfo"}}},
     %{name: "NpcBossChaseGrade", type: {:int, 4}},
     %{name: "JoinedExpeditionGuid", type: {:uint, 8}},
     %{name: "AffiliatedBattalionGuid", type: {:uint, 8}},
-    %{name: "IsInSeekHidingAttackTargetState", type: :unknown},
+    %{name: "IsInSeekHidingAttackTargetState", type: :bool},
     %{name: "AttackerPlayerGuids", type: :unknown}
   ],
 
@@ -429,10 +429,10 @@
 
 "ShopBuyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "RegisteredGoodsGuidToCounts", type: :unknown},
-    %{name: "SystemGoodsCuidToCounts", type: :unknown},
-    %{name: "MostExpensiveGoodsItemIndex", type: :unknown}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "RegisteredGoodsGuidToCounts", type: {:map, {:uint, 8}, {:uint, 8}}},
+    %{name: "SystemGoodsCuidToCounts", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "MostExpensiveGoodsItemIndex", type: {:nullable, :message}}
   ],
 
 "RealmIntegrationCancelRealmAccountDeletionResponse" => [
@@ -446,7 +446,7 @@
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CovenantWarehouseItemAddInfo", type: {:nullable, {:struct, "ItemAddInfo"}}},
     %{name: "PlayerInventoryItemAddInfo", type: {:nullable, {:struct, "ItemAddInfo"}}},
-    %{name: "IsAnyRewardSentByMail", type: :unknown},
+    %{name: "IsAnyRewardSentByMail", type: :bool},
     %{name: "CovenantExperiencePoints", type: {:uint, 8}},
     %{name: "SpiritualBondPower", type: {:uint, 8}}
   ],
@@ -454,7 +454,7 @@
 "PartyConfirmInvitationResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PartyGuid", type: {:uint, 8}},
-    %{name: "IsApproved", type: :unknown}
+    %{name: "IsApproved", type: :bool}
   ],
 
 "AccountAffectDetachNotify" => [
@@ -474,7 +474,7 @@
 "CovenantRegisteredGoodsRegisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
     %{name: "ItemGuidSelector", type: {:nullable, {:struct, "ItemGuidSelector"}}},
     %{name: "SellCurrencyCuid", type: :cuid},
     %{name: "SellPrice", type: {:int, 4}},
@@ -516,7 +516,7 @@
 
 "RealmIntegrationBattleScoreInitializeDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "ScoreInfos", type: :unknown}
+    %{name: "ScoreInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzRealmIntegrationBattleRealmScoreInfo"}}}
   ],
 
 "SkillReplaceNotify" => [
@@ -528,12 +528,12 @@
 "SquadSharedAttackTargetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SquadOrder", type: {:int, 4}},
-    %{name: "SharedAttackTargetInfo", type: :unknown}
+    %{name: "SharedAttackTargetInfo", type: {:nullable, :message}}
   ],
 
 "CovenantDiplomacyInfos" => [
-    %{name: "RequestInfos", type: :unknown},
-    %{name: "ResponseInfos", type: :unknown}
+    %{name: "RequestInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantDiplomacyInfo"}}},
+    %{name: "ResponseInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantDiplomacyInfo"}}}
   ],
 
 "CheatCastVeilRequest" => [
@@ -559,7 +559,7 @@
 
 "NgsNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Data", type: {:list, {:struct, "unsigned_char,TSizedDefaultAllocator<32"}}}
+    %{name: "Data", type: {:list, {:struct, "unsigned_char"}}}
   ],
 
 "PartyTargetLocationSetNotify" => [
@@ -571,8 +571,8 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcSpawnerCuid", type: :cuid},
     %{name: "RealmCovenantId", type: {:struct, "RealmCovenantId"}},
-    %{name: "IsRandomBuffNpc", type: :unknown},
-    %{name: "NxLogBaseParameterInfo", type: :unknown}
+    %{name: "IsRandomBuffNpc", type: :bool},
+    %{name: "NxLogBaseParameterInfo", type: {:nullable, :message}}
   ],
 
 "CheatChangeStrongholdTaxRateRequest" => [
@@ -587,16 +587,16 @@
 
 "QuestCinePlayingSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "IsQuestCinePlaying", type: :unknown}
+    %{name: "IsQuestCinePlaying", type: :bool}
   ],
 
 "CovenantCurrencyInfo" => [
-    %{name: "PointCurrencyContainerInfo", type: :unknown}
+    %{name: "PointCurrencyContainerInfo", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "FollowerMovePathInfoRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "FollowerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "FollowerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatStrongholdBattleCarriageLivingTotemTeleportToPlayerRequest" => [
@@ -609,7 +609,7 @@
 
 "RedrawableItemInventoryUpdateInfo" => [
     %{name: "AddedRedrawableItemInfoList", type: {:list, {:struct, "RedrawableItemInfo"}}},
-    %{name: "RemovedRedrawableItemGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "RemovedRedrawableItemGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "StrongholdBattleAttackSpireStartNotify" => [
@@ -625,7 +625,7 @@
 "BossSpawnInfoUpdatedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "DistrictCuid", type: :cuid},
-    %{name: "BossSpawnInfo", type: :unknown}
+    %{name: "BossSpawnInfo", type: {:nullable, :message}}
   ],
 
 "CheatChangeServerTimeRequest" => [
@@ -666,9 +666,9 @@
   ],
 
 "ChatRoomRecordsInitializationInfo" => [
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "ChatRoomGuid", type: {:uint, 8}},
-    %{name: "ChannelIndex", type: "unsigned_short"},
+    %{name: "ChannelIndex", type: {:struct, "unsigned_short"}},
     %{name: "ChatRecordsMetaData", type: {:nullable, {:struct, "ChatRecordsMetaData"}}},
     %{name: "FirstRecordIndex", type: {:uint, 8}},
     %{name: "LastRecordIndex", type: {:uint, 8}},
@@ -694,7 +694,7 @@
 "PlayerDeleteConditionCheckResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "IsPlayerDeleteBlockingLevel", type: :boolean},
+    %{name: "IsPlayerDeleteBlockingLevel", type: :bool},
     %{name: "IsInCovenant", type: :unknown},
     %{name: "HasSaleGoodsInMarket", type: :unknown}
   ],
@@ -707,14 +707,14 @@
 "SharedTargetPlayerInfo" => [
     %{name: "__base__", type: {:struct, "SharedTargetCharacterInfo"}},
     %{name: "Name", type: :string},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "PartyGuid", type: {:uint, 8}}
   ],
 
 "SeekHidingAttackTargetStateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcGuid", type: {:uint, 8}},
-    %{name: "IsSeekHidingAttackTargetState", type: :unknown}
+    %{name: "IsSeekHidingAttackTargetState", type: :bool}
   ],
 
 "CovenantDiplomacyWithdrawAllianceFailResponse" => [
@@ -723,7 +723,7 @@
 
 "ExpeditionJoinedBattalionsAddOrUpdateNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "CovenantBattalionPublicSummaryInfo", type: :unknown}
+    %{name: "CovenantBattalionPublicSummaryInfo", type: {:nullable, :message}}
   ],
 
 "PartyAppointLeaderFailResponse" => [
@@ -741,18 +741,18 @@
   ],
 
 "NameTagHealthBarDisplayOptionInfo" => [
-    %{name: "IsOwnUniformDisplayedInStrongholdBattle", type: :boolean},
+    %{name: "IsOwnUniformDisplayedInStrongholdBattle", type: :bool},
     %{name: "IsDisplayModeAutoSelect", type: :unknown},
-    %{name: "DisplayMode", type: {:enum, "ETzNameTagHealthBarDisplayModeType"}},
-    %{name: "DetailInfos", type: :unknown},
-    %{name: "NpcHealthBarDisplayScope", type: {:enum, "ETzNpcHealthBarDisplayScopeType"}},
+    %{name: "DisplayMode", type: {:enum, "NameTagHealthBarDisplayModeType"}},
+    %{name: "DetailInfos", type: {:map, {:enum, "NameTagHealthBarDisplayModeType"}, {:struct, "TSharedPtr<FTzNameTagHealthBarDisplayOptionDetailInfo"}}},
+    %{name: "NpcHealthBarDisplayScope", type: {:enum, "NpcHealthBarDisplayScopeType"}},
     %{name: "IsAllNpcNamesDisplayed", type: :unknown},
     %{name: "IsDisplayedFissionStatusFriendlyOrBetter", type: :unknown}
   ],
 
 "CovenantUpdateCovenantPermissionsInfosRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantPermissionsInfos", type: :unknown}
+    %{name: "CovenantPermissionsInfos", type: {:map, :string, {:struct, "TSharedPtr<FTzCovenantPermissionsInfo"}}}
   ],
 
 "PlayerDeleteReserveResponse" => [
@@ -763,7 +763,7 @@
 
 "StrongholdBuildingUpdateBuildingAccessPermissionsRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BuildingAccessPermissionKinds", type: :unknown}
+    %{name: "BuildingAccessPermissionKinds", type: {:map, :cuid, {:enum, "BuildingAccessPermissionKindType"}}}
   ],
 
 "PowerSavingModeEndNotify" => [
@@ -807,7 +807,7 @@
 "CovenantSynchronizeRecommendedResourceKindNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ETzResourceKindType,TSizedDefaultAllocator<32"}}}
+    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ResourceKindType"}}}
   ],
 
 "CovenantUpdateCovenantMemberRoleNameFailResponse" => [
@@ -818,14 +818,14 @@
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
-    %{name: "IsInBattle", type: :unknown},
-    %{name: "RewardCurrencies", type: :unknown},
+    %{name: "IsInBattle", type: :bool},
+    %{name: "RewardCurrencies", type: {:map, :cuid, {:uint, 8}}},
     %{name: "CreateDateTime", type: :datetime}
   ],
 
 "PlayerBattalionOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "PurposeTexts", type: :unknown}
+    %{name: "PurposeTexts", type: {:map, {:int, 4}, :string}}
   ],
 
 "CheatUpdatePlayerMissionRewardResponse" => [
@@ -870,7 +870,7 @@
   ],
 
 "CovenantGiftReceiveRewardInfo" => [
-    %{name: "CurrencyCuidToAmount", type: :unknown},
+    %{name: "CurrencyCuidToAmount", type: {:map, :cuid, {:uint, 8}}},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}}
   ],
 
@@ -881,15 +881,15 @@
 
 "CharacterMoveToInfo" => [
     %{name: "__base__", type: {:struct, "CharacterMoveInfo"}},
-    %{name: "CurrentFacingDirectionYaw_rad", type: "float"},
-    %{name: "MoveKind", type: {:enum, "ETzMoveKindType"}}
+    %{name: "CurrentFacingDirectionYaw_rad", type: :float},
+    %{name: "MoveKind", type: {:enum, "MoveKindType"}}
   ],
 
 "CovenantTradeGoodsInfo" => [
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "ItemIndexWithCount", type: :unknown},
+    %{name: "ItemIndexWithCount", type: {:nullable, :message}},
     %{name: "SalesPrice", type: {:uint, 8}},
-    %{name: "SellerInfo", type: :unknown},
+    %{name: "SellerInfo", type: {:nullable, :message}},
     %{name: "RegistrationDateTime", type: :datetime}
   ],
 
@@ -901,8 +901,8 @@
 "MailDeleteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MailGuid", type: {:uint, 8}},
-    %{name: "MailBoxKind", type: {:enum, "ETzMailBoxKindType"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}}
+    %{name: "MailBoxKind", type: {:enum, "MailBoxKindType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}}
   ],
 
 "CheatSetArquiAttunementLevelResponse" => [
@@ -932,14 +932,14 @@
 
 "BattalionConfirmInvitationRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BattalionInfo", type: :unknown},
+    %{name: "BattalionInfo", type: {:nullable, :message}},
     %{name: "BattalionInvitationInfo", type: {:nullable, {:struct, "BattalionInvitationInfo"}}},
     %{name: "BattalionInvitationAdditionalInfo", type: {:nullable, {:struct, "BattalionInvitationAdditionalInfo"}}}
   ],
 
 "CheatSetRealmAccountPresentRegisterBlockRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Block", type: :unknown}
+    %{name: "Block", type: :bool}
   ],
 
 "VolatileInGameNotificationInfo" => [
@@ -960,7 +960,7 @@
 "PvpRecordPlayerInfo" => [
     %{name: "__base__", type: {:struct, "PvpRecordCharacterInfo"}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "RealmCuid", type: :cuid},
     %{name: "PvpScore", type: {:uint, 8}},
     %{name: "PvpScoreDelta", type: {:uint, 8}}
@@ -980,7 +980,7 @@
 "StrongholdBattleAttackStartNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "AttackGroupDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "AttackGroupDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "AttackEndDateTime", type: :datetime}
   ],
 
@@ -1007,13 +1007,13 @@
     %{name: "RealmCovenantId", type: {:struct, "RealmCovenantId"}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "NxLogBaseParameterInfo", type: :unknown}
+    %{name: "NxLogBaseParameterInfo", type: {:nullable, :message}}
   ],
 
 "CovenantRecommendResourceKindRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ETzResourceKindType,TSizedDefaultAllocator<32"}}}
+    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ResourceKindType"}}}
   ],
 
 "RedrawableItemSelectResponse" => [
@@ -1026,9 +1026,9 @@
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "RealmAccountGuid", type: {:uint, 8}},
     %{name: "RealmAccountInfo", type: {:nullable, {:struct, "RealmAccountInfo"}}},
-    %{name: "PlayerSummaryInfos", type: :unknown},
+    %{name: "PlayerSummaryInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerSummaryInfo"}}},
     %{name: "LatestPlayedPlayerGuid", type: {:uint, 8}},
-    %{name: "CanCheatCommand", type: :unknown},
+    %{name: "CanCheatCommand", type: :bool},
     %{name: "RealmIntegrationRealmAccountInfos", type: {:list, {:struct, "RealmIntegrationRealmAccountInfo"}}}
   ],
 
@@ -1098,7 +1098,7 @@
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "CovenantCreateDateTime", type: :datetime},
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "AetherBoxCount", type: {:int, 4}},
     %{name: "MaxAetherBoxCount", type: {:int, 4}},
     %{name: "TacticalSkillBadgeCount", type: {:int, 4}},
@@ -1112,7 +1112,7 @@
 "CovenantUpdateNameNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CovenantName", type: :string},
-    %{name: "NeedChangeName", type: :unknown}
+    %{name: "NeedChangeName", type: :bool}
   ],
 
 "SkillShieldWallAffectInfo" => [
@@ -1121,8 +1121,8 @@
     %{name: "AffectSourceGuid", type: {:uint, 8}},
     %{name: "ShieldWallGuid", type: {:uint, 8}},
     %{name: "OriginalAffectTargetGuid", type: {:uint, 8}},
-    %{name: "IsHit", type: :unknown},
-    %{name: "IsAffectingTargetStats", type: :unknown}
+    %{name: "IsHit", type: :bool},
+    %{name: "IsAffectingTargetStats", type: :bool}
   ],
 
 "CheatAddRegionContentBasePlayTimeResponse" => [
@@ -1136,7 +1136,7 @@
 
 "CheatRankingBuffApplySwitchRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsApplied", type: :unknown}
+    %{name: "IsApplied", type: :bool}
   ],
 
 "HavenEventRemoveNotify" => [
@@ -1159,7 +1159,7 @@
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "CovenantMemberRoleInfo", type: :unknown}
+    %{name: "CovenantMemberRoleInfo", type: {:nullable, :message}}
   ],
 
 "CovenantDiplomacyDeclareHostilityFailResponse" => [
@@ -1184,7 +1184,7 @@
 "StrongholdBattleSiegeWeaponLocationInfo" => [
     %{name: "EntityGuid", type: {:uint, 8}},
     %{name: "NpcCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}}
   ],
 
@@ -1205,8 +1205,8 @@
   ],
 
 "CombinedInventoryUpdateInfo" => [
-    %{name: "InventoryUpdateInfosByInventoryKind", type: :unknown},
-    %{name: "RedrawableInventoryUpdateInfosByItemCategory", type: :unknown}
+    %{name: "InventoryUpdateInfosByInventoryKind", type: {:map, {:enum, "UserInventoryKindType"}, {:struct, "TSharedPtr<FTzInventoryUpdateInfo"}}},
+    %{name: "RedrawableInventoryUpdateInfosByItemCategory", type: {:map, {:enum, "ItemCategoryType"}, {:struct, "TSharedPtr<FTzRedrawableItemInventoryUpdateInfo"}}}
   ],
 
 "RealmAccountLoginResponse" => [
@@ -1227,7 +1227,7 @@
 
 "CovenantCancelInvitationRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "PlayerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "PlayerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "FollowerExperiencePointsItemConsumeResponse" => [
@@ -1236,17 +1236,17 @@
 
 "MonsterBookNodeAcquirableStateInfo" => [
     %{name: "__base__", type: {:struct, "MonsterBookNodeStateInfo"}},
-    %{name: "NpcCuidToKillCount", type: :unknown}
+    %{name: "NpcCuidToKillCount", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "BattalionCreateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BattalionInfo", type: :unknown}
+    %{name: "BattalionInfo", type: {:nullable, :message}}
   ],
 
 "PlayerInterServerMigrationInfo" => [
-    %{name: "SourceServerKey", type: "unsigned_short"},
-    %{name: "DestinationServerKey", type: "unsigned_short"},
+    %{name: "SourceServerKey", type: {:struct, "unsigned_short"}},
+    %{name: "DestinationServerKey", type: {:struct, "unsigned_short"}},
     %{name: "GameServerAuthenticateKey", type: {:int, 4}}
   ],
 
@@ -1311,13 +1311,13 @@
 
 "CheatClearUserInventoryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UserInventoryKind", type: {:enum, "ETzUserInventoryKindType"}}
+    %{name: "UserInventoryKind", type: {:enum, "UserInventoryKindType"}}
   ],
 
 "EntitySpawnNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "EntityInfo", type: :unknown},
-    %{name: "EntitySpawnReason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}}
+    %{name: "EntityInfo", type: {:nullable, :message}},
+    %{name: "EntitySpawnReason", type: {:enum, "EntitySpawnRemoveReasonType"}}
   ],
 
 "CovenantDiplomacyApplyAllianceRequest" => [
@@ -1342,7 +1342,7 @@
     %{name: "BuildingSpawnerCuid", type: :cuid},
     %{name: "BuildingCraftCuid", type: :cuid},
     %{name: "BuildingCraftCount", type: {:uint, 8}},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "CovenantLivingTotemInfo" => [
@@ -1356,13 +1356,13 @@
     %{name: "CampaignGuid", type: {:uint, 8}},
     %{name: "CampaignCuid", type: :cuid},
     %{name: "CampaignStageCuid", type: :cuid},
-    %{name: "IsSuccess", type: :unknown},
+    %{name: "IsSuccess", type: :bool},
     %{name: "GainedItemInfos", type: {:list, {:struct, "GainedItemInfo"}}},
     %{name: "CampaignProgressDuration_sec", type: {:int, 4}}
   ],
 
 "MarketManagementKey" => [
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "MarketKey", type: {:uint, 8}}
   ],
 
@@ -1378,7 +1378,7 @@
 
 "SystemCastAffectSourceInfo" => [
     %{name: "__base__", type: {:struct, "CastAffectSourceInfo"}},
-    %{name: "AffectSourceSystemCastKind", type: {:enum, "ETzAffectSourceSystemCastKindType"}}
+    %{name: "AffectSourceSystemCastKind", type: {:enum, "AffectSourceSystemCastKindType"}}
   ],
 
 "CovenantQueryRequest" => [
@@ -1389,15 +1389,15 @@
 "RankingSourceInfo" => [
     %{name: "Key", type: {:uint, 8}},
     %{name: "Score", type: {:uint, 8}},
-    %{name: "AdditionalInfo", type: :unknown},
+    %{name: "AdditionalInfo", type: {:nullable, :message}},
     %{name: "UpdateTime", type: :datetime}
   ],
 
 "StrongholdBattleBuildingCombatStateSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "BuildingKind", type: {:enum, "ETzBuildingKindType"}},
-    %{name: "IsInCombatInProgressState", type: :unknown}
+    %{name: "BuildingKind", type: {:enum, "BuildingKindType"}},
+    %{name: "IsInCombatInProgressState", type: :bool}
   ],
 
 "CheatClearAllStanceAndSkillResponse" => [
@@ -1407,11 +1407,11 @@
 "CheatCreateAndEquipGearRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "GearCuid", type: :cuid},
-    %{name: "BoundAndEroded", type: {:enum, "ETzBoundAndErodedType"}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "BoundAndEroded", type: {:enum, "BoundAndErodedType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}},
-    %{name: "GearSlot", type: {:enum, "ETzGearSlotType"}},
-    %{name: "EquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}}
+    %{name: "GearSlot", type: {:enum, "GearSlotType"}},
+    %{name: "EquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}}
   ],
 
 "MarketGoodsInfoQueryResponse" => [
@@ -1470,7 +1470,7 @@
 
 "CharacterMoveToDirectionInfo" => [
     %{name: "__base__", type: {:struct, "CharacterMoveToInfo"}},
-    %{name: "DirectionYaw_rad", type: "float"},
+    %{name: "DirectionYaw_rad", type: :float},
     %{name: "Destination_cm", type: :vector}
   ],
 
@@ -1488,12 +1488,12 @@
 "RankingInfo" => [
     %{name: "PreviousRanking", type: {:nullable, {:int, 4}}},
     %{name: "CurrentRanking", type: {:nullable, {:int, 4}}},
-    %{name: "ViewInfo", type: :unknown}
+    %{name: "ViewInfo", type: {:nullable, :message}}
   ],
 
 "MailsDeleteInTabResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}}
+    %{name: "MailTab", type: {:enum, "MailTabType"}}
   ],
 
 "ProtocolConstants" => [
@@ -1512,12 +1512,12 @@
 
 "RegionContentPlayInfoNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RegionPlayTimeInfos", type: :unknown}
+    %{name: "RegionPlayTimeInfos", type: {:map, {:enum, "RegionContentKindType"}, {:struct, "TSharedPtr<FTzRegionContentPlayInfo"}}}
   ],
 
 "MarketBuyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "GoodsGuid", type: {:uint, 8}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
@@ -1537,18 +1537,18 @@
 "CheatStartCovenantCampaignRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CampaignStageCuid", type: :cuid},
-    %{name: "IsAllowVolunteerJoinApply", type: :unknown},
-    %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :unknown}
+    %{name: "IsAllowVolunteerJoinApply", type: :bool},
+    %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :bool}
   ],
 
 "AlertPlayerRemoveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeletedPlayerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeletedPlayerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "ItemUpdateInfo" => [
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}},
-    %{name: "RemovedItemCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "RemovedItemCuids", type: {:list, :cuid}}
   ],
 
 "MountStateInfo" => [
@@ -1568,7 +1568,7 @@
 
 "CheatInstallAllArquirunesResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "InstalledArquiruneCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "InstalledArquiruneCuids", type: {:list, :cuid}}
   ],
 
 "DestroyerExpireNotify" => [
@@ -1579,8 +1579,8 @@
 "CharacterRotateInfo" => [
     %{name: "__base__", type: {:struct, "CharacterMoveInfo"}},
     %{name: "Duration_msec", type: {:int, 4}},
-    %{name: "IsClockwise", type: :unknown},
-    %{name: "MoveKind", type: {:enum, "ETzMoveKindType"}}
+    %{name: "IsClockwise", type: :bool},
+    %{name: "MoveKind", type: {:enum, "MoveKindType"}}
   ],
 
 "CheatDeregisterCheatEnabledPlayerNameRequest" => [
@@ -1609,8 +1609,8 @@
     %{name: "ExpireDateTime", type: :datetime},
     %{name: "SenderPlayerGuid", type: {:uint, 8}},
     %{name: "SenderPlayerName", type: :string},
-    %{name: "IsReceived", type: :unknown},
-    %{name: "ReceiveRewardInfo", type: :unknown}
+    %{name: "IsReceived", type: :bool},
+    %{name: "ReceiveRewardInfo", type: {:nullable, :message}}
   ],
 
 "BuildingDemolishRequestInfo" => [
@@ -1641,7 +1641,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "AnniversaryCuid", type: :cuid},
     %{name: "AchievementCuid", type: :cuid},
-    %{name: "MissionProgressCounts", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "MissionProgressCounts", type: {:list, {:uint, 8}}}
   ],
 
 "ErFrontServerSessionCancelWaitingQueueResponse" => [
@@ -1649,8 +1649,8 @@
   ],
 
 "RectangleRange" => [
-    %{name: "unknown_name", type: "FIntVector2D"},
-    %{name: "UpperIndex", type: "FIntVector2D"}
+    %{name: "unknown_name", type: :fintvector2d},
+    %{name: "UpperIndex", type: :fintvector2d}
   ],
 
 "BattalionDismissRequest" => [
@@ -1659,11 +1659,11 @@
 
 "GearSlotPresetUnequipNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UnequipGearSlots", type: {:list, {:enum, "ETzGearSlotType,TSizedDefaultAllocator<32"}}}
+    %{name: "UnequipGearSlots", type: {:list, {:enum, "GearSlotType"}}}
   ],
 
 "SpellstoneSlotPageInfo" => [
-    %{name: "SpellstoneSlotInfos", type: :unknown}
+    %{name: "SpellstoneSlotInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzSpellstoneSlotInfo"}}}
   ],
 
 "TutorialBeginRequest" => [
@@ -1678,7 +1678,7 @@
 
 "CheatChangeCashShopCheckBuyLimitOptionRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsIgnoreToCheckBuyLimit", type: :unknown}
+    %{name: "IsIgnoreToCheckBuyLimit", type: :bool}
   ],
 
 "CovenantCampChangeResultInfo" => [
@@ -1716,7 +1716,7 @@
 
 "CheatSetIgnoreCovenantMarketUsableJoinElapsedTimeResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "IgnoreCovenantMarketUsableJoinElapsedTime", type: :unknown}
+    %{name: "IgnoreCovenantMarketUsableJoinElapsedTime", type: :bool}
   ],
 
 "RealmAccountPresentCheckRequest" => [
@@ -1736,9 +1736,9 @@
   ],
 
 "PathNodeInfo" => [
-    %{name: "PathNodeKind", type: {:enum, "ETzPathNodeKindType"}},
-    %{name: "PolyFlag", type: "unsigned_short"},
-    %{name: "AreaKind", type: "unsigned_char"},
+    %{name: "PathNodeKind", type: {:enum, "PathNodeKindType"}},
+    %{name: "PolyFlag", type: {:struct, "unsigned_short"}},
+    %{name: "AreaKind", type: {:struct, "unsigned_char"}},
     %{name: "Location_cm", type: :vector}
   ],
 
@@ -1754,16 +1754,16 @@
 
 "RealmAccountRealmTransferCheckInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RealmTransferInfo", type: :unknown},
-    %{name: "PlayerCheckInfos", type: :unknown},
-    %{name: "CanOutboundRealmTransferable", type: {:enum, "ETzResultCodeType"}}
+    %{name: "RealmTransferInfo", type: {:nullable, :message}},
+    %{name: "PlayerCheckInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerRealmTransferCheckInfo"}}},
+    %{name: "CanOutboundRealmTransferable", type: {:enum, "ResultCodeType"}}
   ],
 
 "WorldMapPvpBattlePlayerInfoAddNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "DistrictCuid", type: :cuid},
     %{name: "PvpBattleGuid", type: {:uint, 8}},
-    %{name: "PvpBattlePlayerInfo", type: :unknown}
+    %{name: "PvpBattlePlayerInfo", type: {:nullable, :message}}
   ],
 
 "PlayerDeleteReserveCancelRequest" => [
@@ -1774,12 +1774,12 @@
 "HavenEventApplyNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "HavenEventInfo", type: :unknown}
+    %{name: "HavenEventInfo", type: {:nullable, :message}}
   ],
 
 "FollowerSquadSlotExpandResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "FollowerSquadSlots", type: :unknown}
+    %{name: "FollowerSquadSlots", type: {:map, {:struct, "unsigned_char"}, {:uint, 8}}}
   ],
 
 "CovenantRegisteredGoodsModifyResponse" => [
@@ -1790,7 +1790,7 @@
 
 "ThreadMailDeleteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailKind", type: {:enum, "ETzMailKindType"}},
+    %{name: "MailKind", type: {:enum, "MailKindType"}},
     %{name: "UpperBoundDateTime", type: :datetime}
   ],
 
@@ -1802,7 +1802,7 @@
 "StrongholdBattleSiegeWeaponDestroyNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "EntityGuid", type: {:uint, 8}},
     %{name: "EntityCuid", type: :cuid},
     %{name: "DestroyerNameInfo", type: {:nullable, {:struct, "CharacterNameInfo"}}},
@@ -1811,7 +1811,7 @@
 
 "RoadLinkInfo" => [
     %{name: "DestinationRoadJunctionId", type: {:int, 4}},
-    %{name: "IsOneShotSpecialMove", type: :unknown},
+    %{name: "IsOneShotSpecialMove", type: :bool},
     %{name: "LinkedCuidHashCode", type: {:int, 4}}
   ],
 
@@ -1850,15 +1850,15 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "NearestRoadJunctionToStartLocationId", type: {:int, 4}},
     %{name: "NearestRoadJunctionToDestinationId", type: {:int, 4}},
-    %{name: "PathToNearestRoadJunctionToStartLocation", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNotByRoad", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNotByRoadOneShotSpecialMoveIndices", type: {:list, {:struct, "int,TSizedDefaultAllocator<32"}}}
+    %{name: "PathToNearestRoadJunctionToStartLocation", type: {:list, :vector}},
+    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, :vector}},
+    %{name: "PathNotByRoad", type: {:list, :vector}},
+    %{name: "PathNotByRoadOneShotSpecialMoveIndices", type: {:list, {:int, 4}}}
   ],
 
 "PlayerSkillSlotUpdateInfo" => [
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
-    %{name: "SkillSlotIndex", type: {:enum, "ETzPlayerSkillSlotIndexType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
+    %{name: "SkillSlotIndex", type: {:enum, "PlayerSkillSlotIndexType"}},
     %{name: "PlayerSkillSlotInfo", type: {:nullable, {:struct, "PlayerSkillSlotInfo"}}}
   ],
 
@@ -1877,14 +1877,14 @@
 "CovenantUpdateMemberRoleNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string},
     %{name: "CovenantMemberRoleLastUpdatedDateTime", type: :datetime}
   ],
 
 "CheatAcquireAndSetToSquadFollowerResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "FollowerSquadSlots", type: :unknown}
+    %{name: "FollowerSquadSlots", type: {:map, {:struct, "unsigned_char"}, {:uint, 8}}}
   ],
 
 "QuestTeleportToQuestWayPointRequest" => [
@@ -1921,7 +1921,7 @@
 
 "RealmAccountWarehouseAutoStoreSettingUpdateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "AutoStoreSettings", type: :unknown}
+    %{name: "AutoStoreSettings", type: {:map, :cuid, {:enum, "ItemGradeType"}}}
   ],
 
 "RealmAccountPresentQueryResponse" => [
@@ -1943,13 +1943,13 @@
   ],
 
 "ResourceHistoryInfo" => [
-    %{name: "IncomeHistories", type: :unknown},
-    %{name: "ExpenseHistories", type: :unknown}
+    %{name: "IncomeHistories", type: {:map, {:enum, "ResourceKindType"}, {:uint, 8}}},
+    %{name: "ExpenseHistories", type: {:map, {:enum, "ResourceKindType"}, {:struct, "TMap<ETzResourceExpenseKindType"}}}
   ],
 
 "FavoriteStatKindsResetRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StatView", type: {:enum, "ETzAdjustableStatViewType"}}
+    %{name: "StatView", type: {:enum, "AdjustableStatViewType"}}
   ],
 
 "CheatCreateCovenantWarehouseItemResponse" => [
@@ -1958,8 +1958,8 @@
   ],
 
 "GoodsBuyCountsInfo" => [
-    %{name: "GoodsBuyCounts", type: :unknown},
-    %{name: "RegisteredGoodsBuyCounts", type: :unknown}
+    %{name: "GoodsBuyCounts", type: {:map, {:enum, "BuyOrCraftLimitLevelType"}, {:struct, "TMap<FTzCuid"}}},
+    %{name: "RegisteredGoodsBuyCounts", type: {:map, {:enum, "BuyOrCraftLimitLevelType"}, {:struct, "TMap<FTzRegisteredGoodsBuyCountKey"}}}
   ],
 
 "StrongholdReserveProtectionResponse" => [
@@ -1968,7 +1968,7 @@
 
 "CharacterMoveOrbitalToLocationParameterInfo" => [
     %{name: "__base__", type: {:struct, "CharacterMoveToLocationParameterInfo"}},
-    %{name: "IsClockwise", type: :unknown}
+    %{name: "IsClockwise", type: :bool}
   ],
 
 "CheatAccountAffectAttachRequest" => [
@@ -1979,7 +1979,7 @@
 "FollowerTeleportToHeadquartersNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "FollowerGuid", type: {:uint, 8}},
-    %{name: "FollowerReturnReason", type: {:enum, "ETzFollowerReturnReasonType"}},
+    %{name: "FollowerReturnReason", type: {:enum, "FollowerReturnReasonType"}},
     %{name: "LeaveToHeadquartersDateTime", type: :datetime},
     %{name: "ArrivedAtHeadquartersDateTime", type: :datetime}
   ],
@@ -2001,7 +2001,7 @@
   ],
 
 "WarehouseMigrationInfo" => [
-    %{name: "CurrencyCuidToAmount", type: :unknown},
+    %{name: "CurrencyCuidToAmount", type: {:map, :cuid, {:uint, 8}}},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}}
   ],
 
@@ -2016,13 +2016,13 @@
 
 "EnvironmentVariablesNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Variables", type: :unknown}
+    %{name: "Variables", type: {:map, :string, :string}}
   ],
 
 "ChatRecordsIndex" => [
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "ChatRoomGuid", type: {:uint, 8}},
-    %{name: "ChannelIndex", type: "unsigned_short"},
+    %{name: "ChannelIndex", type: {:struct, "unsigned_short"}},
     %{name: "RecordsIndex", type: {:uint, 8}}
   ],
 
@@ -2073,9 +2073,9 @@
 
 "MailQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
     %{name: "Mails", type: {:list, {:struct, "MailInfo"}}},
-    %{name: "HasMore", type: :unknown}
+    %{name: "HasMore", type: :bool}
   ],
 
 "CheatClearSkillSlotQuickSlotAutoUseRequest" => [
@@ -2090,7 +2090,7 @@
     %{name: "BattleDuration_min", type: {:int, 4}},
     %{name: "AetherBoxCount", type: {:uint, 8}},
     %{name: "TacticalSkillBadgeCount", type: {:uint, 8}},
-    %{name: "SiegeWeaponCounts", type: :unknown}
+    %{name: "SiegeWeaponCounts", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "AnniversaryAchievementPointRewardResponse" => [
@@ -2130,7 +2130,7 @@
 "StrongholdBattleGroupMemberCountChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "MemberCount", type: {:int, 4}}
   ],
 
@@ -2142,7 +2142,7 @@
 
 "CovenantWatchSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "TargetPlayerGuidToCreateDateTimes", type: :unknown}
+    %{name: "TargetPlayerGuidToCreateDateTimes", type: {:map, {:uint, 8}, :datetime}}
   ],
 
 "FindShortestTravelPathToBuildingRequest" => [
@@ -2150,12 +2150,12 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "Location_cm", type: :vector},
     %{name: "BuildingSpawnerCuid", type: :cuid},
-    %{name: "SufficientlyCloseDistance_cm", type: "float"}
+    %{name: "SufficientlyCloseDistance_cm", type: :float}
   ],
 
 "ShopSellRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
     %{name: "ItemGuidSelectors", type: {:list, {:struct, "ItemGuidSelector"}}}
   ],
 
@@ -2213,8 +2213,8 @@
 "FavorMissionInfo" => [
     %{name: "Vuid", type: {:struct, "Vuid"}},
     %{name: "FavorVuid", type: {:struct, "Vuid"}},
-    %{name: "HuntingSiteCuidList", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
-    %{name: "TargetCuidList", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "HuntingSiteCuidList", type: {:list, :cuid}},
+    %{name: "TargetCuidList", type: {:list, :cuid}},
     %{name: "LevelOfTargetNpc", type: {:int, 4}},
     %{name: "ClanCuid", type: :cuid}
   ],
@@ -2260,7 +2260,7 @@
     %{name: "Location_cm", type: :vector},
     %{name: "LocationRegionCuid", type: :cuid},
     %{name: "BuildingSpawnerCuid", type: :cuid},
-    %{name: "SufficientlyCloseDistance_cm", type: "float"}
+    %{name: "SufficientlyCloseDistance_cm", type: :float}
   ],
 
 "ErGameServerSessionInitializeInfo" => [
@@ -2270,8 +2270,8 @@
 
 "CovenantTradeSalesManageResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "SalesManagementKind", type: {:enum, "ETzCovenantTradeSalesManagementKindType"}},
-    %{name: "GoodsGuidsAndResultCodes", type: :unknown}
+    %{name: "SalesManagementKind", type: {:enum, "CovenantTradeSalesManagementKindType"}},
+    %{name: "GoodsGuidsAndResultCodes", type: {:map, {:uint, 8}, {:enum, "ResultCodeType"}}}
   ],
 
 "CheatChangeFocusTargetHealthPointsRequest" => [
@@ -2289,9 +2289,9 @@
   ],
 
 "PlayerEquipmentInfo" => [
-    %{name: "SelectedEquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}},
-    %{name: "EquipmentPresetInfos", type: :unknown},
-    %{name: "HasPreviouslyEquippedGuise", type: :unknown}
+    %{name: "SelectedEquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}},
+    %{name: "EquipmentPresetInfos", type: {:map, {:enum, "EquipmentPresetIndexType"}, {:struct, "TSharedPtr<FTzEquipmentPresetInfo"}}},
+    %{name: "HasPreviouslyEquippedGuise", type: :bool}
   ],
 
 "BuffFaceCasterMoveAffectInfo" => [
@@ -2305,7 +2305,7 @@
 
 "RedrawableItemRedrawRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
     %{name: "ItemGuid", type: {:uint, 8}},
     %{name: "CostCurrencyCuid", type: :cuid}
   ],
@@ -2317,7 +2317,7 @@
 
 "MailStrongholdBattleEndRewardLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailStrongholdBattleLayoutInfo"}},
-    %{name: "StrongholdBattleResult", type: {:enum, "ETzStrongholdBattleResultType"}},
+    %{name: "StrongholdBattleResult", type: {:enum, "StrongholdBattleResultType"}},
     %{name: "Rank", type: {:int, 4}},
     %{name: "GainedCovenantExperiencePoints", type: {:uint, 8}}
   ],
@@ -2333,27 +2333,27 @@
 
 "DeathPenaltyRecordInfoChangedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "GuidToChangedRecordKinds", type: :unknown}
+    %{name: "GuidToChangedRecordKinds", type: {:map, {:uint, 8}, {:enum, "DeathPenaltyRecordKindType"}}}
   ],
 
 "RoadJunctionInfo" => [
     %{name: "Id", type: {:int, 4}},
     %{name: "Location_cm", type: :vector},
-    %{name: "Radius_cm", type: "float"},
+    %{name: "Radius_cm", type: :float},
     %{name: "AreaCuidHashCode", type: {:int, 4}},
     %{name: "DistrictCuidHashCode", type: {:int, 4}}
   ],
 
 "PushNotificationOptionInfo" => [
     %{name: "Cuid", type: :cuid},
-    %{name: "IsEnabled", type: :unknown},
-    %{name: "IsNotifiedEvenWhenConnected", type: :unknown}
+    %{name: "IsEnabled", type: :bool},
+    %{name: "IsNotifiedEvenWhenConnected", type: :bool}
   ],
 
 "OccupiableNpcInfoBulkUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "OccupiableNpcInfos", type: {:list, {:struct, "OccupiableNpcInfo"}}},
-    %{name: "NxLogBaseParameterInfo", type: :unknown}
+    %{name: "NxLogBaseParameterInfo", type: {:nullable, :message}}
   ],
 
 "CheatRegisterCheatEnabledPlayerNameResponse" => [
@@ -2375,7 +2375,7 @@
 
 "ItemInfoUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemInfo", type: :unknown}
+    %{name: "ItemInfo", type: {:nullable, :message}}
   ],
 
 "CheatDeleteChatCovenantRequest" => [
@@ -2388,7 +2388,7 @@
   ],
 
 "RealmAccountOptionInfo" => [
-    %{name: "PushNotificationOptionInfos", type: :unknown}
+    %{name: "PushNotificationOptionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzPushNotificationOptionInfo"}}}
   ],
 
 "QuestTeleportToReentryLocationRequest" => [
@@ -2410,7 +2410,7 @@
 "CheatTeleportToSpawnerRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SpawnerCuid", type: :cuid},
-    %{name: "Radius_cm", type: "float"}
+    %{name: "Radius_cm", type: :float}
   ],
 
 "PartyCreateRequest" => [
@@ -2425,7 +2425,7 @@
 "CovenantInvitationInfo" => [
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "SlayingGrade", type: {:int, 2}},
     %{name: "InviterGuid", type: {:uint, 8}},
@@ -2453,11 +2453,11 @@
 "MarketGoodsInfo" => [
     %{name: "GoodsGuid", type: {:uint, 8}},
     %{name: "RealmCuid", type: :cuid},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "SellPlayerName", type: :string},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsStorable", type: :unknown},
-    %{name: "ItemAdditionalInfo", type: :unknown},
+    %{name: "IsStorable", type: :bool},
+    %{name: "ItemAdditionalInfo", type: {:nullable, :message}},
     %{name: "ItemStackCount", type: {:int, 4}},
     %{name: "CurrencyCuid", type: :cuid},
     %{name: "CurrencyAmount", type: {:uint, 8}},
@@ -2481,14 +2481,14 @@
 
 "BuildingCraftCountAchievementSourceInfo" => [
     %{name: "__base__", type: {:struct, "AchievementSourceInfo"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
     %{name: "ItemCuid", type: :cuid}
   ],
 
 "KickCovenantsFromDiplomacyChatRoomRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "CovenantGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "CovenantGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatResetGoodsBuyCountRequest" => [
@@ -2497,8 +2497,8 @@
 
 "PlayerSkillSlotUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
-    %{name: "PlayerSkillSlotIndex", type: {:enum, "ETzPlayerSkillSlotIndexType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
+    %{name: "PlayerSkillSlotIndex", type: {:enum, "PlayerSkillSlotIndexType"}},
     %{name: "PlayerSkillSlotInfo", type: {:nullable, {:struct, "PlayerSkillSlotInfo"}}}
   ],
 
@@ -2511,9 +2511,9 @@
 "CheatCreateAndEquipGearResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
-    %{name: "EquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}},
+    %{name: "EquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}},
     %{name: "EquipGearSlotInfos", type: {:list, {:struct, "GearSlotInfo"}}},
-    %{name: "UnequipGearSlots", type: {:list, {:enum, "ETzGearSlotType,TSizedDefaultAllocator<32"}}},
+    %{name: "UnequipGearSlots", type: {:list, {:enum, "GearSlotType"}}},
     %{name: "PlayerPublicStatsInfo", type: {:nullable, {:struct, "PlayerPublicStatsInfo"}}},
     %{name: "PlayerPrivateStatsInfo", type: {:nullable, {:struct, "PlayerPrivateStatsInfo"}}}
   ],
@@ -2526,8 +2526,8 @@
 "ServerDrivenPlayEndNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "RemainingDailyDuration_sec", type: {:int, 4}},
-    %{name: "EndedState", type: {:enum, "ETzServerDrivenPlayState"}},
-    %{name: "EndReason", type: {:enum, "ETzServerDrivenPlayEndReasonType"}}
+    %{name: "EndedState", type: {:enum, "ServerDrivenPlayState"}},
+    %{name: "EndReason", type: {:enum, "ServerDrivenPlayEndReasonType"}}
   ],
 
 "OccupiableNpcSummaryInfo" => [
@@ -2537,13 +2537,13 @@
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "NpcOccupationInactivityExpirationDateTime", type: {:nullable, :datetime}},
-    %{name: "IsRandomBuffNpc", type: :unknown},
-    %{name: "OccupationState", type: {:enum, "ETzNpcOccupationStateType"}}
+    %{name: "IsRandomBuffNpc", type: :bool},
+    %{name: "OccupationState", type: {:enum, "NpcOccupationStateType"}}
   ],
 
 "DeathPenaltyDeleteResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "DeletedDeathPenaltyRecordGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeletedDeathPenaltyRecordGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatResurrectAllFollowerResponse" => [
@@ -2557,19 +2557,19 @@
 
 "EquipmentPresetSelectRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "EquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}}
+    %{name: "EquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}}
   ],
 
 "AnniversaryStrongholdOccupationCovenantInfo" => [
-    %{name: "OccupyingCovenantInfo", type: :unknown},
+    %{name: "OccupyingCovenantInfo", type: {:nullable, :message}},
     %{name: "OccupationDateTime", type: :datetime},
-    %{name: "IsOccupyAltarPhaseInProgress", type: :unknown},
+    %{name: "IsOccupyAltarPhaseInProgress", type: :bool},
     %{name: "AttackGroupInfos", type: {:list, {:struct, "CovenantDisplayInfo"}}}
   ],
 
 "ThreadMailDeleteResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MailKind", type: {:enum, "ETzMailKindType"}}
+    %{name: "MailKind", type: {:enum, "MailKindType"}}
   ],
 
 "QuestTeleportToReentryLocationResponse" => [
@@ -2580,13 +2580,13 @@
     %{name: "__base__", type: {:struct, "MountStateInfo"}},
     %{name: "MountItemCuid", type: :cuid},
     %{name: "MountSpawnLocation_cm", type: :vector},
-    %{name: "IsLeftBoarding", type: :boolean},
+    %{name: "IsLeftBoarding", type: :bool},
     %{name: "MountBoardingLocation_cm", type: :vector},
     %{name: "PlayerBoardingLocation_cm", type: :vector},
     %{name: "RendezvousLocation_cm", type: :vector},
     %{name: "RendezvousStartDateTime", type: :datetime},
     %{name: "BoardingDateTime", type: :datetime},
-    %{name: "PlayerRunSpeedBeforeBoarded_cmpmsec", type: "float"},
+    %{name: "PlayerRunSpeedBeforeBoarded_cmpmsec", type: :float},
     %{name: "IsImmediateBoarding", type: :unknown},
     %{name: "IsMovingBoarding", type: :unknown}
   ],
@@ -2604,7 +2604,7 @@
 
 "CovenantSupportInfoChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "HasCovenantSupportableFollower", type: :unknown}
+    %{name: "HasCovenantSupportableFollower", type: :bool}
   ],
 
 "StrongholdBattleStatisticsDeadEventInfo" => [
@@ -2614,13 +2614,13 @@
 
 "StanceSwitchRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}}
+    %{name: "Stance", type: {:enum, "StanceType"}}
   ],
 
 "CheatTeleportToPlayerRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerName", type: :string},
-    %{name: "Radius_cm", type: "float"}
+    %{name: "Radius_cm", type: :float}
   ],
 
 "CheatStartCovenantCampaignResponse" => [
@@ -2640,7 +2640,7 @@
 
 "SessionKickNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "BanInfo", type: :unknown}
+    %{name: "BanInfo", type: {:nullable, :message}}
   ],
 
 "TutorialCancelResponse" => [
@@ -2682,19 +2682,19 @@
   ],
 
 "StrongholdBattleJoinedCovenantHistoryInfo" => [
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "CovenantVuid", type: {:struct, "Vuid"}},
     %{name: "CovenantName", type: :string},
     %{name: "JoinedDateTime", type: :datetime},
-    %{name: "IsDismissed", type: :unknown},
+    %{name: "IsDismissed", type: :bool},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}}
   ],
 
 "ItemTransmuteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
-    %{name: "ItemGrade", type: {:enum, "ETzItemGradeType"}},
-    %{name: "ItemGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
+    %{name: "ItemGrade", type: {:enum, "ItemGradeType"}},
+    %{name: "ItemGuids", type: {:list, {:uint, 8}}}
   ],
 
 "BattalionLeaderChangeFailResponse" => [
@@ -2707,7 +2707,7 @@
 
 "MarketSellReregisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RegistrationFeeCurrencyInfoByGoodsGuid", type: :unknown}
+    %{name: "RegistrationFeeCurrencyInfoByGoodsGuid", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCuidAndCountInfo"}}}
   ],
 
 "CspSupporterInfoRequest" => [
@@ -2718,7 +2718,7 @@
 "StrongholdBuildingDemolishRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "CheatOccupyOccupiableNpcRequest" => [
@@ -2754,8 +2754,8 @@
     %{name: "PreviousRealmCuid", type: :cuid},
     %{name: "CurrentRealmCuid", type: :cuid},
     %{name: "RealmTransferDateTime", type: :datetime},
-    %{name: "HidePopup", type: :unknown},
-    %{name: "Deleted", type: :unknown}
+    %{name: "HidePopup", type: :bool},
+    %{name: "Deleted", type: :bool}
   ],
 
 "QuestMissionCompletableLocationCheckResponse" => [
@@ -2799,19 +2799,19 @@
     %{name: "HealthPoints", type: {:uint, 8}},
     %{name: "MaxHealthPoints", type: {:uint, 8}},
     %{name: "BuildingWorkInfo", type: {:nullable, {:struct, "BuildingWorkInfo"}}},
-    %{name: "BuildingAccessPermissionKind", type: {:enum, "ETzBuildingAccessPermissionKindType"}},
+    %{name: "BuildingAccessPermissionKind", type: {:enum, "BuildingAccessPermissionKindType"}},
     %{name: "LastChangeDateTime", type: :datetime}
   ],
 
 "StrongholdBattleAttackEndNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "AttackGroupDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}}
+    %{name: "AttackGroupDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}}
   ],
 
 "CovenantMarkerNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarkerKind", type: {:enum, "ETzCovenantMarkerKindType"}}
+    %{name: "MarkerKind", type: {:enum, "CovenantMarkerKindType"}}
   ],
 
 "BattalionSwapFormationRequest" => [
@@ -2825,13 +2825,13 @@
 "StackableItemMultipleUseRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ItemGuidSelector", type: {:nullable, {:struct, "ItemGuidSelector"}}},
-    %{name: "ParameterInfo", type: :unknown}
+    %{name: "ParameterInfo", type: {:nullable, :message}}
   ],
 
 "BattalionConfirmJoinApplicationRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "TargetPlayerGuid", type: {:uint, 8}},
-    %{name: "IsConfirmJoinApplication", type: :unknown}
+    %{name: "IsConfirmJoinApplication", type: :bool}
   ],
 
 "CheatUnlockAllContentsResponse" => [
@@ -2852,7 +2852,7 @@
 
 "ErTozMessageWithResultCode" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ResultCode", type: {:enum, "ETzResultCodeType"}}
+    %{name: "ResultCode", type: {:enum, "ResultCodeType"}}
   ],
 
 "CashShopRefundableMerchandiseStorageBoxInfo" => [
@@ -2873,7 +2873,7 @@
     %{name: "RankingTopicCuid", type: :cuid},
     %{name: "DateTime", type: {:nullable, :datetime}},
     %{name: "RankingInfos", type: {:list, {:struct, "RankingInfo"}}},
-    %{name: "SelfRankingInfo", type: :unknown}
+    %{name: "SelfRankingInfo", type: {:nullable, :message}}
   ],
 
 "RsaPublicKeyNotify" => [
@@ -2884,8 +2884,8 @@
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "MessageId", type: {:int, 4}},
     %{name: "AnniversaryInfos", type: {:list, {:struct, "AnniversaryInfo"}}},
-    %{name: "AnniversaryPointAndRankingInfos", type: :unknown},
-    %{name: "AnniversaryAchievementPointInfos", type: :unknown}
+    %{name: "AnniversaryPointAndRankingInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzAnniversaryPointAndRankingInfo"}}},
+    %{name: "AnniversaryAchievementPointInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzAnniversaryAchievementPointInfo"}}}
   ],
 
 "CovenantUpdateLastPlunderDeclaredDateTimeNotify" => [
@@ -2896,7 +2896,7 @@
 "OccupiableNpcOccupationScoreUpdateDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "OccupationScore", type: {:int, 4}},
-    %{name: "NpcOccupationScoreCovenantViewInfos", type: :unknown}
+    %{name: "NpcOccupationScoreCovenantViewInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzNpcOccupationScoreCovenantViewInfo"}}}
   ],
 
 "AnniversaryPointRankingRecordQueryRequest" => [
@@ -2914,13 +2914,13 @@
 
 "CheatCovenantRealmTransferBlockRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ApplyAll", type: :unknown},
+    %{name: "ApplyAll", type: :bool},
     %{name: "CovenantRealmTransferStepString", type: :string}
   ],
 
 "FollowerSquadUpdateResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "FollowerSquadSlots", type: :unknown}
+    %{name: "FollowerSquadSlots", type: {:map, {:struct, "unsigned_char"}, {:uint, 8}}}
   ],
 
 "CovenantTradeCategoryQueryResponse" => [
@@ -2944,7 +2944,7 @@
 
 "SpawnLayerInfo" => [
     %{name: "SpawnLayerCuid", type: :cuid},
-    %{name: "IsActivated", type: :unknown},
+    %{name: "IsActivated", type: :bool},
     %{name: "LastActivatedDateTime", type: {:nullable, :datetime}},
     %{name: "LastDeactivatedDateTime", type: {:nullable, :datetime}}
   ],
@@ -2955,7 +2955,7 @@
 
 "BattalionConfirmCheckReadyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MemberReadyKind", type: {:enum, "ETzBattalionMemberReadyKindType"}}
+    %{name: "MemberReadyKind", type: {:enum, "BattalionMemberReadyKindType"}}
   ],
 
 "ProtocolCheckRequest" => [
@@ -2974,7 +2974,7 @@
 
 "CheatClearFollowerResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CollectionInfos", type: :unknown}
+    %{name: "CollectionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzFollowerCollectionInfo"}}}
   ],
 
 "CheatCreateAndEquipGearSetResponse" => [
@@ -2985,7 +2985,7 @@
 
 "PartyInvitationInfo" => [
     %{name: "PartyName", type: :string},
-    %{name: "Purpose", type: {:enum, "ETzPartyPurposeType"}},
+    %{name: "Purpose", type: {:enum, "PartyPurposeType"}},
     %{name: "RegionCuid", type: :cuid},
     %{name: "InvitePlayerName", type: :string},
     %{name: "PartyItemDistributionInfo", type: {:nullable, {:struct, "PartyOrBattalionItemDistributionInfo"}}}
@@ -2994,13 +2994,13 @@
 "MovePathInfo" => [
     %{name: "StartLocation", type: :vector},
     %{name: "DestinationLocation", type: :vector},
-    %{name: "RoadJunctionIds", type: {:list, {:struct, "int,TSizedDefaultAllocator<32"}}},
-    %{name: "PathToFirstRoadJunction", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}}
+    %{name: "RoadJunctionIds", type: {:list, {:int, 4}}},
+    %{name: "PathToFirstRoadJunction", type: {:list, :vector}},
+    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, :vector}}
   ],
 
 "CovenantSupportQueryInfo" => [
-    %{name: "BuildingWorkOrderInfos", type: :unknown},
+    %{name: "BuildingWorkOrderInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzBuildingWorkOrderInfo"}}},
     %{name: "CovenantSupportInfos", type: {:list, {:struct, "CovenantSupportInfo"}}}
   ],
 
@@ -3011,16 +3011,16 @@
 
 "CheatAddRegionContentBasePlayTimeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RegionContentKind", type: {:enum, "ETzRegionContentKindType"}},
+    %{name: "RegionContentKind", type: {:enum, "RegionContentKindType"}},
     %{name: "AddPlayTime_sec", type: {:int, 4}}
   ],
 
 "ErFrontServerSessionInitializeInfoNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "RealmAccountInfo", type: {:nullable, {:struct, "RealmAccountInfo"}}},
-    %{name: "PlayerSummaryInfos", type: :unknown},
+    %{name: "PlayerSummaryInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerSummaryInfo"}}},
     %{name: "LatestPlayedPlayerGuid", type: {:uint, 8}},
-    %{name: "CanCheatCommand", type: :unknown},
+    %{name: "CanCheatCommand", type: :bool},
     %{name: "RealmIntegrationRealmAccountInfos", type: {:list, {:struct, "RealmIntegrationRealmAccountInfo"}}}
   ],
 
@@ -3032,20 +3032,20 @@
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
     %{name: "HealthPointsPotionAutoUsageOptionInfo", type: {:nullable, {:struct, "PotionAutoUsageOptionInfo"}}},
     %{name: "ManaPointsPotionAutoUsageOptionInfo", type: {:nullable, {:struct, "PotionAutoUsageOptionInfo"}}},
-    %{name: "AutoUseReplaceSpentItemPolicyOption", type: {:enum, "ETzAutoUseReplaceSpentItemPolicyType"}},
+    %{name: "AutoUseReplaceSpentItemPolicyOption", type: {:enum, "AutoUseReplaceSpentItemPolicyType"}},
     %{name: "SkillAutoUseManaPointsRestrictOptionInfo", type: {:nullable, {:struct, "SkillAutoUseManaPointsRestrictOptionInfo"}}},
-    %{name: "PartyAutoCreationOnlyCovenantMemberOrFriend", type: :boolean},
-    %{name: "PartyAutoCreationAutoApprovalJoinApplication", type: :boolean},
-    %{name: "PartyInvitationAllowKind", type: {:enum, "ETzPartyInvitationAllowKindType"}},
-    %{name: "CovenantInvitable", type: :boolean},
-    %{name: "IsChatCurrencySpendWarned", type: :boolean},
-    %{name: "SomaItemUsePopupDisplayOption", type: :boolean},
-    %{name: "DeathPenaltyAutoRecoveryOption", type: :boolean},
+    %{name: "PartyAutoCreationOnlyCovenantMemberOrFriend", type: :bool},
+    %{name: "PartyAutoCreationAutoApprovalJoinApplication", type: :unknown},
+    %{name: "PartyInvitationAllowKind", type: {:enum, "PartyInvitationAllowKindType"}},
+    %{name: "CovenantInvitable", type: :unknown},
+    %{name: "IsChatCurrencySpendWarned", type: :unknown},
+    %{name: "SomaItemUsePopupDisplayOption", type: :unknown},
+    %{name: "DeathPenaltyAutoRecoveryOption", type: :unknown},
     %{name: "PowerSavingModeAutoSwitchMinutes", type: {:int, 4}},
-    %{name: "GearEnhancementErodeNotifyDisplayOption", type: :boolean},
-    %{name: "GearEnhancementDestroyNotifyDisplayOption", type: :boolean},
-    %{name: "ErodedRestoreScrollUseNotifyDisplayOption", type: :boolean},
-    %{name: "NpcListAutoExpandAndCollapse", type: :boolean}
+    %{name: "GearEnhancementErodeNotifyDisplayOption", type: :unknown},
+    %{name: "GearEnhancementDestroyNotifyDisplayOption", type: :unknown},
+    %{name: "ErodedRestoreScrollUseNotifyDisplayOption", type: :unknown},
+    %{name: "NpcListAutoExpandAndCollapse", type: :unknown}
   ],
 
 "MountItemChangeRequest" => [
@@ -3056,14 +3056,14 @@
 "StrongholdBattleUpdateSiegeWeaponSlotNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
-    %{name: "StrongholdBattleAttackSiegeWeaponSlotInfo", type: :unknown}
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
+    %{name: "StrongholdBattleAttackSiegeWeaponSlotInfo", type: {:nullable, :message}}
   ],
 
 "CheatUpdateAchievementMissionProgressCountsRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "AchievementCuid", type: :cuid},
-    %{name: "MissionProgressCounts", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "MissionProgressCounts", type: {:list, {:uint, 8}}}
   ],
 
 "CovenantLivingTotemCraftRequest" => [
@@ -3100,18 +3100,18 @@
     %{name: "AnniversaryEndDateTime", type: :datetime},
     %{name: "AnniversaryAchievementCycleBeginDateTime", type: :datetime},
     %{name: "AnniversaryAchievementCycleEndDateTime", type: :datetime},
-    %{name: "AnniversaryStrongholdOccupationCovenantInfos", type: :unknown}
+    %{name: "AnniversaryStrongholdOccupationCovenantInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzAnniversaryStrongholdOccupationCovenantInfo"}}}
   ],
 
 "CovenantWarehouseSummaryUpdateInfoNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "UpdatedItemInfos", type: :unknown},
-    %{name: "RemovedItemCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "UpdatedItemInfos", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "RemovedItemCuids", type: {:list, :cuid}}
   ],
 
 "CheatCovenantPayDividendRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DividendInfo", type: :unknown}
+    %{name: "DividendInfo", type: {:nullable, :message}}
   ],
 
 "PartyJoinMemberNotify" => [
@@ -3344,11 +3344,11 @@
 
 "CombatLootOptionInfo" => [
     %{name: "MaxWeightPercentage", type: {:int, 2}},
-    %{name: "MinCoreMaterialItemGrade", type: {:enum, "ETzItemGradeType"}},
-    %{name: "IncludePotion", type: :boolean},
+    %{name: "MinCoreMaterialItemGrade", type: {:enum, "ItemGradeType"}},
+    %{name: "IncludePotion", type: :bool},
     %{name: "IncludeBuffItem", type: :unknown},
-    %{name: "MinArquiruneGrade", type: {:enum, "ETzItemGradeType"}},
-    %{name: "MinSpellstoneGrade", type: {:enum, "ETzItemGradeType"}},
+    %{name: "MinArquiruneGrade", type: {:enum, "ItemGradeType"}},
+    %{name: "MinSpellstoneGrade", type: {:enum, "ItemGradeType"}},
     %{name: "DefaultDisplayDropItemName", type: :unknown}
   ],
 
@@ -3362,7 +3362,7 @@
     %{name: "__base__", type: {:struct, "MerchandisePaymentInfo"}},
     %{name: "SubCategoryCuid", type: :cuid},
     %{name: "CuidAndCountInfo", type: {:nullable, {:struct, "CuidAndCountInfo"}}},
-    %{name: "ItemUseParameterInfo", type: :unknown}
+    %{name: "ItemUseParameterInfo", type: {:nullable, :message}}
   ],
 
 "ServerDrivenPlayEndRequest" => [
@@ -3380,18 +3380,18 @@
 "CrossRealmCovenantQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CovenantSummaryInfo", type: {:nullable, {:struct, "CovenantSummaryInfo"}}},
-    %{name: "IsJoinApplied", type: :unknown},
-    %{name: "IsInvited", type: :unknown},
+    %{name: "IsJoinApplied", type: :bool},
+    %{name: "IsInvited", type: :bool},
     %{name: "LeaderCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "LeaderCostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
     %{name: "LeaderLevel", type: {:int, 4}},
-    %{name: "LeaderGender", type: {:enum, "ETzGenderType"}},
-    %{name: "LeaderClasse", type: {:enum, "ETzClasseType"}}
+    %{name: "LeaderGender", type: {:enum, "GenderType"}},
+    %{name: "LeaderClasse", type: {:enum, "ClasseType"}}
   ],
 
 "InventoryExpandResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "UserInventoryKind", type: {:enum, "ETzUserInventoryKindType"}},
+    %{name: "UserInventoryKind", type: {:enum, "UserInventoryKindType"}},
     %{name: "MaxInventorySlotCount", type: {:int, 4}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}}
   ],
@@ -3411,7 +3411,7 @@
 "FissionedStateUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "IsFissioned", type: :unknown}
+    %{name: "IsFissioned", type: :bool}
   ],
 
 "CrossRealmChatRoomRecordsInitializationInfo" => [
@@ -3420,11 +3420,11 @@
   ],
 
 "ItemTransmutationResultInfo" => [
-    %{name: "IsSuccess", type: :unknown},
+    %{name: "IsSuccess", type: :bool},
     %{name: "ResultLevel", type: {:int, 2}},
     %{name: "PreviousLevel", type: {:int, 2}},
     %{name: "RewardItemCuid", type: :cuid},
-    %{name: "FailRewardPointCurrencies", type: :unknown}
+    %{name: "FailRewardPointCurrencies", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "SeasonPassLevelRewardRequest" => [
@@ -3432,7 +3432,7 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "SeasonPassCuid", type: :cuid},
     %{name: "Level", type: {:int, 4}},
-    %{name: "SeasonPassRewardKind", type: {:enum, "ETzSeasonPassRewardKindType"}}
+    %{name: "SeasonPassRewardKind", type: {:enum, "SeasonPassRewardKindType"}}
   ],
 
 "CheatDeleteChatCovenantResponse" => [
@@ -3450,7 +3450,7 @@
 
 "BattalionCheckReadyResultNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CheckReadyResult", type: :unknown}
+    %{name: "CheckReadyResult", type: {:map, {:enum, "BattalionMemberReadyKindType"}, {:int, 4}}}
   ],
 
 "CovenantUpdateIntroductionFailResponse" => [
@@ -3471,8 +3471,8 @@
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "AcquiredCovenantRewardInfo", type: {:nullable, {:struct, "CovenantRewardInfo"}}},
-    %{name: "Amity", type: :unknown},
-    %{name: "IsErosionInstallerReward", type: :unknown}
+    %{name: "Amity", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "IsErosionInstallerReward", type: :bool}
   ],
 
 "CovenantSynchronizeRankingNotify" => [
@@ -3492,16 +3492,16 @@
 
 "CheatRankingBuffApplySwitchResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "IsApplied", type: :unknown}
+    %{name: "IsApplied", type: :bool}
   ],
 
 "MessageCacheElement" => [
-    %{name: "CacheTicks", type: {:uint, 4}}
+    %{name: "CacheTicks", type: {:int, 4}}
   ],
 
 "NpcSpeechBalloonInfo" => [
     %{name: "Cuid", type: :cuid},
-    %{name: "NpcSpeechBalloonTextFormatInfo", type: :unknown}
+    %{name: "NpcSpeechBalloonTextFormatInfo", type: {:nullable, :message}}
   ],
 
 "CheatRemoveRankingDummyDataResponse" => [
@@ -3557,34 +3557,34 @@
 
 "CheatUnlockContentsResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ContentsUnlockKind", type: {:enum, "ETzContentsUnlockKindType"}}
+    %{name: "ContentsUnlockKind", type: {:enum, "ContentsUnlockKindType"}}
   ],
 
 "PlayerFavorInfo" => [
-    %{name: "DistrictFavorDatabaseInfos", type: :unknown},
-    %{name: "ActiveFavorDatabaseInfos", type: :unknown}
+    %{name: "DistrictFavorDatabaseInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzDistrictFavorDatabaseInfo"}}},
+    %{name: "ActiveFavorDatabaseInfos", type: {:map, {:struct, "Vuid"}, {:struct, "TSharedPtr<FTzFavorDatabaseInfo"}}}
   ],
 
 "CovenantBattalionSummaryInfo" => [
     %{name: "__base__", type: {:struct, "BattalionSummaryInfo"}},
-    %{name: "ExpeditionSummaryInfo", type: :unknown}
+    %{name: "ExpeditionSummaryInfo", type: {:nullable, :message}}
   ],
 
 "StrongholdBattleDefenseGunBulletAmountChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "DefenseGunBulletCount", type: {:uint, 8}}
   ],
 
 "CovenantRealmTransferCheckInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RealmTransferInfo", type: :unknown},
-    %{name: "PlayerCheckInfos", type: :unknown},
+    %{name: "RealmTransferInfo", type: {:nullable, :message}},
+    %{name: "PlayerCheckInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerRealmTransferCheckInfo"}}},
     %{name: "CovenantRealmTransferCheckInfo", type: {:nullable, {:struct, "CovenantRealmTransferCheckInfo"}}},
-    %{name: "CanOutboundRealmTransferable", type: {:enum, "ETzResultCodeType"}},
+    %{name: "CanOutboundRealmTransferable", type: {:enum, "ResultCodeType"}},
     %{name: "DestinationRealmPlayerCount", type: {:int, 4}},
-    %{name: "IsAppliedRealmAccountPresentToRealm", type: :unknown}
+    %{name: "IsAppliedRealmAccountPresentToRealm", type: :bool}
   ],
 
 "FollowerImmediateResurrectionResponse" => [
@@ -3595,11 +3595,11 @@
 
 "MarketGoodsSummaryInfoQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketGoodsSummaryQueryInfo", type: :unknown}
+    %{name: "MarketGoodsSummaryQueryInfo", type: {:nullable, :message}}
   ],
 
 "AutoSellSettingsInfo" => [
-    %{name: "Settings", type: :unknown}
+    %{name: "Settings", type: {:map, :cuid, {:enum, "ItemGradeType"}}}
   ],
 
 "TozTimeAdjustment" => [
@@ -3615,23 +3615,23 @@
 "CheatChangeActivationSpawnLayerRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SpawnLayerCuid", type: :cuid},
-    %{name: "IsActivated", type: :unknown}
+    %{name: "IsActivated", type: :bool}
   ],
 
 "SkillAffectTargetAffectInfo" => [
     %{name: "__base__", type: {:struct, "SkillAffectInfo"}},
     %{name: "AffectTargetGuid", type: {:uint, 8}},
     %{name: "AffectSourceGuid", type: {:uint, 8}},
-    %{name: "IsHit", type: :unknown},
+    %{name: "IsHit", type: :bool},
     %{name: "SkillAffectTargetStatsAffectInfo", type: {:nullable, {:struct, "SkillAffectTargetStatsAffectInfo"}}},
     %{name: "SkillAffectTargetMoveAffectInfo", type: {:nullable, {:struct, "SkillAffectTargetMoveAffectInfo"}}},
-    %{name: "SkillAffectTargetStateAffectInfo", type: :unknown}
+    %{name: "SkillAffectTargetStateAffectInfo", type: {:nullable, :message}}
   ],
 
 "InstanceEventActionCompleteNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ActionCuid", type: :cuid},
-    %{name: "IsSuccess", type: :unknown}
+    %{name: "IsSuccess", type: :bool}
   ],
 
 "CovenantGiftReceiveResponse" => [
@@ -3645,7 +3645,7 @@
 "CharacterMoveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CharacterGuid", type: {:uint, 8}},
-    %{name: "CharacterMoveInfo", type: :unknown}
+    %{name: "CharacterMoveInfo", type: {:nullable, :message}}
   ],
 
 "RealmAccountWarehouseExpandRequest" => [
@@ -3686,7 +3686,7 @@
 
 "UnlockedContentsNewMarkCheckResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ContentsUnlockKind", type: {:enum, "ETzContentsUnlockKindType"}}
+    %{name: "ContentsUnlockKind", type: {:enum, "ContentsUnlockKindType"}}
   ],
 
 "StrongholdBattleOccupyAltarStartNotify" => [
@@ -3700,7 +3700,7 @@
 
 "PrivateChannelKeepaliveFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ChannelKind", type: {:enum, "ETzPrivateChannelKindType"}}
+    %{name: "ChannelKind", type: {:enum, "PrivateChannelKindType"}}
   ],
 
 "CrossRealmSeasonEntryUpdateDataNotify" => [
@@ -3709,16 +3709,16 @@
 
 "MountDeboardingInfo" => [
     %{name: "__base__", type: {:struct, "MountStateInfo"}},
-    %{name: "MountDeboardReason", type: {:enum, "ETzMountDeboardReasonType"}},
-    %{name: "IsImmediateMountDespawn", type: :unknown},
+    %{name: "MountDeboardReason", type: {:enum, "MountDeboardReasonType"}},
+    %{name: "IsImmediateMountDespawn", type: :bool},
     %{name: "MountDespawnLocation_cm", type: :vector}
   ],
 
 "FindRoadPathResultInfo" => [
     %{name: "Destination_cm", type: :vector},
-    %{name: "RoadPathInfos", type: {:list, {:struct, "RoadPathInfo,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNodeInfosToFirstRoadJunctionInfo", type: {:list, {:struct, "PathNodeInfo,TSizedDefaultAllocator<32"}}},
-    %{name: "TravelDistance_cm", type: "float"}
+    %{name: "RoadPathInfos", type: {:list, {:struct, "RoadPathInfo"}}},
+    %{name: "PathNodeInfosToFirstRoadJunctionInfo", type: {:list, {:struct, "PathNodeInfo"}}},
+    %{name: "TravelDistance_cm", type: :float}
   ],
 
 "CheatCreateAndEquipGuiseRequest" => [
@@ -3733,12 +3733,12 @@
 
 "CovenantCancelInvitationFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CancelFailedPlayerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "CancelFailedPlayerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "StrongholdStrongholdBattleNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "StrongholdBattleAttackPhase", type: {:enum, "ETzStrongholdBattleAttackPhaseType"}}
+    %{name: "StrongholdBattleAttackPhase", type: {:enum, "StrongholdBattleAttackPhaseType"}}
   ],
 
 "ResurrectorSelectionExpiredNotify" => [
@@ -3760,7 +3760,7 @@
 
 "CheatInstallStanceRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StanceKind", type: {:enum, "ETzStanceKindType"}}
+    %{name: "StanceKind", type: {:enum, "StanceKindType"}}
   ],
 
 "RegionContentPlayTimeInfoByDateTime" => [
@@ -3778,19 +3778,19 @@
 
 "CheatSetInvulnerableResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsInvulnerable", type: :unknown}
+    %{name: "IsInvulnerable", type: :bool}
   ],
 
 "SendChatMessageRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "InfoToShare", type: :string},
     %{name: "Text", type: :string}
   ],
 
 "ArquiAttunementInfo" => [
-    %{name: "LevelByArquiAttunementCuid", type: :unknown},
-    %{name: "AetherOptionLevelByCategoryCuidAndOptionCuid", type: :unknown}
+    %{name: "LevelByArquiAttunementCuid", type: {:map, :cuid, {:int, 4}}},
+    %{name: "AetherOptionLevelByCategoryCuidAndOptionCuid", type: {:map, :cuid, {:struct, "TMap<FTzCuid"}}}
   ],
 
 "CrossRealmCovenantDiplomacyCancelAllianceApplicationRequest" => [
@@ -3802,12 +3802,12 @@
 "MarketSettlementInfo" => [
     %{name: "PlayerSettledCurrencyAmount", type: {:uint, 8}},
     %{name: "BaseSettlementInfo", type: {:nullable, {:struct, "SettlementInfo"}}},
-    %{name: "StrongholdSettlementInfos", type: :unknown}
+    %{name: "StrongholdSettlementInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzSettlementInfo"}}}
   ],
 
 "MarketGoodsSummaryInfoQueryNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketGoodsSummaryQueryInfo", type: :unknown},
+    %{name: "MarketGoodsSummaryQueryInfo", type: {:nullable, :message}},
     %{name: "MarketGoodsSummaryInfos", type: {:list, {:struct, "MarketGoodsSummaryInfo"}}}
   ],
 
@@ -3816,7 +3816,7 @@
     %{name: "FollowerCuid", type: :cuid},
     %{name: "Level", type: {:int, 4}},
     %{name: "Count", type: {:uint, 8}},
-    %{name: "SlotNumber", type: "unsigned_char"}
+    %{name: "SlotNumber", type: {:struct, "unsigned_char"}}
   ],
 
 "CovenantHistoryCheckCompleteArchitectureResponse" => [
@@ -3825,7 +3825,7 @@
   ],
 
 "SeamlessEntityInfo" => [
-    %{name: "EntityInfo", type: :unknown},
+    %{name: "EntityInfo", type: {:nullable, :message}},
     %{name: "PlacedDistrictCuid", type: :cuid},
     %{name: "PlacedZoneCuid", type: :cuid}
   ],
@@ -3848,18 +3848,18 @@
 "LocationInfo" => [
     %{name: "FieldUid", type: {:struct, "FieldUid"}},
     %{name: "Location_cm", type: :vector},
-    %{name: "FacingDirection", type: "FRotator"}
+    %{name: "FacingDirection", type: {:struct, "FRotator"}}
   ],
 
 "WorldMapMarkerEditSettingResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "WorldMapMarkerInfo", type: {:nullable, {:struct, "WorldMapMarkerInfo"}}}
   ],
 
 "CheatBatchBossSpawnTimeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "NpcGrade", type: {:enum, "ETzNpcGradeType"}},
+    %{name: "NpcGrade", type: {:enum, "NpcGradeType"}},
     %{name: "RetainDuration_sec", type: {:int, 4}},
     %{name: "NextSpawnDuration_sec", type: {:int, 4}}
   ],
@@ -3881,18 +3881,18 @@
     %{name: "CurrencyAmount", type: {:int, 4}},
     %{name: "RewardMileagePoint", type: {:int, 4}},
     %{name: "RewardCuid", type: :cuid},
-    %{name: "RewardReceiveKind", type: {:enum, "ETzShopMerchandiseReceiveKindType"}},
-    %{name: "IsAutoUsing", type: :unknown},
+    %{name: "RewardReceiveKind", type: {:enum, "ShopMerchandiseReceiveKindType"}},
+    %{name: "IsAutoUsing", type: :bool},
     %{name: "CovenantGiftCuid", type: :cuid},
     %{name: "RequiredPlayerLevel", type: {:int, 4}},
     %{name: "RequiredPlayerSlayingGrade", type: {:int, 4}},
     %{name: "RequiredQuestCuid", type: :cuid},
     %{name: "RequiredGrowthGuideCuid", type: :cuid},
     %{name: "RequiredCovenantLevel", type: {:int, 4}},
-    %{name: "BuyLimitResetCycle", type: {:enum, "ETzBuyOrCraftLimitResetCycleType"}},
-    %{name: "TotalBuyLimitLevel", type: {:enum, "ETzTotalBuyLimitLevelType"}},
+    %{name: "BuyLimitResetCycle", type: {:enum, "BuyOrCraftLimitResetCycleType"}},
+    %{name: "TotalBuyLimitLevel", type: {:enum, "TotalBuyLimitLevelType"}},
     %{name: "TotalBuyLimitCount", type: {:int, 4}},
-    %{name: "BuyLimitLevel", type: {:enum, "ETzBuyOrCraftLimitLevelType"}},
+    %{name: "BuyLimitLevel", type: {:enum, "BuyOrCraftLimitLevelType"}},
     %{name: "BuyLimitCount", type: {:int, 4}},
     %{name: "MaxBuyCount", type: {:int, 4}}
   ],
@@ -3921,7 +3921,7 @@
 "FavoriteCollectionRegisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CollectionCuid", type: :cuid},
-    %{name: "IsRegistered", type: :unknown}
+    %{name: "IsRegistered", type: :bool}
   ],
 
 "RealmIntegrationReserveRealmAccountDeletionResponse" => [
@@ -3949,7 +3949,7 @@
 "PartyMemberInfo" => [
     %{name: "CoreInfo", type: {:nullable, {:struct, "PartyMemberCoreInfo"}}},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "State", type: {:enum, "ETzCharacterStateType"}},
+    %{name: "State", type: {:enum, "CharacterStateType"}},
     %{name: "CostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
     %{name: "CustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "ErosionInfo", type: {:nullable, {:struct, "ErosionInfo"}}}
@@ -3957,7 +3957,7 @@
 
 "TutorialHoldResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "TutorialFilterKind", type: {:enum, "ETzTutorialFilterKindType"}},
+    %{name: "TutorialFilterKind", type: {:enum, "TutorialFilterKindType"}},
     %{name: "FilterValue", type: :string}
   ],
 
@@ -4012,11 +4012,11 @@
 "HeadPieceDisplayOptionModifyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "IsHeadPieceDisplayed", type: :unknown}
+    %{name: "IsHeadPieceDisplayed", type: :bool}
   ],
 
 "CovenantOrganizationStatsDetailInfo" => [
-    %{name: "Stats", type: :unknown}
+    %{name: "Stats", type: {:map, {:enum, "CovenantOrganizationStatSourceType"}, {:struct, "TMap<FTzCuid"}}}
   ],
 
 "StrongholdTaxUpdateResponse" => [
@@ -4036,17 +4036,17 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BossNpcGuid", type: {:uint, 8}},
     %{name: "BossNpcCuid", type: :cuid},
-    %{name: "IsAlive", type: :unknown},
+    %{name: "IsAlive", type: :bool},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}}
   ],
 
 "CovenantBattalionCreateNotify" => [
     %{name: "__base__", type: {:struct, "BattalionCreateNotify"}},
-    %{name: "CovenantBattalionInfos", type: :unknown}
+    %{name: "CovenantBattalionInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantBattalionNotifyInfo"}}}
   ],
 
 "MarketGoodsSummaryQueryInfo" => [
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "MainGroupCuid", type: :cuid},
     %{name: "SubGroupCuid", type: :cuid},
     %{name: "ItemCuid", type: :cuid}
@@ -4074,35 +4074,35 @@
 "CheatSetLoggingResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "ErLogTag", type: :string},
-    %{name: "IsLogging", type: :unknown}
+    %{name: "IsLogging", type: :bool}
   ],
 
 "SpellstoneAdditionalBuffStatsInfo" => [
     %{name: "DurationIncreaseAmount_msec", type: {:int, 4}},
-    %{name: "DurationIncreaseRatio", type: "float"},
+    %{name: "DurationIncreaseRatio", type: :float},
     %{name: "IntervalDecreaseAmount_msec", type: {:int, 4}},
-    %{name: "IntervalDecreaseRatio", type: "float"},
-    %{name: "IsImmuneToHealthPointsLoss", type: :boolean},
+    %{name: "IntervalDecreaseRatio", type: :float},
+    %{name: "IsImmuneToHealthPointsLoss", type: :bool},
     %{name: "IsImmuneToHealthPointsGain", type: :unknown},
     %{name: "IsImmuneToManaPointsLoss", type: :unknown},
     %{name: "IsImmuneToManaPointsGain", type: :unknown},
-    %{name: "CharacterStatChangesByStatKind", type: :unknown},
-    %{name: "MaxReflectCountIncreaseAmount", type: "float"},
-    %{name: "HealthPointsGainAdjustRatioIncreaseAmount", type: "float"},
-    %{name: "HealthPointsLossAdjustRatioIncreaseAmount", type: "float"},
-    %{name: "StatChangeIncreaseRatiosByStatKind", type: :unknown},
-    %{name: "StatChangeIncreaseRatio", type: "float"},
-    %{name: "ProtectHealthPointsSettingStatKindByStatKind", type: :unknown},
+    %{name: "CharacterStatChangesByStatKind", type: {:map, {:enum, "AdjustableStatKindType"}, {:struct, "TSharedPtr<FTzCharacterStatChangeInfo"}}},
+    %{name: "MaxReflectCountIncreaseAmount", type: :float},
+    %{name: "HealthPointsGainAdjustRatioIncreaseAmount", type: :float},
+    %{name: "HealthPointsLossAdjustRatioIncreaseAmount", type: :float},
+    %{name: "StatChangeIncreaseRatiosByStatKind", type: {:map, {:enum, "AdjustableStatKindType"}, :float}},
+    %{name: "StatChangeIncreaseRatio", type: :float},
+    %{name: "ProtectHealthPointsSettingStatKindByStatKind", type: {:map, {:enum, "AdjustableStatKindType"}, :float}},
     %{name: "ProtectHealthPointsSettingAmount", type: {:int, 4}}
   ],
 
 "ServerDrivenPlayLootNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RewardInfo", type: :unknown}
+    %{name: "RewardInfo", type: {:nullable, :message}}
   ],
 
 "TutorialsInfo" => [
-    %{name: "CompletedTutorialCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "CompletedTutorialCuids", type: {:list, :cuid}},
     %{name: "CurrentTutorialCuid", type: :cuid},
     %{name: "CurrentTutorialStepNo", type: {:int, 4}}
   ],
@@ -4135,7 +4135,7 @@
 "CovenantAcquireCovenantMemberRoleRewardResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "PlayerCurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
-    %{name: "IsAnyRewardSentByMail", type: :unknown},
+    %{name: "IsAnyRewardSentByMail", type: :bool},
     %{name: "LastAcquiredDateTime", type: :datetime}
   ],
 
@@ -4151,7 +4151,7 @@
 
 "ChatNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ChatInfo", type: :unknown}
+    %{name: "ChatInfo", type: {:nullable, :message}}
   ],
 
 "AttackTargetRequest" => [
@@ -4160,8 +4160,8 @@
   ],
 
 "ZoneTaxInfo" => [
-    %{name: "AverageShopValueAddedTaxRate", type: "float"},
-    %{name: "AverageCraftedItemValueAddedTaxRate", type: "float"},
+    %{name: "AverageShopValueAddedTaxRate", type: :float},
+    %{name: "AverageCraftedItemValueAddedTaxRate", type: :float},
     %{name: "AverageGatheringSiteEntranceFee", type: {:int, 4}}
   ],
 
@@ -4171,7 +4171,7 @@
     %{name: "RealmAccountGuid", type: {:uint, 8}},
     %{name: "PlayerInfo", type: {:nullable, {:struct, "ChatEntityPlayerInfo"}}},
     %{name: "CovenantGuid", type: {:nullable, {:uint, 8}}},
-    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: :unknown}
+    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: {:nullable, :message}}
   ],
 
 "CheatAnniversaryAchievementAccomplishAllRequest" => [
@@ -4186,7 +4186,7 @@
 
 "CovenantSupportApplyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CovenantSupportedFollowerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "CovenantSupportedFollowerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CrossRealmSeasonRealmIntegrationBattleEntryInitialDataNotify" => [
@@ -4199,7 +4199,7 @@
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "LeaderChatEntityGuid", type: {:uint, 8}},
-    %{name: "JoiningStatus", type: {:enum, "ETzJoiningStatusType"}}
+    %{name: "JoiningStatus", type: {:enum, "JoiningStatusType"}}
   ],
 
 "CovenantMarketHistoryInfo" => [
@@ -4208,33 +4208,33 @@
     %{name: "ItemCuid", type: :cuid},
     %{name: "ItemCount", type: {:uint, 8}},
     %{name: "GearQuality", type: {:nullable, "::to_string((uint)*(byte*)(in_x0+0x41));uVar10=local_198&0xff;}uVar2=local_190;pcVar11=local_188;if((uVar10&1)==0){uVar2=uVar10>>1;pcVar11=(char*)((long)&local_198+1);}std::__ndk1::__p"}},
-    %{name: "EnhancementGrade", type: {:nullable, "short"}},
-    %{name: "IsRegister", type: :unknown},
+    %{name: "EnhancementGrade", type: {:nullable, {:int, 2}}},
+    %{name: "IsRegister", type: :bool},
     %{name: "CurrencyCuid", type: :cuid},
     %{name: "CurrencyCount", type: {:uint, 8}}
   ],
 
 "MarketFavoriteItemUnregisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "ItemCuid", type: :cuid}
   ],
 
 "CashShopRefundableMerchandiseStorageBoxUpdateInfo" => [
     %{name: "AddSlotInfoList", type: {:list, {:struct, "CashShopRefundableMerchandiseStorageBoxSlotInfo"}}},
-    %{name: "DeleteSlotGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeleteSlotGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "WorldMapMarkerInstallResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "InstalledWorldMapMarkerInfo", type: {:nullable, {:struct, "WorldMapMarkerInfo"}}}
   ],
 
 "AutoDonateSettingOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "ItemFilterCuidToItemGrade", type: :unknown},
-    %{name: "IsContainEnhancedItem", type: :boolean},
+    %{name: "ItemFilterCuidToItemGrade", type: {:map, :cuid, {:enum, "ItemGradeType"}}},
+    %{name: "IsContainEnhancedItem", type: :bool},
     %{name: "IsContainEnchantedItem", type: :unknown},
     %{name: "IsContainBasicCollectableItem", type: :unknown}
   ],
@@ -4257,7 +4257,7 @@
 
 "GatheredResourceItemAchievementSourceInfo" => [
     %{name: "__base__", type: {:struct, "AchievementSourceInfo"}},
-    %{name: "ResourceKind", type: {:enum, "ETzResourceKindType"}}
+    %{name: "ResourceKind", type: {:enum, "ResourceKindType"}}
   ],
 
 "CheatSetStatResponse" => [
@@ -4332,13 +4332,13 @@
     %{name: "CooldownSkillCuid", type: :cuid},
     %{name: "SkillCuid", type: :cuid},
     %{name: "CooldownDateTimeRangeInfo", type: {:nullable, {:struct, "DateTimeRangeInfo"}}},
-    %{name: "CooldownUpdatedReason", type: {:enum, "ETzCooldownUpdatedReasonType"}}
+    %{name: "CooldownUpdatedReason", type: {:enum, "CooldownUpdatedReasonType"}}
   ],
 
 "CovenantGoodsRegistrationInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "RegisteredGoodsInfos", type: :unknown},
-    %{name: "ServiceState", type: {:enum, "ETzCovenantRegisteredGoodsServiceStateType"}}
+    %{name: "RegisteredGoodsInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzRegisteredGoodsInfo"}}},
+    %{name: "ServiceState", type: {:enum, "CovenantRegisteredGoodsServiceStateType"}}
   ],
 
 "CheatRealmAccountRealmTransferInfoChangeRequest" => [
@@ -4350,7 +4350,7 @@
 
 "UnlockedContentsNewMarkCheckRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ContentsUnlockKind", type: {:enum, "ETzContentsUnlockKindType"}}
+    %{name: "ContentsUnlockKind", type: {:enum, "ContentsUnlockKindType"}}
   ],
 
 "CovenantDiplomacyInviteReinforcementResponse" => [
@@ -4364,7 +4364,7 @@
 
 "OccupiableNpcSummaryUpdateDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "OccupiableNpcSummaryInfo", type: :unknown}
+    %{name: "OccupiableNpcSummaryInfo", type: {:nullable, :message}}
   ],
 
 "SpellstoneEquipRequest" => [
@@ -4392,8 +4392,8 @@
 
 "BlockBuildingNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "IsBlock", type: :unknown},
-    %{name: "BuildingBlockKind", type: {:enum, "ETzBuildingBlockKindType"}}
+    %{name: "IsBlock", type: :bool},
+    %{name: "BuildingBlockKind", type: {:enum, "BuildingBlockKindType"}}
   ],
 
 "CheatClearRealmIntegrationBattleDeathCountRequest" => [
@@ -4402,7 +4402,7 @@
 
 "RedrawableItemConfirmRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
     %{name: "ItemGuid", type: {:uint, 8}}
   ],
 
@@ -4436,7 +4436,7 @@
 "StrongholdRewardStatNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "IsOccupiedByNpcCovenant", type: :unknown}
+    %{name: "IsOccupiedByNpcCovenant", type: :bool}
   ],
 
 "DeleteDiplomacyChatRoomRequest" => [
@@ -4449,12 +4449,12 @@
     %{name: "__base__", type: {:struct, "BattalionSummaryInfo"}},
     %{name: "CampaignStageCuid", type: :cuid},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}}
+    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}}
   ],
 
 "MailsMarkAsReadInTabNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
     %{name: "UpperBoundDateTime", type: :datetime}
   ],
 
@@ -4485,13 +4485,13 @@
 "StrongholdBattleAttackInfo" => [
     %{name: "DeclareHavenCuid", type: :cuid},
     %{name: "AttackGroupInfo", type: {:nullable, {:struct, "StrongholdBattleAttackGroupInfo"}}},
-    %{name: "Phase", type: {:enum, "ETzStrongholdBattleAttackPhaseType"}},
+    %{name: "Phase", type: {:enum, "StrongholdBattleAttackPhaseType"}},
     %{name: "DeclareDateTime", type: :datetime},
     %{name: "StandByEndDateTime", type: :datetime},
     %{name: "EndDateTime", type: :datetime},
     %{name: "CarriageLivingTotemNpcGuid", type: {:uint, 8}},
     %{name: "StrongholdBattleStartLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "TargetBuildingSpawnerCuids", type: :unknown},
+    %{name: "TargetBuildingSpawnerCuids", type: {:map, {:enum, "StrongholdBattleAttackPhaseType"}, :cuid}},
     %{name: "OccupyAltarCurrentScore", type: {:int, 4}}
   ],
 
@@ -4505,7 +4505,7 @@
 
 "SkillComboResetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsExpired", type: :unknown},
+    %{name: "IsExpired", type: :bool},
     %{name: "ComboSeedSkillCuid", type: :cuid}
   ],
 
@@ -4566,7 +4566,7 @@
 
 "MarketFavoriteItemRegisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "ItemCuid", type: :cuid}
   ],
 
@@ -4576,20 +4576,20 @@
 
 "FollowerWorkAmountAchievementSourceInfo" => [
     %{name: "__base__", type: {:struct, "AchievementSourceInfo"}},
-    %{name: "FollowerWorkKind", type: {:enum, "ETzFollowerWorkKindType"}}
+    %{name: "FollowerWorkKind", type: {:enum, "FollowerWorkKindType"}}
   ],
 
 "InfoAuthenticateComplete" => [
-    %{name: "Success", type: :unknown},
+    %{name: "Success", type: :bool},
     %{name: "SessionKey", type: :unknown},
-    %{name: "SessionInitializeInfo", type: :unknown},
+    %{name: "SessionInitializeInfo", type: {:nullable, :message}},
     %{name: "FailureReason", type: {:int, 4}},
-    %{name: "FailureReasonData", type: :unknown}
+    %{name: "FailureReasonData", type: {:nullable, :message}}
   ],
 
 "CovenantGiftReceiveInfo" => [
     %{name: "CovenantGiftBoxGuid", type: {:uint, 8}},
-    %{name: "ReceiveRewardInfo", type: :unknown}
+    %{name: "ReceiveRewardInfo", type: {:nullable, :message}}
   ],
 
 "PvpRankingAdditionalSourceInfo" => [
@@ -4626,8 +4626,8 @@
 
 "CovenantRealmTransferExecuteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UseItem", type: :unknown},
-    %{name: "UseCurrency", type: :unknown},
+    %{name: "UseItem", type: :bool},
+    %{name: "UseCurrency", type: :bool},
     %{name: "CovenantName", type: :string}
   ],
 
@@ -4643,10 +4643,10 @@
 
 "CheatAllStancesAcquireResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "InstalledStance", type: {:enum, "ETzStanceType"}},
-    %{name: "IsStanceInstallFreeChanceEnabled", type: :unknown},
+    %{name: "InstalledStance", type: {:enum, "StanceType"}},
+    %{name: "IsStanceInstallFreeChanceEnabled", type: :bool},
     %{name: "QuestsInfo", type: {:nullable, {:struct, "QuestsInfo"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
@@ -4658,7 +4658,7 @@
 
 "MarketBuyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "GoodsGuid", type: {:uint, 8}},
     %{name: "BuyCurrencyCuid", type: :cuid},
     %{name: "BuyCurrencyAmount", type: {:uint, 8}},
@@ -4673,13 +4673,13 @@
 
 "MountUpdateSkillSlotInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MountSkillSlotIndex", type: {:enum, "ETzMountSkillSlotIndexType"}},
-    %{name: "IsUsedForContinuousCombat", type: :unknown}
+    %{name: "MountSkillSlotIndex", type: {:enum, "MountSkillSlotIndexType"}},
+    %{name: "IsUsedForContinuousCombat", type: :bool}
   ],
 
 "CheatGetEnvironmentVariablesResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "Variables", type: :unknown}
+    %{name: "Variables", type: {:map, :string, :string}}
   ],
 
 "CheatDetachAllBuffsResponse" => [
@@ -4702,7 +4702,7 @@
   ],
 
 "DatatoolHandshakeResponse" => [
-    %{name: "ClientData", type: :unknown}
+    %{name: "ClientData", type: {:nullable, :message}}
   ],
 
 "CovenantHistoryInfo" => [
@@ -4727,10 +4727,10 @@
 
 "StrongholdBattleCovenantBattalionMemberDisplayInfo" => [
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "Gender", type: {:enum, "ETzGenderType"}},
+    %{name: "Gender", type: {:enum, "GenderType"}},
     %{name: "CustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "CostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
-    %{name: "IsHeadPieceDisplayed", type: :unknown}
+    %{name: "IsHeadPieceDisplayed", type: :bool}
   ],
 
 "CheatRemoveVeilRequest" => [
@@ -4751,39 +4751,39 @@
 "PlayerSummaryInfo" => [
     %{name: "Guid", type: {:uint, 8}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
-    %{name: "Gender", type: {:enum, "ETzGenderType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
+    %{name: "Gender", type: {:enum, "GenderType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
     %{name: "Level", type: {:int, 4}},
     %{name: "ExperiencePoints", type: {:uint, 8}},
     %{name: "SlayingGrade", type: {:int, 2}},
     %{name: "PlayerCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "CostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
-    %{name: "CovenantInvitable", type: :boolean},
+    %{name: "CovenantInvitable", type: :bool},
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string},
     %{name: "PartyGuid", type: {:uint, 8}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}},
     %{name: "LastLoginDateTime", type: {:nullable, :datetime}},
     %{name: "LastLogoutDateTime", type: {:nullable, :datetime}},
     %{name: "CreateDateTime", type: :datetime},
     %{name: "RealmCuid", type: :cuid},
     %{name: "IsInServerDrivenPlay", type: :unknown},
-    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: :unknown},
+    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: {:nullable, :message}},
     %{name: "ReservedDeleteDateTime", type: {:nullable, :datetime}},
     %{name: "IsHeadPieceDisplayed", type: :unknown}
   ],
 
 "ContaminationInfo" => [
-    %{name: "Stage", type: {:enum, "ETzContaminationStageType"}},
+    %{name: "Stage", type: {:enum, "ContaminationStageType"}},
     %{name: "UpdatedValue", type: {:int, 4}},
     %{name: "UpdatedDateTime", type: :datetime},
     %{name: "TotalDecrement_psec", type: {:int, 4}},
-    %{name: "ContaminationNaturalDecreaseInfos", type: :unknown},
+    %{name: "ContaminationNaturalDecreaseInfos", type: {:map, {:enum, "ContaminationNaturalDecreaseType"}, {:int, 4}}},
     %{name: "CastVeilDateTime", type: {:nullable, :datetime}},
     %{name: "RemoveVeilDateTime", type: {:nullable, :datetime}},
     %{name: "FullContamination", type: {:int, 4}}
@@ -4791,7 +4791,7 @@
 
 "CovenantCampInitialInfoNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "BuildingWorkInfoByWorkplaceCuid", type: :unknown},
+    %{name: "BuildingWorkInfoByWorkplaceCuid", type: {:map, :cuid, {:struct, "TSharedPtr<FTzBuildingWorkInfo"}}},
     %{name: "CovenantShopInfo", type: {:nullable, {:struct, "ShopInfo"}}}
   ],
 
@@ -4819,18 +4819,18 @@
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "CovenantRewardInfo", type: {:nullable, {:struct, "CovenantRewardInfo"}}},
-    %{name: "Amity", type: :unknown},
+    %{name: "Amity", type: {:map, :cuid, {:uint, 8}}},
     %{name: "PlayerInventoryItemAddInfo", type: {:list, {:struct, "ItemIndexWithCount"}}},
     %{name: "ExperiencePointsDelta", type: {:uint, 8}},
-    %{name: "IsUpgradeSlayingGrade", type: :unknown},
-    %{name: "AmityDelta", type: :unknown},
+    %{name: "IsUpgradeSlayingGrade", type: :bool},
+    %{name: "AmityDelta", type: {:map, :cuid, {:uint, 8}}},
     %{name: "SpiritualBondPowerDelta", type: {:uint, 8}},
     %{name: "CooldownExpireDateTimeRangeInfo", type: {:nullable, {:struct, "DateTimeRangeInfo"}}}
   ],
 
 "CovenantQueryInvitedCovenantSummaryInfoListResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CovenantSummaryInfoAndInviteDateTimes", type: :unknown}
+    %{name: "CovenantSummaryInfoAndInviteDateTimes", type: {:map, {:struct, "TSharedPtr<FTzCovenantSummaryInfo"}, {:struct, "(ESPMode)1"}}}
   ],
 
 "MailStrongholdCannotPayMaintenanceCostLayoutInfo" => [
@@ -4855,7 +4855,7 @@
 "CheatChangeLevelRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "Level", type: {:int, 4}},
-    %{name: "ShowAllLevelUpEffect", type: :unknown}
+    %{name: "ShowAllLevelUpEffect", type: :bool}
   ],
 
 "SeasonPassLevelBuyResponse" => [
@@ -4876,22 +4876,22 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "WorkplaceCuid", type: :cuid},
     %{name: "BuildingWorkCuid", type: :cuid},
-    %{name: "IsRecommended", type: :unknown}
+    %{name: "IsRecommended", type: :bool}
   ],
 
 "CheatSwitchStanceRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StanceKind", type: {:enum, "ETzStanceKindType"}}
+    %{name: "StanceKind", type: {:enum, "StanceKindType"}}
   ],
 
 "PlayerSkillInfo" => [
     %{name: "RootSkillCuids", type: :unknown},
     %{name: "SkillCuids", type: :unknown},
-    %{name: "PlayerSkillSlotSetInfos", type: :unknown},
-    %{name: "PlayerSkillCooldownExpireDateTimeRangeInfos", type: :unknown},
-    %{name: "InstalledArquiruneInfos", type: :unknown},
-    %{name: "SpellstoneSlotPageInfos", type: :unknown},
-    %{name: "ReplacementSkillCuidsByRootSkillCuid", type: :unknown}
+    %{name: "PlayerSkillSlotSetInfos", type: {:map, {:enum, "StanceType"}, {:struct, "TSharedPtr<FTzPlayerSkillSlotSetInfo"}}},
+    %{name: "PlayerSkillCooldownExpireDateTimeRangeInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzDateTimeRangeInfo"}}},
+    %{name: "InstalledArquiruneInfos", type: {:map, :cuid, {:struct, "TMap<FTzCuid"}}},
+    %{name: "SpellstoneSlotPageInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzSpellstoneSlotPageInfo"}}},
+    %{name: "ReplacementSkillCuidsByRootSkillCuid", type: {:map, :cuid, :cuid}}
   ],
 
 "BattalionMemberSummaryInfo" => [
@@ -4921,9 +4921,9 @@
   ],
 
 "RegionContentPlayTimeInfo" => [
-    %{name: "RegionContentKind", type: {:enum, "ETzRegionContentKindType"}},
-    %{name: "RegionContentPlayTimeInfo_sec", type: :unknown},
-    %{name: "RegionContentPlayTimeInfo_datetime", type: :unknown},
+    %{name: "RegionContentKind", type: {:enum, "RegionContentKindType"}},
+    %{name: "RegionContentPlayTimeInfo_sec", type: {:nullable, :message}},
+    %{name: "RegionContentPlayTimeInfo_datetime", type: {:nullable, :message}},
     %{name: "RemainRechargePlayTimeLimit_sec", type: {:int, 4}}
   ],
 
@@ -4951,7 +4951,7 @@
 
 "NormalDoodadInfo" => [
     %{name: "__base__", type: {:struct, "InteractableDoodadInfo"}},
-    %{name: "NormalDoodadState", type: {:enum, "ETzNormalDoodadStateType"}}
+    %{name: "NormalDoodadState", type: {:enum, "NormalDoodadStateType"}}
   ],
 
 "BattalionInfo" => [
@@ -4963,10 +4963,10 @@
     %{name: "CreateDateTime", type: :datetime},
     %{name: "BattalionOptionInfo", type: {:nullable, {:struct, "BattalionOptionInfo"}}},
     %{name: "SquadInfos", type: {:list, {:struct, "SquadInfo"}}},
-    %{name: "MemberInfos", type: :unknown},
+    %{name: "MemberInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzBattalionMemberInfo"}}},
     %{name: "AssemblyLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
     %{name: "CheckReadyExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "IsJoinable", type: :unknown},
+    %{name: "IsJoinable", type: :bool},
     %{name: "BattalionWarpCooldownExpireTime", type: {:nullable, :datetime}}
   ],
 
@@ -4979,7 +4979,7 @@
 "RealmAccountPresentCheckResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "RealmAccountPresentRealmCuid", type: :cuid},
-    %{name: "PlayersInfo", type: :unknown}
+    %{name: "PlayersInfo", type: {:map, :string, {:struct, "TTuple<ETzClasseType"}}}
   ],
 
 "CheatResetCashShopMerchandiseBuyLimitCountRequest" => [
@@ -4994,8 +4994,8 @@
   ],
 
 "QuickSlotInfo" => [
-    %{name: "SlotKind", type: {:enum, "ETzQuickSlotKindType"}},
-    %{name: "QuickSlotDetailInfo", type: :unknown}
+    %{name: "SlotKind", type: {:enum, "QuickSlotKindType"}},
+    %{name: "QuickSlotDetailInfo", type: {:nullable, :message}}
   ],
 
 "SendCrossRealmChatMessageRequest" => [
@@ -5015,29 +5015,29 @@
 
 "CheatSetIgnoreCovenantMarketUsableJoinElapsedTimeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IgnoreCovenantMarketUsableJoinElapsedTime", type: :unknown}
+    %{name: "IgnoreCovenantMarketUsableJoinElapsedTime", type: :bool}
   ],
 
 "CovenantBattalionInfo" => [
     %{name: "__base__", type: {:struct, "BattalionInfo"}},
-    %{name: "ExpeditionInfo", type: :unknown}
+    %{name: "ExpeditionInfo", type: {:nullable, :message}}
   ],
 
 "OccupiableNpcOccupationStateUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcSpawnerCuid", type: :cuid},
-    %{name: "OccupationState", type: {:enum, "ETzNpcOccupationStateType"}}
+    %{name: "OccupationState", type: {:enum, "NpcOccupationStateType"}}
   ],
 
 "QueryChatRoomRecordsInitializationInfoRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}}
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}}
   ],
 
 "SeasonPassAchievementUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "SeasonPassAchievementInfo", type: :unknown}
+    %{name: "SeasonPassAchievementInfo", type: {:nullable, :message}}
   ],
 
 "CheatAddDeathPenaltyRecordRequest" => [
@@ -5054,7 +5054,7 @@
 
 "TargetScanShareRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ScannedTargetGuids", type: :unknown}
+    %{name: "ScannedTargetGuids", type: {:map, {:int, 4}, {:uint, 8}}}
   ],
 
 "CheatCloseFogResponse" => [
@@ -5066,7 +5066,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "HavenCuid", type: :cuid},
     %{name: "WorkplaceCuid", type: :cuid},
-    %{name: "AccelerationActionKind", type: {:enum, "ETzAccelerationActionKindType"}},
+    %{name: "AccelerationActionKind", type: {:enum, "AccelerationActionKindType"}},
     %{name: "InventoryUpdateInfo", type: {:nullable, {:struct, "InventoryUpdateInfo"}}},
     %{name: "PointCurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PointCurrencyContainerUpdateInfo"}}}
   ],
@@ -5093,7 +5093,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "QuestVuid", type: {:struct, "Vuid"}},
     %{name: "QuestMissionSequence", type: {:int, 4}},
-    %{name: "ReceiveReward", type: :unknown}
+    %{name: "ReceiveReward", type: :bool}
   ],
 
 "AttackTargetResponse" => [
@@ -5105,7 +5105,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CovenantResearchCuid", type: :cuid},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "ErLoginServerAuthenticateInfo" => [
@@ -5117,7 +5117,7 @@
     %{name: "FavorTemplateCuid", type: :cuid},
     %{name: "TerritoryCuid", type: :cuid},
     %{name: "FavorAcceptedStrongholdCuid", type: :cuid},
-    %{name: "FavorRandomRewardCuidCandidates", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "FavorRandomRewardCuidCandidates", type: {:list, :cuid}}
   ],
 
 "AlertPlayerUnregisterResponse" => [
@@ -5135,13 +5135,13 @@
   ],
 
 "PartyOrBattalionItemDistributionInfo" => [
-    %{name: "PartyOrBattalionItemDistributionRule", type: {:enum, "ETzPartyOrBattalionItemDistributionRuleType"}},
-    %{name: "MinItemGradeToPrioritizeLeader", type: {:enum, "ETzItemGradeType"}}
+    %{name: "PartyOrBattalionItemDistributionRule", type: {:enum, "PartyOrBattalionItemDistributionRuleType"}},
+    %{name: "MinItemGradeToPrioritizeLeader", type: {:enum, "ItemGradeType"}}
   ],
 
 "CheatKillFocusedCharacterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsSkipDyingAndFinishable", type: :unknown}
+    %{name: "IsSkipDyingAndFinishable", type: :bool}
   ],
 
 "GearInfo" => [
@@ -5179,13 +5179,13 @@
     %{name: "Guid", type: {:uint, 8}},
     %{name: "Name", type: :string},
     %{name: "EmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "ETzStrongholdGradeType"}}
+    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "StrongholdGradeType"}}
   ],
 
 "StrongholdBattleAttackPhaseStartNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "AttackGroupDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "AttackGroupDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "BattalionMemberStatisticsInfos", type: {:list, {:struct, "StrongholdBattleCovenantBattalionMemberStatisticsInfo"}}}
   ],
 
@@ -5195,7 +5195,7 @@
   ],
 
 "FollowerDispatchAutomationInfo" => [
-    %{name: "DispatchAutomationState", type: {:enum, "ETzFollowerDispatchAutomationStateType"}},
+    %{name: "DispatchAutomationState", type: {:enum, "FollowerDispatchAutomationStateType"}},
     %{name: "ProceedingDispatchAutomationCount", type: {:int, 4}},
     %{name: "MaxDispatchAutomationCount", type: {:int, 4}}
   ],
@@ -5203,7 +5203,7 @@
 "RegisteredGoodsBuyCountInfo" => [
     %{name: "ItemCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
     %{name: "Count", type: {:uint, 8}},
     %{name: "UpdateDateTime", type: :datetime}
   ],
@@ -5221,21 +5221,21 @@
 
 "StrongholdBattleOccupyAltarChangeScoreNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "OccupyAltarCurrentScore", type: {:int, 4}}
   ],
 
 "BattalionLeaveMemberNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "BattalionLeaveReason", type: {:enum, "ETzBattalionLeaveReasonType"}}
+    %{name: "BattalionLeaveReason", type: {:enum, "BattalionLeaveReasonType"}}
   ],
 
 "GearMultipleEnhanceRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "GearGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "GearGuids", type: {:list, {:uint, 8}}},
     %{name: "MaterialItemCuid", type: :cuid},
-    %{name: "MaterialItemGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "MaterialItemGuids", type: {:list, {:uint, 8}}},
     %{name: "RequestEnhancementGrade", type: {:int, 2}}
   ],
 
@@ -5256,7 +5256,7 @@
 
 "CheatSetUrfModeResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsUrfMode", type: :unknown}
+    %{name: "IsUrfMode", type: :bool}
   ],
 
 "CheatResetGoodsBuyCountResponse" => [
@@ -5283,7 +5283,7 @@
 
 "CheatUserInventorySlotCountChangeResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "UserInventoryKind", type: {:enum, "ETzUserInventoryKindType"}},
+    %{name: "UserInventoryKind", type: {:enum, "UserInventoryKindType"}},
     %{name: "MaxInventorySlotCount", type: {:int, 4}}
   ],
 
@@ -5300,30 +5300,30 @@
     %{name: "DisplayDateTime", type: :datetime},
     %{name: "StartDateTime", type: :datetime},
     %{name: "EndDateTime", type: :datetime},
-    %{name: "IsShowDateTime", type: :boolean},
+    %{name: "IsShowDateTime", type: :bool},
     %{name: "ExtensionDescriptionCuid", type: :cuid},
-    %{name: "TagKind", type: {:enum, "ETzCashShopTagKindType"}},
+    %{name: "TagKind", type: {:enum, "CashShopTagKindType"}},
     %{name: "RecommendSubCategoryCuid", type: :cuid},
     %{name: "RecommendSubCategorySortOrder", type: {:int, 4}},
-    %{name: "IsHideAfterBuyCompleted", type: :boolean},
-    %{name: "IsHideMerchandise", type: :boolean},
-    %{name: "BackgroundColorKind", type: {:enum, "ETzCashShopColorKindType"}},
-    %{name: "FxKind", type: {:enum, "ETzCashShopFxKindType"}},
-    %{name: "FxColorKind", type: {:enum, "ETzCashShopColorKindType"}},
-    %{name: "BackgroundFxColorKind", type: {:enum, "ETzCashShopColorKindType"}},
+    %{name: "IsHideAfterBuyCompleted", type: :unknown},
+    %{name: "IsHideMerchandise", type: :unknown},
+    %{name: "BackgroundColorKind", type: {:enum, "CashShopColorKindType"}},
+    %{name: "FxKind", type: {:enum, "CashShopFxKindType"}},
+    %{name: "FxColorKind", type: {:enum, "CashShopColorKindType"}},
+    %{name: "BackgroundFxColorKind", type: {:enum, "CashShopColorKindType"}},
     %{name: "TagDisplayDuration_day", type: {:int, 4}}
   ],
 
 "CovenantPayDividendResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "DividendResultInfo", type: :unknown}
+    %{name: "DividendResultInfo", type: {:nullable, :message}}
   ],
 
 "RealmAccountRealmTransferExecuteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "DestinationRealmCuid", type: :cuid},
-    %{name: "UseItem", type: :unknown},
-    %{name: "UseCurrency", type: :unknown}
+    %{name: "UseItem", type: :bool},
+    %{name: "UseCurrency", type: :bool}
   ],
 
 "CheatAddRankingDummyDataRequest" => [
@@ -5338,7 +5338,7 @@
 
 "PlayerLocationMonitoringRegisterNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "PlayerLocationMonitoringInfo", type: :unknown}
+    %{name: "PlayerLocationMonitoringInfo", type: {:nullable, :message}}
   ],
 
 "QuestCancelRequest" => [
@@ -5347,13 +5347,13 @@
   ],
 
 "DefaultPreprocessResult" => [
-    %{name: "Success", type: :unknown}
+    %{name: "Success", type: :bool}
   ],
 
 "PlayerSkillSlotUpdateResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
-    %{name: "PlayerSkillSlotIndex", type: {:enum, "ETzPlayerSkillSlotIndexType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
+    %{name: "PlayerSkillSlotIndex", type: {:enum, "PlayerSkillSlotIndexType"}},
     %{name: "PlayerSkillSlotInfo", type: {:nullable, {:struct, "PlayerSkillSlotInfo"}}}
   ],
 
@@ -5383,13 +5383,13 @@
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "RealmCuid", type: :cuid},
     %{name: "PlayerName", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "SlayingGrade", type: {:int, 2}},
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}}
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}}
   ],
 
 "FollowerDispatchAutomationCancelResponse" => [
@@ -5414,8 +5414,8 @@
 
 "InGameNotificationDeleteCategoryNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "InGameNotificationCategory", type: {:enum, "ETzInGameNotificationCategoryType"}},
-    %{name: "DeletedGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "InGameNotificationCategory", type: {:enum, "InGameNotificationCategoryType"}},
+    %{name: "DeletedGuids", type: {:list, {:uint, 8}}}
   ],
 
 "PartyJoinApplicationInfo" => [
@@ -5431,13 +5431,13 @@
 
 "StanceInstallResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "InstallRequestedStance", type: {:enum, "ETzStanceType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "InstallRequestedStance", type: {:enum, "StanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "InstalledStance", type: {:enum, "ETzStanceType"}},
+    %{name: "InstalledStance", type: {:enum, "StanceType"}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
-    %{name: "IsStanceInstallFreeChanceEnabled", type: :unknown}
+    %{name: "IsStanceInstallFreeChanceEnabled", type: :bool}
   ],
 
 "CheatDestroyPointsChangeResponse" => [
@@ -5446,7 +5446,7 @@
 
 "CheatAnniversaryAchievementResetAllResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "AnniversaryAchievementPointInfos", type: :unknown}
+    %{name: "AnniversaryAchievementPointInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzAnniversaryAchievementPointInfo"}}}
   ],
 
 "InteractionRequest" => [
@@ -5462,8 +5462,8 @@
 "CheatAcceptQuestRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "QuestVuid", type: {:struct, "Vuid"}},
-    %{name: "TeleportToQuestMissionLocation", type: :unknown},
-    %{name: "ReceivePrecedingQuestReward", type: :unknown}
+    %{name: "TeleportToQuestMissionLocation", type: :bool},
+    %{name: "ReceivePrecedingQuestReward", type: :bool}
   ],
 
 "CheatDowngradeBuildingRequest" => [
@@ -5480,8 +5480,8 @@
 "MountBoardingInfo" => [
     %{name: "__base__", type: {:struct, "MountStateInfo"}},
     %{name: "MountItemCuid", type: :cuid},
-    %{name: "IsLeftBoarding", type: :boolean},
-    %{name: "PlayerFacingDirection", type: "FRotator"},
+    %{name: "IsLeftBoarding", type: :bool},
+    %{name: "PlayerFacingDirection", type: {:struct, "FRotator"}},
     %{name: "BoardingLocation_cm", type: :vector},
     %{name: "IsImmediateBoarding", type: :unknown},
     %{name: "IsMovingBoarding", type: :unknown}
@@ -5499,7 +5499,7 @@
 
 "TozMessageCacheElement" => [
     %{name: "__base__", type: {:struct, "MessageCacheElement"}},
-    %{name: "message", type: :unknown}
+    %{name: "message", type: {:nullable, :message}}
   ],
 
 "FavorRefreshRequest" => [
@@ -5531,7 +5531,7 @@
 
 "OccupiableNpcSummaryInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "OccupiableNpcSummaryInfos", type: :unknown}
+    %{name: "OccupiableNpcSummaryInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzOccupiableNpcSummaryInfo"}}}
   ],
 
 "BattalionDismissFailResponse" => [
@@ -5556,20 +5556,20 @@
 
 "CheatEnabledModificationNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CheatEnabled", type: :unknown}
+    %{name: "CheatEnabled", type: :bool}
   ],
 
 "StrongholdBattleCarriageLivingTotemDestroyNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "DestroyerNameInfo", type: {:nullable, {:struct, "CharacterNameInfo"}}},
     %{name: "DestroyerCovenantName", type: :string}
   ],
 
 "AlertPlayerRegisterResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RegisteredPlayerInfo", type: :unknown}
+    %{name: "RegisteredPlayerInfo", type: {:nullable, :message}}
   ],
 
 "AccelerationNotify" => [
@@ -5598,7 +5598,7 @@
 
 "StrongholdBattleJoinedCovenantInfo" => [
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "CovenantVuid", type: {:struct, "Vuid"}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}}
@@ -5632,9 +5632,9 @@
 
 "CheatCreateAndEquipGearSetRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemGrade", type: {:enum, "ETzItemGradeType"}},
-    %{name: "BoundAndEroded", type: {:enum, "ETzBoundAndErodedType"}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "ItemGrade", type: {:enum, "ItemGradeType"}},
+    %{name: "BoundAndEroded", type: {:enum, "BoundAndErodedType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}}
   ],
 
@@ -5650,12 +5650,12 @@
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "PvpRecordGuid", type: {:uint, 8}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
-    %{name: "PlayerLocationMonitoringInfo", type: :unknown}
+    %{name: "PlayerLocationMonitoringInfo", type: {:nullable, :message}}
   ],
 
 "RealmIntegrationBattleScoreUpdateNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "ScoreInfo", type: :unknown}
+    %{name: "ScoreInfo", type: {:nullable, :message}}
   ],
 
 "CovenantLoseStrongholdNotify" => [
@@ -5692,12 +5692,12 @@
 "GenerateVivoxTokenRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "VivoxActionKind", type: {:enum, "ETzErVivoxActionKindType"}},
+    %{name: "VivoxActionKind", type: {:enum, "ErVivoxActionKindType"}},
     %{name: "Subject", type: :string}
   ],
 
 "HavenOperationInfo" => [
-    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ETzResourceKindType,TSizedDefaultAllocator<32"}}},
+    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ResourceKindType"}}},
     %{name: "DeployedLivingTotemCuid", type: :cuid}
   ],
 
@@ -5709,8 +5709,8 @@
 "StrongholdBattleBuildingDestroyNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "BuildingDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
-    %{name: "BuildingKind", type: {:enum, "ETzBuildingKindType"}},
+    %{name: "BuildingDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
+    %{name: "BuildingKind", type: {:enum, "BuildingKindType"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
     %{name: "DestroyerNameInfo", type: {:nullable, {:struct, "CharacterNameInfo"}}},
     %{name: "DestroyerCovenantName", type: :string}
@@ -5724,7 +5724,7 @@
 
 "CovenantSynchronizeHighestUpgradedBuildingLevelInfosNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantHighestUpgradedBuildingLevelInfos", type: :unknown}
+    %{name: "CovenantHighestUpgradedBuildingLevelInfos", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "FollowerItemAdditionalInfo" => [
@@ -5737,7 +5737,7 @@
 
 "DeathPenaltyDeleteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeathPenaltyRecordGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeathPenaltyRecordGuids", type: {:list, {:uint, 8}}}
   ],
 
 "PartySynchronizeMemberLocationInfoNotify" => [
@@ -5747,7 +5747,7 @@
 
 "MonsterBookCollectionInfo" => [
     %{name: "CollectionCuid", type: :cuid},
-    %{name: "AccomplishedRewardPhase", type: "unsigned_char"}
+    %{name: "AccomplishedRewardPhase", type: {:struct, "unsigned_char"}}
   ],
 
 "CheatDiscoverAllSelfieDoodadSpawnersResponse" => [
@@ -5762,35 +5762,35 @@
     %{name: "Level", type: {:int, 4}},
     %{name: "LevelUpLastUpdatedDateTime", type: :datetime},
     %{name: "ExperiencePoints", type: {:uint, 8}},
-    %{name: "CovenantJoinKind", type: {:enum, "ETzCovenantJoinKindType"}},
-    %{name: "CovenantMemberInfos", type: :unknown},
+    %{name: "CovenantJoinKind", type: {:enum, "CovenantJoinKindType"}},
+    %{name: "CovenantMemberInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantMemberInfo"}}},
     %{name: "MaxCovenantMemberCount", type: {:int, 2}},
     %{name: "Notice", type: :string},
-    %{name: "NoticeHarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
+    %{name: "NoticeHarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
     %{name: "NoticeLastUpdatedDateTime", type: :datetime},
     %{name: "Introduction", type: :string},
-    %{name: "IntroductionHarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
+    %{name: "IntroductionHarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
     %{name: "CovenantCampOccupancyInfo", type: {:nullable, {:struct, "CovenantCampOccupancyInfo"}}},
-    %{name: "OccupiedStrongholdInfos", type: :unknown},
-    %{name: "HavenOrganizationStatsDetailInfos", type: :unknown},
+    %{name: "OccupiedStrongholdInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzStrongholdInfo"}}},
+    %{name: "HavenOrganizationStatsDetailInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzHavenOrganizationStatsDetailInfo"}}},
     %{name: "MainHavenCuid", type: :cuid},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "CovenantMemberRoleInfos", type: {:list, {:struct, "CovenantMemberRoleInfo"}}},
-    %{name: "CovenantHighestUpgradedBuildingLevelInfos", type: :unknown},
+    %{name: "CovenantHighestUpgradedBuildingLevelInfos", type: {:map, :cuid, {:int, 4}}},
     %{name: "ForbiddenAetherBoxCount", type: {:uint, 8}},
     %{name: "CovenantLivingTotemInfos", type: {:list, {:struct, "CovenantLivingTotemInfo"}}},
-    %{name: "CovenantResearchInfos", type: :unknown},
+    %{name: "CovenantResearchInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCovenantResearchInfo"}}},
     %{name: "CovenantDiplomacyInfos", type: {:nullable, {:struct, "CovenantDiplomacyInfos"}}},
     %{name: "PlayerLocationMonitoringInfos", type: {:list, {:struct, "PlayerLocationMonitoringInfo"}}},
-    %{name: "CovenantOutLinkInfos", type: :unknown},
+    %{name: "CovenantOutLinkInfos", type: {:map, {:enum, "CovenantOutLinkKindType"}, {:struct, "TSharedPtr<FTzCovenantOutLinkInfo"}}},
     %{name: "CreateDateTime", type: :datetime},
-    %{name: "CovenantCampaignInfo", type: :unknown},
-    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "ETzStrongholdGradeType"}},
+    %{name: "CovenantCampaignInfo", type: {:nullable, :message}},
+    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "StrongholdGradeType"}},
     %{name: "CovenantRealmTransferInfo", type: {:nullable, {:struct, "CovenantRealmTransferInfo"}}},
     %{name: "LastCovenantRealmTransferDateTime", type: {:nullable, :datetime}},
     %{name: "LastPlunderDeclaredDateTime", type: {:nullable, :datetime}},
     %{name: "LastRealmIntegratedDateTime", type: {:nullable, :datetime}},
-    %{name: "NeedChangeName", type: :unknown}
+    %{name: "NeedChangeName", type: :bool}
   ],
 
 "OccupiableNpcOccupationUpdateDataNotify" => [
@@ -5829,7 +5829,7 @@
 "CovenantRecommendResourceKindFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ETzResourceKindType,TSizedDefaultAllocator<32"}}}
+    %{name: "RecommendedResourceKinds", type: {:list, {:enum, "ResourceKindType"}}}
   ],
 
 "CheatOverwriteCrossRealmRankingBoardRequest" => [
@@ -5846,8 +5846,8 @@
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "DistrictCuid", type: :cuid},
     %{name: "PvpBattleGuid", type: {:uint, 8}},
-    %{name: "VictimPvpBattleKillDeathCountInfo", type: :unknown},
-    %{name: "KillerPvpBattleKillDeathCountInfo", type: :unknown}
+    %{name: "VictimPvpBattleKillDeathCountInfo", type: {:nullable, :message}},
+    %{name: "KillerPvpBattleKillDeathCountInfo", type: {:nullable, :message}}
   ],
 
 "ErFrontServerReauthenticateInfo" => [
@@ -5870,12 +5870,12 @@
 "PartyOptionInfo" => [
     %{name: "RegionCuid", type: :cuid},
     %{name: "Name", type: :string},
-    %{name: "Purpose", type: {:enum, "ETzPartyPurposeType"}},
-    %{name: "PartyJoiningLimitKind", type: {:enum, "ETzPartyJoiningLimitKindType"}},
+    %{name: "Purpose", type: {:enum, "PartyPurposeType"}},
+    %{name: "PartyJoiningLimitKind", type: {:enum, "PartyJoiningLimitKindType"}},
     %{name: "MinLevelLimit", type: {:int, 4}},
     %{name: "MinSlayingGradeLimit", type: {:int, 2}},
-    %{name: "CanInviteOrJoinApplyOnlyFriendOrSameCovenant", type: :unknown},
-    %{name: "IsAutomatedNewComerApproval", type: :unknown},
+    %{name: "CanInviteOrJoinApplyOnlyFriendOrSameCovenant", type: :bool},
+    %{name: "IsAutomatedNewComerApproval", type: :bool},
     %{name: "PartyItemDistributionInfo", type: {:nullable, {:struct, "PartyOrBattalionItemDistributionInfo"}}}
   ],
 
@@ -5885,12 +5885,12 @@
 
 "SkillItemUseParameterInfo" => [
     %{name: "__base__", type: {:struct, "ItemUseParameterInfo"}},
-    %{name: "SkillTargetingInfo", type: :unknown}
+    %{name: "SkillTargetingInfo", type: {:nullable, :message}}
   ],
 
 "GearErodedRestorationResultInfo" => [
     %{name: "GearGuid", type: {:uint, 8}},
-    %{name: "IsEroded", type: :boolean},
+    %{name: "IsEroded", type: :bool},
     %{name: "IsBound", type: :unknown},
     %{name: "IsStorable", type: :unknown},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
@@ -5899,7 +5899,7 @@
 
 "BattalionChangePurposeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BattalionInfo", type: :unknown}
+    %{name: "BattalionInfo", type: {:nullable, :message}}
   ],
 
 "MarketStrongholdTaxInfoResponse" => [
@@ -5913,7 +5913,7 @@
 
 "TargetScanShareNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ScannedTargetInfos", type: :unknown}
+    %{name: "ScannedTargetInfos", type: {:map, {:int, 4}, {:struct, "TSharedPtr<FTzSharedTargetCharacterInfo"}}}
   ],
 
 "CovenantCampaignSectorLeaveNotify" => [
@@ -5950,7 +5950,7 @@
 "ThreatPointsNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "TargetGuid", type: {:uint, 8}},
-    %{name: "ThreatPoints", type: :unknown}
+    %{name: "ThreatPoints", type: {:map, {:uint, 8}, {:uint, 8}}}
   ],
 
 "RandomBossSpawnInfo" => [
@@ -5963,8 +5963,8 @@
 "CovenantGoodsRegistrationManagementModeCommandRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "Command", type: {:enum, "ETzShopManagementModeCommandType"}}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "Command", type: {:enum, "ShopManagementModeCommandType"}}
   ],
 
 "AnniversaryAchievementPrivateChannelOpenResponse" => [
@@ -5989,7 +5989,7 @@
   ],
 
 "BuildingWorkObjectiveInfo" => [
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}},
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}},
     %{name: "CuidValue01", type: :cuid},
     %{name: "IntegerValue01", type: {:uint, 8}},
     %{name: "IntegerValue02", type: {:uint, 8}}
@@ -6000,11 +6000,11 @@
     %{name: "RealmCuid", type: :cuid},
     %{name: "Level", type: {:int, 4}},
     %{name: "CharacterNameInfo", type: {:nullable, {:struct, "CharacterNameInfo"}}},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "RealmCovenantId", type: {:struct, "RealmCovenantId"}},
     %{name: "CovenantName", type: :string},
     %{name: "StrongholdBattleGuid", type: {:uint, 8}},
-    %{name: "IsPvpStatsAffectedCharacter", type: :unknown}
+    %{name: "IsPvpStatsAffectedCharacter", type: :bool}
   ],
 
 "RPCCancellingMessage" => [
@@ -6051,8 +6051,8 @@
   ],
 
 "GoldHistoryInfo" => [
-    %{name: "IncomeHistories", type: :unknown},
-    %{name: "ExpenseHistories", type: :unknown}
+    %{name: "IncomeHistories", type: {:map, {:enum, "GoldIncomeKindType"}, {:uint, 8}}},
+    %{name: "ExpenseHistories", type: {:map, {:enum, "GoldExpenseKindType"}, {:uint, 8}}}
   ],
 
 "CheatCreateAndSelectMountItemRequest" => [
@@ -6065,9 +6065,9 @@
     %{name: "BuildingCuid", type: :cuid},
     %{name: "SpawnerCuid", type: :cuid},
     %{name: "BuildingWorkInfo", type: {:nullable, {:struct, "BuildingWorkInfo"}}},
-    %{name: "BuildingAccessPermissionKind", type: {:enum, "ETzBuildingAccessPermissionKindType"}},
-    %{name: "IsBaseBuildingExist", type: :unknown},
-    %{name: "IsBlocked", type: :unknown},
+    %{name: "BuildingAccessPermissionKind", type: {:enum, "BuildingAccessPermissionKindType"}},
+    %{name: "IsBaseBuildingExist", type: :bool},
+    %{name: "IsBlocked", type: :bool},
     %{name: "LastChangeDateTime", type: :datetime}
   ],
 
@@ -6083,7 +6083,7 @@
     %{name: "MemberCount", type: {:int, 4}},
     %{name: "BattalionLeaderLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
     %{name: "AssemblyLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "IsJoinable", type: :unknown}
+    %{name: "IsJoinable", type: :bool}
   ],
 
 "RealmIntegrationBattleResultUpdateDataNotify" => [
@@ -6093,7 +6093,7 @@
 
 "DeathPenaltyRecordInfoAddNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeathPenaltyRecordInfo", type: :unknown}
+    %{name: "DeathPenaltyRecordInfo", type: {:nullable, :message}}
   ],
 
 "CovenantSupportBuildingWorkInfo" => [
@@ -6104,20 +6104,20 @@
 "PvpRecordAttackerPlayerInfo" => [
     %{name: "__base__", type: {:struct, "PvpRecordPlayerInfo"}},
     %{name: "Damage", type: {:uint, 8}},
-    %{name: "AttackerKind", type: {:enum, "ETzPvpRecordAttackerKindType"}},
+    %{name: "AttackerKind", type: {:enum, "PvpRecordAttackerKindType"}},
     %{name: "LastAttackDateTime", type: :datetime}
   ],
 
 "PartyDismissNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "PartyDismissReason", type: {:enum, "ETzPartyLeaveOrDismissReasonType"}}
+    %{name: "PartyDismissReason", type: {:enum, "PartyLeaveOrDismissReasonType"}}
   ],
 
 "ErLoginServerInitialAuthenticateInfo" => [
     %{name: "__base__", type: {:struct, "ErLoginServerAuthenticateInfo"}},
-    %{name: "Market", type: {:enum, "ETzMarketType"}},
-    %{name: "AuthenticationKind", type: {:enum, "ETzAuthenticationKindType"}},
-    %{name: "OsKind", type: {:enum, "ETzOsKindType"}},
+    %{name: "Market", type: {:enum, "MarketType"}},
+    %{name: "AuthenticationKind", type: {:enum, "AuthenticationKindType"}},
+    %{name: "OsKind", type: {:enum, "OsKindType"}},
     %{name: "OsVersion", type: :string},
     %{name: "DeviceModel", type: :string},
     %{name: "Adid", type: :string},
@@ -6125,7 +6125,7 @@
     %{name: "CountryCode", type: :string},
     %{name: "Language", type: :string},
     %{name: "AppVersion", type: :string},
-    %{name: "OsType", type: {:enum, "ETzNxLogOsType"}},
+    %{name: "OsType", type: {:enum, "NxLogOsType"}},
     %{name: "OsName", type: :string}
   ],
 
@@ -6176,12 +6176,12 @@
 "StrongholdBattleCovenantBattalionStrategicObjectiveSetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SquadOrder", type: {:int, 4}},
-    %{name: "StrategicObjectiveTargetGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "StrategicObjectiveTargetGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "StrongholdWorldMapGeneralShopInfo" => [
     %{name: "GeneralShopLevel", type: {:int, 4}},
-    %{name: "ServiceState", type: {:enum, "ETzShopServiceStateType"}},
+    %{name: "ServiceState", type: {:enum, "ShopServiceStateType"}},
     %{name: "RegisteredGoodsInfos", type: {:list, {:struct, "RegisteredGoodsInfo"}}}
   ],
 
@@ -6194,10 +6194,10 @@
     %{name: "__base__", type: {:struct, "ErTozInitializeMessage"}},
     %{name: "PlayerInitializeInfo", type: {:nullable, {:struct, "PlayerInitializeInfo"}}},
     %{name: "CovenantInfo", type: {:nullable, {:struct, "CovenantInfo"}}},
-    %{name: "CovenantBattalionInfos", type: :unknown},
+    %{name: "CovenantBattalionInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantBattalionNotifyInfo"}}},
     %{name: "FirstLoginAsPlayerDateTime", type: {:nullable, :datetime}},
     %{name: "ReturningUserReturnedDateTime", type: {:nullable, :datetime}},
-    %{name: "ContentsActivationFlags", type: {:list, {:struct, "bool,TSizedDefaultAllocator<32"}}}
+    %{name: "ContentsActivationFlags", type: {:list, :bool}}
   ],
 
 "MultipleItemSelector" => [
@@ -6231,7 +6231,7 @@
 
 "StrongholdBattleStatisticsUpdateInfo" => [
     %{name: "__base__", type: {:struct, "StrongholdBattleStatisticsEventInfo"}},
-    %{name: "StrongholdBattleStatisticsInfo", type: :unknown}
+    %{name: "StrongholdBattleStatisticsInfo", type: {:nullable, :message}}
   ],
 
 "CovenantBattalionExpeditionDeployStopLivingTotemFailResponse" => [
@@ -6249,7 +6249,7 @@
   ],
 
 "DeathPenaltyAutoRecoveryInfo" => [
-    %{name: "IsFreeRecovery", type: :unknown},
+    %{name: "IsFreeRecovery", type: :bool},
     %{name: "RemainingCount", type: {:int, 4}}
   ],
 
@@ -6263,28 +6263,28 @@
 
 "StanceAcquireNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "InstallAndSwitchResultCode", type: {:enum, "ETzResultCodeType"}},
-    %{name: "AcquiredStance", type: {:enum, "ETzStanceType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "InstallAndSwitchResultCode", type: {:enum, "ResultCodeType"}},
+    %{name: "AcquiredStance", type: {:enum, "StanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "InstalledStance", type: {:enum, "ETzStanceType"}},
-    %{name: "IsStanceInstallFreeChanceEnabled", type: :unknown}
+    %{name: "InstalledStance", type: {:enum, "StanceType"}},
+    %{name: "IsStanceInstallFreeChanceEnabled", type: :bool}
   ],
 
 "MarketFavoriteItemInfoQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}}
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}}
   ],
 
 "PlayerAutoUseInfo" => [
-    %{name: "ItemCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
-    %{name: "RootSkillCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "ItemCuids", type: {:list, :cuid}},
+    %{name: "RootSkillCuids", type: {:list, :cuid}}
   ],
 
 "CovenantCampBuildingCraftRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BuildingCraftCuidAndCountInfo", type: {:nullable, {:struct, "CuidAndCountInfo"}}},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "TimeCrevicePlayerPvpScoreRankingViewInfo" => [
@@ -6322,12 +6322,12 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HuntingSiteCuid", type: :cuid},
     %{name: "StartLocation_cm", type: :vector},
-    %{name: "Reason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}}
+    %{name: "Reason", type: {:enum, "EntitySpawnRemoveReasonType"}}
   ],
 
 "RedrawableItemAdditionalInfo" => [
     %{name: "__base__", type: {:struct, "ItemAdditionalInfo"}},
-    %{name: "ExcludedItemCuidsWhenRedrawing", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "ExcludedItemCuidsWhenRedrawing", type: {:list, :cuid}}
   ],
 
 "MailSendCountQueryRequest" => [
@@ -6341,7 +6341,7 @@
 
 "StrongholdBuildingAccessPermissionNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "BuildingSubscriptionInfos", type: :unknown}
+    %{name: "BuildingSubscriptionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzBuildingSubscriptionInfo"}}}
   ],
 
 "SummonedNpcDeathNotify" => [
@@ -6363,12 +6363,12 @@
 
 "CovenantGoodsRegistrationManagementModeKickoutNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}}
   ],
 
 "CovenantTradeGoodsSalesInfo" => [
     %{name: "__base__", type: {:struct, "CovenantTradeGoodsInfo"}},
-    %{name: "SalesState", type: {:enum, "ETzCovenantTradeSalesStateType"}},
+    %{name: "SalesState", type: {:enum, "CovenantTradeSalesStateType"}},
     %{name: "NetProfit", type: {:uint, 8}}
   ],
 
@@ -6384,7 +6384,7 @@
 "SkillResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "SkillCuid", type: :cuid},
-    %{name: "IsExecutingBegun", type: :unknown}
+    %{name: "IsExecutingBegun", type: :bool}
   ],
 
 "RealmAccountWarehouseExpandResponse" => [
@@ -6435,9 +6435,9 @@
     %{name: "HealthPoints", type: {:uint, 8}},
     %{name: "MaxHealthPoints", type: {:uint, 8}},
     %{name: "WalkSpeed_cmpsec", type: {:int, 2}},
-    %{name: "WalkAngularSpeed_radpsec", type: "float"},
+    %{name: "WalkAngularSpeed_radpsec", type: :float},
     %{name: "RunSpeed_cmpsec", type: {:int, 2}},
-    %{name: "RunAngularSpeed_radpsec", type: "float"}
+    %{name: "RunAngularSpeed_radpsec", type: :float}
   ],
 
 "CovenantDiplomacySummaryInfo" => [
@@ -6462,7 +6462,7 @@
 
 "CheatAcquireStanceRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StanceKind", type: {:enum, "ETzStanceKindType"}}
+    %{name: "StanceKind", type: {:enum, "StanceKindType"}}
   ],
 
 "QuestMissionCompletableLocationCheckRequest" => [
@@ -6475,7 +6475,7 @@
     %{name: "CollectionCuid", type: :cuid},
     %{name: "RewardStatCuid", type: :cuid},
     %{name: "ItemAddInfo", type: {:nullable, {:struct, "ItemAddInfo"}}},
-    %{name: "IsAnyRewardSentByMail", type: :unknown}
+    %{name: "IsAnyRewardSentByMail", type: :bool}
   ],
 
 "PlayerEmergencyEscapeInfo" => [
@@ -6489,12 +6489,12 @@
 
 "InGameNotificationDeleteCategoryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "InGameNotificationCategory", type: {:enum, "ETzInGameNotificationCategoryType"}}
+    %{name: "InGameNotificationCategory", type: {:enum, "InGameNotificationCategoryType"}}
   ],
 
 "DistrictFavorBossInfo" => [
     %{name: "BossChaseGauge", type: {:int, 4}},
-    %{name: "IsFavorBossActivated", type: :unknown}
+    %{name: "IsFavorBossActivated", type: :bool}
   ],
 
 "ItemCreateAdditionalInfo" => [
@@ -6512,7 +6512,7 @@
 "CovenantUpdateNoticeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "Notice", type: :string},
-    %{name: "HarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
+    %{name: "HarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
     %{name: "PlayerGuid", type: {:uint, 8}}
   ],
 
@@ -6533,7 +6533,7 @@
 
 "StrongholdInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "StrongholdBattleAttackPhase", type: {:enum, "ETzStrongholdBattleAttackPhaseType"}},
+    %{name: "StrongholdBattleAttackPhase", type: {:enum, "StrongholdBattleAttackPhaseType"}},
     %{name: "BuildingSubscriptionInfos", type: {:list, {:struct, "BuildingSubscriptionInfo"}}},
     %{name: "GeneralShopInfo", type: {:nullable, {:struct, "ShopInfo"}}},
     %{name: "CovenantShopInfo", type: {:nullable, {:struct, "ShopInfo"}}}
@@ -6555,13 +6555,13 @@
 "CovenantQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CovenantSummaryInfo", type: {:nullable, {:struct, "CovenantSummaryInfo"}}},
-    %{name: "IsJoinApplied", type: :unknown},
-    %{name: "IsInvited", type: :unknown},
+    %{name: "IsJoinApplied", type: :bool},
+    %{name: "IsInvited", type: :bool},
     %{name: "LeaderCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "LeaderCostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
     %{name: "LeaderLevel", type: {:int, 4}},
-    %{name: "LeaderGender", type: {:enum, "ETzGenderType"}},
-    %{name: "LeaderClasse", type: {:enum, "ETzClasseType"}}
+    %{name: "LeaderGender", type: {:enum, "GenderType"}},
+    %{name: "LeaderClasse", type: {:enum, "ClasseType"}}
   ],
 
 "StrongholdBattleTotalHealDoneStatisticsInfoNotify" => [
@@ -6580,7 +6580,7 @@
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "RealmAccountWarehouseUpdateInfo", type: {:nullable, {:struct, "InventoryUpdateInfo"}}},
     %{name: "CraftResultInfos", type: {:list, {:struct, "CraftResultInfo"}}},
-    %{name: "CraftCountInfos", type: :unknown}
+    %{name: "CraftCountInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCraftCountInfo"}}}
   ],
 
 "BuffInfo" => [
@@ -6608,19 +6608,19 @@
 
 "TutorialHoldRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "TutorialFilterKind", type: {:enum, "ETzTutorialFilterKindType"}},
+    %{name: "TutorialFilterKind", type: {:enum, "TutorialFilterKindType"}},
     %{name: "FilterValue", type: :string}
   ],
 
 "QuestsInfo" => [
-    %{name: "RewardedQuests", type: :unknown},
-    %{name: "ActiveQuestProgressInfos", type: :unknown},
-    %{name: "RepeatQuestCancelRecordInfos", type: :unknown},
-    %{name: "ActiveFavorInfos", type: :unknown},
-    %{name: "ActiveFavorMissionInfos", type: :unknown},
+    %{name: "RewardedQuests", type: {:map, :cuid, :datetime}},
+    %{name: "ActiveQuestProgressInfos", type: {:map, {:struct, "Vuid"}, {:struct, "TSharedPtr<FTzQuestProgressInfo"}}},
+    %{name: "RepeatQuestCancelRecordInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzQuestCancelRecordInfo"}}},
+    %{name: "ActiveFavorInfos", type: {:map, {:struct, "Vuid"}, {:struct, "TSharedPtr<FTzFavorInfo"}}},
+    %{name: "ActiveFavorMissionInfos", type: {:map, {:struct, "Vuid"}, {:struct, "TSharedPtr<FTzFavorMissionInfo"}}},
     %{name: "FavorRefreshCostIndex", type: {:int, 4}},
     %{name: "DailyAcceptableFavorRemainingCount", type: {:int, 4}},
-    %{name: "LastProceedEpisodeCuidsByEpisodeGroup", type: :unknown}
+    %{name: "LastProceedEpisodeCuidsByEpisodeGroup", type: {:map, {:enum, "EpisodeGroupType"}, :cuid}}
   ],
 
 "InstanceFieldDisallowedInPvpNotify" => [
@@ -6644,8 +6644,8 @@
 
 "CheatChangeCrossRealmMaintenanceRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RegionContentKind", type: {:enum, "ETzRegionContentKindType"}},
-    %{name: "IsUnderMaintenance", type: :unknown}
+    %{name: "RegionContentKind", type: {:enum, "RegionContentKindType"}},
+    %{name: "IsUnderMaintenance", type: :bool}
   ],
 
 "CovenantSynchronizeMemberLevelNotify" => [
@@ -6676,7 +6676,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "EquipGearSlotInfos", type: {:list, {:struct, "GearSlotInfo"}}},
-    %{name: "UnequipGearSlots", type: {:list, {:enum, "ETzGearSlotType,TSizedDefaultAllocator<32"}}},
+    %{name: "UnequipGearSlots", type: {:list, {:enum, "GearSlotType"}}},
     %{name: "PlayerPublicStatsInfo", type: {:nullable, {:struct, "PlayerPublicStatsInfo"}}},
     %{name: "PlayerPrivateStatsInfo", type: {:nullable, {:struct, "PlayerPrivateStatsInfo"}}}
   ],
@@ -6695,7 +6695,7 @@
 
 "CovenantBattalionNotifyInfo" => [
     %{name: "CreateDateTime", type: :datetime},
-    %{name: "IsNotExposeToBattalionList", type: :unknown}
+    %{name: "IsNotExposeToBattalionList", type: :bool}
   ],
 
 "ItemTransmutationCurrencyRewardResponse" => [
@@ -6729,7 +6729,7 @@
 "PlayerRankingViewInfo" => [
     %{name: "__base__", type: {:struct, "RankingViewInfo"}},
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "SlayingGrade", type: {:int, 2}},
     %{name: "Name", type: :string},
@@ -6740,7 +6740,7 @@
 
 "ShopAutoBuySettingUpdateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
     %{name: "ShopCuid", type: :cuid},
     %{name: "AutoBuyInfos", type: {:list, {:struct, "AutoBuyInfo"}}}
   ],
@@ -6752,13 +6752,13 @@
 
 "QuickSlotModifyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "QuickSlotIndex", type: {:enum, "ETzQuickSlotIndexType"}},
+    %{name: "QuickSlotIndex", type: {:enum, "QuickSlotIndexType"}},
     %{name: "QuickSlotInfo", type: {:nullable, {:struct, "QuickSlotInfo"}}}
   ],
 
 "CrossRealmSeasonTimeCreviceEntryInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "CrossRealmSeasonEntryInitialDataNotify"}},
-    %{name: "IsFull", type: :unknown}
+    %{name: "IsFull", type: :bool}
   ],
 
 "ItemCuidSelector" => [
@@ -6769,7 +6769,7 @@
 
 "CheatRemoveAllWorldMapMarkerRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}}
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}}
   ],
 
 "CheatSetStrongholdOccupyingCovenantRequest" => [
@@ -6796,7 +6796,7 @@
 
 "NavMeshTileLayerInfo" => [
     %{name: "LayerNumber", type: {:int, 4}},
-    %{name: "CrcChecksum", type: "unsigned_int"},
+    %{name: "CrcChecksum", type: {:struct, "unsigned_int"}},
     %{name: "TileData", type: :string}
   ],
 
@@ -6814,13 +6814,13 @@
 "ClientDrivenQuestMissionCompleteNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "QuestMissionCuid", type: :cuid},
-    %{name: "TargetGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "TargetGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "BattalionDismissNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "BattalionPurposeKind", type: {:enum, "ETzBattalionPurposeKindType"}}
+    %{name: "BattalionPurposeKind", type: {:enum, "BattalionPurposeKindType"}}
   ],
 
 "StackableItemUpdateInfo" => [
@@ -6862,12 +6862,12 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "Location_cm", type: :vector},
     %{name: "Destination_cm", type: :vector},
-    %{name: "SufficientlyCloseDistance_cm", type: "float"}
+    %{name: "SufficientlyCloseDistance_cm", type: :float}
   ],
 
 "CovenantSynchronizeMemberInfosResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CovenantMemberInfos", type: :unknown}
+    %{name: "CovenantMemberInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantMemberInfo"}}}
   ],
 
 "CovenantBattalionExpeditionLivingTotemDepartureNotify" => [
@@ -6883,7 +6883,7 @@
 "StrongholdBattleDeclarePrerequisitesQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "HavenCuidToTotalTravelDistances", type: :unknown}
+    %{name: "HavenCuidToTotalTravelDistances", type: {:map, :cuid, :float}}
   ],
 
 "CheatExpeditionCloseRequest" => [
@@ -6901,7 +6901,7 @@
 
 "GearSlotInfo" => [
     %{name: "ItemGuid", type: {:uint, 8}},
-    %{name: "GearSlot", type: {:enum, "ETzGearSlotType"}}
+    %{name: "GearSlot", type: {:enum, "GearSlotType"}}
   ],
 
 "CraftQueryRequest" => [
@@ -6946,7 +6946,7 @@
 "PlayerSkillAcquireResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "SkillCuid", type: :cuid},
-    %{name: "AutoUseRootSkillCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "AutoUseRootSkillCuids", type: {:list, :cuid}}
   ],
 
 "AnniversaryPointAndRankingInfo" => [
@@ -6977,7 +6977,7 @@
     %{name: "ManaPointsCostDecreaseRatio_pe4", type: {:int, 4}},
     %{name: "CooldownDurationDecreaseAmount_msec", type: {:int, 4}},
     %{name: "CooldownDurationDecreaseRatio_pe4", type: {:int, 4}},
-    %{name: "FeedbackHealthPointsAffectRatioIncreaseRatio", type: "float"},
+    %{name: "FeedbackHealthPointsAffectRatioIncreaseRatio", type: :float},
     %{name: "CharacterStatChangesDuringSkillProgress", type: {:list, {:struct, "CharacterStatChangeInfo"}}}
   ],
 
@@ -6999,7 +6999,7 @@
 "MailFollowerGatheringWorkLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailFollowerWorkLayoutInfo"}},
     %{name: "GatheringSiteSpawnerCuid", type: :cuid},
-    %{name: "GainedRewardItemIndexWithCount", type: :unknown}
+    %{name: "GainedRewardItemIndexWithCount", type: {:nullable, :message}}
   ],
 
 "DividendResultInfo" => [
@@ -7009,7 +7009,7 @@
 
 "MailsReceiveAttachmentsInTabRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
     %{name: "UpperBoundDateTime", type: :datetime}
   ],
 
@@ -7027,7 +7027,7 @@
     %{name: "RealmCovenantId", type: {:struct, "RealmCovenantId"}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}}
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}}
   ],
 
 "PartySynchronizeMemberNotify" => [
@@ -7038,7 +7038,7 @@
 "CheatTeleportToHavenRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "Radius_cm", type: "float"}
+    %{name: "Radius_cm", type: :float}
   ],
 
 "PlayerCovenantWatchAddNotify" => [
@@ -7055,7 +7055,7 @@
 
 "PartySummaryInfo" => [
     %{name: "PartyGuid", type: {:uint, 8}},
-    %{name: "IsEnabled", type: :unknown},
+    %{name: "IsEnabled", type: :bool},
     %{name: "PartyOptionInfo", type: {:nullable, {:struct, "PartyOptionInfo"}}},
     %{name: "PartyLeaderGuid", type: {:uint, 8}},
     %{name: "PartyMemberCoreInfos", type: {:list, {:struct, "PartyMemberCoreInfo"}}},
@@ -7072,13 +7072,13 @@
 "PvpBattlePlayerInfo" => [
     %{name: "PvpBattlePlayerId", type: {:struct, "PvpBattlePlayerId"}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "PvpBattleCovenantId", type: {:struct, "PvpBattleCovenantId"}}
   ],
 
 "DeathPenaltyLastAutoRecoveryNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeathPenaltyAutoRecoveryInfo", type: :unknown}
+    %{name: "DeathPenaltyAutoRecoveryInfo", type: {:nullable, :message}}
   ],
 
 "SelfieDoodadInfo" => [
@@ -7086,8 +7086,8 @@
   ],
 
 "PlayerCampaignInfo" => [
-    %{name: "ActiveCampaignProgressInfos", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
-    %{name: "CampaignTicketInfos", type: :unknown}
+    %{name: "ActiveCampaignProgressInfos", type: {:list, :cuid}},
+    %{name: "CampaignTicketInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCampaignTicketInfo"}}}
   ],
 
 "ServerDrivenPlayInfo" => [
@@ -7095,9 +7095,9 @@
     %{name: "StartLocation_cm", type: :vector},
     %{name: "StartTime", type: :datetime},
     %{name: "StartUsingDailyDurationTime", type: :datetime},
-    %{name: "RewardInfo", type: :unknown},
+    %{name: "RewardInfo", type: {:nullable, :message}},
     %{name: "AutoResupplyUsedCount", type: {:int, 4}},
-    %{name: "CurrentStateInfo", type: :unknown}
+    %{name: "CurrentStateInfo", type: {:nullable, :message}}
   ],
 
 "CheatClearGearRequest" => [
@@ -7138,7 +7138,7 @@
 "CovenantGiftSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "AddedGiftBoxInfos", type: {:list, {:struct, "CovenantGiftBoxInfo"}}},
-    %{name: "RemovedGiftBoxInfos", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "RemovedGiftBoxInfos", type: {:list, {:uint, 8}}},
     %{name: "UpdateGiftBoxInfos", type: {:list, {:struct, "CovenantGiftBoxInfo"}}}
   ],
 
@@ -7183,8 +7183,8 @@
 
 "BanInfo" => [
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "BanKind", type: {:enum, "ETzBanKindType"}},
-    %{name: "BanReasonKind", type: {:enum, "ETzBanReasonKindType"}},
+    %{name: "BanKind", type: {:enum, "BanKindType"}},
+    %{name: "BanReasonKind", type: {:enum, "BanReasonKindType"}},
     %{name: "StartDateTime", type: :datetime},
     %{name: "EndDateTime", type: :datetime},
     %{name: "Reason", type: :string}
@@ -7196,7 +7196,7 @@
 
 "SpawnLayerActivateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsPermanentSpawnLayer", type: :unknown},
+    %{name: "IsPermanentSpawnLayer", type: :bool},
     %{name: "SpawnLayerCuid", type: :cuid}
   ],
 
@@ -7258,7 +7258,7 @@
 
 "CovenantCreateCovenantMemberRoleResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string}
   ],
 
@@ -7271,8 +7271,8 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CostItemCuid", type: :cuid},
     %{name: "GearCuid", type: :cuid},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
-    %{name: "GearEnchantOptionGrades", type: :unknown},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
+    %{name: "GearEnchantOptionGrades", type: {:map, {:int, 2}, {:enum, "GearEnchantGradeType"}}},
     %{name: "TestCount", type: {:int, 4}}
   ],
 
@@ -7304,7 +7304,7 @@
 "MailFollowerBuildingWorkLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailFollowerWorkLayoutInfo"}},
     %{name: "BuildingCuid", type: :cuid},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}}
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}}
   ],
 
 "MarketGoodsSoldNotify" => [
@@ -7342,7 +7342,7 @@
 
 "StrategicObjectiveInfo" => [
     %{name: "StrategicObjectiveTargetInfo", type: {:nullable, {:struct, "StrategicObjectiveTargetInfo"}}},
-    %{name: "SquadOrderList", type: {:list, {:struct, "int,TSizedDefaultAllocator<32"}}}
+    %{name: "SquadOrderList", type: {:list, {:int, 4}}}
   ],
 
 "StrongholdTeleportToAltarRequest" => [
@@ -7352,13 +7352,13 @@
   ],
 
 "BattalionOptionInfo" => [
-    %{name: "PurposeKind", type: {:enum, "ETzBattalionPurposeKindType"}},
+    %{name: "PurposeKind", type: {:enum, "BattalionPurposeKindType"}},
     %{name: "PurposeText", type: :string},
-    %{name: "IsAllowVolunteer", type: :boolean},
-    %{name: "BattalionVolunteerAllowKind", type: {:enum, "ETzBattalionVolunteerAllowKindType"}},
-    %{name: "IsAllowVolunteerJoinApply", type: :boolean},
-    %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :boolean},
-    %{name: "IsNotExposeToBattalionList", type: :boolean},
+    %{name: "IsAllowVolunteer", type: :bool},
+    %{name: "BattalionVolunteerAllowKind", type: {:enum, "BattalionVolunteerAllowKindType"}},
+    %{name: "IsAllowVolunteerJoinApply", type: :unknown},
+    %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :unknown},
+    %{name: "IsNotExposeToBattalionList", type: :unknown},
     %{name: "BattalionItemDistributionInfo", type: {:nullable, {:struct, "PartyOrBattalionItemDistributionInfo"}}}
   ],
 
@@ -7374,25 +7374,25 @@
 "BattalionConfirmCheckReadyNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MemberGuid", type: {:uint, 8}},
-    %{name: "MemberReadyKind", type: {:enum, "ETzBattalionMemberReadyKindType"}}
+    %{name: "MemberReadyKind", type: {:enum, "BattalionMemberReadyKindType"}}
   ],
 
 "PartyQuerySummaryInfoListRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "RegionCuid", type: :cuid},
-    %{name: "Purpose", type: {:enum, "ETzPartyPurposeType"}}
+    %{name: "Purpose", type: {:enum, "PartyPurposeType"}}
   ],
 
 "BuildingWorkRequestBaseInfo" => [
     %{name: "WorkplaceCuid", type: :cuid},
     %{name: "RequestPlayerGuid", type: {:uint, 8}},
     %{name: "RequestPlayerCovenantGuid", type: {:uint, 8}},
-    %{name: "IsRecommended", type: :unknown},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsRecommended", type: :bool},
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "CovenantTradeDealRecordQueryInfo" => [
-    %{name: "DealRecordKind", type: {:enum, "ETzCovenantTradeDealRecordKindType"}},
+    %{name: "DealRecordKind", type: {:enum, "CovenantTradeDealRecordKindType"}},
     %{name: "SkipTopRowCount", type: {:int, 4}}
   ],
 
@@ -7413,7 +7413,7 @@
 "MonsterBookNodeAnalysisLockSwitchResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "NodeCuid", type: :cuid},
-    %{name: "IsAnalysisLocked", type: {:nullable, "bVar8=*(char*)(in_x0+0x21)=='\\0';lVar1=4;if(bVar8){lVar1=5;}puVar2=&DAT_0901b5c8;if(bVar8){puVar2=(undefined8*)\"false\";}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar1<<1);__memcpy_chk((ulong)&local_198|1,puVar2,lVar1,0x17);uVar10=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar1)=0;}uVar3=local_190;pcVar5=local_188;if((uVar10&1)==0){uVar3=uVar10>>1;pcVar5=(char*)((long)&local_198+1);}std::__ndk1::__put_character_"}}
+    %{name: "IsAnalysisLocked", type: :bool}
   ],
 
 "TerritoryInfo" => [
@@ -7425,16 +7425,16 @@
     %{name: "DeployedLivingTotemCuid", type: :cuid},
     %{name: "LeadingCovenantCampEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "EntanglementGauge", type: {:int, 4}},
-    %{name: "BuildingLevels", type: :unknown},
+    %{name: "BuildingLevels", type: {:map, {:enum, "BuildingKindType"}, {:int, 4}}},
     %{name: "AddNpcCraftGreatSuccessRatio_pe4", type: {:int, 4}},
     %{name: "StrongholdProtectionExpirationDateTime", type: :datetime},
     %{name: "ErosionItemConfigurationInfo", type: {:nullable, {:struct, "TerritoryErosionItemConfigurationInfo"}}},
     %{name: "NoticeInfo", type: {:nullable, {:struct, "TerritoryNoticeInfo"}}},
     %{name: "ContaminationInfo", type: {:nullable, {:struct, "ContaminationInfo"}}},
     %{name: "TaxInfo", type: {:nullable, {:struct, "TaxInfo"}}},
-    %{name: "StrongholdBuildingAccessPermissionKinds", type: :unknown},
-    %{name: "StrongholdBattleAttackPhase", type: {:enum, "ETzStrongholdBattleAttackPhaseType"}},
-    %{name: "HavenEventInfos", type: :unknown}
+    %{name: "StrongholdBuildingAccessPermissionKinds", type: {:map, {:enum, "BuildingKindType"}, {:enum, "BuildingAccessPermissionKindType"}}},
+    %{name: "StrongholdBattleAttackPhase", type: {:enum, "StrongholdBattleAttackPhaseType"}},
+    %{name: "HavenEventInfos", type: {:map, :cuid, {:struct, "TMap<FTzCuid"}}}
   ],
 
 "CovenantJoinApplyInfoUpdatedNotify" => [
@@ -7445,16 +7445,16 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HavenCuid", type: :cuid},
     %{name: "WorkplaceCuid", type: :cuid},
-    %{name: "AccelerationActionKind", type: {:enum, "ETzAccelerationActionKindType"}},
+    %{name: "AccelerationActionKind", type: {:enum, "AccelerationActionKindType"}},
     %{name: "CuidAndCountInfo", type: {:nullable, {:struct, "CuidAndCountInfo"}}}
   ],
 
 "EntityInfo" => [
-    %{name: "Entity", type: {:enum, "ETzEntityType"}},
+    %{name: "Entity", type: {:enum, "EntityType"}},
     %{name: "Guid", type: {:uint, 8}},
     %{name: "RealmCuid", type: :cuid},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "Faction", type: {:enum, "ETzFactionType"}},
+    %{name: "Faction", type: {:enum, "FactionType"}},
     %{name: "RealmCovenantId", type: {:struct, "RealmCovenantId"}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
@@ -7463,7 +7463,7 @@
 
 "CovenantUpdateOutLinkRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantOutLinkKind", type: {:enum, "ETzCovenantOutLinkKindType"}},
+    %{name: "CovenantOutLinkKind", type: {:enum, "CovenantOutLinkKindType"}},
     %{name: "Uri", type: :string}
   ],
 
@@ -7494,45 +7494,45 @@
 
 "BattalionMemberCharacterStateSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "BattalionMemberInfoSynchronizeNotify"}},
-    %{name: "State", type: {:enum, "ETzCharacterStateType"}}
+    %{name: "State", type: {:enum, "CharacterStateType"}}
   ],
 
 "StrongholdBuildingWorkInfoNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
-    %{name: "BuildingWorkInfoChangeReason", type: {:enum, "ETzBuildingWorkInfoChangeReasonType"}},
+    %{name: "BuildingWorkInfoChangeReason", type: {:enum, "BuildingWorkInfoChangeReasonType"}},
     %{name: "BuildingWorkInfo", type: {:nullable, {:struct, "BuildingWorkInfo"}}}
   ],
 
 "MarketSellReregisterResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "IsSuccessByGoodsGuids", type: :unknown},
+    %{name: "IsSuccessByGoodsGuids", type: {:map, {:uint, 8}, :bool}},
     %{name: "FailedGoodsGuid", type: {:uint, 8}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}}
   ],
 
 "FavoriteStatKindsResetResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "StatView", type: {:enum, "ETzAdjustableStatViewType"}}
+    %{name: "StatView", type: {:enum, "AdjustableStatViewType"}}
   ],
 
 "InteractionCancelNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "DoodadGuid", type: {:uint, 8}},
-    %{name: "Reason", type: {:enum, "ETzInteractionCancelReasonKindType"}}
+    %{name: "Reason", type: {:enum, "InteractionCancelReasonKindType"}}
   ],
 
 "GameOptionModifyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "GameOptionInfo", type: :unknown}
+    %{name: "GameOptionInfo", type: {:nullable, :message}}
   ],
 
 "PartyConfirmJoinApplicationResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "RealmPlayerId", type: {:struct, "RealmPlayerId"}},
-    %{name: "IsApproved", type: :unknown}
+    %{name: "IsApproved", type: :bool}
   ],
 
 "CheatCommandPresetRelayRequest" => [
@@ -7546,9 +7546,9 @@
 
 "MarketRecommendedItemQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
-    %{name: "RecommendedGearCuidByGearKind", type: :unknown},
-    %{name: "RecommendedCoreMaterialCuidByGearKind", type: :unknown}
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
+    %{name: "RecommendedGearCuidByGearKind", type: {:map, {:enum, "GearKindType"}, :cuid}},
+    %{name: "RecommendedCoreMaterialCuidByGearKind", type: {:map, {:enum, "GearKindType"}, :cuid}}
   ],
 
 "HonorableDieFailResponse" => [
@@ -7572,7 +7572,7 @@
 
 "ShopCashMerchandiseBuyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MerchandisePaymentInfo", type: :unknown}
+    %{name: "MerchandisePaymentInfo", type: {:nullable, :message}}
   ],
 
 "SkillCancelChargingRequest" => [
@@ -7595,7 +7595,7 @@
 
 "MarketSellerGoodsInfo" => [
     %{name: "__base__", type: {:struct, "MarketGoodsInfo"}},
-    %{name: "MarketSellState", type: {:enum, "ETzMarketSellStateType"}}
+    %{name: "MarketSellState", type: {:enum, "MarketSellStateType"}}
   ],
 
 "OccupiableNpcUnOccupationUpdateDataNotify" => [
@@ -7606,7 +7606,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "QuestVuid", type: {:struct, "Vuid"}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
-    %{name: "QuestCancelReasonKind", type: {:enum, "ETzQuestCancelReasonKindType"}}
+    %{name: "QuestCancelReasonKind", type: {:enum, "QuestCancelReasonKindType"}}
   ],
 
 "CheatRankingResetRequest" => [
@@ -7646,8 +7646,8 @@
 
 "MailsReceiveAttachmentsInTabResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
-    %{name: "ReceivedMailGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
+    %{name: "ReceivedMailGuids", type: {:list, {:uint, 8}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
   ],
@@ -7659,7 +7659,7 @@
 
 "PartyQueryMemberCandidateListResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "PartyMemberCandidateKind", type: {:enum, "ETzPartyMemberCandidateKindType"}},
+    %{name: "PartyMemberCandidateKind", type: {:enum, "PartyMemberCandidateKindType"}},
     %{name: "PartyMemberCandidateList", type: {:list, {:struct, "PartyMemberCoreInfo"}}}
   ],
 
@@ -7671,7 +7671,7 @@
 
 "PrivateChannelKeepaliveRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ChannelKind", type: {:enum, "ETzPrivateChannelKindType"}}
+    %{name: "ChannelKind", type: {:enum, "PrivateChannelKindType"}}
   ],
 
 "RPCMessage" => [
@@ -7680,7 +7680,7 @@
 
 "MailStrongholdBattleEndResultLogLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailStrongholdBattleLayoutInfo"}},
-    %{name: "StrongholdBattleEndResultKind", type: {:enum, "ETzStrongholdBattleEndResultKindType"}},
+    %{name: "StrongholdBattleEndResultKind", type: {:enum, "StrongholdBattleEndResultKindType"}},
     %{name: "StrongholdBattleJoinedCovenantHistoryInfos", type: {:list, {:struct, "StrongholdBattleJoinedCovenantHistoryInfo"}}},
     %{name: "WinnerCovenantVuid", type: {:struct, "Vuid"}}
   ],
@@ -7704,7 +7704,7 @@
     %{name: "PaidDateTime", type: {:nullable, :datetime}},
     %{name: "AttendanceCount", type: {:int, 4}},
     %{name: "ReceivedAttendanceRewardCount", type: {:int, 4}},
-    %{name: "IsVisibleNotificationMarker", type: :unknown}
+    %{name: "IsVisibleNotificationMarker", type: :bool}
   ],
 
 "OccupiableNpcInfo" => [
@@ -7713,19 +7713,19 @@
     %{name: "RealmCovenantId", type: {:struct, "RealmCovenantId"}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "IsRandomBuffNpc", type: :unknown},
-    %{name: "OccupationState", type: {:enum, "ETzNpcOccupationStateType"}}
+    %{name: "IsRandomBuffNpc", type: :bool},
+    %{name: "OccupationState", type: {:enum, "NpcOccupationStateType"}}
   ],
 
 "CovenantMemberInfo" => [
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "SlayingGrade", type: {:int, 2}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}},
     %{name: "LastClientDisconnectDateTime", type: :datetime},
     %{name: "PartyGuid", type: {:uint, 8}},
     %{name: "BattalionGuid", type: {:uint, 8}},
@@ -7766,7 +7766,7 @@
 
 "OrganizationStatRatioValue" => [
     %{name: "Value", type: {:int, 4}},
-    %{name: "PrecisionExponent", type: "unsigned_int"}
+    %{name: "PrecisionExponent", type: {:struct, "unsigned_int"}}
   ],
 
 "CheatClearOccupiableNpcOccupationScoreRequest" => [
@@ -7777,7 +7777,7 @@
 "ErosionItemUseParameterInfo" => [
     %{name: "__base__", type: {:struct, "ItemUseParameterInfo"}},
     %{name: "Location_cm", type: :vector},
-    %{name: "IsWithoutPermission", type: :unknown},
+    %{name: "IsWithoutPermission", type: :bool},
     %{name: "CostGoldAmount", type: {:uint, 8}}
   ],
 
@@ -7788,7 +7788,7 @@
 "FavoriteCraftRecipeRegisterResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "FavoriteCraftRecipeInfo", type: {:nullable, {:struct, "FavoriteCraftRecipeInfo"}}},
-    %{name: "IsRegistered", type: :unknown}
+    %{name: "IsRegistered", type: :bool}
   ],
 
 "CheatExpeditionLivingTotemTeleportToPlayerRequest" => [
@@ -7843,13 +7843,13 @@
     %{name: "NpcGuid", type: {:uint, 8}},
     %{name: "RewardCuid", type: :cuid},
     %{name: "CraftCount", type: {:int, 4}},
-    %{name: "MaterialGroupOrderList", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "MaterialGroupOrderList", type: {:list, :cuid}},
     %{name: "MaterialCuidToItemSelectors", type: {:list, {:struct, "ItemSelector"}}}
   ],
 
 "InGameNotificationNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "InGameNotificationInfo", type: :unknown}
+    %{name: "InGameNotificationInfo", type: {:nullable, :message}}
   ],
 
 "BuildingPurifyRequestInfo" => [
@@ -7876,7 +7876,7 @@
 "StrongholdBattleTacticalSkillUseNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "SquadOrder", type: {:int, 4}},
     %{name: "SkillCuid", type: :cuid},
     %{name: "ConsumedTacticalSkillBadgeCount", type: {:int, 4}}
@@ -7890,14 +7890,14 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "FollowerCuid", type: :cuid},
     %{name: "FollowerOwnerPlayerName", type: :string},
-    %{name: "LootedItemIndexWithCount", type: :unknown}
+    %{name: "LootedItemIndexWithCount", type: {:nullable, :message}}
   ],
 
 "PlayerCreateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
-    %{name: "Gender", type: {:enum, "ETzGenderType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
+    %{name: "Gender", type: {:enum, "GenderType"}},
     %{name: "PlayerCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "DevStartLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}}
   ],
@@ -7911,19 +7911,19 @@
   ],
 
 "HavenOrganizationStatsDetailInfo" => [
-    %{name: "Stats", type: :unknown}
+    %{name: "Stats", type: {:map, {:enum, "HavenOrganizationStatSourceType"}, {:struct, "TMap<FTzCuid"}}}
   ],
 
 "UpstreamPayloadAction" => [
-    %{name: "UpstreamPayloadActionKind", type: {:enum, "ETzUpstreamPayloadActionKindType"}},
+    %{name: "UpstreamPayloadActionKind", type: {:enum, "UpstreamPayloadActionKindType"}},
     %{name: "TextCuid", type: :cuid}
   ],
 
 "RealmInfoListResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RealmInfos", type: {:list, {:list, :unknown}}},
+    %{name: "RealmInfos", type: {:list, nil}},
     %{name: "RealmAccountInfos", type: {:list, {:struct, "UniverseAccountRealmAccountInfo"}}},
-    %{name: "AppliedRealmAccountGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "AppliedRealmAccountGuids", type: {:list, {:uint, 8}}}
   ],
 
 "RealmIntegrationBattleRealmScore" => [
@@ -7954,15 +7954,15 @@
 "CheatSetTransmutationRecordRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PeriodCuid", type: :cuid},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
-    %{name: "ItemGrade", type: {:enum, "ETzItemGradeType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
+    %{name: "ItemGrade", type: {:enum, "ItemGradeType"}},
     %{name: "Count", type: {:uint, 8}}
   ],
 
 "BossSpawnInfoRemovedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "DistrictCuid", type: :cuid},
-    %{name: "BossSpawnInfo", type: :unknown}
+    %{name: "BossSpawnInfo", type: {:nullable, :message}}
   ],
 
 "CheatAddRankingDummyDataResponse" => [
@@ -7991,7 +7991,7 @@
 
 "CheatSendSampleMailToMeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RequestMailKind", type: {:enum, "ETzMailKindType"}}
+    %{name: "RequestMailKind", type: {:enum, "MailKindType"}}
   ],
 
 "CheatAddCovenantGiftLevelExperiencePointsResponse" => [
@@ -8020,7 +8020,7 @@
 
 "ShopCashMerchandiseReceiveRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ReceiveGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "ReceiveGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "NavMeshTileDataRequest" => [
@@ -8031,7 +8031,7 @@
 "StanceInstallRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcGuid", type: {:uint, 8}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}}
+    %{name: "Stance", type: {:enum, "StanceType"}}
   ],
 
 "DeleteDiplomacyChatRoomResponse" => [
@@ -8060,8 +8060,8 @@
     %{name: "PurificationAmount", type: {:int, 4}},
     %{name: "FullContamination", type: {:int, 4}},
     %{name: "BeforeContaminationAmount", type: {:int, 4}},
-    %{name: "BeforeContaminationStage", type: {:enum, "ETzContaminationStageType"}},
-    %{name: "AfterContaminationStage", type: {:enum, "ETzContaminationStageType"}}
+    %{name: "BeforeContaminationStage", type: {:enum, "ContaminationStageType"}},
+    %{name: "AfterContaminationStage", type: {:enum, "ContaminationStageType"}}
   ],
 
 "CheatGetStrongholdAccumulatedTaxCurrencyAmountResponse" => [
@@ -8071,15 +8071,15 @@
   ],
 
 "CharacterStatChangeInfo" => [
-    %{name: "StatKind", type: {:enum, "ETzAdjustableStatKindType"}},
-    %{name: "Amount", type: "float"},
-    %{name: "Ratio", type: "float"}
+    %{name: "StatKind", type: {:enum, "AdjustableStatKindType"}},
+    %{name: "Amount", type: :float},
+    %{name: "Ratio", type: :float}
   ],
 
 "GearEnchantResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "ItemGuid", type: {:uint, 8}},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "GearEnchantSlotInfos", type: {:list, {:struct, "GearEnchantSlotInfo"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
@@ -8117,7 +8117,7 @@
 
 "HarmfulTextOnChatViolationUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: :unknown}
+    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: {:nullable, :message}}
   ],
 
 "StrongholdTaxUpdateRequest" => [
@@ -8128,7 +8128,7 @@
 
 "ContentsUnlockInitializeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UnusedContentsUnlockKinds", type: :unknown}
+    %{name: "UnusedContentsUnlockKinds", type: {:map, {:enum, "ContentsUnlockKindType"}, :bool}}
   ],
 
 "RealmAccountPresentRegisterRequest" => [
@@ -8149,7 +8149,7 @@
 
 "SubscriptionUnsubscribedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Channel", type: {:enum, "ETzSubscriptionChannelType"}},
+    %{name: "Channel", type: {:enum, "SubscriptionChannelType"}},
     %{name: "Parameter", type: :cuid}
   ],
 
@@ -8161,9 +8161,9 @@
 
 "CharacterStateSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "CharacterState", type: {:enum, "ETzCharacterStateType"}},
-    %{name: "StrongholdBattleResult", type: {:enum, "ETzStrongholdBattleResultType"}},
-    %{name: "AffectSourceInfo", type: :unknown}
+    %{name: "CharacterState", type: {:enum, "CharacterStateType"}},
+    %{name: "StrongholdBattleResult", type: {:enum, "StrongholdBattleResultType"}},
+    %{name: "AffectSourceInfo", type: {:nullable, :message}}
   ],
 
 "BattalionMemberLootNotify" => [
@@ -8171,7 +8171,7 @@
     %{name: "BattalionMemberGuid", type: {:uint, 8}},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}},
     %{name: "KilledNpcCuid", type: :cuid},
-    %{name: "IsErosionInstallerReward", type: :unknown}
+    %{name: "IsErosionInstallerReward", type: :bool}
   ],
 
 "CheatCreateAndSelectMountItemResponse" => [
@@ -8187,7 +8187,7 @@
 
 "CollectionProgressInfo" => [
     %{name: "CollectionCuid", type: :cuid},
-    %{name: "RegisteredCollectionSlotItemCuids", type: :unknown}
+    %{name: "RegisteredCollectionSlotItemCuids", type: {:map, :cuid, :cuid}}
   ],
 
 "CovenantDiplomacyHostilityKillCountUpdateNotify" => [
@@ -8204,8 +8204,8 @@
 "RealmInfoPubSubChannelUpdateDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "Ip", type: :string},
-    %{name: "ServerState", type: {:enum, "ETzServerStateType"}},
-    %{name: "ServerTagKind", type: {:enum, "ETzServerTagKindType"}}
+    %{name: "ServerState", type: {:enum, "ServerStateType"}},
+    %{name: "ServerTagKind", type: {:enum, "ServerTagKindType"}}
   ],
 
 "UnknownAffectSourceInfo" => [
@@ -8238,13 +8238,13 @@
 "CheatUpdatePlayerMissionCountRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MissionCuid", type: :cuid},
-    %{name: "AdjustKind", type: {:enum, "ETzMissionAdjustKindType"}},
+    %{name: "AdjustKind", type: {:enum, "MissionAdjustKindType"}},
     %{name: "AdjustCount", type: {:int, 4}}
   ],
 
 "AffectItemQuickSlotDetailInfo" => [
     %{name: "__base__", type: {:struct, "StackableItemQuickSlotDetailInfo"}},
-    %{name: "AffectItemKind", type: {:enum, "ETzAffectItemKindType"}}
+    %{name: "AffectItemKind", type: {:enum, "AffectItemKindType"}}
   ],
 
 "CrossRealmCovenantDiplomacyAddOrUpdateNotify" => [
@@ -8277,7 +8277,7 @@
 
 "BasicOrGrowthGuideAchievementUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BasicOrGrowthGuideAchievementInfo", type: :unknown}
+    %{name: "BasicOrGrowthGuideAchievementInfo", type: {:nullable, :message}}
   ],
 
 "PaidAttendanceRewardAllRequest" => [
@@ -8287,12 +8287,12 @@
 
 "ShopCashMerchandiseInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "CashShopMainCategoryInfos", type: :unknown},
-    %{name: "CashShopSubCategoryInfos", type: :unknown},
-    %{name: "CashShopMerchandiseInfos", type: :unknown},
+    %{name: "CashShopMainCategoryInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCashShopMainCategoryInfo"}}},
+    %{name: "CashShopSubCategoryInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCashShopSubCategoryInfo"}}},
+    %{name: "CashShopMerchandiseInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCashShopMerchandiseInfo"}}},
     %{name: "CashShopWindowDressingInfoList", type: {:list, {:struct, "CashShopWindowDressingInfo"}}},
-    %{name: "CashShopNameTextInfos", type: :unknown},
-    %{name: "CashShopDescriptionTextInfos", type: :unknown},
+    %{name: "CashShopNameTextInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCashShopNameTextInfo"}}},
+    %{name: "CashShopDescriptionTextInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCashShopDescriptionTextInfo"}}},
     %{name: "RealmTotalMerchandiseBuyCountInfoList", type: {:list, {:struct, "MerchandiseBuyCountInfo"}}}
   ],
 
@@ -8303,7 +8303,7 @@
 
 "RealmIntegrationBattleRealmScoreInfo" => [
     %{name: "RealmCuid", type: :cuid},
-    %{name: "Scores", type: :unknown}
+    %{name: "Scores", type: {:map, {:enum, "RealmIntegrationBattleScoreKindType"}, {:uint, 8}}}
   ],
 
 "CheatStrongholdApplyTaxRequest" => [
@@ -8317,12 +8317,12 @@
 
 "DrownSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "HealthPointsLost", type: "float"}
+    %{name: "HealthPointsLost", type: :float}
   ],
 
 "CheatSetExperiencePointsBlockedResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsExperiencePointsBlocked", type: :unknown}
+    %{name: "IsExperiencePointsBlocked", type: :bool}
   ],
 
 "TozTcpWelcome" => [
@@ -8346,7 +8346,7 @@
 
 "CovenantCompleteArchitectureHistoryInfo" => [
     %{name: "__base__", type: {:struct, "CovenantHistoryInfo"}},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}},
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}},
     %{name: "OrderedBuildingSpawnerCuid", type: :cuid},
     %{name: "BuildingCuid", type: :cuid},
     %{name: "WorkStartBuildingLevel", type: {:int, 4}},
@@ -8357,7 +8357,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
-    %{name: "RewardCurrencies", type: :unknown}
+    %{name: "RewardCurrencies", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "CheatUpdatePlayerCampaignTicketCountResponse" => [
@@ -8366,7 +8366,7 @@
 
 "PlayerDeathNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeathRecordInfo", type: :unknown},
+    %{name: "DeathRecordInfo", type: {:nullable, :message}},
     %{name: "RestrictedResurrectionInfo", type: {:nullable, {:struct, "RestrictedResurrectionInfo"}}}
   ],
 
@@ -8387,7 +8387,7 @@
   ],
 
 "CovenantPermissionsInfo" => [
-    %{name: "CanEditCovenantInfo", type: :boolean},
+    %{name: "CanEditCovenantInfo", type: :bool},
     %{name: "CanManageCovenantMember", type: :unknown},
     %{name: "CanBanishMember", type: :unknown},
     %{name: "CanManageHaven", type: :unknown},
@@ -8399,7 +8399,7 @@
   ],
 
 "ShopInfo" => [
-    %{name: "ServiceState", type: {:enum, "ETzShopServiceStateType"}}
+    %{name: "ServiceState", type: {:enum, "ShopServiceStateType"}}
   ],
 
 "FollowerPromoteRequest" => [
@@ -8419,7 +8419,7 @@
 
 "ShopCashMerchandiseBuyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MerchandisePaymentInfo", type: :unknown},
+    %{name: "MerchandisePaymentInfo", type: {:nullable, :message}},
     %{name: "MerchandiseBuyResultInfo", type: {:nullable, {:struct, "MerchandiseBuyResultInfo"}}}
   ],
 
@@ -8435,8 +8435,8 @@
 
 "ShopShoppingModeCommandRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "Command", type: {:enum, "ETzSubscriptionCommandType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "Command", type: {:enum, "SubscriptionCommandType"}},
     %{name: "NpcGuid", type: {:uint, 8}},
     %{name: "ShopCuid", type: :cuid}
   ],
@@ -8458,7 +8458,7 @@
 "StrongholdBattleReserveResurrectionNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "AetherBoxCount", type: {:int, 4}},
     %{name: "NextResurrectTime", type: :datetime}
   ],
@@ -8482,7 +8482,7 @@
 "CovenantHistoryQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "CovenantHistoryCategory", type: {:enum, "ETzCovenantHistoryCategoryType"}},
+    %{name: "CovenantHistoryCategory", type: {:enum, "CovenantHistoryCategoryType"}},
     %{name: "LowerBoundDateTime", type: {:nullable, :datetime}},
     %{name: "LastCovenantHistoryGuid", type: {:nullable, {:uint, 8}}}
   ],
@@ -8493,7 +8493,7 @@
   ],
 
 "DeathPenaltyRecordInfo" => [
-    %{name: "RecordKind", type: {:enum, "ETzDeathPenaltyRecordKindType"}},
+    %{name: "RecordKind", type: {:enum, "DeathPenaltyRecordKindType"}},
     %{name: "Guid", type: {:uint, 8}},
     %{name: "PlayerLevel", type: {:int, 4}},
     %{name: "LostExperiencePointsPercentage", type: {:int, 4}},
@@ -8526,7 +8526,7 @@
 
 "CovenantStartCampaignNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantCampaignProgressInfo", type: :unknown},
+    %{name: "CovenantCampaignProgressInfo", type: {:nullable, :message}},
     %{name: "CovenantCampaignTicketCount", type: {:nullable, {:int, 4}}}
   ],
 
@@ -8564,7 +8564,7 @@
 
 "CheatMonsterBookSetAnalysisInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "NodeStateInfo", type: :unknown},
+    %{name: "NodeStateInfo", type: {:nullable, :message}},
     %{name: "AnalysisStatChangeInfos", type: {:list, {:struct, "CharacterStatChangeInfo"}}}
   ],
 
@@ -8578,19 +8578,19 @@
 
 "MarketGoodsSummaryInfoQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketGoodsSummaryQueryInfo", type: :unknown}
+    %{name: "MarketGoodsSummaryQueryInfo", type: {:nullable, :message}}
   ],
 
 "CovenantTradeSalesListUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "AddedOrUpdatedGoodsSalesInfo", type: :unknown},
+    %{name: "AddedOrUpdatedGoodsSalesInfo", type: {:nullable, :message}},
     %{name: "RemovedGoodsGuid", type: {:uint, 8}}
   ],
 
 "SecessionChatRoomRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "ChatRoomGuid", type: {:uint, 8}}
   ],
 
@@ -8605,7 +8605,7 @@
 "PartyQuerySummaryInfoListResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "RegionCuid", type: :cuid},
-    %{name: "Purpose", type: {:enum, "ETzPartyPurposeType"}},
+    %{name: "Purpose", type: {:enum, "PartyPurposeType"}},
     %{name: "PartySummaryInfoList", type: {:list, {:struct, "PartySummaryInfo"}}}
   ],
 
@@ -8626,7 +8626,7 @@
 "CheatTestGearEnchantOptionGradeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CostItemCuid", type: :cuid},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "TestCount", type: {:int, 4}}
   ],
 
@@ -8655,24 +8655,24 @@
 
 "CovenantEmblemInfo" => [
     %{name: "BackgroundCuid", type: :cuid},
-    %{name: "BackgroundRotation", type: "float"},
+    %{name: "BackgroundRotation", type: :float},
     %{name: "FirstBackgroundColorCuid", type: :cuid},
     %{name: "SecondBackgroundColorCuid", type: :cuid},
     %{name: "ThirdBackgroundColorCuid", type: :cuid},
     %{name: "SubLogoCuid", type: :cuid},
     %{name: "SubLogoColorCuid", type: :cuid},
-    %{name: "SubLogoOpacity", type: "float"},
-    %{name: "SubLogoRotation", type: "float"},
-    %{name: "SubLogoScale", type: "float"},
-    %{name: "SubLogoPositionX", type: "float"},
-    %{name: "SubLogoPositionY", type: "float"},
+    %{name: "SubLogoOpacity", type: :float},
+    %{name: "SubLogoRotation", type: :float},
+    %{name: "SubLogoScale", type: :float},
+    %{name: "SubLogoPositionX", type: :float},
+    %{name: "SubLogoPositionY", type: :float},
     %{name: "MainLogoCuid", type: :cuid},
     %{name: "MainLogoColorCuid", type: :cuid},
-    %{name: "MainLogoOpacity", type: "float"},
-    %{name: "MainLogoRotation", type: "float"},
-    %{name: "MainLogoScale", type: "float"},
-    %{name: "MainLogoPositionX", type: "float"},
-    %{name: "MainLogoPositionY", type: "float"}
+    %{name: "MainLogoOpacity", type: :float},
+    %{name: "MainLogoRotation", type: :float},
+    %{name: "MainLogoScale", type: :float},
+    %{name: "MainLogoPositionX", type: :float},
+    %{name: "MainLogoPositionY", type: :float}
   ],
 
 "TerritoryNoticeModifyResponse" => [
@@ -8696,7 +8696,7 @@
 
 "StrongholdBattleAffectSourceInfo" => [
     %{name: "__base__", type: {:struct, "AffectSourceInfo"}},
-    %{name: "StrongholdBattleResult", type: {:enum, "ETzStrongholdBattleResultType"}}
+    %{name: "StrongholdBattleResult", type: {:enum, "StrongholdBattleResultType"}}
   ],
 
 "PlayerSlotExpansionCostCurrencyAmountResponse" => [
@@ -8726,7 +8726,7 @@
 
 "InventoryOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "IsEquippedItemVisible", type: :unknown}
+    %{name: "IsEquippedItemVisible", type: :bool}
   ],
 
 "ServerDrivenPlayStartWithResupplyStateInfo" => [
@@ -8812,13 +8812,13 @@
 "MountInteractionStateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "DriverGuid", type: {:uint, 8}},
-    %{name: "MountInteractionState", type: {:enum, "ETzMountInteractionStateType"}},
-    %{name: "Info", type: :unknown}
+    %{name: "MountInteractionState", type: {:enum, "MountInteractionStateType"}},
+    %{name: "Info", type: {:nullable, :message}}
   ],
 
 "PartySynchronizeMemberConnectionStatusNotify" => [
     %{name: "__base__", type: {:struct, "PartySynchronizeMemberNotify"}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}}
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}}
   ],
 
 "FocusResponse" => [
@@ -8839,13 +8839,13 @@
 "CheatApplySpellstonePresetResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
-    %{name: "SpellstoneSlotPageInfos", type: :unknown}
+    %{name: "SpellstoneSlotPageInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzSpellstoneSlotPageInfo"}}}
   ],
 
 "PvpRecordCharacterInfo" => [
     %{name: "Guid", type: {:uint, 8}},
     %{name: "CrossRealmSeasonCuid", type: :cuid},
-    %{name: "Role", type: {:enum, "ETzPvpRecordCharacterRoleType"}}
+    %{name: "Role", type: {:enum, "PvpRecordCharacterRoleType"}}
   ],
 
 "ExpeditionAddOrUpdateNotify" => [
@@ -8862,23 +8862,23 @@
     %{name: "BuildingCuid", type: :cuid},
     %{name: "SpawnerCuid", type: :cuid},
     %{name: "Level", type: {:int, 4}},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}}
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}}
   ],
 
 "WorldMapMarkerCopyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CopiedWorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "CopiedWorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "CopiedWorldMapMarkerInfo", type: {:nullable, {:struct, "WorldMapMarkerInfo"}}}
   ],
 
 "FactionProxyInfo" => [
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "Faction", type: {:enum, "ETzFactionType"}}
+    %{name: "Faction", type: {:enum, "FactionType"}}
   ],
 
 "MailsMarkAsReadByMailKindNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailKind", type: {:enum, "ETzMailKindType"}},
+    %{name: "MailKind", type: {:enum, "MailKindType"}},
     %{name: "UpperBoundDateTime", type: :datetime}
   ],
 
@@ -8887,8 +8887,8 @@
     %{name: "SellCurrencyCuid", type: :cuid},
     %{name: "SellPrice", type: {:int, 4}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsBound", type: :unknown},
-    %{name: "IsStorable", type: :unknown},
+    %{name: "IsBound", type: :bool},
+    %{name: "IsStorable", type: :bool},
     %{name: "ItemStackCount", type: {:uint, 8}},
     %{name: "GoodsBuyLimitCount", type: {:nullable, {:uint, 8}}},
     %{name: "RegistrationDateTime", type: :datetime}
@@ -8916,7 +8916,7 @@
 
 "CovenantUpdateJoinKindRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantJoinKind", type: {:enum, "ETzCovenantJoinKindType"}}
+    %{name: "CovenantJoinKind", type: {:enum, "CovenantJoinKindType"}}
   ],
 
 "PartyDismissRequest" => [
@@ -8928,7 +8928,7 @@
   ],
 
 "NameTagHealthBarDisplayOptionDetailInfo" => [
-    %{name: "IsOwnNameTagDisplayed", type: :boolean},
+    %{name: "IsOwnNameTagDisplayed", type: :bool},
     %{name: "IsOwnCovenantNameDisplayed", type: :unknown},
     %{name: "IsOwnHealthBarDisplayed", type: :unknown},
     %{name: "IsOtherCovenantNameDisplayed", type: :unknown},
@@ -8976,7 +8976,7 @@
 
 "PlayerLocationMonitoringDeregisterNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeregisterPlayerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeregisterPlayerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "RealmIntegrationBattleRealmResult" => [
@@ -9016,29 +9016,29 @@
     %{name: "TextCuid", type: :cuid},
     %{name: "MainCategoryCuid", type: :cuid},
     %{name: "SortOrder", type: {:int, 4}},
-    %{name: "SubCategoryKind", type: {:enum, "ETzShopSubCategoryKindType"}},
-    %{name: "TargetUserKind", type: {:enum, "ETzShopTargetUserKindType"}},
-    %{name: "TimeLimitTarget", type: {:enum, "ETzShopTimeLimitTargetKindType"}},
+    %{name: "SubCategoryKind", type: {:enum, "ShopSubCategoryKindType"}},
+    %{name: "TargetUserKind", type: {:enum, "ShopTargetUserKindType"}},
+    %{name: "TimeLimitTarget", type: {:enum, "ShopTimeLimitTargetKindType"}},
     %{name: "StartDateTime", type: :datetime},
     %{name: "EndDateTime", type: :datetime},
-    %{name: "IsShowDateTime", type: :unknown},
+    %{name: "IsShowDateTime", type: :bool},
     %{name: "UserRemainTimeToBuy", type: {:int, 4}},
     %{name: "PurchaseApplicableLoginStartDateTime", type: :datetime},
     %{name: "PurchaseApplicableLoginEndDateTime", type: :datetime},
     %{name: "ShowCurrency", type: :cuid},
-    %{name: "IsHideSubCategory", type: :unknown}
+    %{name: "IsHideSubCategory", type: :bool}
   ],
 
 "CovenantSettleAccountInfoQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CovenantSettleAccountInfos", type: :unknown},
-    %{name: "StrongholdSettleAccountInfos", type: :unknown}
+    %{name: "CovenantSettleAccountInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCovenantSettleAccountInfo"}}},
+    %{name: "StrongholdSettleAccountInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzStrongholdSettleAccountInfo"}}}
   ],
 
 "BattalionJoinApplicationRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "BattalionPurposeKind", type: {:enum, "ETzBattalionPurposeKindType"}}
+    %{name: "BattalionPurposeKind", type: {:enum, "BattalionPurposeKindType"}}
   ],
 
 "PlayerResurrectionResponse" => [
@@ -9049,16 +9049,16 @@
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "SlayingGrade", type: {:int, 2}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}}
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}}
   ],
 
 "CovenantCampBuildingWorkInfoNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "WorkplaceCuid", type: :cuid},
-    %{name: "BuildingWorkInfoChangeReason", type: {:enum, "ETzBuildingWorkInfoChangeReasonType"}},
+    %{name: "BuildingWorkInfoChangeReason", type: {:enum, "BuildingWorkInfoChangeReasonType"}},
     %{name: "BuildingWorkInfo", type: {:nullable, {:struct, "BuildingWorkInfo"}}}
   ],
 
@@ -9071,24 +9071,24 @@
 "PlayerInfo" => [
     %{name: "__base__", type: {:struct, "CharacterInfo"}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
-    %{name: "Gender", type: {:enum, "ETzGenderType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
+    %{name: "Gender", type: {:enum, "GenderType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "PlayerCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "SpiritualBondPower", type: {:uint, 8}},
     %{name: "SlayingGrade", type: {:int, 2}},
     %{name: "SelectedMountItemCuid", type: :cuid},
-    %{name: "MountInteractionState", type: {:enum, "ETzMountInteractionStateType"}},
+    %{name: "MountInteractionState", type: {:enum, "MountInteractionStateType"}},
     %{name: "CostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
     %{name: "InteractingDoodadGuid", type: {:uint, 8}},
     %{name: "DyingExpireDateTime", type: {:nullable, :datetime}},
     %{name: "LastPlayerInteractionDateTime", type: {:nullable, :datetime}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string},
     %{name: "PartyGuid", type: {:uint, 8}},
     %{name: "BattalionInfo", type: {:nullable, {:struct, "AffiliatedBattalionInfo"}}},
-    %{name: "IsInSelfieMode", type: :boolean},
+    %{name: "IsInSelfieMode", type: :bool},
     %{name: "IsFissioned", type: :unknown},
     %{name: "SkillCasterLocationProxyInfo", type: {:nullable, {:struct, "SkillCasterLocationProxyInfo"}}},
     %{name: "IsCollisionFree", type: :unknown},
@@ -9109,7 +9109,7 @@
 
 "CharacterPublicStatsInfoSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "CharacterPublicStatsInfo", type: :unknown}
+    %{name: "CharacterPublicStatsInfo", type: {:nullable, :message}}
   ],
 
 "StrongholdBattleCovenantBattalionMemberStatisticsInfo" => [
@@ -9126,18 +9126,18 @@
   ],
 
 "CombinedInventoryInfo" => [
-    %{name: "InventoryInfosByInventoryKind", type: :unknown},
-    %{name: "RedrawableItemInventoryInfosByItemCategory", type: :unknown}
+    %{name: "InventoryInfosByInventoryKind", type: {:map, {:enum, "UserInventoryKindType"}, {:struct, "TSharedPtr<FTzInventoryInfo"}}},
+    %{name: "RedrawableItemInventoryInfosByItemCategory", type: {:map, {:enum, "ItemCategoryType"}, {:struct, "TSharedPtr<FTzRedrawableItemInventoryInfo"}}}
   ],
 
 "CrossRealmSeasonInfoNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CrossRealmSeasonInfos", type: :unknown}
+    %{name: "CrossRealmSeasonInfos", type: {:map, {:enum, "RegionContentKindType"}, {:struct, "TSharedPtr<FTzCrossRealmSeasonInfo"}}}
   ],
 
 "MarketFavoriteItemUnregisterResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "ItemCuid", type: :cuid}
   ],
 
@@ -9154,60 +9154,60 @@
 
 "PlayerInitializeInfo" => [
     %{name: "PlayerInfo", type: {:nullable, {:struct, "PlayerInfo"}}},
-    %{name: "IsEnteredInField", type: :unknown},
+    %{name: "IsEnteredInField", type: :bool},
     %{name: "PlayerPrivateStatsInfo", type: {:nullable, {:struct, "PlayerPrivateStatsInfo"}}},
     %{name: "PlayerStanceInfo", type: {:nullable, {:struct, "PlayerStanceInfo"}}},
     %{name: "CombinedInventoryInfo", type: {:nullable, {:struct, "CombinedInventoryInfo"}}},
-    %{name: "SelectedEquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}},
-    %{name: "EquipmentPresetInfos", type: :unknown},
-    %{name: "QuickSlotInfos", type: :unknown},
-    %{name: "QuickSlotPageInfos", type: :unknown},
-    %{name: "OpenFogsByDistrictCuid", type: :unknown},
+    %{name: "SelectedEquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}},
+    %{name: "EquipmentPresetInfos", type: {:map, {:enum, "EquipmentPresetIndexType"}, {:struct, "TSharedPtr<FTzEquipmentPresetInfo"}}},
+    %{name: "QuickSlotInfos", type: {:map, {:enum, "QuickSlotIndexType"}, {:struct, "TSharedPtr<FTzQuickSlotInfo"}}},
+    %{name: "QuickSlotPageInfos", type: {:map, {:enum, "StanceType"}, {:struct, "TSharedPtr<FTzQuickSlotPageInfo"}}},
+    %{name: "OpenFogsByDistrictCuid", type: {:map, :cuid, {:struct, "unsigned_long_long"}}},
     %{name: "PlayerGameOptionInfo", type: {:nullable, {:struct, "PlayerGameOptionInfo"}}},
-    %{name: "PushNotificationOptionInfos", type: :unknown},
+    %{name: "PushNotificationOptionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzPushNotificationOptionInfo"}}},
     %{name: "PlayerSkillInfo", type: {:nullable, {:struct, "PlayerSkillInfo"}}},
     %{name: "FavoriteCraftRecipeInfos", type: {:list, {:struct, "FavoriteCraftRecipeInfo"}}},
     %{name: "QuestsInfo", type: {:nullable, {:struct, "QuestsInfo"}}},
-    %{name: "CompletedTutorialCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "CompletedTutorialCuids", type: {:list, :cuid}},
     %{name: "PartyInfo", type: {:nullable, {:struct, "PartyInfo"}}},
-    %{name: "BattalionInfo", type: :unknown},
+    %{name: "BattalionInfo", type: {:nullable, :message}},
     %{name: "InGameNotificationInfos", type: {:list, {:struct, "InGameNotificationInfo"}}},
-    %{name: "AmityInfos", type: :unknown},
+    %{name: "AmityInfos", type: {:map, :cuid, {:uint, 8}}},
     %{name: "PlayerFollowerInfo", type: {:nullable, {:struct, "PlayerFollowerInfo"}}},
     %{name: "PlayerServerDrivenPlayInfo", type: {:nullable, {:struct, "PlayerServerDrivenPlayInfo"}}},
     %{name: "PlayerLimitedCounterInfo", type: {:nullable, {:struct, "PlayerLimitedCounterInfo"}}},
     %{name: "AutoBuySettingsInfo", type: {:nullable, {:struct, "AutoBuySettingsInfo"}}},
     %{name: "AutoSellSettingsInfo", type: {:nullable, {:struct, "AutoSellSettingsInfo"}}},
-    %{name: "UsableItemCooldownExpireDateTimeRangeInfos", type: :unknown},
-    %{name: "MountSkillSlotInfos", type: :unknown},
-    %{name: "PointCurrencyContainerInfo", type: :unknown},
+    %{name: "UsableItemCooldownExpireDateTimeRangeInfos", type: {:map, {:int, 4}, {:struct, "TSharedPtr<FTzDateTimeRangeInfo"}}},
+    %{name: "MountSkillSlotInfos", type: {:map, {:enum, "MountSkillSlotIndexType"}, :bool}},
+    %{name: "PointCurrencyContainerInfo", type: {:map, :cuid, {:uint, 8}}},
     %{name: "RealmAccountWarehouseInfo", type: {:nullable, {:struct, "RealmAccountWarehouseInfo"}}},
     %{name: "RealmAccountWarehouseAutoStoreSettingsInfo", type: {:nullable, {:struct, "RealmAccountWarehouseAutoStoreSettingsInfo"}}},
     %{name: "ActivatedCollectionCategoryCuids", type: :unknown},
-    %{name: "CollectionProgressInfos", type: :unknown},
+    %{name: "CollectionProgressInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCollectionProgressInfo"}}},
     %{name: "BasicOrGrowthGuideAchievementInfos", type: {:list, {:struct, "BasicOrGrowthGuideAchievementInfo"}}},
     %{name: "AnniversaryAchievementInfos", type: {:list, {:struct, "AnniversaryAchievementInfo"}}},
     %{name: "AnniversaryAchievementPointInfos", type: {:list, {:struct, "AnniversaryAchievementPointInfo"}}},
     %{name: "DiscoveredSelfieDoodadSpawnerCuids", type: :unknown},
-    %{name: "LastDeathRecordInfo", type: :unknown},
+    %{name: "LastDeathRecordInfo", type: {:nullable, :message}},
     %{name: "DeathPenaltyRecordInfos", type: {:list, {:struct, "DeathPenaltyRecordInfo"}}},
-    %{name: "DeathPenaltyFreeRecoveryInfo", type: :unknown},
-    %{name: "TransmutationProgressInfos", type: :unknown},
-    %{name: "MissionInfos", type: :unknown},
+    %{name: "DeathPenaltyFreeRecoveryInfo", type: {:nullable, :message}},
+    %{name: "TransmutationProgressInfos", type: {:map, {:enum, "ItemCategoryType"}, {:struct, "TMap<ETzItemGradeType"}}},
+    %{name: "MissionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzMissionInfo"}}},
     %{name: "ArquiAttunementInfo", type: {:nullable, {:struct, "ArquiAttunementInfo"}}},
-    %{name: "AlertPlayers", type: :unknown},
-    %{name: "CrossRealmAlertPlayers", type: :unknown},
+    %{name: "AlertPlayers", type: {:map, {:uint, 8}, :datetime}},
+    %{name: "CrossRealmAlertPlayers", type: {:map, {:uint, 8}, {:struct, "CrossRealmAlertPlayerRegisterInfo"}}},
     %{name: "PlayerLocationMonitoringInfos", type: {:list, {:struct, "PlayerLocationMonitoringInfo"}}},
-    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: :unknown},
+    %{name: "PlayerHarmfulTextOnChatViolationInfo", type: {:nullable, :message}},
     %{name: "FissionPoints", type: {:int, 4}},
     %{name: "PlayerCashShopInfo", type: {:nullable, {:struct, "PlayerCashShopInfo"}}},
-    %{name: "PlayerAutoUseInfo", type: :unknown},
+    %{name: "PlayerAutoUseInfo", type: {:nullable, :message}},
     %{name: "PlayerEmergencyEscapeInfo", type: {:nullable, {:struct, "PlayerEmergencyEscapeInfo"}}},
-    %{name: "UnSettledGoodsGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
-    %{name: "ExpiredGoodsGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "UnSettledGoodsGuids", type: {:list, {:uint, 8}}},
+    %{name: "ExpiredGoodsGuids", type: {:list, {:uint, 8}}},
     %{name: "PlayerCovenantInfo", type: {:nullable, {:struct, "PlayerCovenantInfo"}}},
-    %{name: "GiftBoxInfos", type: :unknown},
-    %{name: "AccountAffectInfos", type: :unknown},
+    %{name: "GiftBoxInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantGiftBoxInfo"}}},
+    %{name: "AccountAffectInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzAccountAffectInfo"}}},
     %{name: "MaxLevel", type: {:int, 4}},
     %{name: "LastLevelForLevelUpNotify", type: {:int, 4}},
     %{name: "LastLevelUpDateTime", type: :datetime},
@@ -9215,12 +9215,12 @@
     %{name: "RegisteredReturnPlaceDoodadSpawnerCuid", type: :cuid},
     %{name: "WorldMapMarkerInfos", type: {:list, {:struct, "WorldMapMarkerInfo"}}},
     %{name: "FavoriteCollectionCuids", type: :unknown},
-    %{name: "SkillUseOptionInfos", type: :unknown},
-    %{name: "RegionContentPlayInfos", type: :unknown},
+    %{name: "SkillUseOptionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzSkillUseOptionInfo"}}},
+    %{name: "RegionContentPlayInfos", type: {:map, {:enum, "RegionContentKindType"}, {:struct, "TSharedPtr<FTzRegionContentPlayInfo"}}},
     %{name: "MonsterBookInfo", type: {:nullable, {:struct, "MonsterBookInfo"}}},
-    %{name: "TransmutationRecords", type: :unknown},
-    %{name: "PlayerCampaignInfo", type: :unknown},
-    %{name: "VolunteerParticipationInfos", type: :unknown},
+    %{name: "TransmutationRecords", type: {:map, {:struct, "TTuple<FTzCuid"}, {:enum, "ItemCategoryType"}}},
+    %{name: "PlayerCampaignInfo", type: {:nullable, :message}},
+    %{name: "VolunteerParticipationInfos", type: {:map, {:enum, "BattalionContentsKindType"}, {:struct, "TSharedPtr<FTzVolunteerParticipationInfo"}}},
     %{name: "PlayerRealmIntegrationBattleInfo", type: {:nullable, {:struct, "PlayerRealmIntegrationBattleInfo"}}},
     %{name: "PaidAttendanceInfos", type: {:list, {:struct, "PaidAttendanceInfo"}}}
   ],
@@ -9239,13 +9239,13 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PreviousLeaderGuid", type: {:uint, 8}},
-    %{name: "LeaderAppointReason", type: {:enum, "ETzPartyLeaderAppointReasonType"}}
+    %{name: "LeaderAppointReason", type: {:enum, "PartyLeaderAppointReasonType"}}
   ],
 
 "SeamlessNpcInfo" => [
     %{name: "__base__", type: {:struct, "SeamlessEntityInfo"}},
-    %{name: "IsInVillage", type: :unknown},
-    %{name: "IsPublicResurrector", type: :unknown}
+    %{name: "IsInVillage", type: :bool},
+    %{name: "IsPublicResurrector", type: :bool}
   ],
 
 "AnniversaryAchievementPrivateChannelCloseResponse" => [
@@ -9269,8 +9269,8 @@
   ],
 
 "VolunteerParticipationInfo" => [
-    %{name: "BattalionContentsKind", type: {:enum, "ETzBattalionContentsKindType"}},
-    %{name: "ParticipationCountInfo", type: :unknown}
+    %{name: "BattalionContentsKind", type: {:enum, "BattalionContentsKindType"}},
+    %{name: "ParticipationCountInfo", type: {:nullable, :message}}
   ],
 
 "QueryPlayerSummaryInfoResponse" => [
@@ -9285,7 +9285,7 @@
     %{name: "Level", type: {:int, 4}},
     %{name: "PvpScore", type: {:int, 4}},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "AdditionalSourceInfo", type: :unknown}
+    %{name: "AdditionalSourceInfo", type: {:nullable, :message}}
   ],
 
 "StrongholdPlayerTeleportNotify" => [
@@ -9322,26 +9322,26 @@
   ],
 
 "CovenantAssetMigrationInfo" => [
-    %{name: "CurrencyCuidToAmount", type: :unknown},
+    %{name: "CurrencyCuidToAmount", type: {:map, :cuid, {:uint, 8}}},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}}
   ],
 
 "StrongholdBattleNewGroupNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "CovenantName", type: :string}
   ],
 
 "EntityRemoveNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "EntityRemoveReason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}}
+    %{name: "EntityRemoveReason", type: {:enum, "EntitySpawnRemoveReasonType"}}
   ],
 
 "FollowerCollectionInfo" => [
     %{name: "CollectionCuid", type: :cuid},
-    %{name: "CollectionStatus", type: :unknown},
-    %{name: "AccomplishedRewardPhase", type: "unsigned_char"}
+    %{name: "CollectionStatus", type: {:map, :cuid, {:struct, "TSharedPtr<FTzFollowerCollectionTopExperienceInfo"}}},
+    %{name: "AccomplishedRewardPhase", type: {:struct, "unsigned_char"}}
   ],
 
 "ErLoginServerInitialToyBotAuthenticateInfo" => [
@@ -9359,13 +9359,13 @@
 
 "SkillUseOptionInfo" => [
     %{name: "SkillCuid", type: :cuid},
-    %{name: "UseManaPointsRestriction", type: :boolean},
+    %{name: "UseManaPointsRestriction", type: :bool},
     %{name: "UseByAutoAttackTargetingRangeKind", type: {:nullable, "lVar2=4;puVar3=&DAT_0901b5c8;if(*(char*)(in_x0+0x1a)=='\\0'){lVar2=5;puVar3=(undefined8*)pcVar1;}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar2<<1);__memcpy_chk((ulong)&local_198|1,puVar3,lVar2,0x17);uVar8=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar2)=0;}uVar4=local_190;pcVar9=local_188;if((uVar8&1)==0){uVar4=uVar8>>1;pcVar9=(char*)((long)&local_198+1);}std::__ndk1::__put_charact"}},
     %{name: "UseCycle", type: :unknown},
     %{name: "UseCycleInPvp", type: :unknown},
     %{name: "CycleRange_sec", type: {:int, 4}},
     %{name: "UseByAutoUseByHealthPointsCondition", type: {:nullable, "lVar2=4;puVar3=&DAT_0901b5c8;if(*(char*)(in_x0+0x25)=='\\0'){lVar2=5;puVar3=(undefined8*)pcVar1;}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar2<<1);__memcpy_chk((ulong)&local_198|1,puVar3,lVar2,0x17);uVar8=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar2)=0;}uVar4=local_190;pcVar1=local_188;if((uVar8&1)==0){uVar4=uVar8>>1;pcVar1=(char*)((long)&local_198+1);}std::__ndk1::__put_charact"}},
-    %{name: "HealthPointsRatioToAutoUse_pe2", type: {:nullable, "unsigned_char"}}
+    %{name: "HealthPointsRatioToAutoUse_pe2", type: {:nullable, {:struct, "unsigned_char"}}}
   ],
 
 "BoundAndErodedInheritanceBatchCraftRequestInfo" => [
@@ -9396,7 +9396,7 @@
 "CovenantHistoryQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "CovenantHistoryCategory", type: {:enum, "ETzCovenantHistoryCategoryType"}},
+    %{name: "CovenantHistoryCategory", type: {:enum, "CovenantHistoryCategoryType"}},
     %{name: "CovenantHistoryInfos", type: {:list, {:struct, "CovenantHistoryInfo"}}}
   ],
 
@@ -9436,7 +9436,7 @@
     %{name: "Column", type: {:int, 4}},
     %{name: "DeployType", type: :unknown},
     %{name: "DataType", type: :unknown},
-    %{name: "Key", type: :unknown},
+    %{name: "Key", type: :bool},
     %{name: "Comment", type: :unknown},
     %{name: "Name", type: :unknown}
   ],
@@ -9447,13 +9447,13 @@
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "BuyCountInfos", type: {:list, {:struct, "GoodsBuyCountInfo"}}},
     %{name: "RegisteredGoodsBuyCountInfos", type: {:list, {:struct, "RegisteredGoodsBuyCountInfo"}}},
-    %{name: "RegisterShopBuyFailItems", type: :unknown},
-    %{name: "MostExpensiveGoodsItemIndex", type: :unknown}
+    %{name: "RegisterShopBuyFailItems", type: {:map, {:uint, 8}, {:uint, 8}}},
+    %{name: "MostExpensiveGoodsItemIndex", type: {:nullable, :message}}
   ],
 
 "AccountAffectAttachNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "AccountAffectInfo", type: :unknown}
+    %{name: "AccountAffectInfo", type: {:nullable, :message}}
   ],
 
 "RealmPlayerId" => [
@@ -9462,7 +9462,7 @@
   ],
 
 "AutoBuySettingsInfo" => [
-    %{name: "Settings", type: :unknown}
+    %{name: "Settings", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "RealmAccountPresentQueryRequest" => [
@@ -9477,15 +9477,15 @@
 "SquadSharedFocusTargetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SquadOrder", type: {:int, 4}},
-    %{name: "SharedFocusTargetInfo", type: :unknown}
+    %{name: "SharedFocusTargetInfo", type: {:nullable, :message}}
   ],
 
 "PlayerLoginResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "GameServerConnectionInfo", type: {:nullable, {:struct, "ConnectionInfo"}}},
-    %{name: "CanCheatCommand", type: :unknown},
-    %{name: "BanInfo", type: :unknown},
+    %{name: "CanCheatCommand", type: :bool},
+    %{name: "BanInfo", type: {:nullable, :message}},
     %{name: "InPvpPlayerGuid", type: {:uint, 8}}
   ],
 
@@ -9497,7 +9497,7 @@
 "PlayerLocationMonitoringConnectionStateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}}
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}}
   ],
 
 "CheatCharacterPrivateStatsInfoRequest" => [
@@ -9534,7 +9534,7 @@
 
 "CovenantRegisteredGoodsServiceStateUpdateDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "ServiceState", type: {:enum, "ETzCovenantRegisteredGoodsServiceStateType"}}
+    %{name: "ServiceState", type: {:enum, "CovenantRegisteredGoodsServiceStateType"}}
   ],
 
 "CovenantRemoveJoinApplicationNotify" => [
@@ -9555,7 +9555,7 @@
 "StrongholdBattleRemoveSiegeWeaponSlotNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "SlotIndex", type: {:int, 2}}
   ],
 
@@ -9571,7 +9571,7 @@
 "FavoriteCollectionRegisterResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CollectionCuid", type: :cuid},
-    %{name: "IsRegistered", type: :unknown}
+    %{name: "IsRegistered", type: :bool}
   ],
 
 "CheatAddDeathPenaltyRecordResponse" => [
@@ -9583,16 +9583,16 @@
   ],
 
 "FollowerDispatchInfo" => [
-    %{name: "WorkKind", type: {:enum, "ETzFollowerWorkKindType"}},
+    %{name: "WorkKind", type: {:enum, "FollowerWorkKindType"}},
     %{name: "WorkplaceCuid", type: :cuid},
     %{name: "WorkplaceSpawnedEntityCuid", type: :cuid},
-    %{name: "BuildingWorkObjectiveInfo", type: :unknown}
+    %{name: "BuildingWorkObjectiveInfo", type: {:nullable, :message}}
   ],
 
 "CheatCharacterPrivateStatsInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CharacterGuid", type: {:uint, 8}},
-    %{name: "CharacterPrivateStatsInfo", type: :unknown}
+    %{name: "CharacterPrivateStatsInfo", type: {:nullable, :message}}
   ],
 
 "ZoneInfo" => [
@@ -9602,28 +9602,28 @@
 
 "CrossRealmCovenantQuerySummaryInfoListRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantGuidRealmCuidList", type: :unknown}
+    %{name: "CovenantGuidRealmCuidList", type: {:map, {:uint, 8}, :cuid}}
   ],
 
 "TerritoryContaminationStageChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "TerritoryCuid", type: :cuid},
-    %{name: "BeforeContaminationStage", type: {:enum, "ETzContaminationStageType"}},
-    %{name: "AfterContaminationStage", type: {:enum, "ETzContaminationStageType"}}
+    %{name: "BeforeContaminationStage", type: {:enum, "ContaminationStageType"}},
+    %{name: "AfterContaminationStage", type: {:enum, "ContaminationStageType"}}
   ],
 
 "FieldEnterCompleteResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "FieldInitializeInfo", type: {:nullable, {:struct, "FieldInitializeInfo"}}},
-    %{name: "ServerNavMeshCrcChecksum", type: "unsigned_int"},
-    %{name: "ClientNavMeshCrcChecksum", type: "unsigned_int"},
-    %{name: "EntitySpawnReason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}},
+    %{name: "ServerNavMeshCrcChecksum", type: {:struct, "unsigned_int"}},
+    %{name: "ClientNavMeshCrcChecksum", type: {:struct, "unsigned_int"}},
+    %{name: "EntitySpawnReason", type: {:enum, "EntitySpawnRemoveReasonType"}},
     %{name: "LastSourceWarpPointCuid", type: :cuid}
   ],
 
 "WorldMapMarkerRemoveResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "RemovedGuid", type: {:uint, 8}},
     %{name: "ServerDrivenPlayOptionInfo", type: {:nullable, {:struct, "ServerDrivenPlayOptionInfo"}}}
   ],
@@ -9651,7 +9651,7 @@
 
 "MailWarehouseMigrationLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailLayoutInfo"}},
-    %{name: "WarehouseMigrationReason", type: {:enum, "ETzWarehouseMigrationReasonType"}},
+    %{name: "WarehouseMigrationReason", type: {:enum, "WarehouseMigrationReasonType"}},
     %{name: "WarehouseMigrationInfo", type: {:nullable, {:struct, "WarehouseMigrationInfo"}}},
     %{name: "SourceHavenCuid", type: :cuid},
     %{name: "DestinationHavenCuid", type: :cuid}
@@ -9668,7 +9668,7 @@
 
 "CovenantRubyShopInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "ShopInfos", type: :unknown},
+    %{name: "ShopInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCovenantRubyShopInfo"}}},
     %{name: "ShopMerchandiseInfos", type: {:list, {:struct, "CovenantRubyShopMerchandiseInfo"}}}
   ],
 
@@ -9701,7 +9701,7 @@
 
 "CovenantDiplomacyDeleteNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantDiplomacyInfo", type: :unknown}
+    %{name: "CovenantDiplomacyInfo", type: {:nullable, :message}}
   ],
 
 "HavenOccupancyInfo" => [
@@ -9719,13 +9719,13 @@
   ],
 
 "MailLayoutInfo" => [
-    %{name: "MailLayoutKind", type: {:enum, "ETzMailLayoutKindType"}}
+    %{name: "MailLayoutKind", type: {:enum, "MailLayoutKindType"}}
   ],
 
 "ConnectionStatusSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}}
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}}
   ],
 
 "InteractionStartNotify" => [
@@ -9736,7 +9736,7 @@
 
 "FollowerSquadUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "FollowerSquadSlots", type: :unknown}
+    %{name: "FollowerSquadSlots", type: {:map, {:struct, "unsigned_char"}, {:uint, 8}}}
   ],
 
 "CheatSetLocalServerPushResponse" => [
@@ -9755,7 +9755,7 @@
 
 "MonsterBookConsumeItemOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "ItemGradeToBatchConsume", type: {:enum, "ETzItemGradeType"}}
+    %{name: "ItemGradeToBatchConsume", type: {:enum, "ItemGradeType"}}
   ],
 
 "CheatSpawnNpcRequest" => [
@@ -9783,7 +9783,7 @@
 
 "SeasonPassLevelRewardAllResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RewardedLevels", type: :unknown},
+    %{name: "RewardedLevels", type: {:map, {:enum, "SeasonPassRewardKindType"}, {:struct, "TSet<int"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
   ],
@@ -9794,10 +9794,10 @@
 
 "CheatInstallStanceResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "InstallRequestedStance", type: {:enum, "ETzStanceType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "InstallRequestedStance", type: {:enum, "StanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "InstalledStance", type: {:enum, "ETzStanceType"}}
+    %{name: "InstalledStance", type: {:enum, "StanceType"}}
   ],
 
 "EmergencyEscapeResponse" => [
@@ -9819,12 +9819,12 @@
 
 "CovenantSupportApplyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "FollowerGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "FollowerGuids", type: {:list, {:uint, 8}}}
   ],
 
 "InventoryUpdateInfo" => [
     %{name: "AddedItemInfoList", type: {:list, {:struct, "ItemInfo"}}},
-    %{name: "RemovedItemGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "RemovedItemGuidList", type: {:list, {:uint, 8}}},
     %{name: "StackableItemUpdateInfoList", type: {:list, {:struct, "StackableItemUpdateInfo"}}}
   ],
 
@@ -9852,7 +9852,7 @@
 "CovenantWatchDetailInfo" => [
     %{name: "__base__", type: {:struct, "CovenantWatchInfo"}},
     %{name: "TargetPlayerName", type: :string},
-    %{name: "TargetPlayerClasse", type: {:enum, "ETzClasseType"}},
+    %{name: "TargetPlayerClasse", type: {:enum, "ClasseType"}},
     %{name: "TargetPlayerCovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}}
@@ -9869,7 +9869,7 @@
 
 "WorldMapMarkerCopyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "SourceWorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "SourceWorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "SourceGuid", type: {:uint, 8}}
   ],
 
@@ -9879,7 +9879,7 @@
 
 "CheatSetUrfModeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsUrfMode", type: :unknown}
+    %{name: "IsUrfMode", type: :bool}
   ],
 
 "MerchandisePaymentInfo" => [
@@ -9895,7 +9895,7 @@
     %{name: "ExpeditionGuid", type: {:uint, 8}},
     %{name: "ExpeditionCuid", type: :cuid},
     %{name: "ExpeditionJoinDateTime", type: {:nullable, :datetime}},
-    %{name: "ExpeditionPhase", type: {:enum, "ETzBattalionExpeditionPhaseType"}}
+    %{name: "ExpeditionPhase", type: {:enum, "BattalionExpeditionPhaseType"}}
   ],
 
 "XorHandshake" => [
@@ -9908,7 +9908,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ShopCuid", type: :cuid},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "MerchandiseBuyInfos", type: :unknown},
+    %{name: "MerchandiseBuyInfos", type: {:map, :cuid, {:uint, 8}}},
     %{name: "UseResetCount", type: {:int, 4}}
   ],
 
@@ -9944,7 +9944,7 @@
 
 "MarketRecommendedItemQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}}
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}}
   ],
 
 "ErosionInstallCancelFailResponse" => [
@@ -9971,7 +9971,7 @@
 
 "CheatToggleShowQuestDebugResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsEnabled", type: :unknown}
+    %{name: "IsEnabled", type: :bool}
   ],
 
 "CheatClearRealmIntegrationBattleAllScoreResponse" => [
@@ -10013,7 +10013,7 @@
 
 "ChatBattalionRequest" => [
     %{name: "__base__", type: {:struct, "ChatRequest"}},
-    %{name: "IsNotice", type: :unknown}
+    %{name: "IsNotice", type: :bool}
   ],
 
 "CoreMaterialItemInfo" => [
@@ -10023,7 +10023,7 @@
 "PlayerMissionRewardRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "MissionCuidAndSteps", type: :unknown}
+    %{name: "MissionCuidAndSteps", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "BasicAchievementPrivateChannelCloseRequest" => [
@@ -10034,17 +10034,17 @@
     %{name: "__base__", type: {:struct, "CharacterInfo"}},
     %{name: "GatheringSiteCuid", type: :cuid},
     %{name: "SpawnerCuid", type: :cuid},
-    %{name: "GatheringFollowerWorkInfos", type: :unknown}
+    %{name: "GatheringFollowerWorkInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzFollowerWorkOverallInfo"}}}
   ],
 
 "CovenantJoinApplicationInfo" => [
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "SlayingGrade", type: {:int, 2}},
     %{name: "ApplyDateTime", type: :datetime},
-    %{name: "IsConnected", type: :unknown},
+    %{name: "IsConnected", type: :bool},
     %{name: "LastClientDisconnectDateTime", type: :datetime}
   ],
 
@@ -10063,9 +10063,9 @@
 
 "CheatKillSurroundingCharactersRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MaxRadius_cm", type: "float"},
-    %{name: "FactionRelationScope", type: {:enum, "ETzFactionRelationScopeType"}},
-    %{name: "IsSkipDyingAndFinishable", type: :unknown}
+    %{name: "MaxRadius_cm", type: :float},
+    %{name: "FactionRelationScope", type: {:enum, "FactionRelationScopeType"}},
+    %{name: "IsSkipDyingAndFinishable", type: :bool}
   ],
 
 "CovenantSupportApplyNotify" => [
@@ -10078,7 +10078,7 @@
 
 "EquipmentPresetSelectResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "EquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}},
+    %{name: "EquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}},
     %{name: "PlayerPublicStatsInfo", type: {:nullable, {:struct, "PlayerPublicStatsInfo"}}},
     %{name: "PlayerPrivateStatsInfo", type: {:nullable, {:struct, "PlayerPrivateStatsInfo"}}},
     %{name: "CostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}}
@@ -10094,13 +10094,13 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "RegionCuid", type: {:nullable, {:struct, "Cuid"}}},
     %{name: "HuntingLocation_cm", type: {:nullable, :vector}},
-    %{name: "ResupplyOnStart", type: :unknown}
+    %{name: "ResupplyOnStart", type: :bool}
   ],
 
 "GearEnchantPreserveItemAdditionalInfo" => [
     %{name: "__base__", type: {:struct, "ItemAdditionalInfo"}},
     %{name: "GearCuid", type: :cuid},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "GearEnchantSlotInfos", type: {:list, {:struct, "GearEnchantSlotInfo"}}}
   ],
 
@@ -10121,10 +10121,10 @@
     %{name: "StampToken", type: :string},
     %{name: "StampId", type: :string},
     %{name: "Quantity", type: {:int, 4}},
-    %{name: "MarketType", type: {:enum, "ETzMarketType"}},
+    %{name: "MarketType", type: {:enum, "MarketType"}},
     %{name: "PriceAmountMicros", type: {:uint, 8}},
     %{name: "PriceCurrencyCode", type: :string},
-    %{name: "IsSubscription", type: :unknown},
+    %{name: "IsSubscription", type: :bool},
     %{name: "LocalizedTitle", type: :string}
   ],
 
@@ -10142,7 +10142,7 @@
 
 "CovenantRejectInvitationsRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "CovenantGuids", type: {:list, {:uint, 8}}}
   ],
 
 "MonsterBookExperiencePointsItemConsumeResponse" => [
@@ -10166,7 +10166,7 @@
 "QueryPlayerBattalionJoinableResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "IsJoinableBattalion", type: :unknown}
+    %{name: "IsJoinableBattalion", type: :bool}
   ],
 
 "RealmAccountPresentRegisterResponse" => [
@@ -10188,7 +10188,7 @@
 
 "ContentsActivationUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ContentsActivationFlags", type: {:list, {:struct, "bool,TSizedDefaultAllocator<32"}}}
+    %{name: "ContentsActivationFlags", type: {:list, :bool}}
   ],
 
 "CovenantUpdateEmblemInfoNotify" => [
@@ -10198,9 +10198,9 @@
 
 "SkillGroundTargetingInfo" => [
     %{name: "__base__", type: {:struct, "SkillTargetingInfo"}},
-    %{name: "DirectionYaw_rad", type: "float"},
+    %{name: "DirectionYaw_rad", type: :float},
     %{name: "Location_cm", type: :vector},
-    %{name: "IsOriginatedAtCasterLocationProxy", type: :unknown}
+    %{name: "IsOriginatedAtCasterLocationProxy", type: :bool}
   ],
 
 "CovenantStrongholdTaxSettlementNotify" => [
@@ -10214,9 +10214,9 @@
     %{name: "__base__", type: {:struct, "RPCMessage"}},
     %{name: "InterfaceTypeCode", type: {:int, 4}},
     %{name: "MethodId", type: {:int, 4}},
-    %{name: "Param", type: :unknown},
-    %{name: "FireAndForget", type: :unknown},
-    %{name: "HasCancellationToken", type: :unknown}
+    %{name: "Param", type: {:nullable, :message}},
+    %{name: "FireAndForget", type: :bool},
+    %{name: "HasCancellationToken", type: :bool}
   ],
 
 "CovenantSynchronizeMemberInfosRequest" => [
@@ -10234,7 +10234,7 @@
     %{name: "DistrictCuid", type: :cuid},
     %{name: "PvpBattleGuid1", type: {:uint, 8}},
     %{name: "PvpBattleGuid2", type: {:uint, 8}},
-    %{name: "PvpBattleInfo", type: :unknown}
+    %{name: "PvpBattleInfo", type: {:nullable, :message}}
   ],
 
 "CheatMonsterBookAcquireAllResponse" => [
@@ -10256,16 +10256,16 @@
 
 "StanceSwitchResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "SwitchRequestedStance", type: {:enum, "ETzStanceType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "SwitchRequestedStance", type: {:enum, "StanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}}
   ],
 
 "ErFrontServerSessionWaitingQueueNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "WaitQueueType", type: {:enum, "ETzWaitQueueType"}},
+    %{name: "WaitQueueType", type: {:enum, "WaitQueueType"}},
     %{name: "WaitingQueueRemainingCount", type: {:int, 4}},
-    %{name: "RealmHasSpaceAvailable", type: :unknown}
+    %{name: "RealmHasSpaceAvailable", type: :bool}
   ],
 
 "QuestRewardResponse" => [
@@ -10293,18 +10293,18 @@
 "MailMarkAsImportantRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MailGuid", type: {:uint, 8}},
-    %{name: "MailBoxKind", type: {:enum, "ETzMailBoxKindType"}}
+    %{name: "MailBoxKind", type: {:enum, "MailBoxKindType"}}
   ],
 
 "BuildingBaseBuildingExistenceSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "IsBaseBuildingExist", type: :unknown}
+    %{name: "IsBaseBuildingExist", type: :bool}
   ],
 
 "SecessionChatRoomResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "ChatRoomGuid", type: {:uint, 8}}
   ],
 
@@ -10320,7 +10320,7 @@
 
 "CovenantRejectInvitationsFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RejectFailedCovenantGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "RejectFailedCovenantGuids", type: {:list, {:uint, 8}}}
   ],
 
 "StrongholdCancelProtectionReservationResponse" => [
@@ -10342,7 +10342,7 @@
   ],
 
 "OrganizationStatPrimaryKey" => [
-    %{name: "OrganizationStatKind", type: {:enum, "ETzOrganizationStatKindType"}},
+    %{name: "OrganizationStatKind", type: {:enum, "OrganizationStatKindType"}},
     %{name: "TargetKindEnumInteger", type: {:int, 4}},
     %{name: "EffectKindEnumInteger", type: {:int, 4}},
     %{name: "EffectCuid", type: :cuid}
@@ -10350,7 +10350,7 @@
 
 "ItemAutoUseInfoUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "ItemCuids", type: {:list, :cuid}}
   ],
 
 "CovenantSummaryInfoRequest" => [
@@ -10369,15 +10369,15 @@
 "RewardInfo" => [
     %{name: "ExperiencePoints", type: {:uint, 8}},
     %{name: "CovenantExperiencePoints", type: {:uint, 8}},
-    %{name: "CurrencyCuidToAmount", type: :unknown},
+    %{name: "CurrencyCuidToAmount", type: {:map, :cuid, {:uint, 8}}},
     %{name: "RewardItemInfos", type: {:list, {:struct, "ItemInfo"}}},
     %{name: "SortedRewardItemIndexWithCounts", type: {:list, {:struct, "RewardItemIndexWithCount"}}},
     %{name: "EntanglementGauge", type: {:int, 4}},
-    %{name: "Amity", type: :unknown},
+    %{name: "Amity", type: {:map, :cuid, {:uint, 8}}},
     %{name: "BossChaseGauge", type: {:int, 4}},
-    %{name: "IsUpgradeSlayingGrade", type: :unknown},
+    %{name: "IsUpgradeSlayingGrade", type: :bool},
     %{name: "SpiritualBondPower", type: {:uint, 8}},
-    %{name: "AnniversaryRewardCuidToAmount", type: :unknown},
+    %{name: "AnniversaryRewardCuidToAmount", type: {:map, :cuid, {:uint, 8}}},
     %{name: "AnniversaryPoint", type: {:uint, 8}},
     %{name: "SeasonPassExperiencePoints", type: {:uint, 8}},
     %{name: "UnlockPaidRewardSeasonPassCuid", type: :cuid},
@@ -10392,7 +10392,7 @@
 
 "WorldMapPvpBattleInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "PvpBattleInfos", type: :unknown}
+    %{name: "PvpBattleInfos", type: {:map, :cuid, {:struct, "TMap<long_long"}}}
   ],
 
 "CovenantDiplomacyDeclareHostilityNotify" => [
@@ -10407,7 +10407,7 @@
 
 "ExpeditionInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "ExpeditionSummaryInfos", type: :unknown}
+    %{name: "ExpeditionSummaryInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzExpeditionSummaryInfo"}}}
   ],
 
 "CombatOptionInfo" => [
@@ -10417,7 +10417,7 @@
   ],
 
 "BuildingWorkRequestInfo" => [
-    %{name: "BaseInfo", type: :unknown}
+    %{name: "BaseInfo", type: {:nullable, :message}}
   ],
 
 "BattalionSwapFormationNotify" => [
@@ -10428,19 +10428,19 @@
     %{name: "SquadOrderB", type: {:int, 4}},
     %{name: "SquadMemberOrderB", type: {:int, 4}},
     %{name: "PlayerGuidB", type: {:uint, 8}},
-    %{name: "SwapFormationReason", type: {:enum, "ETzBattalionSwapFormationReasonType"}}
+    %{name: "SwapFormationReason", type: {:enum, "BattalionSwapFormationReasonType"}}
   ],
 
 "PvpRecordKillerNpcInfo" => [
     %{name: "__base__", type: {:struct, "PvpRecordNpcInfo"}},
     %{name: "Damage", type: {:uint, 8}},
-    %{name: "AttackerKind", type: {:enum, "ETzPvpRecordAttackerKindType"}},
+    %{name: "AttackerKind", type: {:enum, "PvpRecordAttackerKindType"}},
     %{name: "LastAttackDateTime", type: :datetime}
   ],
 
 "BattalionChatInfo" => [
     %{name: "__base__", type: {:struct, "ChatInfo"}},
-    %{name: "IsNotice", type: :unknown}
+    %{name: "IsNotice", type: :bool}
   ],
 
 "CovenantTradeCategoryQueryRequest" => [
@@ -10450,8 +10450,8 @@
 
 "CharacterMoveStopInfo" => [
     %{name: "__base__", type: {:struct, "CharacterMoveInfo"}},
-    %{name: "CurrentFacingDirectionYaw_rad", type: "float"},
-    %{name: "CharacterStopMovingReason", type: {:enum, "ETzCharacterStopMovingReasonType"}}
+    %{name: "CurrentFacingDirectionYaw_rad", type: :float},
+    %{name: "CharacterStopMovingReason", type: {:enum, "CharacterStopMovingReasonType"}}
   ],
 
 "ExpeditionInfo" => [
@@ -10460,7 +10460,7 @@
     %{name: "SealedSiteCuid", type: :cuid},
     %{name: "EndDateTime", type: {:nullable, :datetime}},
     %{name: "NpcSummonWaveIndex", type: {:int, 4}},
-    %{name: "JoinedBattalionCovenantGuids", type: :unknown}
+    %{name: "JoinedBattalionCovenantGuids", type: {:map, {:uint, 8}, {:uint, 8}}}
   ],
 
 "CovenantParticipationInfoQueryRequest" => [
@@ -10480,7 +10480,7 @@
 
 "ServerDrivenPlayOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "AlwaysUseWarp", type: :boolean},
+    %{name: "AlwaysUseWarp", type: :bool},
     %{name: "SwitchAtCurrentLocationInsideHuntingSite", type: :unknown},
     %{name: "AutoSwitchOnDisconnected", type: :unknown},
     %{name: "DesignatedHuntingSiteCuid", type: :cuid},
@@ -10497,7 +10497,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "WinnerBattalionInfo", type: {:nullable, {:struct, "StrongholdBattleWinnerBattalionInfo"}}},
-    %{name: "EndReason", type: {:enum, "ETzStrongholdBattleEndReasonType"}},
+    %{name: "EndReason", type: {:enum, "StrongholdBattleEndReasonType"}},
     %{name: "BattalionParticipateDuration_sec", type: {:int, 4}},
     %{name: "BattalionMemberCoreInfos", type: {:list, {:struct, "BattalionMemberCoreInfo"}}},
     %{name: "BattalionMemberStatisticsInfos", type: {:list, {:struct, "StrongholdBattleCovenantBattalionMemberStatisticsInfo"}}},
@@ -10508,7 +10508,7 @@
 "WorldMapPvpBattlePublishNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "DistrictCuid", type: :cuid},
-    %{name: "PvpBattleInfo", type: :unknown}
+    %{name: "PvpBattleInfo", type: {:nullable, :message}}
   ],
 
 "CovenantSearchInfo" => [
@@ -10517,15 +10517,15 @@
     %{name: "Ranking", type: {:nullable, {:int, 4}}},
     %{name: "Name", type: :string},
     %{name: "Level", type: {:int, 4}},
-    %{name: "CovenantJoinKind", type: {:enum, "ETzCovenantJoinKindType"}},
+    %{name: "CovenantJoinKind", type: {:enum, "CovenantJoinKindType"}},
     %{name: "LeaderName", type: :string},
     %{name: "MemberCount", type: {:int, 2}},
     %{name: "MaxMemberCount", type: {:int, 2}},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "CovenantCampCuid", type: :cuid},
-    %{name: "OccupiedStrongholdCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "OccupiedStrongholdCuids", type: {:list, :cuid}},
     %{name: "MainHavenCuid", type: :cuid},
-    %{name: "IsJoinApplied", type: :unknown}
+    %{name: "IsJoinApplied", type: :bool}
   ],
 
 "RejectDiplomacyChatRoomInvitationResponse" => [
@@ -10535,7 +10535,7 @@
 
 "PrivateChannelCloseResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ChannelKind", type: {:enum, "ETzPrivateChannelKindType"}}
+    %{name: "ChannelKind", type: {:enum, "PrivateChannelKindType"}}
   ],
 
 "StrongholdBattleCovenantBattalionStrategicObjectiveResetRequest" => [
@@ -10553,8 +10553,8 @@
 "PreregistrationInfo" => [
     %{name: "RealmInfo", type: {:nullable, {:struct, "RealmInfo"}}},
     %{name: "ReservedPlayerName", type: :string},
-    %{name: "IsAnyPlayerCreated", type: :unknown},
-    %{name: "IsReservedPlayerCreated", type: :unknown},
+    %{name: "IsAnyPlayerCreated", type: :bool},
+    %{name: "IsReservedPlayerCreated", type: :bool},
     %{name: "ReservedCovenantName", type: :string},
     %{name: "EndDateTime", type: :datetime}
   ],
@@ -10566,7 +10566,7 @@
     %{name: "DefenseTargetGuid", type: {:uint, 8}},
     %{name: "CurrentWaveIndex", type: {:nullable, {:int, 4}}},
     %{name: "CurrentWaveStartDateTime", type: {:nullable, :datetime}},
-    %{name: "CurrentWaveNpcKnockOutProgress", type: :unknown}
+    %{name: "CurrentWaveNpcKnockOutProgress", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "CovenantUpdateCovenantMemberRoleNameRequest" => [
@@ -10591,10 +10591,10 @@
     %{name: "DestinationWarpPointCuid", type: :cuid},
     %{name: "NearestRoadJunctionToStartLocationId", type: {:int, 4}},
     %{name: "NearestRoadJunctionToDestinationId", type: {:int, 4}},
-    %{name: "PathToNearestRoadJunctionToStartLocation", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNotByRoad", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNotByRoadOneShotSpecialMoveIndices", type: {:list, {:struct, "int,TSizedDefaultAllocator<32"}}}
+    %{name: "PathToNearestRoadJunctionToStartLocation", type: {:list, :vector}},
+    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, :vector}},
+    %{name: "PathNotByRoad", type: {:list, :vector}},
+    %{name: "PathNotByRoadOneShotSpecialMoveIndices", type: {:list, {:int, 4}}}
   ],
 
 "CovenantHistoryShowArrivalNotify" => [
@@ -10608,13 +10608,13 @@
 
 "CheatUnsetStatRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StatKind", type: {:enum, "ETzAdjustableStatKindType"}}
+    %{name: "StatKind", type: {:enum, "AdjustableStatKindType"}}
   ],
 
 "GearEnhancementResultInfo" => [
     %{name: "GearGuid", type: {:uint, 8}},
-    %{name: "IsEnhancementSuccess", type: :boolean},
-    %{name: "ItemInfo", type: :unknown},
+    %{name: "IsEnhancementSuccess", type: :bool},
+    %{name: "ItemInfo", type: {:nullable, :message}},
     %{name: "ResultEnhancementGrade", type: {:int, 2}},
     %{name: "PreviousEnhancementGrade", type: {:int, 2}},
     %{name: "IsConfirmedEnhancement", type: :unknown},
@@ -10638,13 +10638,13 @@
 
 "MarketSellResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
   ],
 
 "NpcSpeechBalloonTextFormatInfo" => [
-    %{name: "TextFormatParameters", type: {:list, {:struct, "FString,TSizedDefaultAllocator<32"}}}
+    %{name: "TextFormatParameters", type: {:list, :string}}
   ],
 
 "CovenantWatchRegisterRequest" => [
@@ -10655,7 +10655,7 @@
 "CheatChangeStrongholdAllBuildingLevelRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "BuildingKind", type: {:enum, "ETzBuildingKindType"}},
+    %{name: "BuildingKind", type: {:enum, "BuildingKindType"}},
     %{name: "BuildingLevel", type: {:int, 4}}
   ],
 
@@ -10728,16 +10728,16 @@
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "PlayerInventoryItemAddInfo", type: {:nullable, {:struct, "ItemAddInfo"}}},
-    %{name: "CurrencyCuidToAmount", type: :unknown},
-    %{name: "IsAnyRewardSentByMail", type: :unknown},
+    %{name: "CurrencyCuidToAmount", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "IsAnyRewardSentByMail", type: :bool},
     %{name: "CovenantRewardInfo", type: {:nullable, {:struct, "CovenantRewardInfo"}}},
     %{name: "SpiritualBondPower", type: {:uint, 8}},
     %{name: "TerritoryCuid", type: :cuid},
     %{name: "EntanglementGauge", type: {:int, 4}},
     %{name: "BossChaseGauge", type: {:int, 4}},
     %{name: "AmityReason", type: :string},
-    %{name: "Amity", type: :unknown},
-    %{name: "IsUpgradeSlayingGrade", type: :unknown},
+    %{name: "Amity", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "IsUpgradeSlayingGrade", type: :bool},
     %{name: "SeasonPassExperiencePoints", type: {:uint, 8}},
     %{name: "UnlockPaidRewardSeasonPassCuid", type: :cuid},
     %{name: "UnlockPlusRewardSeasonPassCuid", type: :cuid},
@@ -10754,7 +10754,7 @@
 
 "AnniversaryAchievementUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "AnniversaryAchievementInfo", type: :unknown}
+    %{name: "AnniversaryAchievementInfo", type: {:nullable, :message}}
   ],
 
 "ClanSponsorRequest" => [
@@ -10776,7 +10776,7 @@
 "FavoriteCraftRecipeRegisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "RewardCuid", type: :cuid},
-    %{name: "IsRegistered", type: :unknown}
+    %{name: "IsRegistered", type: :bool}
   ],
 
 "CheatAccomplishAchievementRequest" => [
@@ -10793,15 +10793,15 @@
 "CovenantJoinedStrongholdBattleInfo" => [
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "StrongholdBattleGuid", type: {:uint, 8}},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "BattalionGuid", type: {:uint, 8}}
   ],
 
 "AchievementInfo" => [
     %{name: "AchievementCuid", type: :cuid},
-    %{name: "MissionProgressCounts", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "MissionProgressCounts", type: {:list, {:uint, 8}}},
     %{name: "AccomplishDateTime", type: {:nullable, :datetime}},
-    %{name: "IsRewarded", type: :unknown}
+    %{name: "IsRewarded", type: :bool}
   ],
 
 "PartyDismissFailResponse" => [
@@ -10829,16 +10829,16 @@
   ],
 
 "SquadInfo" => [
-    %{name: "MemberGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "MemberGuids", type: {:list, {:uint, 8}}},
     %{name: "TargetLocationInfos", type: {:list, {:struct, "TargetLocationInfo"}}},
-    %{name: "SharedAttackTargetInfo", type: :unknown},
-    %{name: "SharedFocusTargetInfo", type: :unknown}
+    %{name: "SharedAttackTargetInfo", type: {:nullable, :message}},
+    %{name: "SharedFocusTargetInfo", type: {:nullable, :message}}
   ],
 
 "RealmAccountRegionContentPlayTimeInfo" => [
-    %{name: "RegionContentKind", type: {:enum, "ETzRegionContentKindType"}},
+    %{name: "RegionContentKind", type: {:enum, "RegionContentKindType"}},
     %{name: "CrossRealmSeasonCuid", type: :cuid},
-    %{name: "RegionContentPlayTimeInfo_sec", type: :unknown},
+    %{name: "RegionContentPlayTimeInfo_sec", type: {:nullable, :message}},
     %{name: "AccumulateRechargedTime_sec", type: {:int, 4}},
     %{name: "LastResetDateTime", type: :datetime}
   ],
@@ -10854,7 +10854,7 @@
 
 "CheatRealmAccountRealmTransferBlockRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ApplyAll", type: :unknown},
+    %{name: "ApplyAll", type: :bool},
     %{name: "RealmAccountRealmTransferStepString", type: :string}
   ],
 
@@ -10876,7 +10876,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
     %{name: "Level", type: {:int, 4}},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "ChatEntitySummaryInfo" => [
@@ -10894,7 +10894,7 @@
 
 "PrivateChannelCloseRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ChannelKind", type: {:enum, "ETzPrivateChannelKindType"}}
+    %{name: "ChannelKind", type: {:enum, "PrivateChannelKindType"}}
   ],
 
 "CheatPromoteAllFollowerRequest" => [
@@ -10903,7 +10903,7 @@
   ],
 
 "DataTable" => [
-    %{name: "DataHeader", type: :unknown},
+    %{name: "DataHeader", type: {:nullable, :message}},
     %{name: "DataId", type: {:int, 4}},
     %{name: "RegDate", type: :unknown},
     %{name: "Rows", type: :unknown}
@@ -10933,20 +10933,20 @@
 "StrongholdBattleCarriageLivingTotemLocationInfoSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcGuid", type: {:uint, 8}},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
     %{name: "MovePathInfo", type: {:nullable, {:struct, "MovePathInfo"}}}
   ],
 
 "CovenantTradeGoodsDealInfo" => [
     %{name: "__base__", type: {:struct, "CovenantTradeGoodsSalesInfo"}},
-    %{name: "BuyerInfo", type: :unknown},
+    %{name: "BuyerInfo", type: {:nullable, :message}},
     %{name: "DealDateTime", type: {:nullable, :datetime}}
   ],
 
 "WarehouseInfo" => [
     %{name: "HavenCuid", type: :cuid},
-    %{name: "PointCurrencyContainerInfo", type: :unknown},
+    %{name: "PointCurrencyContainerInfo", type: {:map, :cuid, {:uint, 8}}},
     %{name: "InventoryInfo", type: {:nullable, {:struct, "InventoryInfo"}}}
   ],
 
@@ -10958,13 +10958,13 @@
     %{name: "__base__", type: {:struct, "CharacterPublicStatsInfo"}},
     %{name: "AdditionalPlayerRunSpeedRatio_pe4", type: {:int, 4}},
     %{name: "SwimSpeed_cmpsec", type: {:int, 2}},
-    %{name: "SwimAngularSpeed_radpsec", type: "float"},
+    %{name: "SwimAngularSpeed_radpsec", type: :float},
     %{name: "CrawlSpeed_cmpsec", type: {:int, 2}},
-    %{name: "CrawlAngularSpeed_radpsec", type: "float"},
+    %{name: "CrawlAngularSpeed_radpsec", type: :float},
     %{name: "OnBoardWalkSpeed_cmpsec", type: {:int, 2}},
-    %{name: "OnBoardWalkAngularSpeed_radpsec", type: "float"},
+    %{name: "OnBoardWalkAngularSpeed_radpsec", type: :float},
     %{name: "OnBoardRunSpeed_cmpsec", type: {:int, 2}},
-    %{name: "OnBoardRunAngularSpeed_radpsec", type: "float"}
+    %{name: "OnBoardRunAngularSpeed_radpsec", type: :float}
   ],
 
 "AetherOptionResetRequest" => [
@@ -10975,8 +10975,8 @@
 "StackableItemSelector" => [
     %{name: "__base__", type: {:struct, "MultipleItemSelector"}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsBound", type: {:nullable, "lVar1=4;puVar2=&DAT_0901b5c8;if(*(char*)(in_x0+0x19)=='\\0'){lVar1=5;puVar2=(undefined8*)\"false\";}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar1<<1);__memcpy_chk((ulong)&local_198|1,puVar2,lVar1,0x17);uVar7=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar1)=0;}uVar3=local_190;pcVar5=local_188;if((uVar7&1)==0){uVar3=uVar7>>1;pcVar5=(char*)((long)&local_198+1);}std::__ndk1::__put_charact"}},
-    %{name: "IsStorable", type: {:nullable, "lVar1=4;puVar2=&DAT_0901b5c8;if(*(char*)(in_x0+0x1b)=='\\0'){lVar1=5;puVar2=(undefined8*)\"false\";}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar1<<1);__memcpy_chk((ulong)&local_198|1,puVar2,lVar1,0x17);uVar7=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar1)=0;}uVar3=local_190;pcVar5=local_188;if((uVar7&1)==0){uVar3=uVar7>>1;pcVar5=(char*)((long)&local_198+1);}std::__ndk1::__put_charact"}},
+    %{name: "IsBound", type: :bool},
+    %{name: "IsStorable", type: :bool},
     %{name: "ExpireBeginDateTime", type: {:nullable, :datetime}},
     %{name: "ExpireEndDateTime", type: {:nullable, :datetime}},
     %{name: "ItemCount", type: {:nullable, {:uint, 8}}}
@@ -10984,7 +10984,7 @@
 
 "ShopAutoSellSettingUpdateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "AutoSellSettings", type: :unknown}
+    %{name: "AutoSellSettings", type: {:map, :cuid, {:enum, "ItemGradeType"}}}
   ],
 
 "OccupiableNpcSummaryBulkUpdateDataNotify" => [
@@ -10999,13 +10999,13 @@
 
 "MailQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
     %{name: "UpperBoundDateTime", type: {:nullable, :datetime}}
   ],
 
 "CollisionFreeSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "IsCollisionFree", type: :unknown}
+    %{name: "IsCollisionFree", type: :bool}
   ],
 
 "PowerSavingModePlayInfo" => [
@@ -11019,7 +11019,7 @@
 "CovenantResearchInfo" => [
     %{name: "ResearchCuid", type: :cuid},
     %{name: "ResearchLevel", type: {:int, 4}},
-    %{name: "ResearchState", type: {:enum, "ETzCovenantResearchStateType"}},
+    %{name: "ResearchState", type: {:enum, "CovenantResearchStateType"}},
     %{name: "HavenCuid", type: :cuid},
     %{name: "WorkplaceCuid", type: :cuid},
     %{name: "LastUpdateGauge_mw", type: {:uint, 8}},
@@ -11037,7 +11037,7 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "Location_cm", type: :vector},
     %{name: "BuildingSpawnerCuid", type: :cuid},
-    %{name: "SufficientlyCloseDistance_cm", type: "float"}
+    %{name: "SufficientlyCloseDistance_cm", type: :float}
   ],
 
 "RejectDiplomacyChatRoomInvitationRequest" => [
@@ -11048,7 +11048,7 @@
 
 "CheatAnniversaryAchievementResetResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "AnniversaryAchievementPointInfos", type: :unknown}
+    %{name: "AnniversaryAchievementPointInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzAnniversaryAchievementPointInfo"}}}
   ],
 
 "PartyConfirmRecommendationForInviteeResponse" => [
@@ -11056,12 +11056,12 @@
     %{name: "RecommenderRealmPlayerId", type: {:struct, "RealmPlayerId"}},
     %{name: "InviteeRealmPlayerId", type: {:struct, "RealmPlayerId"}},
     %{name: "InviteeName", type: :string},
-    %{name: "IsApproved", type: :unknown}
+    %{name: "IsApproved", type: :bool}
   ],
 
 "CovenantSynchronizeMemberIsConnectedNotify" => [
     %{name: "__base__", type: {:struct, "CovenantSynchronizeMemberNotify"}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}},
     %{name: "LastClientDisconnectDateTime", type: :datetime}
   ],
 
@@ -11073,7 +11073,7 @@
 
 "MailCountQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}}
+    %{name: "MailTab", type: {:enum, "MailTabType"}}
   ],
 
 "CheatDiscoverAllSelfieDoodadSpawnersRequest" => [
@@ -11082,7 +11082,7 @@
 
 "CollectionCategoryActiveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CollectionCategoryCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "CollectionCategoryCuids", type: {:list, :cuid}}
   ],
 
 "CreateDiplomacyChatRoomResponse" => [
@@ -11093,7 +11093,7 @@
 "AccelerationUseFollowerWorkResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "FollowerGuid", type: {:uint, 8}},
-    %{name: "AccelerationActionKind", type: {:enum, "ETzAccelerationActionKindType"}},
+    %{name: "AccelerationActionKind", type: {:enum, "AccelerationActionKindType"}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "AcceleratedFollowerWorkInfo", type: {:nullable, {:struct, "FollowerWorkInfo"}}}
@@ -11118,22 +11118,22 @@
 "CharacterMoveInfo" => [
     %{name: "Location_cm", type: :vector},
     %{name: "ServerUtcNow", type: :datetime},
-    %{name: "DelayForOthersDuration_msec", type: "float"}
+    %{name: "DelayForOthersDuration_msec", type: :float}
   ],
 
 "ChatOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "ChatTabFilter", type: {:list, {:enum, "ETzChatKindType,TSizedDefaultAllocator<32"}}},
-    %{name: "ItemAcquireNotifyDisplayOption", type: :boolean},
+    %{name: "ChatTabFilter", type: {:list, {:enum, "ChatKindType"}}},
+    %{name: "ItemAcquireNotifyDisplayOption", type: :bool},
     %{name: "CovenantRewardAcquireNotifyDisplayOption", type: :unknown},
-    %{name: "ChatMacros", type: :unknown}
+    %{name: "ChatMacros", type: {:map, {:int, 4}, :string}}
   ],
 
 "PlayerCustomizeInfoChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
-    %{name: "Gender", type: {:enum, "ETzGenderType"}}
+    %{name: "Gender", type: {:enum, "GenderType"}}
   ],
 
 "CovenantTradeSalesRegisterResponse" => [
@@ -11152,7 +11152,7 @@
 
 "KickPreexistingSessionConfirmResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "KickPreexistingSession", type: :unknown}
+    %{name: "KickPreexistingSession", type: :bool}
   ],
 
 "BuffProtectionRecoveryStatusNotify" => [
@@ -11184,9 +11184,9 @@
   ],
 
 "PlayerFollowerInfo" => [
-    %{name: "FollowerSquadSlots", type: :unknown},
-    %{name: "FollowerDispatchOverallInfos", type: :unknown},
-    %{name: "FollowerCollectionInfos", type: :unknown}
+    %{name: "FollowerSquadSlots", type: {:map, {:struct, "unsigned_char"}, {:uint, 8}}},
+    %{name: "FollowerDispatchOverallInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzFollowerDispatchOverallInfo"}}},
+    %{name: "FollowerCollectionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzFollowerCollectionInfo"}}}
   ],
 
 "CovenantMemberContributionInfo" => [
@@ -11210,21 +11210,21 @@
 "StrongholdBuildingRepairRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "EntityRemoveBulkNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "EntityGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
-    %{name: "EntityRemoveReason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}}
+    %{name: "EntityGuids", type: {:list, {:uint, 8}}},
+    %{name: "EntityRemoveReason", type: {:enum, "EntitySpawnRemoveReasonType"}}
   ],
 
 "ErFrontServerSessionInitializeInfo" => [
     %{name: "__base__", type: {:struct, "ErServerSessionInitializeInfo"}},
-    %{name: "WaitQueueType", type: {:enum, "ETzWaitQueueType"}},
+    %{name: "WaitQueueType", type: {:enum, "WaitQueueType"}},
     %{name: "WaitingQueueRemainingCount", type: {:int, 4}},
-    %{name: "RealmHasSpaceAvailable", type: :unknown},
-    %{name: "PopupCommunityAutomatically", type: :unknown},
+    %{name: "RealmHasSpaceAvailable", type: :bool},
+    %{name: "PopupCommunityAutomatically", type: :bool},
     %{name: "ServerConfigInfo", type: {:nullable, {:struct, "ServerConfigInfo"}}}
   ],
 
@@ -11241,7 +11241,7 @@
     %{name: "CovenantExperiencePoints", type: {:uint, 8}},
     %{name: "SpiritualBondPower", type: {:uint, 8}},
     %{name: "RewardItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}},
-    %{name: "CurrencyCuidToAmount", type: :unknown}
+    %{name: "CurrencyCuidToAmount", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "RealmAccountLogoutResponse" => [
@@ -11255,7 +11255,7 @@
 
 "GearEnchantSlotInfo" => [
     %{name: "SlotIndex", type: {:int, 2}},
-    %{name: "GearEnchantOptionGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "GearEnchantOptionGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "GearEnchantOptionStatSetCuid", type: :cuid},
     %{name: "CharacterStatChange", type: {:nullable, {:struct, "CharacterStatChangeInfo"}}}
   ],
@@ -11265,12 +11265,12 @@
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "HasTeased", type: :unknown}
+    %{name: "HasTeased", type: :bool}
   ],
 
 "SkillAffectTargetStatsAffectInfo" => [
     %{name: "__base__", type: {:struct, "SkillStatsAffectInfo"}},
-    %{name: "IsCritical", type: :boolean},
+    %{name: "IsCritical", type: :bool},
     %{name: "IsBlocked", type: :unknown},
     %{name: "IsGlancingBlow", type: :unknown},
     %{name: "ProtectedDamage", type: {:int, 4}},
@@ -11285,8 +11285,8 @@
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
     %{name: "PlayerCovenantGuid", type: {:uint, 8}},
-    %{name: "ReturnReason", type: {:enum, "ETzFollowerReturnReasonType"}},
-    %{name: "ReturnReasonAdditionalInfo", type: :unknown},
+    %{name: "ReturnReason", type: {:enum, "FollowerReturnReasonType"}},
+    %{name: "ReturnReasonAdditionalInfo", type: {:nullable, :message}},
     %{name: "LeaveToWorkplaceDateTime", type: :datetime},
     %{name: "ArrivedAtWorkplaceDateTime", type: :datetime},
     %{name: "LeaveToHeadquartersDateTime", type: :datetime}
@@ -11300,7 +11300,7 @@
 "CovenantRealmTransferInfo" => [
     %{name: "RealmTransferCuid", type: :cuid},
     %{name: "DestinationRealmCuid", type: :cuid},
-    %{name: "CovenantRealmTransferMemberReadyChecks", type: :unknown},
+    %{name: "CovenantRealmTransferMemberReadyChecks", type: {:map, {:uint, 8}, :bool}},
     %{name: "CovenantRealmTransferExpireDateTime", type: {:nullable, :datetime}}
   ],
 
@@ -11318,7 +11318,7 @@
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "HasPlayerLocationMonitoringRegistered", type: :unknown}
+    %{name: "HasPlayerLocationMonitoringRegistered", type: :bool}
   ],
 
 "NpcOccupationCovenantInfo" => [
@@ -11330,8 +11330,8 @@
 "ExpeditionJoinRequestInfo" => [
     %{name: "ExpeditionGuid", type: {:uint, 8}},
     %{name: "HavenCuid", type: :cuid},
-    %{name: "IsAllowVolunteerJoinApply", type: :unknown},
-    %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :unknown}
+    %{name: "IsAllowVolunteerJoinApply", type: :bool},
+    %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :bool}
   ],
 
 "SendPrivateChatMessageRequest" => [
@@ -11342,7 +11342,7 @@
 
 "CovenantPayDividendRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DividendInfo", type: :unknown}
+    %{name: "DividendInfo", type: {:nullable, :message}}
   ],
 
 "ItemDestroyRequest" => [
@@ -11357,7 +11357,7 @@
 
 "CovenantGoodsRegistrationRegisteredGoodsInfoUpdateDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "RegisteredGoodsInfos", type: :unknown}
+    %{name: "RegisteredGoodsInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzRegisteredGoodsInfo"}}}
   ],
 
 "QueryChatRoomRecordsInitializationInfoResponse" => [
@@ -11396,8 +11396,8 @@
 "GearBatchCraftRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcGuid", type: {:uint, 8}},
-    %{name: "CraftTargetGrades", type: {:list, {:enum, "ETzItemGradeType,TSizedDefaultAllocator<32"}}},
-    %{name: "CraftTargetGearCategories", type: {:list, {:enum, "ETzGearCategoryKindType,TSizedDefaultAllocator<32"}}}
+    %{name: "CraftTargetGrades", type: {:list, {:enum, "ItemGradeType"}}},
+    %{name: "CraftTargetGearCategories", type: {:list, {:enum, "GearCategoryKindType"}}}
   ],
 
 "VersionCheckResult" => [
@@ -11415,9 +11415,9 @@
 
 "FollowerDeathInfo" => [
     %{name: "DeathDateTime", type: :datetime},
-    %{name: "DeathReason", type: {:enum, "ETzFollowerDeathReasonType"}},
-    %{name: "KillingInfo", type: :unknown},
-    %{name: "LootedItemIndexWithCount", type: :unknown}
+    %{name: "DeathReason", type: {:enum, "FollowerDeathReasonType"}},
+    %{name: "KillingInfo", type: {:nullable, :message}},
+    %{name: "LootedItemIndexWithCount", type: {:nullable, :message}}
   ],
 
 "PartyConfirmRecommendationForInviteeRequest" => [
@@ -11428,8 +11428,8 @@
 
 "PlayerSkillSlotUpdateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
-    %{name: "PlayerSkillSlotIndex", type: {:enum, "ETzPlayerSkillSlotIndexType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
+    %{name: "PlayerSkillSlotIndex", type: {:enum, "PlayerSkillSlotIndexType"}},
     %{name: "PlayerSkillSlotInfo", type: {:nullable, {:struct, "PlayerSkillSlotInfo"}}}
   ],
 
@@ -11441,13 +11441,13 @@
 
 "MailsDeleteInTabRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
     %{name: "UpperBoundDateTime", type: :datetime}
   ],
 
 "PointCurrencyContainerUpdateInfo" => [
-    %{name: "CuidToAmountDelta", type: :unknown},
-    %{name: "CuidToAmount", type: :unknown}
+    %{name: "CuidToAmountDelta", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "CuidToAmount", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "SeasonPassLevelBuyRequest" => [
@@ -11464,7 +11464,7 @@
 
 "CheatChangeCashShopCheckBuyLimitOptionResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "IsIgnoreToCheckBuyLimit", type: :unknown}
+    %{name: "IsIgnoreToCheckBuyLimit", type: :bool}
   ],
 
 "StrongholdBattleCovenantBattalionStrategicObjectiveResetFailResponse" => [
@@ -11473,9 +11473,9 @@
 
 "StrongholdCampaignBattleInfo" => [
     %{name: "__base__", type: {:struct, "StrongholdBattleInfo"}},
-    %{name: "CampaignProgressInfo", type: :unknown},
-    %{name: "TargetMissionCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
-    %{name: "CampaignConditionProgressInfos", type: :unknown}
+    %{name: "CampaignProgressInfo", type: {:nullable, :message}},
+    %{name: "TargetMissionCuids", type: {:list, :cuid}},
+    %{name: "CampaignConditionProgressInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCampaignConditionProgressInfo"}}}
   ],
 
 "ErInterServerMigrationAuthenticateInfo" => [
@@ -11488,7 +11488,7 @@
     %{name: "AnniversaryBeginDateTime", type: :datetime},
     %{name: "DateTime", type: {:nullable, :datetime}},
     %{name: "RankingInfos", type: {:list, {:struct, "RankingInfo"}}},
-    %{name: "CovenantRankingInfo", type: :unknown},
+    %{name: "CovenantRankingInfo", type: {:nullable, :message}},
     %{name: "CovenantMemberAnniversaryPointInfos", type: {:list, {:struct, "CovenantMemberAnniversaryPointInfo"}}}
   ],
 
@@ -11501,7 +11501,7 @@
 "CheatPvpScoreRankingSourceInfoChangeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PvpScore", type: {:uint, 8}},
-    %{name: "LastRole", type: {:enum, "ETzPvpRecordCharacterRoleType"}},
+    %{name: "LastRole", type: {:enum, "PvpRecordCharacterRoleType"}},
     %{name: "DeadCount", type: {:int, 4}},
     %{name: "KillCount", type: {:int, 4}},
     %{name: "AssistCount", type: {:int, 4}}
@@ -11528,9 +11528,9 @@
 
 "MarketFavoriteItemRegisterResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "MarketFavoriteItemInfo", type: {:nullable, {:struct, "MarketFavoriteItemInfo"}}},
-    %{name: "IsOnSaleMarketFavoriteItemInfo", type: :unknown}
+    %{name: "IsOnSaleMarketFavoriteItemInfo", type: :bool}
   ],
 
 "AnniversaryQueryRequest" => [
@@ -11546,7 +11546,7 @@
 "GearSlotPresetModifyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "EquipGearSlotInfos", type: {:list, {:struct, "GearSlotInfo"}}},
-    %{name: "UnequipGearSlots", type: {:list, {:enum, "ETzGearSlotType,TSizedDefaultAllocator<32"}}},
+    %{name: "UnequipGearSlots", type: {:list, {:enum, "GearSlotType"}}},
     %{name: "PlayerPublicStatsInfo", type: {:nullable, {:struct, "PlayerPublicStatsInfo"}}},
     %{name: "PlayerPrivateStatsInfo", type: {:nullable, {:struct, "PlayerPrivateStatsInfo"}}}
   ],
@@ -11555,142 +11555,142 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcGuid", type: {:uint, 8}},
     %{name: "NpcActionCuid", type: :cuid},
-    %{name: "NpcSpeechBalloonInfo", type: :unknown}
+    %{name: "NpcSpeechBalloonInfo", type: {:nullable, :message}}
   ],
 
 "PlayerCustomizeInfo" => [
     %{name: "BodyStyleSetCuid", type: :cuid},
     %{name: "HairStyleSetCuid", type: :cuid},
-    %{name: "SkinRoughness", type: "signed_char"},
-    %{name: "SkinColor", type: "unsigned_char"},
-    %{name: "Hair1Color", type: "unsigned_char"},
-    %{name: "Hair2Color", type: "unsigned_char"},
-    %{name: "IrisRColor", type: "unsigned_char"},
-    %{name: "IrisLColor", type: "unsigned_char"},
-    %{name: "ScleraColor", type: "unsigned_char"},
-    %{name: "IrisScale", type: "signed_char"},
-    %{name: "IrisPositionY", type: "signed_char"},
-    %{name: "EyebrowFrame", type: "unsigned_char"},
-    %{name: "EyebrowColor", type: "unsigned_char"},
-    %{name: "EyebrowIntensity", type: "signed_char"},
-    %{name: "EyelineFrame", type: "unsigned_char"},
-    %{name: "EyelineIntensity", type: "signed_char"},
-    %{name: "EyeshadowColor", type: "unsigned_char"},
-    %{name: "EyelineColor", type: "unsigned_char"},
-    %{name: "IrisTexture", type: "unsigned_char"},
-    %{name: "EyeshadowIntensity", type: "signed_char"},
-    %{name: "BlusherFrame", type: "unsigned_char"},
-    %{name: "BlusherColor", type: "unsigned_char"},
-    %{name: "BlusherIntensity", type: "signed_char"},
-    %{name: "LipFrame", type: "unsigned_char"},
-    %{name: "LipColor", type: "unsigned_char"},
-    %{name: "LipIntensity", type: "signed_char"},
-    %{name: "FaceTexture", type: "unsigned_char"},
-    %{name: "DecalTexture", type: "unsigned_char"},
-    %{name: "DecalIntensity", type: "signed_char"},
-    %{name: "DecalScale", type: "signed_char"},
-    %{name: "DecalRotation", type: "signed_char"},
-    %{name: "DecalPositionX", type: "signed_char"},
-    %{name: "DecalPositionY", type: "signed_char"},
-    %{name: "Forehead_Y", type: "signed_char"},
-    %{name: "Forehead_Z", type: "signed_char"},
-    %{name: "Eyebrow_End", type: "signed_char"},
-    %{name: "Eyebrow_Y", type: "signed_char"},
-    %{name: "Eyebrow_Z", type: "signed_char"},
-    %{name: "Eye_End", type: "signed_char"},
-    %{name: "Eye_Mid1", type: "signed_char"},
-    %{name: "Eye_Mid2", type: "signed_char"},
-    %{name: "Eye_X", type: "signed_char"},
-    %{name: "Eye_Y", type: "signed_char"},
-    %{name: "Eye_Z", type: "signed_char"},
-    %{name: "Eye_S1", type: "signed_char"},
-    %{name: "Eye_S2", type: "signed_char"},
-    %{name: "Cheek_X", type: "signed_char"},
-    %{name: "Cheek_Y", type: "signed_char"},
-    %{name: "Cheek_Z", type: "signed_char"},
-    %{name: "Cheek_s1", type: "signed_char"},
-    %{name: "Nose_End", type: "signed_char"},
-    %{name: "Nose_Mid", type: "signed_char"},
-    %{name: "Nose_X", type: "signed_char"},
-    %{name: "Nose_Y", type: "signed_char"},
-    %{name: "Nose_Z", type: "signed_char"},
-    %{name: "Nose_s1", type: "signed_char"},
-    %{name: "Nose_s2", type: "signed_char"},
-    %{name: "Mouth_End", type: "signed_char"},
-    %{name: "Mouth_Mid", type: "signed_char"},
-    %{name: "Mouth_X", type: "signed_char"},
-    %{name: "Mouth_Y", type: "signed_char"},
-    %{name: "Mouth_Z", type: "signed_char"},
-    %{name: "Mouth_S1", type: "signed_char"},
-    %{name: "Mouth_S2", type: "signed_char"},
-    %{name: "Chin_X", type: "signed_char"},
-    %{name: "Chin_Y", type: "signed_char"},
-    %{name: "Chin_Z", type: "signed_char"},
-    %{name: "Chin_Mid", type: "signed_char"},
-    %{name: "Jaw_X", type: "signed_char"},
-    %{name: "Jaw_Y", type: "signed_char"},
-    %{name: "BeardFrame", type: "unsigned_char"},
-    %{name: "BeardColor", type: "unsigned_char"},
-    %{name: "BeardIntensity", type: "signed_char"},
-    %{name: "Beard_Color_Brightness", type: "signed_char"},
-    %{name: "HairShadowsFrame", type: "unsigned_char"},
-    %{name: "Head_XYZ", type: "signed_char"},
-    %{name: "Head_Z", type: "signed_char"},
-    %{name: "Neck_X", type: "signed_char"},
-    %{name: "Neck_YZ", type: "signed_char"},
-    %{name: "Breast_XYZ", type: "signed_char"},
-    %{name: "Chest_XYZ", type: "signed_char"},
-    %{name: "Spine_X", type: "signed_char"},
-    %{name: "Spine_YZ", type: "signed_char"},
-    %{name: "Pelvis_YZ", type: "signed_char"},
-    %{name: "Clavicle_XYZ", type: "signed_char"},
-    %{name: "Arm_X", type: "signed_char"},
-    %{name: "Arm_YZ", type: "signed_char"},
-    %{name: "Hand_XYZ", type: "signed_char"},
-    %{name: "Leg_X", type: "signed_char"},
-    %{name: "Leg_YZ", type: "signed_char"},
-    %{name: "Foot_XYZ", type: "signed_char"},
-    %{name: "Hair1_Color_Brightness", type: "signed_char"},
-    %{name: "Hair2_Color_Brightness", type: "signed_char"},
-    %{name: "Eyebrow_Color_Brightness", type: "signed_char"},
-    %{name: "Temple", type: "signed_char"},
-    %{name: "Head_Y", type: "signed_char"},
-    %{name: "Cheek_D_X", type: "signed_char"},
-    %{name: "Cheek_D_Y", type: "signed_char"},
-    %{name: "Cheek_D_Z", type: "signed_char"},
-    %{name: "Jaw_Z", type: "signed_char"},
-    %{name: "EyebrowUpDown", type: "signed_char"},
-    %{name: "EyebrowBetween", type: "signed_char"},
-    %{name: "EyeBrowScale_y", type: "signed_char"},
-    %{name: "IrisPositionX", type: "signed_char"},
-    %{name: "DoubleEyelid_Frame", type: "unsigned_char"},
-    %{name: "DoubleEyelid_Intensity", type: "signed_char"},
-    %{name: "DoubleEyelidUpDown", type: "signed_char"},
-    %{name: "Eye_In_S", type: "signed_char"},
-    %{name: "Eye_In_Y", type: "signed_char"},
-    %{name: "Eye_In_Z", type: "signed_char"},
-    %{name: "Eyelashes_S", type: "signed_char"},
-    %{name: "Eyelashes_Intensity", type: "signed_char"},
-    %{name: "Eyelashes_U_Y", type: "signed_char"},
-    %{name: "Eyelashes_D_Y", type: "signed_char"},
-    %{name: "Upperlip_X", type: "signed_char"},
-    %{name: "Upperlip_Y", type: "signed_char"},
-    %{name: "Lowerlip_X", type: "signed_char"},
-    %{name: "Lowerlip_Y", type: "signed_char"},
-    %{name: "Mouth_End_Y", type: "signed_char"},
-    %{name: "IrisL_Color_Brightness", type: "signed_char"},
-    %{name: "IrisR_Color_Brightness", type: "signed_char"},
-    %{name: "Lens_Relf", type: "signed_char"},
-    %{name: "Lens_Specular", type: "signed_char"},
-    %{name: "Blusher_Color_Brightness", type: "signed_char"},
-    %{name: "Lip_Color_Brightness", type: "signed_char"},
-    %{name: "Lip_Roughness", type: "signed_char"},
-    %{name: "Eyeline_Color_Brightness", type: "signed_char"},
-    %{name: "Eyeshadow_Color_Brightness", type: "signed_char"},
-    %{name: "Eyelashes_Color", type: "unsigned_char"},
-    %{name: "Eyelashes_Color_Brightness", type: "signed_char"},
-    %{name: "Decal_Color", type: "unsigned_char"},
-    %{name: "Decal_Color_Brightness", type: "signed_char"}
+    %{name: "SkinRoughness", type: {:struct, "signed_char"}},
+    %{name: "SkinColor", type: {:struct, "unsigned_char"}},
+    %{name: "Hair1Color", type: {:struct, "unsigned_char"}},
+    %{name: "Hair2Color", type: {:struct, "unsigned_char"}},
+    %{name: "IrisRColor", type: {:struct, "unsigned_char"}},
+    %{name: "IrisLColor", type: {:struct, "unsigned_char"}},
+    %{name: "ScleraColor", type: {:struct, "unsigned_char"}},
+    %{name: "IrisScale", type: {:struct, "signed_char"}},
+    %{name: "IrisPositionY", type: {:struct, "signed_char"}},
+    %{name: "EyebrowFrame", type: {:struct, "unsigned_char"}},
+    %{name: "EyebrowColor", type: {:struct, "unsigned_char"}},
+    %{name: "EyebrowIntensity", type: {:struct, "signed_char"}},
+    %{name: "EyelineFrame", type: {:struct, "unsigned_char"}},
+    %{name: "EyelineIntensity", type: {:struct, "signed_char"}},
+    %{name: "EyeshadowColor", type: {:struct, "unsigned_char"}},
+    %{name: "EyelineColor", type: {:struct, "unsigned_char"}},
+    %{name: "IrisTexture", type: {:struct, "unsigned_char"}},
+    %{name: "EyeshadowIntensity", type: {:struct, "signed_char"}},
+    %{name: "BlusherFrame", type: {:struct, "unsigned_char"}},
+    %{name: "BlusherColor", type: {:struct, "unsigned_char"}},
+    %{name: "BlusherIntensity", type: {:struct, "signed_char"}},
+    %{name: "LipFrame", type: {:struct, "unsigned_char"}},
+    %{name: "LipColor", type: {:struct, "unsigned_char"}},
+    %{name: "LipIntensity", type: {:struct, "signed_char"}},
+    %{name: "FaceTexture", type: {:struct, "unsigned_char"}},
+    %{name: "DecalTexture", type: {:struct, "unsigned_char"}},
+    %{name: "DecalIntensity", type: {:struct, "signed_char"}},
+    %{name: "DecalScale", type: {:struct, "signed_char"}},
+    %{name: "DecalRotation", type: {:struct, "signed_char"}},
+    %{name: "DecalPositionX", type: {:struct, "signed_char"}},
+    %{name: "DecalPositionY", type: {:struct, "signed_char"}},
+    %{name: "Forehead_Y", type: {:struct, "signed_char"}},
+    %{name: "Forehead_Z", type: {:struct, "signed_char"}},
+    %{name: "Eyebrow_End", type: {:struct, "signed_char"}},
+    %{name: "Eyebrow_Y", type: {:struct, "signed_char"}},
+    %{name: "Eyebrow_Z", type: {:struct, "signed_char"}},
+    %{name: "Eye_End", type: {:struct, "signed_char"}},
+    %{name: "Eye_Mid1", type: {:struct, "signed_char"}},
+    %{name: "Eye_Mid2", type: {:struct, "signed_char"}},
+    %{name: "Eye_X", type: {:struct, "signed_char"}},
+    %{name: "Eye_Y", type: {:struct, "signed_char"}},
+    %{name: "Eye_Z", type: {:struct, "signed_char"}},
+    %{name: "Eye_S1", type: {:struct, "signed_char"}},
+    %{name: "Eye_S2", type: {:struct, "signed_char"}},
+    %{name: "Cheek_X", type: {:struct, "signed_char"}},
+    %{name: "Cheek_Y", type: {:struct, "signed_char"}},
+    %{name: "Cheek_Z", type: {:struct, "signed_char"}},
+    %{name: "Cheek_s1", type: {:struct, "signed_char"}},
+    %{name: "Nose_End", type: {:struct, "signed_char"}},
+    %{name: "Nose_Mid", type: {:struct, "signed_char"}},
+    %{name: "Nose_X", type: {:struct, "signed_char"}},
+    %{name: "Nose_Y", type: {:struct, "signed_char"}},
+    %{name: "Nose_Z", type: {:struct, "signed_char"}},
+    %{name: "Nose_s1", type: {:struct, "signed_char"}},
+    %{name: "Nose_s2", type: {:struct, "signed_char"}},
+    %{name: "Mouth_End", type: {:struct, "signed_char"}},
+    %{name: "Mouth_Mid", type: {:struct, "signed_char"}},
+    %{name: "Mouth_X", type: {:struct, "signed_char"}},
+    %{name: "Mouth_Y", type: {:struct, "signed_char"}},
+    %{name: "Mouth_Z", type: {:struct, "signed_char"}},
+    %{name: "Mouth_S1", type: {:struct, "signed_char"}},
+    %{name: "Mouth_S2", type: {:struct, "signed_char"}},
+    %{name: "Chin_X", type: {:struct, "signed_char"}},
+    %{name: "Chin_Y", type: {:struct, "signed_char"}},
+    %{name: "Chin_Z", type: {:struct, "signed_char"}},
+    %{name: "Chin_Mid", type: {:struct, "signed_char"}},
+    %{name: "Jaw_X", type: {:struct, "signed_char"}},
+    %{name: "Jaw_Y", type: {:struct, "signed_char"}},
+    %{name: "BeardFrame", type: {:struct, "unsigned_char"}},
+    %{name: "BeardColor", type: {:struct, "unsigned_char"}},
+    %{name: "BeardIntensity", type: {:struct, "signed_char"}},
+    %{name: "Beard_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "HairShadowsFrame", type: {:struct, "unsigned_char"}},
+    %{name: "Head_XYZ", type: {:struct, "signed_char"}},
+    %{name: "Head_Z", type: {:struct, "signed_char"}},
+    %{name: "Neck_X", type: {:struct, "signed_char"}},
+    %{name: "Neck_YZ", type: {:struct, "signed_char"}},
+    %{name: "Breast_XYZ", type: {:struct, "signed_char"}},
+    %{name: "Chest_XYZ", type: {:struct, "signed_char"}},
+    %{name: "Spine_X", type: {:struct, "signed_char"}},
+    %{name: "Spine_YZ", type: {:struct, "signed_char"}},
+    %{name: "Pelvis_YZ", type: {:struct, "signed_char"}},
+    %{name: "Clavicle_XYZ", type: {:struct, "signed_char"}},
+    %{name: "Arm_X", type: {:struct, "signed_char"}},
+    %{name: "Arm_YZ", type: {:struct, "signed_char"}},
+    %{name: "Hand_XYZ", type: {:struct, "signed_char"}},
+    %{name: "Leg_X", type: {:struct, "signed_char"}},
+    %{name: "Leg_YZ", type: {:struct, "signed_char"}},
+    %{name: "Foot_XYZ", type: {:struct, "signed_char"}},
+    %{name: "Hair1_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Hair2_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Eyebrow_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Temple", type: {:struct, "signed_char"}},
+    %{name: "Head_Y", type: {:struct, "signed_char"}},
+    %{name: "Cheek_D_X", type: {:struct, "signed_char"}},
+    %{name: "Cheek_D_Y", type: {:struct, "signed_char"}},
+    %{name: "Cheek_D_Z", type: {:struct, "signed_char"}},
+    %{name: "Jaw_Z", type: {:struct, "signed_char"}},
+    %{name: "EyebrowUpDown", type: {:struct, "signed_char"}},
+    %{name: "EyebrowBetween", type: {:struct, "signed_char"}},
+    %{name: "EyeBrowScale_y", type: {:struct, "signed_char"}},
+    %{name: "IrisPositionX", type: {:struct, "signed_char"}},
+    %{name: "DoubleEyelid_Frame", type: {:struct, "unsigned_char"}},
+    %{name: "DoubleEyelid_Intensity", type: {:struct, "signed_char"}},
+    %{name: "DoubleEyelidUpDown", type: {:struct, "signed_char"}},
+    %{name: "Eye_In_S", type: {:struct, "signed_char"}},
+    %{name: "Eye_In_Y", type: {:struct, "signed_char"}},
+    %{name: "Eye_In_Z", type: {:struct, "signed_char"}},
+    %{name: "Eyelashes_S", type: {:struct, "signed_char"}},
+    %{name: "Eyelashes_Intensity", type: {:struct, "signed_char"}},
+    %{name: "Eyelashes_U_Y", type: {:struct, "signed_char"}},
+    %{name: "Eyelashes_D_Y", type: {:struct, "signed_char"}},
+    %{name: "Upperlip_X", type: {:struct, "signed_char"}},
+    %{name: "Upperlip_Y", type: {:struct, "signed_char"}},
+    %{name: "Lowerlip_X", type: {:struct, "signed_char"}},
+    %{name: "Lowerlip_Y", type: {:struct, "signed_char"}},
+    %{name: "Mouth_End_Y", type: {:struct, "signed_char"}},
+    %{name: "IrisL_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "IrisR_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Lens_Relf", type: {:struct, "signed_char"}},
+    %{name: "Lens_Specular", type: {:struct, "signed_char"}},
+    %{name: "Blusher_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Lip_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Lip_Roughness", type: {:struct, "signed_char"}},
+    %{name: "Eyeline_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Eyeshadow_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Eyelashes_Color", type: {:struct, "unsigned_char"}},
+    %{name: "Eyelashes_Color_Brightness", type: {:struct, "signed_char"}},
+    %{name: "Decal_Color", type: {:struct, "unsigned_char"}},
+    %{name: "Decal_Color_Brightness", type: {:struct, "signed_char"}}
   ],
 
 "WorldMapMarkerInfo" => [
@@ -11714,14 +11714,14 @@
 "RealmIntegrationPlayerInfo" => [
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}},
     %{name: "CovenantName", type: :string}
   ],
 
 "SkillAutoUseInfoUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RootSkillCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "RootSkillCuids", type: {:list, :cuid}}
   ],
 
 "BasicOrGrowthGuideAchievementInfo" => [
@@ -11730,7 +11730,7 @@
 
 "CraftQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CraftCounts", type: :unknown}
+    %{name: "CraftCounts", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCraftCountInfo"}}}
   ],
 
 "CheatDestroyPointsCheckResponse" => [
@@ -11745,29 +11745,29 @@
 
 "ShopRegisteredGoodsUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "Reason", type: {:nullable, "::to_string((uint)*(byte*)(in_x0+10));uVar9=local_198&0xff;}uVar1=local_190;pcVar8=local_188;if((uVar9&1)==0){uVar1=uVar9>>1;pcVar8=(char*)((long)&local_198+1);}std::__ndk1::__p"}},
-    %{name: "RegisteredGoodsInfos", type: :unknown}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "Reason", type: {:nullable, {:nullable, :enum}}},
+    %{name: "RegisteredGoodsInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzRegisteredGoodsInfo"}}}
   ],
 
 "MailBuildingPurificationPauseLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailBuildingWorkLayoutInfo"}},
-    %{name: "BuildingWorkPauseReasonKind", type: {:enum, "ETzBuildingWorkPauseReasonKindType"}}
+    %{name: "BuildingWorkPauseReasonKind", type: {:enum, "BuildingWorkPauseReasonKindType"}}
   ],
 
 "SeasonPassInfo" => [
     %{name: "SeasonPassCuid", type: :cuid},
     %{name: "SeasonPassCuidString", type: :string},
     %{name: "ExperiencePoints", type: {:uint, 8}},
-    %{name: "IsPaidRewardUnlocked", type: :unknown},
-    %{name: "IsPlusRewardUnlocked", type: :unknown},
-    %{name: "RewardedLevels", type: :unknown}
+    %{name: "IsPaidRewardUnlocked", type: :bool},
+    %{name: "IsPlusRewardUnlocked", type: :bool},
+    %{name: "RewardedLevels", type: {:map, {:enum, "SeasonPassRewardKindType"}, {:struct, "TSet<int"}}}
   ],
 
 "BattalionLeaveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "BattalionLeaveReason", type: {:enum, "ETzBattalionLeaveReasonType"}}
+    %{name: "BattalionLeaveReason", type: {:enum, "BattalionLeaveReasonType"}}
   ],
 
 "CheatResetCashShopMerchandiseTotalBuyLimitCountResponse" => [
@@ -11787,9 +11787,9 @@
     %{name: "QuestVuid", type: {:struct, "Vuid"}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
-    %{name: "StartByItem", type: :unknown},
-    %{name: "FavorInfo", type: :unknown},
-    %{name: "FavorMissionInfo", type: :unknown}
+    %{name: "StartByItem", type: :bool},
+    %{name: "FavorInfo", type: {:nullable, :message}},
+    %{name: "FavorMissionInfo", type: {:nullable, :message}}
   ],
 
 "CheatCancelStrongholdProtectionResponse" => [
@@ -11809,24 +11809,24 @@
 "BattalionConfirmInvitationResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "IsApproved", type: :unknown}
+    %{name: "IsApproved", type: :bool}
   ],
 
 "CheatTestGearEnchantOptionResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CostItemCuid", type: :cuid},
     %{name: "GearCuid", type: :cuid},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
-    %{name: "GearEnchantOptionGrades", type: :unknown},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
+    %{name: "GearEnchantOptionGrades", type: {:map, {:int, 2}, {:enum, "GearEnchantGradeType"}}},
     %{name: "TestCount", type: {:int, 4}},
-    %{name: "GearEnchantSlotToStatKindToAmountToCount", type: :unknown}
+    %{name: "GearEnchantSlotToStatKindToAmountToCount", type: {:map, {:int, 2}, {:struct, "TMap<ETzAdjustableStatKindType"}}}
   ],
 
 "PlayerItemUseFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "ItemGuid", type: {:uint, 8}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "ParameterInfo", type: :unknown},
+    %{name: "ParameterInfo", type: {:nullable, :message}},
     %{name: "CooldownExpireDateTimeRangeInfo", type: {:nullable, {:struct, "DateTimeRangeInfo"}}}
   ],
 
@@ -11846,18 +11846,18 @@
     %{name: "Ranking", type: {:nullable, {:int, 4}}},
     %{name: "Name", type: :string},
     %{name: "Level", type: {:int, 4}},
-    %{name: "CovenantJoinKind", type: {:enum, "ETzCovenantJoinKindType"}},
+    %{name: "CovenantJoinKind", type: {:enum, "CovenantJoinKindType"}},
     %{name: "LeaderName", type: :string},
     %{name: "MemberCount", type: {:int, 2}},
     %{name: "MaxMemberCount", type: {:int, 2}},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "CovenantCampCuid", type: :cuid},
-    %{name: "OccupiedStrongholdCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "OccupiedStrongholdCuids", type: {:list, :cuid}},
     %{name: "MainHavenCuid", type: :cuid},
     %{name: "MaximumHeadquartersLevel", type: {:int, 4}},
     %{name: "Introduction", type: :string},
-    %{name: "IntroductionHarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
-    %{name: "MainLivingTotemInfo", type: :unknown}
+    %{name: "IntroductionHarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
+    %{name: "MainLivingTotemInfo", type: {:nullable, :message}}
   ],
 
 "SendCrossRealmChatMessageResponse" => [
@@ -11897,7 +11897,7 @@
 "MailMarkAsReadNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MailGuid", type: {:uint, 8}},
-    %{name: "MailBoxKind", type: {:enum, "ETzMailBoxKindType"}}
+    %{name: "MailBoxKind", type: {:enum, "MailBoxKindType"}}
   ],
 
 "StrongholdBuildingCraftResponse" => [
@@ -11917,11 +11917,11 @@
 "CovenantBattalionExpeditionJoinNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ExpeditionSummaryInfo", type: {:nullable, {:struct, "ExpeditionSummaryInfo"}}},
-    %{name: "ExpeditionPhase", type: {:enum, "ETzBattalionExpeditionPhaseType"}},
-    %{name: "AnotherBattalionGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "ExpeditionPhase", type: {:enum, "BattalionExpeditionPhaseType"}},
+    %{name: "AnotherBattalionGuids", type: {:list, {:uint, 8}}},
     %{name: "ExpeditionJoinDateTime", type: :datetime},
     %{name: "ExpeditionStartLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "BattalionExpeditionInfo", type: :unknown}
+    %{name: "BattalionExpeditionInfo", type: {:nullable, :message}}
   ],
 
 "CovenantCampaignEnterResponse" => [
@@ -11932,7 +11932,7 @@
 "FavorSummaryInfoQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "DailyAcceptableFavorRemainingCount", type: {:int, 4}},
-    %{name: "FavorBossInfosByDistrictCuid", type: :unknown}
+    %{name: "FavorBossInfosByDistrictCuid", type: {:map, :cuid, {:struct, "TSharedPtr<FTzDistrictFavorBossInfo"}}}
   ],
 
 "CheatAddRegionContentRechargedPlayTimeResponse" => [
@@ -11945,7 +11945,7 @@
 
 "BuildingAccessPermissionSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "BuildingAccessPermissionKind", type: {:enum, "ETzBuildingAccessPermissionKindType"}}
+    %{name: "BuildingAccessPermissionKind", type: {:enum, "BuildingAccessPermissionKindType"}}
   ],
 
 "CheatReleaseOccupiableNpcInactivityResponse" => [
@@ -11954,13 +11954,13 @@
 
 "InGameNotificationDeleteCategoryFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "InGameNotificationCategory", type: {:enum, "ETzInGameNotificationCategoryType"}}
+    %{name: "InGameNotificationCategory", type: {:enum, "InGameNotificationCategoryType"}}
   ],
 
 "RoadJunctionDetailedInfo" => [
     %{name: "DistrictCuid", type: :cuid},
     %{name: "CoreInfo", type: {:struct, "RoadJunctionInfo"}},
-    %{name: "RoadLinks", type: {:list, {:struct, "RoadLinkInfo,TSizedDefaultAllocator<32"}}}
+    %{name: "RoadLinks", type: {:list, {:struct, "RoadLinkInfo"}}}
   ],
 
 "CheatAddStrongholdTaxAmountRequest" => [
@@ -11977,10 +11977,10 @@
 "CovenantJoinNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CovenantInfo", type: {:nullable, {:struct, "CovenantInfo"}}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string},
     %{name: "CovenantReturnHavenCuid", type: :cuid},
-    %{name: "CovenantBattalionInfos", type: :unknown}
+    %{name: "CovenantBattalionInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzCovenantBattalionNotifyInfo"}}}
   ],
 
 "StrongholdBattleDeclareAttackResponse" => [
@@ -11993,9 +11993,9 @@
   ],
 
 "NpcOccupationInfo" => [
-    %{name: "NpcCovenantOccupationInfo", type: :unknown},
+    %{name: "NpcCovenantOccupationInfo", type: {:nullable, :message}},
     %{name: "NpcOccupationInactivityExpirationDateTime", type: {:nullable, :datetime}},
-    %{name: "NpcOccupationScoreCovenantInfos", type: :unknown}
+    %{name: "NpcOccupationScoreCovenantInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzNpcOccupationScoreCovenantInfo"}}}
   ],
 
 "CheatAbandonStrongholdResponse" => [
@@ -12004,16 +12004,16 @@
 
 "CraftResultInfo" => [
     %{name: "CraftRewardCuid", type: :cuid},
-    %{name: "CraftResultKind", type: {:enum, "ETzCraftResultKindType"}},
-    %{name: "ItemInfo", type: :unknown},
-    %{name: "CraftGreatSuccessBonusKind", type: {:enum, "ETzCraftGreatSuccessBonusKindType"}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "CraftResultKind", type: {:enum, "CraftResultKindType"}},
+    %{name: "ItemInfo", type: {:nullable, :message}},
+    %{name: "CraftGreatSuccessBonusKind", type: {:enum, "CraftGreatSuccessBonusKindType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "Amount", type: {:int, 4}}
   ],
 
 "TeleportInfo" => [
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "TeleportReason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}}
+    %{name: "TeleportReason", type: {:enum, "EntitySpawnRemoveReasonType"}}
   ],
 
 "PlayerMarketTransactionBuyProcessNotify" => [
@@ -12050,7 +12050,7 @@
   ],
 
 "ChatMessageInfo" => [
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "ChatRoomGuid", type: {:uint, 8}},
     %{name: "Guid", type: {:uint, 8}},
     %{name: "RecordsIndex", type: {:uint, 8}},
@@ -12061,7 +12061,7 @@
     %{name: "SenderPlayerExperiencePointsRanking", type: {:nullable, {:int, 4}}},
     %{name: "InfoToShare", type: :string},
     %{name: "Text", type: :string},
-    %{name: "HarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
+    %{name: "HarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
     %{name: "RegisterDateTime", type: :datetime}
   ],
 
@@ -12073,9 +12073,9 @@
 "SkillMoveAffectInfo" => [
     %{name: "MoveDuration_msec", type: {:int, 4}},
     %{name: "Destination_cm", type: {:nullable, :vector}},
-    %{name: "InitialDirectionYaw_rad", type: {:nullable, "float"}},
+    %{name: "InitialDirectionYaw_rad", type: {:nullable, :float}},
     %{name: "InitialFacingEntityGuid", type: {:nullable, {:uint, 8}}},
-    %{name: "FinalDirectionYaw_rad", type: {:nullable, "float"}},
+    %{name: "FinalDirectionYaw_rad", type: {:nullable, :float}},
     %{name: "FinalFacingEntityGuid", type: {:nullable, {:uint, 8}}}
   ],
 
@@ -12109,9 +12109,9 @@
 "CovenantDiplomacyInfo" => [
     %{name: "RequestCovenantGuid", type: {:uint, 8}},
     %{name: "ResponseCovenantGuid", type: {:uint, 8}},
-    %{name: "CovenantDiplomacyState", type: {:enum, "ETzCovenantDiplomacyStateType"}},
+    %{name: "CovenantDiplomacyState", type: {:enum, "CovenantDiplomacyStateType"}},
     %{name: "CreateDateTime", type: :datetime},
-    %{name: "CovenantDiplomacyAdditionalInfo", type: :unknown}
+    %{name: "CovenantDiplomacyAdditionalInfo", type: {:nullable, :message}}
   ],
 
 "PlayerRealmIntegrationBattleSeasonInfoUpdateNotify" => [
@@ -12146,10 +12146,10 @@
 
 "RealmAccountRealmTransferLimitedItemCountResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ItemCountByCuid", type: :unknown},
-    %{name: "ItemCountByItemGradeAndItemCategory", type: :unknown},
-    %{name: "GearCountByItemGradeAndGearKind", type: :unknown},
-    %{name: "AffectItemCountByItemGradeAndAffectItemKind", type: :unknown}
+    %{name: "ItemCountByCuid", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "ItemCountByItemGradeAndItemCategory", type: {:map, {:enum, "ItemCategoryType"}, {:struct, "TMap<ETzItemGradeType"}}},
+    %{name: "GearCountByItemGradeAndGearKind", type: {:map, {:enum, "GearKindType"}, {:struct, "TMap<ETzItemGradeType"}}},
+    %{name: "AffectItemCountByItemGradeAndAffectItemKind", type: {:map, {:enum, "AffectItemKindType"}, {:struct, "TMap<ETzItemGradeType"}}}
   ],
 
 "TutorialStepForwardRequest" => [
@@ -12160,7 +12160,7 @@
 
 "MailArrivalNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}}
+    %{name: "MailTab", type: {:enum, "MailTabType"}}
   ],
 
 "CheatRealmIntegrationAddRealmAccountRequest" => [
@@ -12180,7 +12180,7 @@
 
 "CovenantInvitationInfoUpdatedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "InvitedCovenantGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "InvitedCovenantGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CovenantRealmTransferInfoSynchronizeNotify" => [
@@ -12196,19 +12196,19 @@
 
 "MailInfo" => [
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "MailBoxKind", type: {:enum, "ETzMailBoxKindType"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
-    %{name: "MailKind", type: {:enum, "ETzMailKindType"}},
+    %{name: "MailBoxKind", type: {:enum, "MailBoxKindType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
+    %{name: "MailKind", type: {:enum, "MailKindType"}},
     %{name: "From", type: :string},
     %{name: "CreateDateTime", type: :datetime},
     %{name: "ExpireDateTime", type: :datetime},
-    %{name: "IsRead", type: :unknown},
-    %{name: "IsAttachmentsReceived", type: :unknown},
+    %{name: "IsRead", type: :bool},
+    %{name: "IsAttachmentsReceived", type: :bool},
     %{name: "Title", type: :string},
     %{name: "Body", type: :string},
     %{name: "Attachments", type: {:nullable, {:struct, "MailAttachmentsInfo"}}},
-    %{name: "HarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
-    %{name: "LayoutInfo", type: :unknown}
+    %{name: "HarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
+    %{name: "LayoutInfo", type: {:nullable, :message}}
   ],
 
 "ExpeditionNpcSummonWaveInfo" => [
@@ -12216,7 +12216,7 @@
     %{name: "NpcSummonWaveStartTime", type: :datetime},
     %{name: "NpcSummonWavesCuid", type: :cuid},
     %{name: "NpcSummonWaveIndex", type: {:int, 4}},
-    %{name: "NpcDeathCounts", type: :unknown}
+    %{name: "NpcDeathCounts", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "DataHeader" => [
@@ -12245,14 +12245,14 @@
 
 "BattalionChangeJoinableNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsJoinable", type: :unknown}
+    %{name: "IsJoinable", type: :bool}
   ],
 
 "CheatTeleportToNpcRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcCuid", type: :cuid},
-    %{name: "IsRegularOnly", type: :unknown},
-    %{name: "Radius_cm", type: "float"}
+    %{name: "IsRegularOnly", type: :bool},
+    %{name: "Radius_cm", type: :float}
   ],
 
 "CheatTeleportByOffsetRequest" => [
@@ -12268,10 +12268,10 @@
 "BuildingWorkOrderInfo" => [
     %{name: "OrderedBuildingSpawnerCuid", type: :cuid},
     %{name: "BuildingCuid", type: :cuid},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}},
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}},
     %{name: "BuildingLevelOnStart", type: {:int, 4}},
     %{name: "BuildingLevelToTarget", type: {:int, 4}},
-    %{name: "IsRecommended", type: :unknown},
+    %{name: "IsRecommended", type: :bool},
     %{name: "BuildingRepairPercentage", type: {:int, 4}},
     %{name: "BuildingCraftCuidAndCountInfo", type: {:nullable, {:struct, "CuidAndCountInfo"}}},
     %{name: "ResearchCuid", type: :cuid},
@@ -12281,7 +12281,7 @@
 "CovenantRegisteredGoodsModifyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
     %{name: "GoodsGuid", type: {:uint, 8}},
     %{name: "ItemCount", type: {:uint, 8}},
     %{name: "SellCurrencyCuid", type: :cuid},
@@ -12293,8 +12293,8 @@
     %{name: "WeaponCuid", type: :cuid},
     %{name: "WeaponEnhancementGrade", type: {:int, 2}},
     %{name: "GuiseCuid", type: :cuid},
-    %{name: "HasPreviouslyEquippedGuise", type: :unknown},
-    %{name: "IsWearUniform", type: :unknown}
+    %{name: "HasPreviouslyEquippedGuise", type: :bool},
+    %{name: "IsWearUniform", type: :bool}
   ],
 
 "InventoryUpdateNotify" => [
@@ -12308,13 +12308,13 @@
 
 "ServerDrivenPlayStateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StateInfo", type: :unknown}
+    %{name: "StateInfo", type: {:nullable, :message}}
   ],
 
 "CovenantTradeGoodsQueryInfo" => [
     %{name: "ItemCuid", type: :cuid},
-    %{name: "SortKind", type: {:enum, "ETzCovenantTradeGoodsSortKindType"}},
-    %{name: "SortDirection", type: {:enum, "ETzSortDirectionType"}},
+    %{name: "SortKind", type: {:enum, "CovenantTradeGoodsSortKindType"}},
+    %{name: "SortDirection", type: {:enum, "SortDirectionType"}},
     %{name: "SkipTopRowCount", type: {:int, 4}}
   ],
 
@@ -12331,7 +12331,7 @@
 "CovenantCreateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "Name", type: :string},
-    %{name: "CovenantJoinKind", type: {:enum, "ETzCovenantJoinKindType"}},
+    %{name: "CovenantJoinKind", type: {:enum, "CovenantJoinKindType"}},
     %{name: "CovenantEmblemSelectionInfo", type: {:nullable, {:struct, "CovenantEmblemSelectionInfo"}}},
     %{name: "CovenantCampCuid", type: :cuid}
   ],
@@ -12351,7 +12351,7 @@
 "NpcOccupationViewInfo" => [
     %{name: "NpcOccupationCovenantViewInfo", type: {:nullable, {:struct, "NpcOccupationCovenantViewInfo"}}},
     %{name: "NpcOccupationInactivityExpirationDateTime", type: {:nullable, :datetime}},
-    %{name: "NpcOccupationScoreCovenantViewInfos", type: :unknown}
+    %{name: "NpcOccupationScoreCovenantViewInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzNpcOccupationScoreCovenantViewInfo"}}}
   ],
 
 "CovenantHostilityAdditionalInfo" => [
@@ -12362,8 +12362,8 @@
 
 "FavoriteStatKindChangeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StatKind", type: {:enum, "ETzAdjustableStatKindType"}},
-    %{name: "IsRegistered", type: :unknown}
+    %{name: "StatKind", type: {:enum, "AdjustableStatKindType"}},
+    %{name: "IsRegistered", type: :bool}
   ],
 
 "CheatGetCheatEnabledPlayerNamesResponse" => [
@@ -12381,12 +12381,12 @@
 "MarketGoodsQueryInfo" => [
     %{name: "__base__", type: {:struct, "MarketGoodsSummaryQueryInfo"}},
     %{name: "GearAdditionalInfo", type: {:nullable, {:struct, "GearAdditionalInfo"}}},
-    %{name: "MarketOrderByKind", type: {:enum, "ETzMarketOrderByKindType"}}
+    %{name: "MarketOrderByKind", type: {:enum, "MarketOrderByKindType"}}
   ],
 
 "MarketPriceQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "MarketPriceInfo", type: {:nullable, {:struct, "MarketPriceInfo"}}}
   ],
 
@@ -12399,31 +12399,31 @@
 
 "ServerDrivenPlayResupplyingStateInfo" => [
     %{name: "__base__", type: {:struct, "ServerDrivenPlayStateInfo"}},
-    %{name: "IsAutoResupplying", type: :unknown},
-    %{name: "IsResupplyingWithTeleport", type: :unknown}
+    %{name: "IsAutoResupplying", type: :bool},
+    %{name: "IsResupplyingWithTeleport", type: :bool}
   ],
 
 "StanceSwitchNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}}
+    %{name: "Stance", type: {:enum, "StanceType"}}
   ],
 
 "CrossRealmSeasonTimeCreviceEntryUpdateDataNotify" => [
     %{name: "__base__", type: {:struct, "CrossRealmSeasonEntryUpdateDataNotify"}},
-    %{name: "IsFull", type: :unknown}
+    %{name: "IsFull", type: :bool}
   ],
 
 "CovenantTradeSalesManageRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "SalesManagementKind", type: {:enum, "ETzCovenantTradeSalesManagementKindType"}},
+    %{name: "SalesManagementKind", type: {:enum, "CovenantTradeSalesManagementKindType"}},
     %{name: "GoodsGuidWithItemCuidInfos", type: :unknown}
   ],
 
 "CheatSwitchStanceResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "SwitchRequestedStance", type: {:enum, "ETzStanceType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "SwitchRequestedStance", type: {:enum, "StanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}}
   ],
 
@@ -12452,7 +12452,7 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "ChatEntityInfo", type: {:nullable, {:struct, "ChatEntityInfo"}}},
     %{name: "CovenantInfo", type: {:nullable, {:struct, "ChatEntityCovenantInfo"}}},
-    %{name: "LoggedIn", type: :unknown}
+    %{name: "LoggedIn", type: :bool}
   ],
 
 "CovenantRealmTransferExecuteResponse" => [
@@ -12465,13 +12465,13 @@
   ],
 
 "CovenantOutLinkInfo" => [
-    %{name: "CovenantOutLinkKind", type: {:enum, "ETzCovenantOutLinkKindType"}},
+    %{name: "CovenantOutLinkKind", type: {:enum, "CovenantOutLinkKindType"}},
     %{name: "Uri", type: :string},
     %{name: "UpdateDateTime", type: :datetime}
   ],
 
 "PlayerSkillSlotSetInfo" => [
-    %{name: "PlayerSkillSlotInfos", type: :unknown}
+    %{name: "PlayerSkillSlotInfos", type: {:map, {:enum, "PlayerSkillSlotIndexType"}, {:struct, "TSharedPtr<FTzPlayerSkillSlotInfo"}}}
   ],
 
 "WorldMapPvpBattleLocationUpdateNotify" => [
@@ -12511,9 +12511,9 @@
 
 "MountCallingInfo" => [
     %{name: "__base__", type: {:struct, "MountStateInfo"}},
-    %{name: "IsImmediateBoarding", type: :unknown},
-    %{name: "PlayerRunSpeedBeforeBoarded_cmpmsec", type: "float"},
-    %{name: "IsMovingBoarding", type: :unknown}
+    %{name: "IsImmediateBoarding", type: :bool},
+    %{name: "PlayerRunSpeedBeforeBoarded_cmpmsec", type: :float},
+    %{name: "IsMovingBoarding", type: :bool}
   ],
 
 "CheatSetEnvironmentVariableResponse" => [
@@ -12529,8 +12529,8 @@
 
 "FieldEnterCompleteRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "NavMeshCrcChecksum", type: "unsigned_int"},
-    %{name: "CharacterMoveInfo", type: :unknown}
+    %{name: "NavMeshCrcChecksum", type: {:struct, "unsigned_int"}},
+    %{name: "CharacterMoveInfo", type: {:nullable, :message}}
   ],
 
 "CovenantDiplomacyRejectAllianceNotify" => [
@@ -12541,15 +12541,15 @@
 
 "CharacterInfo" => [
     %{name: "__base__", type: {:struct, "EntityInfo"}},
-    %{name: "CharacterState", type: {:enum, "ETzCharacterStateType"}},
-    %{name: "CharacterPublicStatsInfo", type: :unknown},
+    %{name: "CharacterState", type: {:enum, "CharacterStateType"}},
+    %{name: "CharacterPublicStatsInfo", type: {:nullable, :message}},
     %{name: "BuffInfos", type: :unknown},
-    %{name: "CharacterMoveInfo", type: :unknown},
+    %{name: "CharacterMoveInfo", type: {:nullable, :message}},
     %{name: "FocusTargetGuid", type: {:uint, 8}},
     %{name: "AttackTargetGuid", type: {:uint, 8}},
     %{name: "FinishableExpireDateTime", type: {:nullable, :datetime}},
     %{name: "ParticipatingContentsGuids", type: :unknown},
-    %{name: "IsHarmfulSkillTargetableInAnyFactionRelation", type: :unknown},
+    %{name: "IsHarmfulSkillTargetableInAnyFactionRelation", type: :bool},
     %{name: "StrongholdBattleGuid", type: {:uint, 8}}
   ],
 
@@ -12571,7 +12571,7 @@
 "FollowerLeaveToHeadquartersNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "FollowerGuid", type: {:uint, 8}},
-    %{name: "FollowerReturnReason", type: {:enum, "ETzFollowerReturnReasonType"}},
+    %{name: "FollowerReturnReason", type: {:enum, "FollowerReturnReasonType"}},
     %{name: "LeaveToHeadquartersDateTime", type: :datetime},
     %{name: "FollowerWorkInfo", type: {:nullable, {:struct, "FollowerWorkInfo"}}},
     %{name: "FollowerMovePathInfo", type: {:nullable, {:struct, "FollowerMovePathInfo"}}}
@@ -12579,8 +12579,8 @@
 
 "DeathPenaltyRecoverResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RecoveredDeathPenaltyGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
-    %{name: "DeathPenaltyFreeRecoveryInfo", type: :unknown},
+    %{name: "RecoveredDeathPenaltyGuids", type: {:list, {:uint, 8}}},
+    %{name: "DeathPenaltyFreeRecoveryInfo", type: {:nullable, :message}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
   ],
@@ -12589,7 +12589,7 @@
     %{name: "StrategicObjectiveTargetGuid", type: {:uint, 8}},
     %{name: "SpawnerCuid", type: :cuid},
     %{name: "Cuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "MaxHealthPoints", type: {:uint, 8}},
     %{name: "HealthPoints", type: {:uint, 8}}
   ],
@@ -12606,12 +12606,12 @@
 
 "FollowerCollectionUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CollectionInfos", type: :unknown}
+    %{name: "CollectionInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzFollowerCollectionInfo"}}}
   ],
 
 "StrongholdSettleAccountInfo" => [
     %{name: "AccumulatedGoldTaxAmount", type: {:uint, 8}},
-    %{name: "GoldHistoryInfos", type: :unknown}
+    %{name: "GoldHistoryInfos", type: {:map, :datetime, {:struct, "TSharedPtr<FTzGoldHistoryInfo"}}}
   ],
 
 "AffiliatedBattalionInfo" => [
@@ -12625,11 +12625,11 @@
   ],
 
 "FollowerDispatchReservationInfo" => [
-    %{name: "WorkKind", type: {:enum, "ETzFollowerWorkKindType"}},
+    %{name: "WorkKind", type: {:enum, "FollowerWorkKindType"}},
     %{name: "WorkplaceCuid", type: :cuid},
     %{name: "WorkplaceSpawnedEntityCuid", type: :cuid},
-    %{name: "BuildingWorkObjectiveInfo", type: :unknown},
-    %{name: "IsBuildingWorkRecommended", type: :unknown}
+    %{name: "BuildingWorkObjectiveInfo", type: {:nullable, :message}},
+    %{name: "IsBuildingWorkRecommended", type: :bool}
   ],
 
 "StrongholdBattleCovenantBattalionConfirmConveneRequest" => [
@@ -12644,7 +12644,7 @@
 
 "MarketSellSettleResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "IsSuccessByGoodsGuids", type: :unknown},
+    %{name: "IsSuccessByGoodsGuids", type: {:map, {:uint, 8}, :bool}},
     %{name: "FailedGoodsGuid", type: {:uint, 8}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}}
   ],
@@ -12660,8 +12660,8 @@
     %{name: "LivingTotemExtraHealthPoints", type: {:uint, 8}},
     %{name: "LivingTotemHealthPoints", type: {:uint, 8}},
     %{name: "LivingTotemExtraHealthPointsBarUnit", type: {:uint, 8}},
-    %{name: "SiegeWeaponCounts", type: :unknown},
-    %{name: "StrongholdBattleAttackSiegeWeaponSlotInfos", type: :unknown}
+    %{name: "SiegeWeaponCounts", type: {:map, :cuid, {:uint, 8}}},
+    %{name: "StrongholdBattleAttackSiegeWeaponSlotInfos", type: {:map, {:int, 2}, {:struct, "TSharedPtr<FTzStrongholdBattleAttackSiegeWeaponSlotInfo"}}}
   ],
 
 "AetherOptionLevelUpRequest" => [
@@ -12715,11 +12715,11 @@
 "ItemIndex" => [
     %{name: "__base__", type: {:struct, "MultipleItemSelector"}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsBound", type: :boolean},
+    %{name: "IsBound", type: :bool},
     %{name: "IsStorable", type: :unknown},
     %{name: "IsEroded", type: :unknown},
     %{name: "ExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}}
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}}
   ],
 
 "DiplomacyChatRoomHeaderInfoUpdateNotify" => [
@@ -12736,7 +12736,7 @@
 "RegisteredGoodsBuyCountKey" => [
     %{name: "ItemCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}}
   ],
 
 "PartySynchronizeNotify" => [
@@ -12747,10 +12747,10 @@
 "CovenantLivingTotemWithStatsInfo" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "Cuid", type: :cuid},
-    %{name: "Role", type: {:enum, "ETzLivingTotemRoleType"}},
+    %{name: "Role", type: {:enum, "LivingTotemRoleType"}},
     %{name: "Tier", type: {:int, 4}},
-    %{name: "CharacterPublicStatsInfo", type: :unknown},
-    %{name: "CharacterPrivateStatsInfo", type: :unknown}
+    %{name: "CharacterPublicStatsInfo", type: {:nullable, :message}},
+    %{name: "CharacterPrivateStatsInfo", type: {:nullable, :message}}
   ],
 
 "DiplomacyChatRoomRecordsInitializationInfo" => [
@@ -12758,7 +12758,7 @@
     %{name: "ChatRoomName", type: :string},
     %{name: "Index", type: {:int, 4}},
     %{name: "OwnerCovenantGuid", type: {:uint, 8}},
-    %{name: "DiplomacyChatCovenantSummaryInfos", type: :unknown}
+    %{name: "DiplomacyChatCovenantSummaryInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzDiplomacyChatCovenantSummaryInfo"}}}
   ],
 
 "CovenantWeeklyRubyDonationInfo" => [
@@ -12768,7 +12768,7 @@
 
 "CovenantJoinedStrongholdBattleInfoRemoveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantJoinedStrongholdBattleInfo", type: :unknown}
+    %{name: "CovenantJoinedStrongholdBattleInfo", type: {:nullable, :message}}
   ],
 
 "CovenantReturnHavenChangeFailResponse" => [
@@ -12778,10 +12778,10 @@
 "DestroyedGearInfoByEnhancement" => [
     %{name: "ItemGuid", type: {:uint, 8}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "GearKind", type: {:enum, "ETzGearKindType"}},
-    %{name: "IsBound", type: :unknown},
-    %{name: "IsStorable", type: :unknown},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "GearKind", type: {:enum, "GearKindType"}},
+    %{name: "IsBound", type: :bool},
+    %{name: "IsStorable", type: :bool},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}},
     %{name: "DestroyedDateTime", type: :datetime}
   ],
@@ -12797,7 +12797,7 @@
 
 "CovenantDiplomacyAddOrUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantDiplomacyInfo", type: :unknown}
+    %{name: "CovenantDiplomacyInfo", type: {:nullable, :message}}
   ],
 
 "CovenantSupportInfoQueryResponse" => [
@@ -12807,7 +12807,7 @@
 
 "CovenantBattalionPublicSummaryInfo" => [
     %{name: "__base__", type: {:struct, "BattalionPublicSummaryInfo"}},
-    %{name: "ExpeditionSummaryInfo", type: :unknown}
+    %{name: "ExpeditionSummaryInfo", type: {:nullable, :message}}
   ],
 
 "SeasonPassAchievementInitializeDataNotify" => [
@@ -12817,12 +12817,12 @@
 
 "CheatAddRegionContentRechargedPlayTimeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RegionContentKind", type: {:enum, "ETzRegionContentKindType"}},
+    %{name: "RegionContentKind", type: {:enum, "RegionContentKindType"}},
     %{name: "AddPlayTime_sec", type: {:int, 4}}
   ],
 
 "PlayerRealmIntegrationBattleInfo" => [
-    %{name: "SeasonInfos", type: :unknown}
+    %{name: "SeasonInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzPlayerRealmIntegrationBattleSeasonInfo"}}}
   ],
 
 "CheatUpdatePlayerMissionRewardRequest" => [
@@ -12871,7 +12871,7 @@
 
 "MailBuildingRepairLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailBuildingWorkLayoutInfo"}},
-    %{name: "IsComplete", type: :unknown},
+    %{name: "IsComplete", type: :bool},
     %{name: "HealthPointsRatio_pe2", type: {:uint, 8}}
   ],
 
@@ -12886,13 +12886,13 @@
     %{name: "MaxMemberCount", type: {:int, 2}},
     %{name: "EmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "CampCuid", type: :cuid},
-    %{name: "OccupiedStrongholdCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "OccupiedStrongholdCuids", type: {:list, :cuid}},
     %{name: "MainHavenCuid", type: :cuid}
   ],
 
 "CovenantTradeSalesRegisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemIndexWithCount", type: :unknown},
+    %{name: "ItemIndexWithCount", type: {:nullable, :message}},
     %{name: "SalesPrice", type: {:uint, 8}}
   ],
 
@@ -12908,7 +12908,7 @@
 
 "CovenantUpdateCovenantPermissionsInfosResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "CovenantPermissionsInfos", type: :unknown}
+    %{name: "CovenantPermissionsInfos", type: {:map, :string, {:struct, "TSharedPtr<FTzCovenantPermissionsInfo"}}}
   ],
 
 "RegionContentPlayInfoFailResponse" => [
@@ -12916,7 +12916,7 @@
   ],
 
 "SkillAutoUseManaPointsRestrictOptionInfo" => [
-    %{name: "IsManaPointsUsageRestricted", type: :boolean},
+    %{name: "IsManaPointsUsageRestricted", type: :bool},
     %{name: "IsForceUseSkillsInPvp", type: :unknown},
     %{name: "IsForceUseSelfBuffSkills", type: :unknown}
   ],
@@ -12929,8 +12929,8 @@
 "CheatCreateAndEquipGearsRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "GearCuid", type: :cuid},
-    %{name: "BoundAndEroded", type: {:enum, "ETzBoundAndErodedType"}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "BoundAndEroded", type: {:enum, "BoundAndErodedType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}},
     %{name: "Count", type: {:int, 4}}
   ],
@@ -12947,7 +12947,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "GearCuid", type: :cuid},
     %{name: "TestCount", type: {:int, 4}},
-    %{name: "SuccessCounts", type: :unknown}
+    %{name: "SuccessCounts", type: {:map, {:int, 2}, {:int, 4}}}
   ],
 
 "TutorialBeginNotify" => [
@@ -12973,8 +12973,8 @@
   ],
 
 "SchemaDataTable" => [
-    %{name: "SchemaTable", type: :unknown},
-    %{name: "DataTable", type: :unknown}
+    %{name: "SchemaTable", type: {:nullable, :message}},
+    %{name: "DataTable", type: {:nullable, :message}}
   ],
 
 "CovenantQueryJoinAppliedCovenantSummaryInfoListRequest" => [
@@ -12983,15 +12983,15 @@
 
 "TutorialUnholdRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "TutorialFilterKind", type: {:enum, "ETzTutorialFilterKindType"}},
+    %{name: "TutorialFilterKind", type: {:enum, "TutorialFilterKindType"}},
     %{name: "FilterValue", type: :string}
   ],
 
 "FieldMigrationReadyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsInstanceField", type: :unknown},
-    %{name: "IsTeleport", type: :unknown},
-    %{name: "SeamlessNpcGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "IsInstanceField", type: :bool},
+    %{name: "IsTeleport", type: :bool},
+    %{name: "SeamlessNpcGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CovenantLivingTotemDeployNotify" => [
@@ -13016,7 +13016,7 @@
 
 "RedrawableItemSelectRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
     %{name: "ItemGuid", type: {:uint, 8}},
     %{name: "SelectedItemCuid", type: :cuid},
     %{name: "CostCurrencyCuid", type: :cuid}
@@ -13030,7 +13030,7 @@
 
 "CheatClearGearResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "UnequipGearSlots", type: {:list, {:enum, "ETzGearSlotType,TSizedDefaultAllocator<32"}}},
+    %{name: "UnequipGearSlots", type: {:list, {:enum, "GearSlotType"}}},
     %{name: "PlayerPublicStatsInfo", type: {:nullable, {:struct, "PlayerPublicStatsInfo"}}},
     %{name: "PlayerPrivateStatsInfo", type: {:nullable, {:struct, "PlayerPrivateStatsInfo"}}}
   ],
@@ -13044,7 +13044,7 @@
 "ChatRoomListUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "AddedChatRoomRecordsInitializationInfos", type: {:list, {:struct, "ChatRoomRecordsInitializationInfo"}}},
-    %{name: "DeletedChatRoomGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeletedChatRoomGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatSkillTableReloadRequest" => [
@@ -13073,11 +13073,11 @@
 
 "CheatSetFacingDirectionRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "FacingDirectionYaw_rad", type: "float"}
+    %{name: "FacingDirectionYaw_rad", type: :float}
   ],
 
 "SkillStateAffectInfo" => [
-    %{name: "State", type: {:enum, "ETzCharacterStateType"}},
+    %{name: "State", type: {:enum, "CharacterStateType"}},
     %{name: "StateExpireDurationDelta_msec", type: {:int, 4}}
   ],
 
@@ -13088,8 +13088,8 @@
 
 "SubscriptionCommandResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RequestedChannel", type: {:enum, "ETzSubscriptionChannelType"}},
-    %{name: "RequestedCommand", type: {:enum, "ETzSubscriptionCommandType"}},
+    %{name: "RequestedChannel", type: {:enum, "SubscriptionChannelType"}},
+    %{name: "RequestedCommand", type: {:enum, "SubscriptionCommandType"}},
     %{name: "RequestedParameter", type: :cuid},
     %{name: "SubscribeKeepaliveInterval_sec", type: {:int, 4}}
   ],
@@ -13106,19 +13106,19 @@
 
 "StrongholdBattleCompleteAchievementSourceInfo" => [
     %{name: "__base__", type: {:struct, "AchievementSourceInfo"}},
-    %{name: "StrongholdBattleResult", type: {:enum, "ETzStrongholdBattleResultType"}}
+    %{name: "StrongholdBattleResult", type: {:enum, "StrongholdBattleResultType"}}
   ],
 
 "RoadPathInfo" => [
     %{name: "RoadJunctionInfo", type: {:struct, "RoadJunctionInfo"}},
     %{name: "LinkedCuidHashCode", type: {:int, 4}},
-    %{name: "IsOneShotSpecialMove", type: :unknown}
+    %{name: "IsOneShotSpecialMove", type: :bool}
   ],
 
 "ServerDrivenPlayRewardInfo" => [
     %{name: "GainedExperiencePoints", type: {:uint, 8}},
     %{name: "GainedSpiritualBondPower", type: {:uint, 8}},
-    %{name: "GainedCurrencies", type: :unknown},
+    %{name: "GainedCurrencies", type: {:map, :cuid, {:uint, 8}}},
     %{name: "GainedItemInfos", type: {:list, {:struct, "GainedItemInfo"}}}
   ],
 
@@ -13129,11 +13129,11 @@
     %{name: "RealmName", type: :string},
     %{name: "Ip", type: :string},
     %{name: "Port", type: {:int, 4}},
-    %{name: "ServerState", type: {:enum, "ETzServerStateType"}},
-    %{name: "ServerTagKind", type: {:enum, "ETzServerTagKindType"}},
+    %{name: "ServerState", type: {:enum, "ServerStateType"}},
+    %{name: "ServerTagKind", type: {:enum, "ServerTagKindType"}},
     %{name: "UpdateDateTime", type: :datetime},
     %{name: "CreateDateTime", type: :datetime},
-    %{name: "IsInboundRealmTransferable", type: :unknown}
+    %{name: "IsInboundRealmTransferable", type: :bool}
   ],
 
 "SystemMessageNotify" => [
@@ -13144,11 +13144,11 @@
 
 "CheatAcquireStanceResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "AcquireRequestedStance", type: {:enum, "ETzStanceType"}},
-    %{name: "Stance", type: {:enum, "ETzStanceType"}},
+    %{name: "AcquireRequestedStance", type: {:enum, "StanceType"}},
+    %{name: "Stance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "InstalledStance", type: {:enum, "ETzStanceType"}},
-    %{name: "IsStanceInstallFreeChanceEnabled", type: :unknown}
+    %{name: "InstalledStance", type: {:enum, "StanceType"}},
+    %{name: "IsStanceInstallFreeChanceEnabled", type: :bool}
   ],
 
 "CheatInitializeQuestDataResponse" => [
@@ -13157,8 +13157,8 @@
   ],
 
 "NxLogBaseParameterInfo" => [
-    %{name: "ActionId", type: "FGuid"},
-    %{name: "IsByNxCmd", type: :unknown}
+    %{name: "ActionId", type: {:struct, "FGuid"}},
+    %{name: "IsByNxCmd", type: :bool}
   ],
 
 "BattalionCompleteAssembleNotify" => [
@@ -13166,20 +13166,20 @@
   ],
 
 "CombatTargetOptionInfo" => [
-    %{name: "ContinuousCombatMannerModeKind", type: {:enum, "ETzContinuousCombatMannerModeKindType"}},
-    %{name: "ContinuousCombatRadiusKind", type: {:enum, "ETzContinuousCombatRadiusKindType"}},
-    %{name: "QuestAutoProceedRadiusKind", type: {:enum, "ETzQuestAutoProceedRadiusKindType"}},
-    %{name: "TargetDyingOrRecoveryStateCharacter", type: :boolean},
+    %{name: "ContinuousCombatMannerModeKind", type: {:enum, "ContinuousCombatMannerModeKindType"}},
+    %{name: "ContinuousCombatRadiusKind", type: {:enum, "ContinuousCombatRadiusKindType"}},
+    %{name: "QuestAutoProceedRadiusKind", type: {:enum, "QuestAutoProceedRadiusKindType"}},
+    %{name: "TargetDyingOrRecoveryStateCharacter", type: :bool},
     %{name: "KeepContinuousCombatAndAutoMoveOnManualMove", type: :unknown},
     %{name: "KeepAutoAttackOnMoveToLocation", type: :unknown},
     %{name: "KeepAutoAttackOnMoveToDirection", type: :unknown},
-    %{name: "AutoAttackTargetOnKinds", type: {:list, {:enum, "ETzAutoAttackTargetKindType,TSizedDefaultAllocator<32"}}},
+    %{name: "AutoAttackTargetOnKinds", type: {:list, {:enum, "AutoAttackTargetKindType"}}},
     %{name: "AutoCounterAttackNpc", type: :unknown},
-    %{name: "AutoAttackTargetOnNpcGrades", type: {:list, {:enum, "ETzAutoAttackTargetNpcGradeType,TSizedDefaultAllocator<32"}}},
+    %{name: "AutoAttackTargetOnNpcGrades", type: {:list, {:enum, "AutoAttackTargetNpcGradeType"}}},
     %{name: "CancelAttackOrFocusTargetButtonVisible", type: :unknown},
-    %{name: "SkillUsePriorityKind", type: {:enum, "ETzSkillUsePriorityKindType"}},
+    %{name: "SkillUsePriorityKind", type: {:enum, "SkillUsePriorityKindType"}},
     %{name: "RemoveTargetingByContinuousCombatOff", type: :unknown},
-    %{name: "TabSelectTargetingKind", type: {:enum, "ETzTabSelectTargetingKindType"}},
+    %{name: "TabSelectTargetingKind", type: {:enum, "TabSelectTargetingKindType"}},
     %{name: "FocusTargetSelfButtonVisible", type: :unknown},
     %{name: "IsReservedSkillCancellable", type: :unknown},
     %{name: "StopContinuousCombatWhenKilledBoss", type: :unknown}
@@ -13203,7 +13203,7 @@
 
 "MailCountQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MailTab", type: {:enum, "ETzMailTabType"}},
+    %{name: "MailTab", type: {:enum, "MailTabType"}},
     %{name: "Count", type: {:int, 4}}
   ],
 
@@ -13221,7 +13221,7 @@
 
 "AccountAffectInfo" => [
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "AccountAffectKind", type: {:enum, "ETzAccountAffectKindType"}},
+    %{name: "AccountAffectKind", type: {:enum, "AccountAffectKindType"}},
     %{name: "ExpireDateTime", type: :datetime}
   ],
 
@@ -13232,7 +13232,7 @@
 
 "BattalionJoinNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BattalionInfo", type: :unknown}
+    %{name: "BattalionInfo", type: {:nullable, :message}}
   ],
 
 "StrongholdBattleCampaignConditionProgressSynchronizeNotify" => [
@@ -13245,12 +13245,12 @@
     %{name: "PartyMemberGuid", type: {:uint, 8}},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}},
     %{name: "KilledNpcCuid", type: :cuid},
-    %{name: "IsErosionInstallerReward", type: :unknown}
+    %{name: "IsErosionInstallerReward", type: :bool}
   ],
 
 "PvpRecordQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "PvpRecordInfos", type: :unknown},
+    %{name: "PvpRecordInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPvpRecordInfo"}}},
     %{name: "TeaseMessage", type: :string}
   ],
 
@@ -13260,11 +13260,11 @@
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "CovenantRewardInfo", type: {:nullable, {:struct, "CovenantRewardInfo"}}},
-    %{name: "Amity", type: :unknown},
+    %{name: "Amity", type: {:map, :cuid, {:uint, 8}}},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}},
     %{name: "ExperiencePointsDelta", type: {:uint, 8}},
-    %{name: "IsUpgradeSlayingGrade", type: :unknown},
-    %{name: "AmityDelta", type: :unknown},
+    %{name: "IsUpgradeSlayingGrade", type: :bool},
+    %{name: "AmityDelta", type: {:map, :cuid, {:uint, 8}}},
     %{name: "SpiritualBondPowerDelta", type: {:uint, 8}},
     %{name: "CooldownExpireDateTimeRangeInfo", type: {:nullable, {:struct, "DateTimeRangeInfo"}}}
   ],
@@ -13283,10 +13283,10 @@
 "SkillRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SkillCuid", type: :cuid},
-    %{name: "SkillTargetingInfo", type: :unknown},
+    %{name: "SkillTargetingInfo", type: {:nullable, :message}},
     %{name: "ServerUtcNow", type: :datetime},
-    %{name: "DelayForOthersDuration_msec", type: "float"},
-    %{name: "IsToggleBuffSkillOn", type: :unknown}
+    %{name: "DelayForOthersDuration_msec", type: :float},
+    %{name: "IsToggleBuffSkillOn", type: :bool}
   ],
 
 "QuickSlotPageUpdateRequest" => [
@@ -13313,9 +13313,9 @@
 
 "CollectionSlotItemInfo" => [
     %{name: "ItemCuid", type: :cuid},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}},
-    %{name: "IsEroded", type: :unknown},
+    %{name: "IsEroded", type: :bool},
     %{name: "Quantity", type: {:int, 4}}
   ],
 
@@ -13356,9 +13356,9 @@
 "ErFrontServerSessionReinitializeInfo" => [
     %{name: "__base__", type: {:struct, "ErServerSessionInitializeInfo"}},
     %{name: "RealmAccountInfo", type: {:nullable, {:struct, "RealmAccountInfo"}}},
-    %{name: "PlayerSummaryInfos", type: :unknown},
+    %{name: "PlayerSummaryInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerSummaryInfo"}}},
     %{name: "LatestPlayedPlayerGuid", type: {:uint, 8}},
-    %{name: "PopupCommunityAutomatically", type: :unknown}
+    %{name: "PopupCommunityAutomatically", type: :bool}
   ],
 
 "MultipleHandshakeMessage" => [
@@ -13366,7 +13366,7 @@
   ],
 
 "PointCurrencyContainerOverflowInfo" => [
-    %{name: "CuidToOverflowCount", type: :unknown}
+    %{name: "CuidToOverflowCount", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "DividendInfo" => [
@@ -13376,8 +13376,8 @@
 
 "BattalionMemberAdditionalInfo" => [
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
-    %{name: "State", type: {:enum, "ETzCharacterStateType"}},
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}},
+    %{name: "State", type: {:enum, "CharacterStateType"}},
     %{name: "CostumeInfo", type: {:nullable, {:struct, "CostumeInfo"}}},
     %{name: "CustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
     %{name: "ErosionInfo", type: {:nullable, {:struct, "ErosionInfo"}}}
@@ -13408,36 +13408,36 @@
     %{name: "SpecialMovePoints", type: {:int, 4}},
     %{name: "SpecialMovePointsDecreaseAmount_pmsec", type: {:int, 4}},
     %{name: "ServerUtcNow", type: :datetime},
-    %{name: "DelayForOthersDuration_msec", type: "float"}
+    %{name: "DelayForOthersDuration_msec", type: :float}
   ],
 
 "CheatSetStatRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StatKind", type: {:enum, "ETzAdjustableStatKindType"}},
-    %{name: "StatValue", type: "float"}
+    %{name: "StatKind", type: {:enum, "AdjustableStatKindType"}},
+    %{name: "StatValue", type: :float}
   ],
 
 "RealmAccountLoginRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "RealmCuid", type: :cuid},
-    %{name: "IsFastLogin", type: :unknown}
+    %{name: "IsFastLogin", type: :bool}
   ],
 
 "AnniversaryRewardAcquireNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "AnniversaryPointsByAnniversaryCuid", type: :unknown},
+    %{name: "AnniversaryPointsByAnniversaryCuid", type: {:map, :cuid, {:uint, 8}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
   ],
 
 "CheatSetInvulnerableRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsInvulnerable", type: :unknown}
+    %{name: "IsInvulnerable", type: :bool}
   ],
 
 "StrongholdBuildingUpdateBuildingAccessPermissionsResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "BuildingAccessPermissionKinds", type: :unknown}
+    %{name: "BuildingAccessPermissionKinds", type: {:map, :cuid, {:enum, "BuildingAccessPermissionKindType"}}}
   ],
 
 "PartySynchronizeMemberErosionInfoNotify" => [
@@ -13452,15 +13452,15 @@
 
 "CharacterMoveToLocationInfo" => [
     %{name: "__base__", type: {:struct, "CharacterMoveToInfo"}},
-    %{name: "MoveToDestinationParameterInfo", type: :unknown},
-    %{name: "MoveToNextDestinationParameterInfo", type: :unknown}
+    %{name: "MoveToDestinationParameterInfo", type: {:nullable, :message}},
+    %{name: "MoveToNextDestinationParameterInfo", type: {:nullable, :message}}
   ],
 
 "MissionInfo" => [
     %{name: "MissionCuid", type: :cuid},
     %{name: "ProgressCount", type: {:int, 4}},
     %{name: "UpdateDateTime", type: :datetime},
-    %{name: "RewardAcquiredDateTimes", type: :unknown}
+    %{name: "RewardAcquiredDateTimes", type: {:map, {:int, 4}, {:struct, "TozSerializableMessageLibNative::Nullable<FDateTime"}}}
   ],
 
 "DatatoolHandshakeRequest" => [
@@ -13471,12 +13471,12 @@
     %{name: "NodeCuid", type: :cuid},
     %{name: "AnalysisColorCuid", type: :cuid},
     %{name: "AnalysisRewardStatCuid", type: :cuid},
-    %{name: "IsAnalysisLocked", type: :unknown}
+    %{name: "IsAnalysisLocked", type: :bool}
   ],
 
 "CovenantBuildingWorkInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "BuildingWorkInfos", type: :unknown}
+    %{name: "BuildingWorkInfos", type: {:map, :cuid, {:struct, "TMap<FTzCuid"}}}
   ],
 
 "CheatChangeServerDrivenPlayRemainingDurationResponse" => [
@@ -13487,8 +13487,8 @@
 "QuestProgressInfo" => [
     %{name: "QuestVuid", type: {:struct, "Vuid"}},
     %{name: "AcceptDateTime", type: :datetime},
-    %{name: "StartByItem", type: :unknown},
-    %{name: "QuestMissionProgressInfos", type: :unknown}
+    %{name: "StartByItem", type: :bool},
+    %{name: "QuestMissionProgressInfos", type: {:map, {:struct, "Vuid"}, {:struct, "TSharedPtr<FTzQuestMissionProgressInfo"}}}
   ],
 
 "QuickSlotDetailInfo" => [
@@ -13498,8 +13498,8 @@
 "PushNotificationOptionModifyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PushNotificationOptionCuid", type: :cuid},
-    %{name: "IsEnabled", type: :unknown},
-    %{name: "IsNotifiedEvenWhenConnected", type: :unknown}
+    %{name: "IsEnabled", type: :bool},
+    %{name: "IsNotifiedEvenWhenConnected", type: :bool}
   ],
 
 "StrongholdBattleCovenantBattalionJoinMemberNotify" => [
@@ -13529,7 +13529,7 @@
     %{name: "TargetGuid", type: {:uint, 8}},
     %{name: "TargetCovenantVuid", type: {:struct, "Vuid"}},
     %{name: "ConsecutiveKillCount", type: {:int, 4}},
-    %{name: "CombatLogKind", type: {:enum, "ETzCombatLogKindType"}}
+    %{name: "CombatLogKind", type: {:enum, "CombatLogKindType"}}
   ],
 
 "CheatSpawnGuardTowersAtOccupyingStrongholdsResponse" => [
@@ -13553,7 +13553,7 @@
 "CovenantSynchronizeJoinAppliedPlayerIsConnectedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "IsConnected", type: :unknown},
+    %{name: "IsConnected", type: :bool},
     %{name: "LastClientDisconnectDateTime", type: :datetime}
   ],
 
@@ -13595,7 +13595,7 @@
 
 "CheatUserInventorySlotCountChangeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UserInventoryKind", type: {:enum, "ETzUserInventoryKindType"}},
+    %{name: "UserInventoryKind", type: {:enum, "UserInventoryKindType"}},
     %{name: "ChangeSlotCount", type: {:int, 4}}
   ],
 
@@ -13625,11 +13625,11 @@
 
 "FollowerDispatchOverallInfoSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DispatchOverallInfos", type: :unknown}
+    %{name: "DispatchOverallInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzFollowerDispatchOverallInfo"}}}
   ],
 
 "StrongholdBattleAttackEndInfo" => [
-    %{name: "Reason", type: {:enum, "ETzStrongholdBattleEndReasonType"}},
+    %{name: "Reason", type: {:enum, "StrongholdBattleEndReasonType"}},
     %{name: "AltarDestroyerGuid", type: {:uint, 8}},
     %{name: "AltarDestroyerName", type: :string}
   ],
@@ -13689,7 +13689,7 @@
 
 "PlayerRealmAccountPresentApplicationCheckInfo" => [
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Level", type: {:int, 4}}
   ],
 
@@ -13697,7 +13697,7 @@
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "DistrictCuid", type: :cuid},
     %{name: "PvpBattleGuid", type: {:uint, 8}},
-    %{name: "PvpBattleCovenantInfo", type: :unknown}
+    %{name: "PvpBattleCovenantInfo", type: {:nullable, :message}}
   ],
 
 "CovenantQueryRecommendCovenantSummaryInfoListRequest" => [
@@ -13706,21 +13706,21 @@
 
 "CharacterRotateTowardsYawInfo" => [
     %{name: "__base__", type: {:struct, "CharacterRotateInfo"}},
-    %{name: "FinalYaw_rad", type: "float"}
+    %{name: "FinalYaw_rad", type: :float}
   ],
 
 "SpellstoneSlotInfo" => [
-    %{name: "LocationCoordinates", type: "FIntVector2D"},
-    %{name: "Orientation", type: {:enum, "ETzSpellstoneOrientationType"}}
+    %{name: "LocationCoordinates", type: :fintvector2d},
+    %{name: "Orientation", type: {:enum, "SpellstoneOrientationType"}}
   ],
 
 "CovenantSupportInfo" => [
     %{name: "FollowerGuid", type: {:uint, 8}},
     %{name: "FollowerCuid", type: :cuid},
     %{name: "PlayerName", type: :string},
-    %{name: "FollowerWorkKind", type: {:enum, "ETzFollowerWorkKindType"}},
+    %{name: "FollowerWorkKind", type: {:enum, "FollowerWorkKindType"}},
     %{name: "WorkplaceCuid", type: :cuid},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}},
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}},
     %{name: "BuildingWorkCuid", type: :cuid},
     %{name: "SupportedCount", type: {:int, 4}}
   ],
@@ -13732,7 +13732,7 @@
 
 "DistrictFavorDatabaseInfo" => [
     %{name: "__base__", type: {:struct, "DistrictFavorBossInfo"}},
-    %{name: "CurrentAvailableFavorDatabaseInfos", type: :unknown},
+    %{name: "CurrentAvailableFavorDatabaseInfos", type: {:map, {:struct, "Vuid"}, {:struct, "TSharedPtr<FTzFavorDatabaseInfo"}}},
     %{name: "LastUpdateDateTime", type: :datetime}
   ],
 
@@ -13740,13 +13740,13 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "GoodsGuids", type: :unknown},
     %{name: "ExpireDateTime", type: :datetime},
-    %{name: "Reason", type: {:enum, "ETzMarketGoodsExpireReasonType"}}
+    %{name: "Reason", type: {:enum, "MarketGoodsExpireReasonType"}}
   ],
 
 "StrongholdBattleTacticalSkillBadgeAmountChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "TacticalSkillBadgeCount", type: {:int, 4}}
   ],
 
@@ -13769,7 +13769,7 @@
     %{name: "__base__", type: {:struct, "MailLayoutInfo"}},
     %{name: "HavenCuid", type: :cuid},
     %{name: "BuildingCuid", type: :cuid},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}}
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}}
   ],
 
 "MountCallingRequest" => [
@@ -13779,19 +13779,19 @@
 
 "MailUnreadNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UnreadCounts", type: :unknown}
+    %{name: "UnreadCounts", type: {:map, {:enum, "MailTabType"}, {:int, 4}}}
   ],
 
 "PartySharedAttackTargetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "SharedAttackTargetInfo", type: :unknown}
+    %{name: "SharedAttackTargetInfo", type: {:nullable, :message}}
   ],
 
 "StrongholdBattleWinnerBattalionInfo" => [
     %{name: "CovenantVuid", type: {:struct, "Vuid"}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "AltarDestroyerName", type: :string}
   ],
 
@@ -13803,11 +13803,11 @@
 "StrongholdBattleInfo" => [
     %{name: "Guid", type: {:uint, 8}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "StrongholdBattleKind", type: {:enum, "ETzStrongholdBattleKindType"}},
+    %{name: "StrongholdBattleKind", type: {:enum, "StrongholdBattleKindType"}},
     %{name: "StartTime", type: :datetime},
-    %{name: "BuildingStateInfos", type: :unknown},
-    %{name: "DefenseInfos", type: :unknown},
-    %{name: "AttackInfos", type: :unknown}
+    %{name: "BuildingStateInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzStrongholdBattleBuildingStateInfo"}}},
+    %{name: "DefenseInfos", type: {:map, {:enum, "StrongholdBattleDeploymentKindType"}, {:struct, "TSharedPtr<FTzStrongholdBattleDefenseGroupInfo"}}},
+    %{name: "AttackInfos", type: {:map, {:enum, "StrongholdBattleDeploymentKindType"}, {:struct, "TSharedPtr<FTzStrongholdBattleAttackInfo"}}}
   ],
 
 "CheatAccomplishAllFavorResponse" => [
@@ -13816,7 +13816,7 @@
 
 "BattalionVolunteerParticipationNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "VolunteerParticipationInfo", type: :unknown}
+    %{name: "VolunteerParticipationInfo", type: {:nullable, :message}}
   ],
 
 "RegionContentPlayInfo" => [
@@ -13837,7 +13837,7 @@
 
 "CheatChangeServerTimeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Offset", type: "FTimespan"},
+    %{name: "Offset", type: {:struct, "FTimespan"}},
     %{name: "SpeedChangeTime", type: :datetime},
     %{name: "Multiplier", type: {:int, 4}}
   ],
@@ -13849,7 +13849,7 @@
 
 "CovenantUpdateCovenantPermissionsInfosNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantPermissionsInfos", type: :unknown}
+    %{name: "CovenantPermissionsInfos", type: {:map, :string, {:struct, "TSharedPtr<FTzCovenantPermissionsInfo"}}}
   ],
 
 "ErChatServerAuthenticateInfo" => [
@@ -13859,21 +13859,21 @@
 
 "PlayerPvpInfo" => [
     %{name: "TeaseMessage", type: :string},
-    %{name: "AlertPlayers", type: :unknown},
-    %{name: "CrossRealmAlertPlayers", type: :unknown},
+    %{name: "AlertPlayers", type: {:map, {:uint, 8}, :datetime}},
+    %{name: "CrossRealmAlertPlayers", type: {:map, {:uint, 8}, {:struct, "CrossRealmAlertPlayerRegisterInfo"}}},
     %{name: "NonLosingPvpScoreExpiredDateTime", type: :datetime}
   ],
 
 "StrongholdBattleCarriageLivingTotemCombatStateSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "IsInCombatInProgressState", type: :unknown}
+    %{name: "IsInCombatInProgressState", type: :bool}
   ],
 
 "MailReceiveAttachmentsRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MailGuid", type: {:uint, 8}},
-    %{name: "MailBoxKind", type: {:enum, "ETzMailBoxKindType"}}
+    %{name: "MailBoxKind", type: {:enum, "MailBoxKindType"}}
   ],
 
 "CheatChangeCovenantCurrencyRequest" => [
@@ -13897,7 +13897,7 @@
 "PartyLeaveMemberNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "PartyLeaveOrDismissReason", type: {:enum, "ETzPartyLeaveOrDismissReasonType"}}
+    %{name: "PartyLeaveOrDismissReason", type: {:enum, "PartyLeaveOrDismissReasonType"}}
   ],
 
 "ControlOptionModifyResponse" => [
@@ -13908,12 +13908,12 @@
 "PlayerMarketTransactionProcessInfo" => [
     %{name: "GoodsGuid", type: {:uint, 8}},
     %{name: "RealmCuid", type: :cuid},
-    %{name: "PlayerMarketTransactionProcessKind", type: {:enum, "ETzPlayerMarketTransactionProcessKindType"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "PlayerMarketTransactionProcessKind", type: {:enum, "PlayerMarketTransactionProcessKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "MarketKey", type: {:uint, 8}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsStorable", type: :unknown},
-    %{name: "ItemAdditionalInfo", type: :unknown},
+    %{name: "IsStorable", type: :bool},
+    %{name: "ItemAdditionalInfo", type: {:nullable, :message}},
     %{name: "ItemStackCount", type: {:int, 4}},
     %{name: "SellCurrencyCuid", type: :cuid},
     %{name: "SellCurrencyAmount", type: {:uint, 8}},
@@ -13928,22 +13928,22 @@
     %{name: "TransactionDateTime", type: {:nullable, :datetime}},
     %{name: "DeleteDateTime", type: {:nullable, :datetime}},
     %{name: "UpdateDateTime", type: :datetime},
-    %{name: "ActionId", type: "FGuid"},
+    %{name: "ActionId", type: {:struct, "FGuid"}},
     %{name: "SellPlayerGuid", type: {:uint, 8}},
-    %{name: "IsDirty", type: :unknown}
+    %{name: "IsDirty", type: :bool}
   ],
 
 "MarketFavoriteItemInfoQueryResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "MarketFavoriteItemInfosOnSale", type: {:list, {:struct, "MarketFavoriteItemInfo"}}},
     %{name: "MarketFavoriteItemInfosNotOnSale", type: {:list, {:struct, "MarketFavoriteItemInfo"}}}
   ],
 
 "ShopShoppingModeCommandResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "RequestedCommand", type: {:enum, "ETzSubscriptionCommandType"}},
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "RequestedCommand", type: {:enum, "SubscriptionCommandType"}},
     %{name: "RegisteredGoodsList", type: {:list, {:struct, "RegisteredGoodsInfo"}}},
     %{name: "BuyCountInfos", type: {:list, {:struct, "GoodsBuyCountInfo"}}},
     %{name: "RegisteredGoodsBuyCountInfos", type: {:list, {:struct, "RegisteredGoodsBuyCountInfo"}}},
@@ -13965,7 +13965,7 @@
 
 "SkillCasterMoveAffectInfo" => [
     %{name: "__base__", type: {:struct, "SkillMoveAffectInfo"}},
-    %{name: "CasterMoveAffectKind", type: {:enum, "ETzCasterMoveAffectKindType"}}
+    %{name: "CasterMoveAffectKind", type: {:enum, "CasterMoveAffectKindType"}}
   ],
 
 "PlayerLogoutRequest" => [
@@ -13983,7 +13983,7 @@
 
 "ChatBanNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "BanInfo", type: :unknown}
+    %{name: "BanInfo", type: {:nullable, :message}}
   ],
 
 "ErosionInfo" => [
@@ -13994,7 +13994,7 @@
     %{name: "InstallerName", type: :string},
     %{name: "InstallerBattalionInfo", type: {:nullable, {:struct, "AffiliatedBattalionInfo"}}},
     %{name: "InstalledDateTime", type: :datetime},
-    %{name: "IsWithoutPermission", type: :unknown},
+    %{name: "IsWithoutPermission", type: :bool},
     %{name: "AbyssCocoonGuid", type: {:uint, 8}},
     %{name: "NpcSummonWaveStartTime", type: :datetime},
     %{name: "NpcSummonWaveIndex", type: {:int, 4}}
@@ -14003,7 +14003,7 @@
 "CheatUpdateCovenantMissionCountRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MissionCuid", type: :cuid},
-    %{name: "AdjustKind", type: {:enum, "ETzMissionAdjustKindType"}},
+    %{name: "AdjustKind", type: {:enum, "MissionAdjustKindType"}},
     %{name: "AdjustCount", type: {:int, 4}}
   ],
 
@@ -14017,7 +14017,7 @@
 "ItemIndexOptionalSelector" => [
     %{name: "__base__", type: {:struct, "MultipleItemSelector"}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "IsBound", type: :boolean},
+    %{name: "IsBound", type: :bool},
     %{name: "IsStorable", type: {:nullable, "lVar2=4;puVar3=&DAT_0901b5c8;if(*(char*)(in_x0+0x1b)=='\\0'){lVar2=5;puVar3=(undefined8*)pcVar1;}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar2<<1);__memcpy_chk((ulong)&local_198|1,puVar3,lVar2,0x17);uVar8=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar2)=0;}uVar4=local_190;pcVar6=local_188;if((uVar8&1)==0){uVar4=uVar8>>1;pcVar6=(char*)((long)&local_198+1);}std::__ndk1::__put_charact"}},
     %{name: "IsEroded", type: {:nullable, "lVar2=4;puVar3=&DAT_0901b5c8;if(*(char*)(in_x0+0x1d)=='\\0'){lVar2=5;puVar3=(undefined8*)pcVar1;}local_190=0;local_188=(char*)0x0;local_198=(ulong)(byte)((int)lVar2<<1);__memcpy_chk((ulong)&local_198|1,puVar3,lVar2,0x17);uVar8=local_198&0xff;*(undefined*)(((ulong)&local_198|1)+lVar2)=0;}uVar4=local_190;pcVar1=local_188;if((uVar8&1)==0){uVar4=uVar8>>1;pcVar1=(char*)((long)&local_198+1);}std::__ndk1::__put_charact"}},
     %{name: "ExpireBeginDateTime", type: {:nullable, :datetime}},
@@ -14029,12 +14029,12 @@
 "CovenantRealmTransferRegisterRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "DestinationRealmCuid", type: :cuid},
-    %{name: "PlayerGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "PlayerGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "SpellstoneAdditionalInfo" => [
     %{name: "__base__", type: {:struct, "ItemAdditionalInfo"}},
-    %{name: "SubOptionCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "SubOptionCuids", type: {:list, :cuid}}
   ],
 
 "CovenantSynchronizeMemberNameNotify" => [
@@ -14049,12 +14049,12 @@
 
 "RPCReturnMessage" => [
     %{name: "__base__", type: {:struct, "RPCMessage"}},
-    %{name: "ReturnValue", type: :unknown}
+    %{name: "ReturnValue", type: {:nullable, :message}}
   ],
 
 "PrivateChannelOpenResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ChannelKind", type: {:enum, "ETzPrivateChannelKindType"}},
+    %{name: "ChannelKind", type: {:enum, "PrivateChannelKindType"}},
     %{name: "PrivateChannelKeepaliveInterval_sec", type: {:int, 4}}
   ],
 
@@ -14080,8 +14080,8 @@
 "CheatCreateItemRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "BoundAndEroded", type: {:enum, "ETzBoundAndErodedType"}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "BoundAndEroded", type: {:enum, "BoundAndErodedType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}},
     %{name: "Count", type: {:int, 4}},
     %{name: "ItemExpireDateTimeUtc", type: {:nullable, :datetime}}
@@ -14110,7 +14110,7 @@
 
 "AllRealmInfoPubSubChannelInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "RealmInfos", type: {:list, {:list, :unknown}}}
+    %{name: "RealmInfos", type: {:list, nil}}
   ],
 
 "SkillQuickSlotDetailInfo" => [
@@ -14130,7 +14130,7 @@
 
 "CovenantWorldMapMarkerRemoveAllNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
-    %{name: "RemovedGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "RemovedGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatSendSampleMailToMeResponse" => [
@@ -14166,7 +14166,7 @@
 
 "PartySharedFocusTargetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "SharedFocusTargetInfo", type: :unknown}
+    %{name: "SharedFocusTargetInfo", type: {:nullable, :message}}
   ],
 
 "PaidAttendanceHideNotificationMarkerResponse" => [
@@ -14203,7 +14203,7 @@
   ],
 
 "FollowerWorkInfo" => [
-    %{name: "WorkState", type: {:enum, "ETzFollowerWorkStateType"}},
+    %{name: "WorkState", type: {:enum, "FollowerWorkStateType"}},
     %{name: "MaxWorkTime_sec", type: {:int, 4}},
     %{name: "ElapsedWorkTime_sec", type: {:int, 4}},
     %{name: "CurrentWorkSpeed_mwpsec", type: {:int, 4}},
@@ -14268,9 +14268,9 @@
 "MailReservedStrongholdProtectionFailLayoutInfo" => [
     %{name: "__base__", type: {:struct, "MailLayoutInfo"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "ReservedStrongholdProtectionFailReason", type: {:enum, "ETzReservedStrongholdProtectionFailReasonType"}},
-    %{name: "StrongholdProtectionUseRefreshTime", type: "FTimespan"},
-    %{name: "AttackCovenantNames", type: {:list, {:struct, "FString,TSizedDefaultAllocator<32"}}},
+    %{name: "ReservedStrongholdProtectionFailReason", type: {:enum, "ReservedStrongholdProtectionFailReasonType"}},
+    %{name: "StrongholdProtectionUseRefreshTime", type: {:struct, "FTimespan"}},
+    %{name: "AttackCovenantNames", type: {:list, :string}},
     %{name: "RestrictionAnniversaryCuid", type: :cuid},
     %{name: "RestrictionStartDateTimeByAnniversary", type: {:nullable, :datetime}},
     %{name: "RestrictionAnniversaryEndDateTime", type: {:nullable, :datetime}}
@@ -14287,11 +14287,11 @@
 
 "PrivateChannelOpenRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ChannelKind", type: {:enum, "ETzPrivateChannelKindType"}}
+    %{name: "ChannelKind", type: {:enum, "PrivateChannelKindType"}}
   ],
 
 "AccelerationResultInfo" => [
-    %{name: "FollowerWorkKind", type: {:enum, "ETzFollowerWorkKindType"}},
+    %{name: "FollowerWorkKind", type: {:enum, "FollowerWorkKindType"}},
     %{name: "WorkplaceSpawnedEntityCuid", type: :cuid},
     %{name: "BuildingWorkCuid", type: :cuid}
   ],
@@ -14314,23 +14314,23 @@
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerLocation_cm", type: :vector},
     %{name: "ItemIndexWithCounts", type: {:list, {:struct, "ItemIndexWithCount"}}},
-    %{name: "IsErosionInstallerReward", type: :unknown}
+    %{name: "IsErosionInstallerReward", type: :bool}
   ],
 
 "PlayerLoginRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "IsFastLogin", type: :unknown}
+    %{name: "IsFastLogin", type: :bool}
   ],
 
 "PartyInfo" => [
     %{name: "PartyGuid", type: {:uint, 8}},
     %{name: "PartyOptionInfo", type: {:nullable, {:struct, "PartyOptionInfo"}}},
     %{name: "PartyLeaderGuid", type: {:uint, 8}},
-    %{name: "PartyMemberInfos", type: :unknown},
+    %{name: "PartyMemberInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPartyMemberInfo"}}},
     %{name: "TargetLocationInfos", type: {:list, {:struct, "TargetLocationInfo"}}},
-    %{name: "SharedAttackTargetInfo", type: :unknown},
-    %{name: "SharedFocusTargetInfo", type: :unknown}
+    %{name: "SharedAttackTargetInfo", type: {:nullable, :message}},
+    %{name: "SharedFocusTargetInfo", type: {:nullable, :message}}
   ],
 
 "CrossRealmCovenantDiplomacyWithdrawAllianceRequest" => [
@@ -14377,13 +14377,13 @@
 "ItemLockSwitchResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "ItemGuid", type: {:uint, 8}},
-    %{name: "IsInRealmAccountWarehouse", type: :unknown},
-    %{name: "IsLocked", type: :unknown}
+    %{name: "IsInRealmAccountWarehouse", type: :bool},
+    %{name: "IsLocked", type: :bool}
   ],
 
 "DeathPenaltyRecoveryInfo" => [
-    %{name: "DeathPenaltyFreeRecoveryInfo", type: :unknown},
-    %{name: "LastDeathPenaltyAutoRecoveryInfo", type: :unknown}
+    %{name: "DeathPenaltyFreeRecoveryInfo", type: {:nullable, :message}},
+    %{name: "LastDeathPenaltyAutoRecoveryInfo", type: {:nullable, :message}}
   ],
 
 "CovenantUpdateMainHavenCuidNotify" => [
@@ -14417,7 +14417,7 @@
   ],
 
 "TerritoryErosionItemConfigurationInfo" => [
-    %{name: "IsPermitted", type: :unknown},
+    %{name: "IsPermitted", type: :bool},
     %{name: "unknown_name", type: {:uint, 8}}
   ],
 
@@ -14428,7 +14428,7 @@
 
 "DeathPenaltyFreeRecoveryInfoUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeathPenaltyFreeRecoveryInfo", type: :unknown}
+    %{name: "DeathPenaltyFreeRecoveryInfo", type: {:nullable, :message}}
   ],
 
 "CheatResetCovenantCampaignTicketCountRequest" => [
@@ -14441,11 +14441,11 @@
   ],
 
 "SkillStageInfo" => [
-    %{name: "Stage", type: "unsigned_char"},
+    %{name: "Stage", type: {:struct, "unsigned_char"}},
     %{name: "LoopCounter", type: {:int, 4}},
     %{name: "SubStageCounter", type: {:int, 4}},
     %{name: "SkillCasterAffectInfo", type: {:nullable, {:struct, "SkillCasterAffectInfo"}}},
-    %{name: "SkillAffectTargetGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "SkillAffectTargetGuidList", type: {:list, {:uint, 8}}},
     %{name: "SkillAffectTargetAffectInfoList", type: {:list, {:struct, "SkillAffectTargetAffectInfo"}}},
     %{name: "SkillShieldWallAffectInfoList", type: {:list, {:struct, "SkillShieldWallAffectInfo"}}},
     %{name: "SkillTargetingInfos", type: {:list, {:struct, "SkillTargetingInfo"}}},
@@ -14474,7 +14474,7 @@
     %{name: "TargetPlayerName", type: :string},
     %{name: "TargetCovenantGuid", type: {:uint, 8}},
     %{name: "TargetCovenantName", type: :string},
-    %{name: "TargetConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
+    %{name: "TargetConnectionStatus", type: {:enum, "ConnectionStatusType"}},
     %{name: "ExpiredDateTime", type: :datetime}
   ],
 
@@ -14482,11 +14482,11 @@
     %{name: "PvpBattleGuid", type: {:uint, 8}},
     %{name: "RegionCuid", type: :cuid},
     %{name: "DistrictCuid", type: :cuid},
-    %{name: "PvpBattleDisplayKind", type: {:enum, "ETzPvpBattleDisplayKindType"}},
+    %{name: "PvpBattleDisplayKind", type: {:enum, "PvpBattleDisplayKindType"}},
     %{name: "PvpBattleKillDeathInfos", type: {:list, {:struct, "PvpBattleKillDeathInfo"}}},
-    %{name: "PvpBattleKillDeathCountInfos", type: :unknown},
-    %{name: "PvpBattlePlayerInfos", type: :unknown},
-    %{name: "PvpBattleCovenantInfos", type: :unknown},
+    %{name: "PvpBattleKillDeathCountInfos", type: {:map, {:struct, "PvpBattleCovenantId"}, {:struct, "TMap<FTzPvpBattlePlayerId"}}},
+    %{name: "PvpBattlePlayerInfos", type: {:map, {:struct, "PvpBattlePlayerId"}, {:struct, "TSharedPtr<FTzPvpBattlePlayerInfo"}}},
+    %{name: "PvpBattleCovenantInfos", type: {:map, {:struct, "PvpBattleCovenantId"}, {:struct, "TSharedPtr<FTzPvpBattleCovenantInfo"}}},
     %{name: "Location_cm", type: :vector}
   ],
 
@@ -14545,7 +14545,7 @@
     %{name: "MessageId", type: {:int, 4}},
     %{name: "Location_cm", type: :vector},
     %{name: "Destination_cm", type: :vector},
-    %{name: "SufficientlyCloseDistance_cm", type: "float"}
+    %{name: "SufficientlyCloseDistance_cm", type: :float}
   ],
 
 "WorldMapPvpBattleEndNotify" => [
@@ -14556,7 +14556,7 @@
 
 "CheatAcquireAllUsableSkillsResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "AcquiredSkillCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "AcquiredSkillCuids", type: {:list, :cuid}}
   ],
 
 "EndedWorldEventActionInfo" => [
@@ -14579,9 +14579,9 @@
 
 "RealmAccountPresentApplicationCheckInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "IsLoginedWithSafeDevice", type: :unknown},
-    %{name: "IsInVillage", type: :unknown},
-    %{name: "PlayerCheckInfos", type: :unknown}
+    %{name: "IsLoginedWithSafeDevice", type: :bool},
+    %{name: "IsInVillage", type: :bool},
+    %{name: "PlayerCheckInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerRealmAccountPresentApplicationCheckInfo"}}}
   ],
 
 "CollectionSlotItemRegisterNotify" => [
@@ -14604,7 +14604,7 @@
 
 "CheatStrongholdBattlePhaseTransitionEventRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StrongholdBattlePhaseTransitionEvent", type: {:enum, "ETzStrongholdBattlePhaseTransitionEventType"}}
+    %{name: "StrongholdBattlePhaseTransitionEvent", type: {:enum, "StrongholdBattlePhaseTransitionEventType"}}
   ],
 
 "CovenantUpdateCovenantMemberRoleNameNotify" => [
@@ -14676,13 +14676,13 @@
 
 "StrongholdBattleJoinNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "StrongholdBattleInfo", type: :unknown},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}}
+    %{name: "StrongholdBattleInfo", type: {:nullable, :message}},
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}}
   ],
 
 "CovenantCreateCovenantMemberRoleRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "CovenantMemberRoleName", type: :string}
   ],
 
@@ -14731,14 +14731,14 @@
 
 "SkillCasterAffectInfo" => [
     %{name: "__base__", type: {:struct, "SkillAffectInfo"}},
-    %{name: "SkillStatsAffectInfo", type: :unknown},
+    %{name: "SkillStatsAffectInfo", type: {:nullable, :message}},
     %{name: "SkillCasterMoveAffectInfo", type: {:nullable, {:struct, "SkillCasterMoveAffectInfo"}}}
   ],
 
 "AlertPlayerInfo" => [
     %{name: "Guid", type: {:uint, 8}},
     %{name: "Name", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "RealmCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
@@ -14765,7 +14765,7 @@
     %{name: "AttackerHavenCuid", type: :cuid},
     %{name: "DiscardStrongholdCuidIfMax", type: :cuid},
     %{name: "AttackResourceInfo", type: {:nullable, {:struct, "StrongholdBattleAttackResourceInfo"}}},
-    %{name: "IsAllowVolunteerJoinApply", type: :boolean},
+    %{name: "IsAllowVolunteerJoinApply", type: :bool},
     %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :unknown},
     %{name: "IsNotExposeToBattalionList", type: :unknown},
     %{name: "IsDeclarePlunder", type: :unknown}
@@ -14773,7 +14773,7 @@
 
 "CovenantHighestOccupiedStrongholdGradeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "ETzStrongholdGradeType"}}
+    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "StrongholdGradeType"}}
   ],
 
 "CovenantWatchDetailInfoQueryRequest" => [
@@ -14786,15 +14786,15 @@
 
 "PlayerFieldLeaveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "EntitySpawnReason", type: {:enum, "ETzEntitySpawnRemoveReasonType"}}
+    %{name: "EntitySpawnReason", type: {:enum, "EntitySpawnRemoveReasonType"}}
   ],
 
 "RealmAccountRealmTransferExecuteResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
-    %{name: "RealmTransferInfo", type: :unknown},
-    %{name: "PlayerCheckInfos", type: :unknown}
+    %{name: "RealmTransferInfo", type: {:nullable, :message}},
+    %{name: "PlayerCheckInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerRealmTransferCheckInfo"}}}
   ],
 
 "StrongholdBuildingDowngradeResponse" => [
@@ -14803,7 +14803,7 @@
 
 "GameNotificationOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "HeroBossSpawnNotifyDisplayOption", type: :boolean},
+    %{name: "HeroBossSpawnNotifyDisplayOption", type: :bool},
     %{name: "DistrictBossSpawnNotifyDisplayOption", type: :unknown},
     %{name: "ZonePointBossSpawnNotifyDisplayOption", type: :unknown}
   ],
@@ -14820,19 +14820,19 @@
   ],
 
 "ChatInfo" => [
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "OriginRealmCuid", type: :cuid},
     %{name: "SenderCharacterName", type: :string},
-    %{name: "SenderClasse", type: {:enum, "ETzClasseType"}},
+    %{name: "SenderClasse", type: {:enum, "ClasseType"}},
     %{name: "SenderLevel", type: {:int, 4}},
     %{name: "SenderSlayingGrade", type: {:int, 2}},
     %{name: "SenderPlayerExperiencePointsRanking", type: {:nullable, {:int, 4}}},
     %{name: "SenderFieldUid", type: {:struct, "FieldUid"}},
     %{name: "SenderGuid", type: {:uint, 8}},
-    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "ETzStrongholdGradeType"}},
+    %{name: "HighestOccupiedStrongholdGrade", type: {:enum, "StrongholdGradeType"}},
     %{name: "InfoToShare", type: :string},
     %{name: "Text", type: :string},
-    %{name: "HarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
+    %{name: "HarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
     %{name: "RegisterDateTime", type: :datetime}
   ],
 
@@ -14852,7 +14852,7 @@
   ],
 
 "HandshakeFailMessage" => [
-    %{name: "Result", type: :unknown}
+    %{name: "Result", type: {:nullable, :message}}
   ],
 
 "FollowerExperiencePointsItemConsumeRequest" => [
@@ -14874,9 +14874,9 @@
 "CheatTestGearEnchantOptionGradeResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CostItemCuid", type: :cuid},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "TestCount", type: {:int, 4}},
-    %{name: "UpgradeCountsByEnchantSlot", type: :unknown}
+    %{name: "UpgradeCountsByEnchantSlot", type: {:map, {:int, 2}, {:int, 4}}}
   ],
 
 "CovenantCampaignEnterRequest" => [
@@ -14887,13 +14887,13 @@
 "DestroyerInfo" => [
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "RealmCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "ExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}},
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}}
   ],
 
@@ -14906,7 +14906,7 @@
     %{name: "AppliedRealmAccountGuid", type: {:uint, 8}},
     %{name: "MainPlayerName", type: :string},
     %{name: "MainPlayerLevel", type: {:int, 4}},
-    %{name: "MainPlayerClasse", type: {:enum, "ETzClasseType"}},
+    %{name: "MainPlayerClasse", type: {:enum, "ClasseType"}},
     %{name: "PresentCode", type: :string},
     %{name: "Password", type: :string},
     %{name: "ExpiredDateTime", type: :datetime}
@@ -14939,12 +14939,12 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NpcGuid", type: {:uint, 8}},
     %{name: "RewardCuid", type: :cuid},
-    %{name: "MaterialGroupOrderList", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "MaterialGroupOrderList", type: {:list, :cuid}}
   ],
 
 "BattalionMemberConnectionStatusSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "BattalionMemberInfoSynchronizeNotify"}},
-    %{name: "ConnectionStatus", type: {:enum, "ETzConnectionStatusType"}}
+    %{name: "ConnectionStatus", type: {:enum, "ConnectionStatusType"}}
   ],
 
 "CheatChangeCovenantLevelResponse" => [
@@ -15002,7 +15002,7 @@
   ],
 
 "OrganizationStatsInfo" => [
-    %{name: "Stats", type: :unknown}
+    %{name: "Stats", type: {:map, {:struct, "OrganizationStatPrimaryKey"}, {:int, 4}}}
   ],
 
 "DyingSynchronizeNotify" => [
@@ -15012,7 +15012,7 @@
 
 "CovenantResearchResetNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantResearchInfos", type: :unknown}
+    %{name: "CovenantResearchInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCovenantResearchInfo"}}}
   ],
 
 "StrongholdBattleUpdateSiegeWeaponTargetResponse" => [
@@ -15028,7 +15028,7 @@
 "CustomizationItemUseParameterInfo" => [
     %{name: "__base__", type: {:struct, "ItemUseParameterInfo"}},
     %{name: "PlayerCustomizeInfo", type: {:nullable, {:struct, "PlayerCustomizeInfo"}}},
-    %{name: "Gender", type: {:enum, "ETzGenderType"}}
+    %{name: "Gender", type: {:enum, "GenderType"}}
   ],
 
 "GuiseEquipFailResponse" => [
@@ -15054,7 +15054,7 @@
 "CheatTeleportRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "LocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
-    %{name: "Radius_cm", type: "float"}
+    %{name: "Radius_cm", type: :float}
   ],
 
 "CheatMonsterBookSetAnalysisInfoRequest" => [
@@ -15077,7 +15077,7 @@
 "GearSlotPresetModifyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "EquipGearSlotInfos", type: {:list, {:struct, "GearSlotInfo"}}},
-    %{name: "UnequipGearSlots", type: {:list, {:enum, "ETzGearSlotType,TSizedDefaultAllocator<32"}}}
+    %{name: "UnequipGearSlots", type: {:list, {:enum, "GearSlotType"}}}
   ],
 
 "CovenantCampCovenantShopInfoNotify" => [
@@ -15093,14 +15093,14 @@
   ],
 
 "SessionKeyAuthenticateComplete" => [
-    %{name: "Success", type: :unknown},
+    %{name: "Success", type: :bool},
     %{name: "RecentlyProcessedTozMessageIndex", type: {:int, 4}}
   ],
 
 "MarketPriceInfo" => [
     %{name: "ItemCuid", type: :cuid},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
-    %{name: "GearEnhancementGrade", type: {:nullable, "short"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
+    %{name: "GearEnhancementGrade", type: {:nullable, {:int, 2}}},
     %{name: "LowestUnitSalesPriceForYesterday_pe2", type: {:uint, 8}},
     %{name: "LastUnitSalesPrice_pe2", type: {:uint, 8}},
     %{name: "LowestUnitListPrice_pe2", type: {:uint, 8}}
@@ -15117,15 +15117,15 @@
 "StrongholdBattleBuildingHealthPointsChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "BuildingKind", type: {:enum, "ETzBuildingKindType"}},
+    %{name: "BuildingKind", type: {:enum, "BuildingKindType"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
     %{name: "HealthPoints", type: {:uint, 8}}
   ],
 
 "CheatRemoveAllWorldMapMarkerResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
-    %{name: "RemovedGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
+    %{name: "RemovedGuids", type: {:list, {:uint, 8}}},
     %{name: "ServerDrivenPlayOptionInfo", type: {:nullable, {:struct, "ServerDrivenPlayOptionInfo"}}}
   ],
 
@@ -15148,7 +15148,7 @@
 
 "MountStationaryCallingRequest" => [
     %{name: "__base__", type: {:struct, "MountCallingRequest"}},
-    %{name: "PlayerFacingDirectionYaw_rad", type: "float"}
+    %{name: "PlayerFacingDirectionYaw_rad", type: :float}
   ],
 
 "MonsterBookNodeAcquireResponse" => [
@@ -15184,7 +15184,7 @@
     %{name: "SkillCuid", type: :cuid},
     %{name: "CasterGuid", type: {:uint, 8}},
     %{name: "SkillSiid", type: {:int, 4}},
-    %{name: "IsAllStagesComplete", type: :unknown}
+    %{name: "IsAllStagesComplete", type: :bool}
   ],
 
 "StrongholdSummonWaveDefenseDefenseTargetSpawnNotify" => [
@@ -15194,12 +15194,12 @@
 
 "CovenantCreateCovenantMemberRoleNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantMemberRoleInfo", type: :unknown}
+    %{name: "CovenantMemberRoleInfo", type: {:nullable, :message}}
   ],
 
 "BattalionMemberCovenantMemberRoleSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "BattalionMemberInfoSynchronizeNotify"}},
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}}
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}}
   ],
 
 "PartyOptionUpdateFailResponse" => [
@@ -15213,12 +15213,12 @@
 "CovenantItemUseRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ItemGuid", type: {:uint, 8}},
-    %{name: "ParameterInfo", type: :unknown}
+    %{name: "ParameterInfo", type: {:nullable, :message}}
   ],
 
 "TutorialBeginFirstOneFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ResultCodesByTutorialCuid", type: :unknown}
+    %{name: "ResultCodesByTutorialCuid", type: {:map, :cuid, {:enum, "ResultCodeType"}}}
   ],
 
 "RealmIntegrationHidePopupResponse" => [
@@ -15253,7 +15253,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ItemGuid", type: {:uint, 8}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "ParameterInfo", type: :unknown}
+    %{name: "ParameterInfo", type: {:nullable, :message}}
   ],
 
 "CovenantCurrencyInfoRequest" => [
@@ -15294,10 +15294,10 @@
   ],
 
 "SpellstoneAdditionalHealthAndManaStatsInfo" => [
-    %{name: "HealthPointsAffectIncreaseAmount", type: "float"},
-    %{name: "HealthPointsAffectIncreaseRatio", type: "float"},
-    %{name: "ManaPointsAffectIncreaseAmount", type: "float"},
-    %{name: "ManaPointsAffectIncreaseRatio", type: "float"}
+    %{name: "HealthPointsAffectIncreaseAmount", type: :float},
+    %{name: "HealthPointsAffectIncreaseRatio", type: :float},
+    %{name: "ManaPointsAffectIncreaseAmount", type: :float},
+    %{name: "ManaPointsAffectIncreaseRatio", type: :float}
   ],
 
 "BuffAffectInfo" => [
@@ -15306,7 +15306,7 @@
 
 "CheatSetLocalServerPushRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsEnabled", type: :unknown}
+    %{name: "IsEnabled", type: :bool}
   ],
 
 "CovenantLivingTotemCraftResponse" => [
@@ -15344,7 +15344,7 @@
 "DeathPenaltyRecoverRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CurrencyCuid", type: :cuid},
-    %{name: "DeathPenaltyRecordGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeathPenaltyRecordGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatCovenantRealmTransferBlockResponse" => [
@@ -15398,21 +15398,21 @@
     %{name: "PlayerGuid", type: {:uint, 8}},
     %{name: "PlayerName", type: :string},
     %{name: "GearInfo", type: {:nullable, {:struct, "GearInfo"}}},
-    %{name: "DisplaySystemMessage", type: :unknown},
-    %{name: "DisplayChatMessage", type: :unknown}
+    %{name: "DisplaySystemMessage", type: :bool},
+    %{name: "DisplayChatMessage", type: :bool}
   ],
 
 "CheatCollectionUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "SelectedMountItemCuid", type: :cuid},
     %{name: "ActivatedCollectionCategoryCuids", type: :unknown},
-    %{name: "CollectionProgressInfos", type: :unknown},
+    %{name: "CollectionProgressInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzCollectionProgressInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}}
   ],
 
 "SharedTargetCharacterInfo" => [
     %{name: "Cuid", type: :cuid},
-    %{name: "Entity", type: {:enum, "ETzEntityType"}},
+    %{name: "Entity", type: {:enum, "EntityType"}},
     %{name: "Guid", type: {:uint, 8}},
     %{name: "CovenantVuid", type: {:struct, "Vuid"}}
   ],
@@ -15434,7 +15434,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
     %{name: "TargetLevel", type: {:int, 4}},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "WeeklyContributionPointsDividendResultInfo" => [
@@ -15482,7 +15482,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
-    %{name: "IsApproved", type: :unknown}
+    %{name: "IsApproved", type: :bool}
   ],
 
 "MailSendRequest" => [
@@ -15498,13 +15498,13 @@
   ],
 
 "QuickSlotUpdateInfo" => [
-    %{name: "AddedQuickSlotInfos", type: :unknown},
-    %{name: "ModifiedQuickSlotInfos", type: :unknown},
-    %{name: "RemovedQuickSlotIndices", type: {:list, {:enum, "ETzQuickSlotIndexType,TSizedDefaultAllocator<32"}}}
+    %{name: "AddedQuickSlotInfos", type: {:map, {:enum, "QuickSlotIndexType"}, {:struct, "TSharedPtr<FTzQuickSlotInfo"}}},
+    %{name: "ModifiedQuickSlotInfos", type: {:map, {:enum, "QuickSlotIndexType"}, {:struct, "TSharedPtr<FTzQuickSlotInfo"}}},
+    %{name: "RemovedQuickSlotIndices", type: {:list, {:enum, "QuickSlotIndexType"}}}
   ],
 
 "PlayerCovenantInfo" => [
-    %{name: "InvitedCovenantGuidAndInvitedDateTimes", type: :unknown},
+    %{name: "InvitedCovenantGuidAndInvitedDateTimes", type: {:map, {:uint, 8}, :datetime}},
     %{name: "JoinAppliedCovenantGuids", type: :unknown},
     %{name: "CovenantReturnHavenCuid", type: :cuid}
   ],
@@ -15583,7 +15583,7 @@
 
 "WorldMapMarkerRemoveRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "Guid", type: {:uint, 8}}
   ],
 
@@ -15593,7 +15593,7 @@
   ],
 
 "CovenantMemberRoleInfo" => [
-    %{name: "CovenantMemberRoleKind", type: {:enum, "ETzCovenantMemberRoleKindType"}},
+    %{name: "CovenantMemberRoleKind", type: {:enum, "CovenantMemberRoleKindType"}},
     %{name: "Name", type: :string},
     %{name: "CovenantPermissionsInfo", type: {:nullable, {:struct, "CovenantPermissionsInfo"}}},
     %{name: "CreateDateTime", type: :datetime}
@@ -15615,26 +15615,26 @@
 
 "ControlOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "GroundSkillControlKind", type: {:enum, "ETzGroundSkillControlKindType"}}
+    %{name: "GroundSkillControlKind", type: {:enum, "GroundSkillControlKindType"}}
   ],
 
 "ItemLockSwitchRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ItemGuid", type: {:uint, 8}},
-    %{name: "IsInRealmAccountWarehouse", type: :unknown},
-    %{name: "IsLocked", type: :unknown}
+    %{name: "IsInRealmAccountWarehouse", type: :bool},
+    %{name: "IsLocked", type: :bool}
   ],
 
 "DeathPenaltyRecordInfoRemoveNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "DeathPenaltyRecordGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "DeathPenaltyRecordGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatSetTransmutationRecordResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "PeriodCuid", type: :cuid},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
-    %{name: "ItemGrade", type: {:enum, "ETzItemGradeType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
+    %{name: "ItemGrade", type: {:enum, "ItemGradeType"}},
     %{name: "Count", type: {:uint, 8}}
   ],
 
@@ -15650,12 +15650,12 @@
 
 "DestroyerInfosInitializeDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "DestroyerInfos", type: :unknown}
+    %{name: "DestroyerInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzDestroyerInfo"}}}
   ],
 
 "WarpCancelFailResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ResultCode", type: {:enum, "ETzResultCodeType"}}
+    %{name: "ResultCode", type: {:enum, "ResultCodeType"}}
   ],
 
 "CheatToggleShowQuestDebugRequest" => [
@@ -15664,18 +15664,18 @@
 
 "MarketPriceQueryRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "ItemCuid", type: :cuid},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
-    %{name: "GearEnhancementGrade", type: {:nullable, "short"}}
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
+    %{name: "GearEnhancementGrade", type: {:nullable, {:int, 2}}}
   ],
 
 "RankingQueryByNameResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "RankingTopicCuid", type: :cuid},
     %{name: "DateTime", type: {:nullable, :datetime}},
-    %{name: "TargetRankingInfo", type: :unknown},
-    %{name: "SelfRankingInfo", type: :unknown}
+    %{name: "TargetRankingInfo", type: {:nullable, :message}},
+    %{name: "SelfRankingInfo", type: {:nullable, :message}}
   ],
 
 "SkillAutoUseRegisterRequest" => [
@@ -15684,10 +15684,10 @@
   ],
 
 "PlayerStanceInfo" => [
-    %{name: "AcquiredStances", type: {:list, {:enum, "ETzStanceType,TSizedDefaultAllocator<32"}}},
-    %{name: "InstalledStance", type: {:enum, "ETzStanceType"}},
+    %{name: "AcquiredStances", type: {:list, {:enum, "StanceType"}}},
+    %{name: "InstalledStance", type: {:enum, "StanceType"}},
     %{name: "StanceSwitchCooldownExpireDateTime", type: {:nullable, :datetime}},
-    %{name: "IsStanceInstallFreeChanceEnabled", type: :unknown}
+    %{name: "IsStanceInstallFreeChanceEnabled", type: :bool}
   ],
 
 "CheatInstanceEventRunActionsResponse" => [
@@ -15697,16 +15697,16 @@
 "CovenantBanishMemberNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "UpdatePlayerLastCovenantWithdrawalDateTime", type: :unknown}
+    %{name: "UpdatePlayerLastCovenantWithdrawalDateTime", type: :bool}
   ],
 
 "StrongholdBattleAttackEndDateTimeChangeNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "AttackGroupDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
+    %{name: "AttackGroupDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
     %{name: "AttackEndDateTime", type: :datetime},
     %{name: "AttackGroupLivingTotemHealthPoints", type: {:uint, 8}},
-    %{name: "IsAffectedFromLivingTotemSkill", type: :unknown}
+    %{name: "IsAffectedFromLivingTotemSkill", type: :bool}
   ],
 
 "CovenantBattalionExpeditionInfo" => [
@@ -15714,8 +15714,8 @@
     %{name: "ExpeditionCuid", type: :cuid},
     %{name: "SealedSiteCuid", type: :cuid},
     %{name: "ExpeditionJoinDateTime", type: {:nullable, :datetime}},
-    %{name: "AnotherBattalionGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
-    %{name: "ExpeditionPhase", type: {:enum, "ETzBattalionExpeditionPhaseType"}},
+    %{name: "AnotherBattalionGuids", type: {:list, {:uint, 8}}},
+    %{name: "ExpeditionPhase", type: {:enum, "BattalionExpeditionPhaseType"}},
     %{name: "ExpeditionStartLocationInfo", type: {:nullable, {:struct, "LocationInfo"}}},
     %{name: "ExpeditionStandByNpcGuid", type: {:uint, 8}},
     %{name: "ExpeditionLivingTotemGuid", type: {:uint, 8}}
@@ -15728,20 +15728,20 @@
   ],
 
 "DeathRecordInfo" => [
-    %{name: "AffectSourceInfo", type: :unknown},
+    %{name: "AffectSourceInfo", type: {:nullable, :message}},
     %{name: "LostExperiencePointsPercentage", type: {:int, 4}},
     %{name: "LostExperiencePoints", type: {:uint, 8}},
-    %{name: "DeathPenaltyExemptKind", type: {:enum, "ETzDeathPenaltyExemptKindType"}}
+    %{name: "DeathPenaltyExemptKind", type: {:enum, "DeathPenaltyExemptKindType"}}
   ],
 
 "SkillAffectTargetMoveAffectInfo" => [
     %{name: "__base__", type: {:struct, "SkillMoveAffectInfo"}},
-    %{name: "AffectTargetMoveAffectKind", type: {:enum, "ETzAffectTargetMoveAffectKindType"}}
+    %{name: "AffectTargetMoveAffectKind", type: {:enum, "AffectTargetMoveAffectKindType"}}
   ],
 
 "SeasonPassLevelRewardParameter" => [
     %{name: "__base__", type: {:struct, "AcquireSourceAdditionalParameter"}},
-    %{name: "RewardedLevels", type: :unknown}
+    %{name: "RewardedLevels", type: {:map, {:enum, "SeasonPassRewardKindType"}, {:struct, "TSet<int"}}}
   ],
 
 "CheatUpdatePlayerMissionCountResponse" => [
@@ -15749,7 +15749,7 @@
   ],
 
 "CampaignStartOptionInfo" => [
-    %{name: "IsAllowVolunteerJoinApply", type: :boolean},
+    %{name: "IsAllowVolunteerJoinApply", type: :bool},
     %{name: "IsVolunteerJoinApplicationAutomaticApproval", type: :unknown},
     %{name: "IsNotExposeToBattalionList", type: :unknown},
     %{name: "IsBattalionAutoInviteCovenantMembers", type: :unknown}
@@ -15768,25 +15768,25 @@
 "MonsterBookInfoUpdateNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "CategoryCuidToNodeStateInfos", type: {:list, {:struct, "MonsterBookNodeStateInfo"}}},
-    %{name: "CategoryCuidToCollectionInfo", type: :unknown}
+    %{name: "CategoryCuidToCollectionInfo", type: {:map, :cuid, {:struct, "TSharedPtr<FTzMonsterBookCollectionInfo"}}}
   ],
 
 "SpawnLayerAlreadyActivatedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsPermanentSpawnLayer", type: :unknown},
-    %{name: "SpawnLayerCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "IsPermanentSpawnLayer", type: :bool},
+    %{name: "SpawnLayerCuids", type: {:list, :cuid}}
   ],
 
 "StrongholdBuildingConstructRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BuildingSpawnerCuid", type: :cuid},
     %{name: "BuildingCuid", type: :cuid},
-    %{name: "IsCompleteImmediately", type: :unknown}
+    %{name: "IsCompleteImmediately", type: :bool}
   ],
 
 "CovenantGiftReceiveRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ReceiveGiftGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "ReceiveGiftGuids", type: {:list, {:uint, 8}}}
   ],
 
 "StrongholdBattleLeaveNotify" => [
@@ -15811,7 +15811,7 @@
 
 "StrongholdBattleInitialDataNotify" => [
     %{name: "__base__", type: {:struct, "PubSubChannelInitialDataNotify"}},
-    %{name: "StrongholdBattleSummaryInfos", type: :unknown}
+    %{name: "StrongholdBattleSummaryInfos", type: {:map, :cuid, {:struct, "TSharedPtr<FTzStrongholdBattleSummaryInfo"}}}
   ],
 
 "BattalionMemberLocationInfoSynchronizeNotify" => [
@@ -15830,8 +15830,8 @@
 
 "BuildingWorkSummaryInfo" => [
     %{name: "WorkplaceCuid", type: :cuid},
-    %{name: "BuildingWorkKind", type: {:enum, "ETzBuildingWorkKindType"}},
-    %{name: "IsCovenantRecommended", type: :unknown}
+    %{name: "BuildingWorkKind", type: {:enum, "BuildingWorkKindType"}},
+    %{name: "IsCovenantRecommended", type: :bool}
   ],
 
 "TerritoryErosionItemConfigurationModifyRequest" => [
@@ -15847,7 +15847,7 @@
 "CovenantDonationRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "ItemGuidSelectors", type: {:list, {:struct, "ItemGuidSelector"}}},
-    %{name: "DonateEvenIfHavenInventoryIsFull", type: :unknown}
+    %{name: "DonateEvenIfHavenInventoryIsFull", type: :bool}
   ],
 
 "CovenantDiplomacyReinforcementInvitationRejectNotify" => [
@@ -15855,7 +15855,7 @@
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "CovenantGuid", type: {:uint, 8}},
     %{name: "CovenantName", type: :string},
-    %{name: "IsCallByExpired", type: :unknown}
+    %{name: "IsCallByExpired", type: :bool}
   ],
 
 "ErosionAbyssCocoonSynchronizeNotify" => [
@@ -15865,7 +15865,7 @@
 
 "StrongholdBattleEndRewardNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsAnyRewardSentByMail", type: :unknown},
+    %{name: "IsAnyRewardSentByMail", type: :bool},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "SpiritualBondPower", type: {:uint, 8}}
@@ -15873,13 +15873,13 @@
 
 "PartyQueryMemberCandidateListRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "PartyMemberCandidateKind", type: {:enum, "ETzPartyMemberCandidateKindType"}}
+    %{name: "PartyMemberCandidateKind", type: {:enum, "PartyMemberCandidateKindType"}}
   ],
 
 "InGameNotificationInfo" => [
     %{name: "Guid", type: {:uint, 8}},
-    %{name: "InGameNotificationCategory", type: {:enum, "ETzInGameNotificationCategoryType"}},
-    %{name: "AdditionalCuidParams", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "InGameNotificationCategory", type: {:enum, "InGameNotificationCategoryType"}},
+    %{name: "AdditionalCuidParams", type: {:list, :cuid}},
     %{name: "AdditionalGuidParam", type: {:uint, 8}},
     %{name: "NotificationExpireDateTime", type: {:nullable, :datetime}}
   ],
@@ -15903,9 +15903,9 @@
   ],
 
 "CovenantCampaignInfo" => [
-    %{name: "ActiveCampaignProgressInfos", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}},
+    %{name: "ActiveCampaignProgressInfos", type: {:list, :cuid}},
     %{name: "UpdateDateTime", type: :datetime},
-    %{name: "CovenantCampaignProgressInfo", type: :unknown},
+    %{name: "CovenantCampaignProgressInfo", type: {:nullable, :message}},
     %{name: "CovenantCampaignTicketCount", type: {:int, 4}}
   ],
 
@@ -15914,7 +15914,7 @@
   ],
 
 "PlayerCovenantSupportInfo" => [
-    %{name: "HasCovenantSupportableFollower", type: :unknown},
+    %{name: "HasCovenantSupportableFollower", type: :bool},
     %{name: "CovenantSupportedCount", type: {:nullable, {:struct, "LimitedCountingInfo"}}}
   ],
 
@@ -15924,7 +15924,7 @@
 
 "StrongholdSummonWaveDefenseNpcSummonWaveProgressSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "CurrentWaveNpcKnockOutProgress", type: :unknown}
+    %{name: "CurrentWaveNpcKnockOutProgress", type: {:map, :cuid, {:int, 4}}}
   ],
 
 "HonorableDieRequest" => [
@@ -15947,7 +15947,7 @@
   ],
 
 "InfoAuthenticate" => [
-    %{name: "AuthenticateInfo", type: :unknown}
+    %{name: "AuthenticateInfo", type: {:nullable, :message}}
   ],
 
 "MailServerDrivenPlayLayoutInfo" => [
@@ -15956,7 +15956,7 @@
     %{name: "PlayTime_sec", type: {:int, 4}},
     %{name: "GainedExperiencePoints", type: {:uint, 8}},
     %{name: "GainedSpiritualBondPower", type: {:uint, 8}},
-    %{name: "GainedCurrencies", type: :unknown},
+    %{name: "GainedCurrencies", type: {:map, :cuid, {:uint, 8}}},
     %{name: "GainedItemInfos", type: {:list, {:struct, "GainedItemInfo"}}}
   ],
 
@@ -15980,7 +15980,7 @@
 
 "TutorialBeginFirstOneRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "TutorialCuids", type: {:list, {:struct, "Cuid,TSizedDefaultAllocator<32"}}}
+    %{name: "TutorialCuids", type: {:list, :cuid}}
   ],
 
 "PreemptiveAttackTargetSelectNotify" => [
@@ -16000,8 +16000,8 @@
 "RealmStateInfo" => [
     %{name: "RealmCuid", type: :cuid},
     %{name: "Ip", type: :string},
-    %{name: "ServerState", type: {:enum, "ETzServerStateType"}},
-    %{name: "ServerTagKind", type: {:enum, "ETzServerTagKindType"}}
+    %{name: "ServerState", type: {:enum, "ServerStateType"}},
+    %{name: "ServerTagKind", type: {:enum, "ServerTagKindType"}}
   ],
 
 "ArquiruneActivateResponse" => [
@@ -16015,7 +16015,7 @@
     %{name: "Key", type: {:int, 4}},
     %{name: "Duration_sec", type: {:int, 4}},
     %{name: "Color", type: {:int, 4}},
-    %{name: "NewerOnTop", type: :unknown}
+    %{name: "NewerOnTop", type: :bool}
   ],
 
 "CovenantRemoveInvitationNotify" => [
@@ -16031,8 +16031,8 @@
 
 "ShopClosedNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ShopKind", type: {:enum, "ETzShopKindType"}},
-    %{name: "Reason", type: {:enum, "ETzShopClosedReasonType"}}
+    %{name: "ShopKind", type: {:enum, "ShopKindType"}},
+    %{name: "Reason", type: {:enum, "ShopClosedReasonType"}}
   ],
 
 "QuestTeleportToQuestWayPointResponse" => [
@@ -16041,7 +16041,7 @@
 
 "TransmutationCouponItemUseParameterInfo" => [
     %{name: "__base__", type: {:struct, "ItemUseParameterInfo"}},
-    %{name: "ItemGrade", type: {:enum, "ETzItemGradeType"}}
+    %{name: "ItemGrade", type: {:enum, "ItemGradeType"}}
   ],
 
 "CheatUpgradeBuildingRequest" => [
@@ -16055,10 +16055,10 @@
 
 "CheatEnchantItemRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "EquipmentPresetIndex", type: {:enum, "ETzEquipmentPresetIndexType"}},
-    %{name: "GearSlot", type: {:enum, "ETzGearSlotType"}},
+    %{name: "EquipmentPresetIndex", type: {:enum, "EquipmentPresetIndexType"}},
+    %{name: "GearSlot", type: {:enum, "GearSlotType"}},
     %{name: "CostItemCuid", type: :cuid},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "GearEnchantSlotInfos", type: {:list, {:struct, "GearEnchantSlotInfo"}}}
   ],
 
@@ -16074,9 +16074,9 @@
   ],
 
 "PotionAutoUsageOptionInfo" => [
-    %{name: "IsAutoUse", type: :unknown},
-    %{name: "MaxPointsRatioToAutoUse_pe2", type: "unsigned_char"},
-    %{name: "MaxPointsRatioToAutoUseInPvp_pe2", type: "unsigned_char"}
+    %{name: "IsAutoUse", type: :bool},
+    %{name: "MaxPointsRatioToAutoUse_pe2", type: {:struct, "unsigned_char"}},
+    %{name: "MaxPointsRatioToAutoUseInPvp_pe2", type: {:struct, "unsigned_char"}}
   ],
 
 "BasicAchievementPrivateChannelKeepaliveRequest" => [
@@ -16111,9 +16111,9 @@
   ],
 
 "ItemAcquireSourceInfo" => [
-    %{name: "ItemAcquireMethod", type: {:enum, "ETzItemAcquireMethodType"}},
+    %{name: "ItemAcquireMethod", type: {:enum, "ItemAcquireMethodType"}},
     %{name: "SourceCuid", type: :cuid},
-    %{name: "AcquireSourceAdditionalParameter", type: :unknown}
+    %{name: "AcquireSourceAdditionalParameter", type: {:nullable, :message}}
   ],
 
 "CovenantDeleteCovenantMemberRoleRequest" => [
@@ -16161,18 +16161,18 @@
 
 "CovenantUpdateJoinKindNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantJoinKind", type: {:enum, "ETzCovenantJoinKindType"}}
+    %{name: "CovenantJoinKind", type: {:enum, "CovenantJoinKindType"}}
   ],
 
 "InventoryExpandRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UserInventoryKind", type: {:enum, "ETzUserInventoryKindType"}},
+    %{name: "UserInventoryKind", type: {:enum, "UserInventoryKindType"}},
     %{name: "SlotCount", type: {:int, 4}}
   ],
 
 "MarketSellRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MarketKind", type: {:enum, "ETzMarketKindType"}},
+    %{name: "MarketKind", type: {:enum, "MarketKindType"}},
     %{name: "ItemGuidSelector", type: {:nullable, {:struct, "ItemGuidSelector"}}},
     %{name: "SellCurrencyCuid", type: :cuid},
     %{name: "SellCurrencyAmount", type: {:uint, 8}},
@@ -16217,9 +16217,9 @@
 
 "RealmTransferRealmInfoListResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "RealmInfos", type: {:list, {:list, :unknown}}},
+    %{name: "RealmInfos", type: {:list, nil}},
     %{name: "RealmAccountInfos", type: {:list, {:struct, "UniverseAccountRealmAccountInfo"}}},
-    %{name: "AppliedRealmAccountGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "AppliedRealmAccountGuids", type: {:list, {:uint, 8}}}
   ],
 
 "TalkCompleteCheckRequest" => [
@@ -16234,7 +16234,7 @@
 
 "StrongholdBattleAttackLadderCarSiegeWeaponSlotInfo" => [
     %{name: "__base__", type: {:struct, "StrongholdBattleAttackSiegeWeaponSlotInfo"}},
-    %{name: "LadderCarPillarNpcGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "LadderCarPillarNpcGuids", type: {:list, {:uint, 8}}}
   ],
 
 "CheatChangeStrongholdAllBuildingLevelResponse" => [
@@ -16269,7 +16269,7 @@
   ],
 
 "UniverseInfo" => [
-    %{name: "Universe", type: {:enum, "ETzUniverseType"}},
+    %{name: "Universe", type: {:enum, "UniverseType"}},
     %{name: "UniverseName", type: :string}
   ],
 
@@ -16279,7 +16279,7 @@
   ],
 
 "RealmAccountWarehouseAutoStoreSettingsInfo" => [
-    %{name: "Settings", type: :unknown}
+    %{name: "Settings", type: {:map, :cuid, {:enum, "ItemGradeType"}}}
   ],
 
 "NpcOccupationScoreCovenantViewInfo" => [
@@ -16301,7 +16301,7 @@
 
 "DisplayOptionInfo" => [
     %{name: "__base__", type: {:struct, "BaseGameOptionInfo"}},
-    %{name: "IsRelatedTerritoryVisibleInWorldMap", type: :boolean},
+    %{name: "IsRelatedTerritoryVisibleInWorldMap", type: :bool},
     %{name: "IsAllianceCovenantVisibleInMiniMap", type: :unknown},
     %{name: "ItemAcquireNotifyAnonymityOption", type: :unknown},
     %{name: "NameTagHealthBarDisplayOptionInfo", type: {:nullable, {:struct, "NameTagHealthBarDisplayOptionInfo"}}},
@@ -16313,19 +16313,19 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "MessageId", type: {:int, 4}},
     %{name: "ChatRoomGuid", type: {:uint, 8}},
-    %{name: "CovenantGuids", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "CovenantGuids", type: {:list, {:uint, 8}}}
   ],
 
 "WorldMapMarkerInstallRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "WorldMapMarkerKind", type: {:enum, "ETzWorldMapMarkerKindType"}},
+    %{name: "WorldMapMarkerKind", type: {:enum, "WorldMapMarkerKindType"}},
     %{name: "Location_cm", type: :vector},
     %{name: "SectorCuid", type: :cuid}
   ],
 
 "PlayerRealmTransferCheckInfo" => [
     %{name: "Name", type: :string},
-    %{name: "IsInCovenant", type: :boolean},
+    %{name: "IsInCovenant", type: :bool},
     %{name: "IsMarketCheckNeeded", type: :unknown},
     %{name: "HasReceivableAttachmentsMail", type: :unknown}
   ],
@@ -16342,7 +16342,7 @@
     %{name: "LocationRegionCuid", type: :cuid},
     %{name: "Destination_cm", type: :vector},
     %{name: "DestinationRegionCuid", type: :cuid},
-    %{name: "SufficientlyCloseDistance_cm", type: "float"}
+    %{name: "SufficientlyCloseDistance_cm", type: :float}
   ],
 
 "CombatOptionModifyResponse" => [
@@ -16359,7 +16359,7 @@
 "HeadPieceDisplayOptionModifyRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "IsHeadPieceDisplayed", type: :unknown}
+    %{name: "IsHeadPieceDisplayed", type: :bool}
   ],
 
 "CheatEnterCovenantCampaignRequest" => [
@@ -16367,9 +16367,9 @@
   ],
 
 "PlayerSkillUseStatisticsNxLogInfo" => [
-    %{name: "ArquiruneGrade", type: {:enum, "ETzItemGradeType"}},
+    %{name: "ArquiruneGrade", type: {:enum, "ItemGradeType"}},
     %{name: "SkillCuid", type: :cuid},
-    %{name: "SkillKind", type: {:enum, "ETzSkillKindType"}},
+    %{name: "SkillKind", type: {:enum, "SkillKindType"}},
     %{name: "SkillUseCount", type: {:uint, 8}},
     %{name: "HitCount", type: {:uint, 8}},
     %{name: "HitDamage", type: {:uint, 8}},
@@ -16397,10 +16397,10 @@
     %{name: "SkillCuid", type: :cuid},
     %{name: "SkillSiid", type: {:int, 4}},
     %{name: "SkillStageFlowSiid", type: {:int, 4}},
-    %{name: "Stage", type: "unsigned_char"},
+    %{name: "Stage", type: {:struct, "unsigned_char"}},
     %{name: "LoopCounter", type: {:int, 4}},
     %{name: "CasterGuid", type: {:uint, 8}},
-    %{name: "IsCanceledStageAffectApplied", type: :unknown}
+    %{name: "IsCanceledStageAffectApplied", type: :bool}
   ],
 
 "GatheringSiteFollowerCountNotify" => [
@@ -16415,7 +16415,7 @@
 "PushNotificationOptionModifyResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "ModifiedPushNotificationOptionCuid", type: :cuid},
-    %{name: "ModifiedPushNotificationOptionIsEnabled", type: :unknown}
+    %{name: "ModifiedPushNotificationOptionIsEnabled", type: :bool}
   ],
 
 "PlayerInventoryInfo" => [
@@ -16426,30 +16426,30 @@
 
 "IntraRegionPathResultInfo" => [
     %{name: "RegionCuid", type: :cuid},
-    %{name: "ResultCode", type: {:enum, "ETzResultCodeType"}},
+    %{name: "ResultCode", type: {:enum, "ResultCodeType"}},
     %{name: "ReturnItemCuid", type: :cuid},
     %{name: "CovenantReturnHavenCuid", type: :cuid},
     %{name: "StartWarpPointCuid", type: :cuid},
     %{name: "DestinationWarpPointCuid", type: :cuid},
     %{name: "NearestRoadJunctionToStartLocationId", type: {:int, 4}},
     %{name: "NearestRoadJunctionToDestinationId", type: {:int, 4}},
-    %{name: "PathToNearestRoadJunctionToStartLocation", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNotByRoad", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathNotByRoadOneShotSpecialMoveIndices", type: {:list, {:struct, "int,TSizedDefaultAllocator<32"}}}
+    %{name: "PathToNearestRoadJunctionToStartLocation", type: {:list, :vector}},
+    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, :vector}},
+    %{name: "PathNotByRoad", type: {:list, :vector}},
+    %{name: "PathNotByRoadOneShotSpecialMoveIndices", type: {:list, {:int, 4}}}
   ],
 
 "MountDeboardedInfo" => [
     %{name: "__base__", type: {:struct, "MountStateInfo"}},
-    %{name: "MountDeboardReason", type: {:enum, "ETzMountDeboardReasonType"}},
-    %{name: "IsImmediateMountDespawn", type: :unknown},
+    %{name: "MountDeboardReason", type: {:enum, "MountDeboardReasonType"}},
+    %{name: "IsImmediateMountDespawn", type: :bool},
     %{name: "MountDespawnLocation", type: :vector}
   ],
 
 "ItemTransmuteResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
-    %{name: "ItemGrade", type: {:enum, "ETzItemGradeType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
+    %{name: "ItemGrade", type: {:enum, "ItemGradeType"}},
     %{name: "ItemTransmutationResultInfos", type: {:list, {:struct, "ItemTransmutationResultInfo"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
@@ -16477,7 +16477,7 @@
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "HavenCuid", type: :cuid},
     %{name: "CampaignStageCuid", type: :cuid},
-    %{name: "CampaignStartOptionInfo", type: :unknown}
+    %{name: "CampaignStartOptionInfo", type: {:nullable, :message}}
   ],
 
 "PowerSavingModeRewardInfo" => [
@@ -16501,14 +16501,14 @@
 
 "CovenantRealmTransferReadyToRealmTransferRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "UseItem", type: :unknown},
-    %{name: "UseCurrency", type: :unknown}
+    %{name: "UseItem", type: :bool},
+    %{name: "UseCurrency", type: :bool}
   ],
 
 "BattalionJoinApplicationRejectNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "BattalionGuid", type: {:uint, 8}},
-    %{name: "JoinApplicationRejectReason", type: {:enum, "ETzJoinApplicationRejectReasonType"}}
+    %{name: "JoinApplicationRejectReason", type: {:enum, "JoinApplicationRejectReasonType"}}
   ],
 
 "CheatCheckServerTimeRequest" => [
@@ -16529,18 +16529,18 @@
 
 "ChatRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ChatKind", type: {:enum, "ETzChatKindType"}},
+    %{name: "ChatKind", type: {:enum, "ChatKindType"}},
     %{name: "InfoToShare", type: :string},
     %{name: "Text", type: :string}
   ],
 
 "CovenantQuerySummaryInfoListRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}}
+    %{name: "CovenantGuidList", type: {:list, {:uint, 8}}}
   ],
 
 "PlayerLimitedCounterInfo" => [
-    %{name: "LimitedCountingInfos", type: :unknown}
+    %{name: "LimitedCountingInfos", type: {:map, {:enum, "PlayerLimitedCountingKindType"}, {:struct, "TSharedPtr<FTzLimitedCountingInfo"}}}
   ],
 
 "DiplomacyChatRoomNameChangeResponse" => [
@@ -16556,7 +16556,7 @@
     %{name: "ReservedStrongholdTaxInfo", type: {:nullable, {:struct, "StrongholdTaxInfo"}}},
     %{name: "StrongholdProtectionInfo", type: {:nullable, {:struct, "StrongholdProtectionInfo"}}},
     %{name: "OccupyDateTime", type: :datetime},
-    %{name: "StrongholdBattleAttackPhase", type: {:enum, "ETzStrongholdBattleAttackPhaseType"}}
+    %{name: "StrongholdBattleAttackPhase", type: {:enum, "StrongholdBattleAttackPhaseType"}}
   ],
 
 "CovenantTradeDealRecordQueryResponse" => [
@@ -16566,7 +16566,7 @@
   ],
 
 "CovenantSettleAccountInfo" => [
-    %{name: "ResourceHistoryInfos", type: :unknown}
+    %{name: "ResourceHistoryInfos", type: {:map, :datetime, {:struct, "TSharedPtr<FTzResourceHistoryInfo"}}}
   ],
 
 "CheatDetachAllBuffsRequest" => [
@@ -16575,18 +16575,18 @@
 
 "CovenantSynchronizeLivingTotemInfoNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "CovenantLivingTotemInfo", type: :unknown}
+    %{name: "CovenantLivingTotemInfo", type: {:nullable, :message}}
   ],
 
 "PvpScoreRankingViewInfo" => [
     %{name: "__base__", type: {:struct, "RankingViewInfo"}},
     %{name: "PlayerGuid", type: {:uint, 8}},
-    %{name: "Classe", type: {:enum, "ETzClasseType"}},
+    %{name: "Classe", type: {:enum, "ClasseType"}},
     %{name: "Name", type: :string},
     %{name: "CovenantName", type: :string},
     %{name: "CovenantEmblemInfo", type: {:nullable, {:struct, "CovenantEmblemInfo"}}},
     %{name: "PvpScore", type: {:int, 4}},
-    %{name: "AdditionalSourceInfo", type: :unknown}
+    %{name: "AdditionalSourceInfo", type: {:nullable, :message}}
   ],
 
 "CovenantOrganizationStatsSynchronizeNotify" => [
@@ -16616,16 +16616,16 @@
 
 "BattalionLeaderChangeRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsAccept", type: :unknown},
+    %{name: "IsAccept", type: :bool},
     %{name: "TargetPlayerGuid", type: {:uint, 8}}
   ],
 
 "PlayerMarketInfo" => [
-    %{name: "WaitingRegistrationOrForSaleGoodsInfos", type: :unknown},
-    %{name: "SoldOrExpiredGoodsInfos", type: :unknown},
+    %{name: "WaitingRegistrationOrForSaleGoodsInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzMarketSellerGoodsInfo"}}},
+    %{name: "SoldOrExpiredGoodsInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzMarketSellerGoodsInfo"}}},
     %{name: "TransactionHistories", type: {:list, {:struct, "MarketTransactionInfo"}}},
     %{name: "FavoriteItemInfosByMarketKind", type: {:list, {:struct, "MarketFavoriteItemInfo"}}},
-    %{name: "PlayerMarketTransactionProcessInfos", type: :unknown}
+    %{name: "PlayerMarketTransactionProcessInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzPlayerMarketTransactionProcessInfo"}}}
   ],
 
 "BattalionTargetLocationUnsetNotify" => [
@@ -16659,13 +16659,13 @@
     %{name: "GainedGoldFromSpiritualBondPower", type: {:uint, 8}},
     %{name: "GainedItems", type: {:list, {:struct, "ItemIndexWithCount"}}},
     %{name: "ConsumedSpiritualBondPower", type: {:uint, 8}},
-    %{name: "ConsumedAffectItems", type: :unknown}
+    %{name: "ConsumedAffectItems", type: {:map, {:enum, "AffectItemKindType"}, {:uint, 8}}}
   ],
 
 "StrongholdBattleBattalionDismissNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}}
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}}
   ],
 
 "CheatAcquireCovenantLeaderRequest" => [
@@ -16701,7 +16701,7 @@
 "ItemInfo" => [
     %{name: "Guid", type: {:uint, 8}},
     %{name: "Cuid", type: :cuid},
-    %{name: "IsBound", type: :boolean},
+    %{name: "IsBound", type: :bool},
     %{name: "IsStorable", type: :unknown},
     %{name: "ExpireDateTime", type: {:nullable, :datetime}},
     %{name: "AcquiredDateTime", type: :datetime},
@@ -16717,7 +16717,7 @@
 "CheatDistrictBlockRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "DistrictCuid", type: :cuid},
-    %{name: "IsBlocked", type: :unknown}
+    %{name: "IsBlocked", type: :bool}
   ],
 
 "CheatCovenantCompleteCampaignResponse" => [
@@ -16750,7 +16750,7 @@
 
 "CheatUnlockContentsRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "ContentsUnlockKind", type: {:enum, "ETzContentsUnlockKindType"}}
+    %{name: "ContentsUnlockKind", type: {:enum, "ContentsUnlockKindType"}}
   ],
 
 "MailFollowerDeathLayoutInfo" => [
@@ -16772,9 +16772,9 @@
     %{name: "Location", type: :vector},
     %{name: "StartLocation", type: :vector},
     %{name: "DestinationLocation", type: :vector},
-    %{name: "RoadJunctionIds", type: {:list, {:struct, "int,TSizedDefaultAllocator<32"}}},
-    %{name: "PathToFirstRoadJunction", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
+    %{name: "RoadJunctionIds", type: {:list, {:int, 4}}},
+    %{name: "PathToFirstRoadJunction", type: {:list, :vector}},
+    %{name: "PathFromLastRoadJunctionToDestination", type: {:list, :vector}},
     %{name: "TargetJunctionNo", type: {:int, 4}}
   ],
 
@@ -16784,26 +16784,26 @@
 
 "FollowerSquadUpdateRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "FollowerSquadSlots", type: :unknown}
+    %{name: "FollowerSquadSlots", type: {:map, {:struct, "unsigned_char"}, {:uint, 8}}}
   ],
 
 "ShopCashMerchandiseReceiveResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "ReceiveGuidList", type: {:list, {:struct, "long_long,TSizedDefaultAllocator<32"}}},
+    %{name: "ReceiveGuidList", type: {:list, {:uint, 8}}},
     %{name: "ReceivedRewardInfo", type: {:nullable, {:struct, "ReceivedRewardInfo"}}}
   ],
 
 "SubscriptionCommandRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Channel", type: {:enum, "ETzSubscriptionChannelType"}},
-    %{name: "Command", type: {:enum, "ETzSubscriptionCommandType"}},
+    %{name: "Channel", type: {:enum, "SubscriptionChannelType"}},
+    %{name: "Command", type: {:enum, "SubscriptionCommandType"}},
     %{name: "Parameter", type: :cuid}
   ],
 
 "CovenantUpdateIntroductionNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "Introduction", type: :string},
-    %{name: "HarmfulTextKind", type: {:enum, "ETzHarmfulTextKindType"}},
+    %{name: "HarmfulTextKind", type: {:enum, "HarmfulTextKindType"}},
     %{name: "PlayerGuid", type: {:uint, 8}}
   ],
 
@@ -16815,7 +16815,7 @@
 
 "ItemCategorySelector" => [
     %{name: "__base__", type: {:struct, "MultipleItemSelector"}},
-    %{name: "ItemCategory", type: {:enum, "ETzItemCategoryType"}},
+    %{name: "ItemCategory", type: {:enum, "ItemCategoryType"}},
     %{name: "ItemCount", type: {:nullable, {:uint, 8}}}
   ],
 
@@ -16832,18 +16832,18 @@
 
 "CheatSetExperiencePointsBlockedRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsExperiencePointsBlocked", type: :unknown}
+    %{name: "IsExperiencePointsBlocked", type: :bool}
   ],
 
 "NormalDoodadStateSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "NormalDoodadState", type: {:enum, "ETzNormalDoodadStateType"}}
+    %{name: "NormalDoodadState", type: {:enum, "NormalDoodadStateType"}}
   ],
 
 "FavoriteStatKindChangeResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "StatKind", type: {:enum, "ETzAdjustableStatKindType"}},
-    %{name: "IsRegistered", type: :unknown}
+    %{name: "StatKind", type: {:enum, "AdjustableStatKindType"}},
+    %{name: "IsRegistered", type: :bool}
   ],
 
 "FollowerItemInfo" => [
@@ -16870,18 +16870,18 @@
     %{name: "__base__", type: {:struct, "BattalionInfo"}},
     %{name: "StrongholdCuid", type: :cuid},
     %{name: "StrongholdBattleGuid", type: {:uint, 8}},
-    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
-    %{name: "StrategicObjectiveInfos", type: :unknown},
-    %{name: "NotJoinedMemberInfos", type: :unknown},
-    %{name: "MemberStatisticsInfos", type: :unknown}
+    %{name: "StrongholdBattleDeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
+    %{name: "StrategicObjectiveInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzStrategicObjectiveInfo"}}},
+    %{name: "NotJoinedMemberInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzBattalionMemberInfo"}}},
+    %{name: "MemberStatisticsInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzStrongholdBattleCovenantBattalionMemberStatisticsInfo"}}}
   ],
 
 "MountBoardingRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "IsLeftBoarding", type: :unknown},
-    %{name: "DriverFacingDirection", type: "FRotator"},
+    %{name: "IsLeftBoarding", type: :bool},
+    %{name: "DriverFacingDirection", type: {:struct, "FRotator"}},
     %{name: "BoardingLocation_cm", type: :vector},
-    %{name: "IsImmediateBoarding", type: :unknown}
+    %{name: "IsImmediateBoarding", type: :bool}
   ],
 
 "FavorQueryResponse" => [
@@ -16890,15 +16890,15 @@
     %{name: "FavorMissionList", type: {:list, {:struct, "FavorMissionInfo"}}},
     %{name: "BossChaseGauge", type: {:int, 4}},
     %{name: "TerritoryCuid", type: :cuid},
-    %{name: "IsFavorBossActivated", type: :unknown},
-    %{name: "HasAcceptedFavorBossToday", type: :unknown},
+    %{name: "IsFavorBossActivated", type: :bool},
+    %{name: "HasAcceptedFavorBossToday", type: :bool},
     %{name: "DailyAcceptableFavorRemainingCount", type: {:int, 4}},
     %{name: "FavorRefreshCostIndex", type: {:int, 4}}
   ],
 
 "FollowerKillingReportInfo" => [
     %{name: "__base__", type: {:struct, "FollowerKillingInfo"}},
-    %{name: "DeathReason", type: {:enum, "ETzFollowerDeathReasonType"}},
+    %{name: "DeathReason", type: {:enum, "FollowerDeathReasonType"}},
     %{name: "KillerEntityGuid", type: {:uint, 8}},
     %{name: "KillerCovenantGuid", type: {:uint, 8}}
   ],
@@ -16906,11 +16906,11 @@
 "MonsterBookNodeAnalysisLockSwitchRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "NodeCuid", type: :cuid},
-    %{name: "IsAnalysisLocked", type: :unknown}
+    %{name: "IsAnalysisLocked", type: :bool}
   ],
 
 "HandshakeResult" => [
-    %{name: "Success", type: :unknown}
+    %{name: "Success", type: :bool}
   ],
 
 "PlayerServerDrivenPlayInfo" => [
@@ -16932,14 +16932,14 @@
 
 "GearAdditionalInfo" => [
     %{name: "__base__", type: {:struct, "ItemAdditionalInfo"}},
-    %{name: "GearQuality", type: {:enum, "ETzGearQualityType"}},
+    %{name: "GearQuality", type: {:enum, "GearQualityType"}},
     %{name: "EnhancementGrade", type: {:int, 2}},
-    %{name: "IsEroded", type: :unknown},
-    %{name: "GearEnchantGrade", type: {:enum, "ETzGearEnchantGradeType"}},
+    %{name: "IsEroded", type: :bool},
+    %{name: "GearEnchantGrade", type: {:enum, "GearEnchantGradeType"}},
     %{name: "GearEnchantSlotInfos", type: {:list, {:struct, "GearEnchantSlotInfo"}}},
     %{name: "GearSubOptionInfos", type: {:list, {:struct, "GearSubOptionInfo"}}},
-    %{name: "SpecialGearEnhancementUseInfoByCuid", type: :unknown},
-    %{name: "ErodedCountByEnhancementGrade", type: :unknown}
+    %{name: "SpecialGearEnhancementUseInfoByCuid", type: {:map, :cuid, {:struct, "TSharedPtr<FTzSpecialGearEnhancementUseInfo"}}},
+    %{name: "ErodedCountByEnhancementGrade", type: {:map, {:int, 2}, {:int, 4}}}
   ],
 
 "PlayerLocationMonitoringRegisterRequest" => [
@@ -16949,16 +16949,16 @@
 
 "MountUpdateSkillSlotInfoRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "MountSkillSlotIndex", type: {:enum, "ETzMountSkillSlotIndexType"}},
-    %{name: "IsUsedForContinuousCombat", type: :unknown}
+    %{name: "MountSkillSlotIndex", type: {:enum, "MountSkillSlotIndexType"}},
+    %{name: "IsUsedForContinuousCombat", type: :bool}
   ],
 
 "StrongholdBattleUseSiegeWeaponSlotNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
     %{name: "StrongholdCuid", type: :cuid},
-    %{name: "DeploymentKind", type: {:enum, "ETzStrongholdBattleDeploymentKindType"}},
-    %{name: "StrongholdBattleAttackSiegeWeaponSlotInfo", type: :unknown},
-    %{name: "SiegeWeaponCounts", type: :unknown}
+    %{name: "DeploymentKind", type: {:enum, "StrongholdBattleDeploymentKindType"}},
+    %{name: "StrongholdBattleAttackSiegeWeaponSlotInfo", type: {:nullable, :message}},
+    %{name: "SiegeWeaponCounts", type: {:map, :cuid, {:uint, 8}}}
   ],
 
 "CovenantCurrencyDonationResponse" => [
@@ -16966,7 +16966,7 @@
     %{name: "CombinedInventoryUpdateInfo", type: {:nullable, {:struct, "CombinedInventoryUpdateInfo"}}},
     %{name: "CurrencyContainerUpdateInfo", type: {:nullable, {:struct, "PlayerCurrencyContainerUpdateInfo"}}},
     %{name: "PlayerInventoryItemAddInfo", type: {:nullable, {:struct, "ItemAddInfo"}}},
-    %{name: "IsAnyRewardSentByMail", type: :unknown},
+    %{name: "IsAnyRewardSentByMail", type: :bool},
     %{name: "CovenantCurrencyUpdateInfo", type: {:nullable, {:struct, "PointCurrencyContainerUpdateInfo"}}},
     %{name: "CovenantExperiencePoints", type: {:uint, 8}},
     %{name: "MultipleReward", type: {:int, 4}}
@@ -16974,7 +16974,7 @@
 
 "CovenantRealmTransferCheckInfo" => [
     %{name: "CovenantTradeGoodsSalesInfos", type: {:list, {:struct, "CovenantTradeGoodsSalesInfo"}}},
-    %{name: "HasRegisteredShopGoodsInCovenantShop", type: :boolean},
+    %{name: "HasRegisteredShopGoodsInCovenantShop", type: :bool},
     %{name: "HasRegisteredShopGoodsInGeneralShop", type: :unknown},
     %{name: "HasJoinedStrongholdBattle", type: :unknown},
     %{name: "HasJoinedExpedition", type: :unknown}
@@ -17014,7 +17014,7 @@
 
 "FactionSynchronizeNotify" => [
     %{name: "__base__", type: {:struct, "EntitySynchronizeMessage"}},
-    %{name: "Faction", type: {:enum, "ETzFactionType"}}
+    %{name: "Faction", type: {:enum, "FactionType"}}
   ],
 
 "RealmInfoPubSubChannelInitialDataNotify" => [
@@ -17024,7 +17024,7 @@
 
 "PubSubChannelDataNotify" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "Channel", type: {:enum, "ETzSubscriptionChannelType"}},
+    %{name: "Channel", type: {:enum, "SubscriptionChannelType"}},
     %{name: "Parameter", type: {:nullable, {:struct, "Cuid"}}}
   ],
 
@@ -17035,7 +17035,7 @@
 
 "RealmAccountRealmTransferLimitedItemCountRequest" => [
     %{name: "__base__", type: {:struct, "ErTozMessage"}},
-    %{name: "RealmTransferKind", type: {:enum, "ETzRealmTransferKindType"}}
+    %{name: "RealmTransferKind", type: {:enum, "RealmTransferKindType"}}
   ],
 
 "PlayerMarketSaleGoodsListRequest" => [
@@ -17053,20 +17053,20 @@
 
 "RewardItemIndexWithCount" => [
     %{name: "__base__", type: {:struct, "ItemIndexWithCount"}},
-    %{name: "IsCovenantReward", type: :unknown},
+    %{name: "IsCovenantReward", type: :bool},
     %{name: "ItemAdditionalInfo", type: {:nullable, {:struct, "ItemCreateAdditionalInfo"}}}
   ],
 
 "FollowerMovePathInfoResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
-    %{name: "MovePathInfos", type: :unknown}
+    %{name: "MovePathInfos", type: {:map, {:uint, 8}, {:struct, "TSharedPtr<FTzFollowerMovePathInfo"}}}
   ],
 
 "CheatTestGearEnchantGradeResponse" => [
     %{name: "__base__", type: {:struct, "ErTozMessageWithResultCode"}},
     %{name: "CostItemCuid", type: :cuid},
     %{name: "TestCount", type: {:int, 4}},
-    %{name: "UpgradeCounts", type: :unknown}
+    %{name: "UpgradeCounts", type: {:map, {:enum, "GearEnchantGradeType"}, {:int, 4}}}
   ],
 
 "PlayerCovenantWatchSynchronizeNotify" => [
@@ -17087,7 +17087,7 @@
     %{name: "__base__", type: {:struct, "PubSubChannelUpdateDataNotify"}},
     %{name: "DistrictCuid", type: :cuid},
     %{name: "PvpBattleGuid", type: {:uint, 8}},
-    %{name: "PvpBattleDisplayKind", type: {:enum, "ETzPvpBattleDisplayKindType"}}
+    %{name: "PvpBattleDisplayKind", type: {:enum, "PvpBattleDisplayKindType"}}
   ],
 
 "CheatDeregisterCheatEnabledPlayerNameResponse" => [
@@ -17102,8 +17102,8 @@
     %{name: "SkillSiid", type: {:int, 4}},
     %{name: "SkillStageFlowSiid", type: {:int, 4}},
     %{name: "CasterGuid", type: {:uint, 8}},
-    %{name: "SubTargetingLocations_cm", type: {:list, {:struct, "FVector,TSizedDefaultAllocator<32"}}},
-    %{name: "AffectExemptLocations_cm", type: {:list, {:struct, "FVector2D,TSizedDefaultAllocator<32"}}},
+    %{name: "SubTargetingLocations_cm", type: {:list, :vector}},
+    %{name: "AffectExemptLocations_cm", type: {:list, {:struct, "FVector2D"}}},
     %{name: "SkillStageInfos", type: {:list, {:struct, "SkillStageInfo"}}},
     %{name: "ServerUtcNow", type: :datetime}
   ]

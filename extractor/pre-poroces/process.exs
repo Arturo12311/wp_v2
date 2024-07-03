@@ -166,6 +166,10 @@ defmodule ChunkClassifier do
         type
       type = extract_list_type(chunk) ->
         type
+      type = extract_map_type(chunk) ->
+        type
+      type = extract_message_type(chunk) ->
+        type
       info = extract_if_else_info(chunk) ->
         case classify(info) do
           :unknown -> {:nullable, info}
@@ -176,78 +180,163 @@ defmodule ChunkClassifier do
     end
   end
 
-  defp extract_list_type(chunk) do
-    cond do
-      Regex.match?(~r/TArray<.*?>/, chunk) ->
-        [array_type] = Regex.run(~r/TArray<.*?>/, chunk)
-        parse_array_type(array_type)
-
-      true ->
-        nil
-    end
-  end
-
-  defp parse_array_type(array_type) do
-    case Regex.run(~r/TArray<(.*)>/, array_type) do
-      [_, inner_type] ->
-        cleaned_type = inner_type
-          |> String.replace(~r/,\s*(?:TSizedDefaultAllocator<\d+>|FDefaultAllocator).*/, "")
-          |> String.trim()
-        inner_classified = classify_inner_type(cleaned_type)
-        {:list, inner_classified}
-      _ ->
-        {:list, :unknown}
-    end
-  end
-
-  defp classify_inner_type(type) do
-    cond do
-      String.contains?(type, "TArray") ->
-        parse_array_type(type)
-      type == "Cuid" ->
-        :cuid
-      String.starts_with?(type, "TSharedPtr<") ->
-        inner_type = Regex.run(~r/TSharedPtr<([^,>]+)/, type)
-        case inner_type do
-          [_, inner] -> classify_inner_type(inner)
-          _ -> {:struct, remove_ftz_prefix(type)}
-        end
-      String.starts_with?(type, "FTz") || String.starts_with?(type, "F") ->
-        {:struct, remove_ftz_prefix(type)}
-      type == "FString" ->
-        :string
-      type == "int" || type == "int32" ->
-        {:int, 4}
-      type == "long" ->
-        {:uint, 4}
-      type == "long_long" ->
-        {:uint, 8}
-      type == "FVector" ->
-        :vector
-      type == "FDateTime" ->
-        :datetime
-      String.starts_with?(type, "E") ->
-        {:enum, type}
-      extract_structure_info(type) != nil ->
-        {:struct, remove_ftz_prefix(extract_structure_info(type))}
-      true ->
-        {:struct, remove_ftz_prefix(type)}  # Default to treating unknown types as structs
-    end
-  end
-
   defp extract_serializer_type(chunk) do
     case Regex.run(
            ~r/^\s*TozSerializableMessageLibNative::JsonSerializer<(.*?),void>::Serialize/,
            chunk
          ) do
       [_, "int"] -> {:int, 4}
-      [_, "long"] -> {:uint, 4}
+      [_, "long"] -> {:int, 4}
       [_, "long_long"] -> {:uint, 8}
+      [_, "short"] -> {:int, 2}
+      [_, "char"] -> :char
+      [_, "float"] -> :float
       [_, "FString"] -> :string
       [_, "FVector"] -> :vector
       [_, "FDateTime"] -> :datetime
-      [_, type] -> type
+      [_, "FTzCuid"] -> :cuid
+      [_, type] -> parse_complex_type(type)
       _ -> nil
+    end
+  end
+
+  defp parse_complex_type(type) do
+    cond do
+      String.contains?(type, "TMap<") -> extract_map_type(type)
+      String.contains?(type, "TArray<") -> extract_list_type(type)
+      String.contains?(type, "TSharedPtr<") -> parse_shared_ptr(type)
+      true -> {:struct, remove_prefix(type)}
+    end
+  end
+
+  defp parse_shared_ptr(type) do
+    case Regex.run(~r/TSharedPtr<([^,>]+)/, type) do
+      [_, inner_type] -> {:struct, remove_prefix(inner_type)}
+      _ -> {:struct, remove_prefix(type)}
+    end
+  end
+
+  defp clean_and_classify_type(type) do
+    cleaned_type = type
+      |> String.split(",")
+      |> List.first()
+      |> String.trim()
+
+    cond do
+      cleaned_type == "char" -> :char
+      cleaned_type == "long_long" -> {:uint, 8}
+      cleaned_type == "long" -> {:int, 4}
+      cleaned_type == "short" -> {:int, 2}
+      cleaned_type == "int" -> {:int, 4}
+      cleaned_type == "float" -> :float
+      cleaned_type == "FString" -> :string
+      cleaned_type == "FVector" -> :vector
+      cleaned_type == "FDateTime" -> :datetime
+      cleaned_type == "FTzCuid" -> :cuid
+      cleaned_type == "bool" -> :bool
+      String.starts_with?(cleaned_type, "E") -> {:enum, remove_prefix(cleaned_type)}
+      true -> {:struct, remove_prefix(cleaned_type)}
+    end
+  end
+
+  defp classify_inner_type(type) do
+    cond do
+      String.contains?(type, "TArray<") ->
+        extract_list_type(type)
+      String.contains?(type, "TMap<") ->
+        extract_map_type(type)
+      String.contains?(type, "TSharedPtr<") ->
+        parse_shared_ptr(type)
+      String.contains?(type, "TSet<") ->
+        extract_set_type(type)
+      true ->
+        clean_and_classify_type(type)
+    end
+  end
+
+  defp extract_list_type(chunk) do
+    case Regex.run(~r/TArray<(.+?)(?:,\s*[^>]+)?>/, chunk) do
+      [_, inner_type] ->
+        {:list, classify_inner_type(inner_type)}
+      _ ->
+        nil
+    end
+  end
+
+  defp extract_map_type(chunk) do
+    case Regex.run(~r/TMap<\s*(.+?)\s*,\s*(.+?)\s*>/, chunk) do
+      [_, key_type, value_type] ->
+        key = clean_and_classify_type(key_type)
+        value = clean_and_classify_type(value_type)
+        {:map, key, value}
+      _ ->
+        nil
+    end
+  end
+
+  defp extract_set_type(type) do
+    case Regex.run(~r/TSet<(.+?)>/, type) do
+      [_, inner_type] ->
+        {:set, classify_inner_type(inner_type)}
+      _ ->
+        {:set, :unknown}
+    end
+  end
+
+  defp extract_enum_type(chunk) do
+    cond do
+      Regex.match?(~r/StaticEnum<([^>]+)>\(\)/, chunk) and
+      Regex.match?(~r/UEnum::GetNameStringByValue/, chunk) ->
+        case Regex.run(~r/StaticEnum<E([^>]+)>/, chunk) do
+          [_, enum_type] -> {:enum, remove_prefix(enum_type)}
+          _ -> {:enum, "Unknown"}
+        end
+      String.starts_with?(chunk, "E") ->
+        {:enum, remove_prefix(chunk)}
+      true ->
+        nil
+    end
+  end
+
+  defp extract_boolean_type(chunk) do
+    if boolean?(chunk), do: :bool, else: nil
+  end
+
+  defp boolean?(chunk) do
+    # Rule 1: Must contain a comparison with '\0'
+    null_comparison = Regex.match?(~r/\*\(char \*\)\(.*?\) == '\\0'/, chunk)
+
+    # Rule 2: Must contain an assignment of "true" or "false"
+    true_false_assignment = Regex.match?(~r/(?:puVar\d+ = \(undefined8 \*\)|pcVar\d+ =) *"(?:true|false)"/, chunk)
+
+    # Rule 3: Must have an if-else structure
+    if_else_structure = Regex.match?(~r/if \(.*?\) \{.*?\} else \{.*?\}/s, chunk) or
+                        Regex.match?(~r/bVar\d+ = .*?;.*?if \(bVar\d+\)/s, chunk)
+
+    # Rule 4: Should involve a length variable set to 4 or 5
+    length_var = Regex.match?(~r/lVar\d+ = [45];/, chunk)
+
+    # Rule 5: Likely includes memory operations
+    memory_ops = Regex.match?(~r/__memcpy_chk/, chunk)
+
+    # Additional check: Look for the pattern of assigning to puVar based on a condition
+    conditional_assign = Regex.match?(~r/puVar\d+ = (?:&DAT_\w+|\(undefined8 \*\)"(?:true|false)");.*?if \(.*?\).*?puVar\d+ = /s, chunk)
+
+    # Combine all rules
+    (null_comparison and true_false_assignment and if_else_structure and length_var and memory_ops) or
+    (null_comparison and true_false_assignment and conditional_assign)
+  end
+
+
+  defp extract_message_type(chunk) do
+    cond do
+      Regex.match?(~r/if \(\*\(long \*\*\)\(.*?\) == \(long \*\)0x0\)/, chunk) and
+      Regex.match?(~r/\(\*\*\(code \*\*\)\(\*\*\(long \*\*\).*? \+ 0x38\)\)/, chunk) ->
+        {:nullable, :message}
+      Regex.match?(~r/::to_string\(\(uint\)\*\(byte\*\)\(in_x0\+\d+\)\);/, chunk) ->
+        {:nullable, :enum}
+      true ->
+        nil
     end
   end
 
@@ -255,66 +344,12 @@ defmodule ChunkClassifier do
     cond do
       Regex.match?(~r/^(\w+)::ToJsonString\(\);/, chunk) ->
         [_, class_name] = Regex.run(~r/^(\w+)::ToJsonString\(\);/, chunk)
-        remove_ftz_prefix(class_name)
+        remove_prefix(class_name)
       Regex.match?(~r/^(\w+)$/, chunk) ->
         [_, class_name] = Regex.run(~r/^(\w+)$/, chunk)
-        remove_ftz_prefix(class_name)
+        remove_prefix(class_name)
       true ->
         nil
-    end
-  end
-
-  defp remove_ftz_prefix(class_name) do
-    if String.starts_with?(class_name, "FTz") do
-      String.slice(class_name, 3..-1)
-    else
-      class_name
-    end
-  end
-
-  defp extract_enum_type(chunk) do
-    cond do
-      Regex.match?(~r/StaticEnum<([^>]+)>\(\)/, chunk) ->
-        case Regex.run(~r/StaticEnum<([^>]+)>\(\)/, chunk) do
-          [_, enum_type] -> {:enum, enum_type}
-          _ -> nil
-        end
-      Regex.match?(~r/UEnum::GetNameStringByValue/, chunk) ->
-        {:enum, "Unknown"}  # We know it's an enum, but can't determine the specific type
-      true -> nil
-    end
-  end
-
-  defp extract_boolean_type(chunk) do
-    cond do
-      # Case 1: Common pattern in the provided examples
-      Regex.match?(~r/if \(\*\(char \*\)\(.*?\) == '\\0'\) \{/, chunk) and
-      Regex.match?(~r/lVar1 = 5;/, chunk) and
-      Regex.match?(~r/puVar2 = \(undefined8 \*\)pcVar10;/, chunk) ->
-        :boolean
-
-      # Case 2: Explicit "false" string assignment
-      Regex.match?(~r/pcVar\d+ = "false"/, chunk) and
-      Regex.match?(~r/if \(.*== '\\0'\)/, chunk) ->
-        :boolean
-
-      # Case 3: Comparison with '\0'
-      Regex.match?(~r/\*\(char\*\)\([^)]*\) == '\\0'/, chunk) ->
-        :boolean
-
-      # Case 4: Comparison with 0 for a char pointer
-      Regex.match?(~r/if \(\*\(char \*\)\(.*\) == 0\)/, chunk) ->
-        :boolean
-
-      # Case 5: Direct comparison of a memory location with '\0'
-      Regex.match?(~r/if \(\*\([^)]+\) == '\\0'\)/, chunk) ->
-        :boolean
-
-      # Case 6: Assignment of 'true' or 'false' strings
-      Regex.match?(~r/= "(true|false)";/, chunk) ->
-        :boolean
-
-      true -> nil
     end
   end
 
@@ -332,8 +367,14 @@ defmodule ChunkClassifier do
       _ -> nil
     end
   end
-end
 
+  defp remove_prefix(name) do
+    name
+    |> String.replace_prefix("ETz", "")
+    |> String.replace_prefix("FTz", "")
+    |> String.replace_prefix("Tz", "")
+  end
+end
 # # Segment the text and extract information
 # extracted_data = TextSegmenter.segment_and_extract(input_text)
 
