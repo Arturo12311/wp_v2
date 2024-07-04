@@ -1,4 +1,26 @@
 Opcode: ConvenienceOptionInfo
+Field: PartyAutoCreationOnlyCovenantMemberOrFriend
+Code:
+pcVar10 = "false";
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x40) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)pcVar10;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: ConvenienceOptionInfo
 Field: PartyAutoCreationAutoApprovalJoinApplication
 Code:
 pcVar12 = (char *)((ulong)&local_198 | 1);
@@ -196,6 +218,105 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
+Opcode: HandshakeResult
+Field: Success
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar4 = 4;
+  if (bVar8) {
+    lVar4 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar5 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar5 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar4 << 1);
+  __memcpy_chk(pcVar10,puVar5,lVar4,0x17);
+  pcVar10[lVar4] = '\0';
+  uVar6 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar6 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: StrongholdRewardStatNotify
+Field: IsOccupiedByNpcCovenant
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatAcquireStanceResponse
+Field: IsStanceInstallFreeChanceEnabled
+Code:
+bVar9 = *(char *)(in_x0 + 0x21) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar13 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar3,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar12 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar13;
+  if ((local_198 & 1) != 0) {
+    uVar12 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantPermissionsInfo
+Field: CanEditCovenantInfo
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
+
 Opcode: CovenantPermissionsInfo
 Field: CanManageCovenantMember
 Code:
@@ -385,6 +506,48 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: QuestAcceptNotify
+Field: StartByItem
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x48) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantGiftBoxInfo
+Field: IsReceived
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x58) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: RPCExceptionMessage
 Field: ErrorString
 Code:
@@ -399,6 +562,121 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__ndk
+
+Opcode: CovenantRealmTransferReadyToRealmTransferRequest
+Field: UseItem
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantRealmTransferReadyToRealmTransferRequest
+Field: UseCurrency
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 9) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: RealmIntegrationSelectRealmAccountResponse
+Field: CanCheatCommand
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x80) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: OccupiableNpcRandomBuffStateUpdateNotify
+Field: IsRandomBuffNpc
+Code:
+bVar7 = *(char *)(in_x0 + 0x50) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: ChatOptionInfo
+Field: ItemAcquireNotifyDisplayOption
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: ChatOptionInfo
 Field: CovenantRewardAcquireNotifyDisplayOption
@@ -422,6 +700,28 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
     pcVar6 = local_188;
   }
   std::__ndk1::__put
+
+Opcode: AutoDonateSettingOptionInfo
+Field: IsContainEnhancedItem
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x58) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: AutoDonateSettingOptionInfo
 Field: IsContainEnchantedItem
@@ -467,6 +767,48 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: BattalionSummaryInfo
+Field: IsJoinable
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x88) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: RealmAccountLoginRequest
+Field: IsFastLogin
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: ContentsRelockNotify
 Field: ContentsUnlockKinds
 Code:
@@ -481,6 +823,125 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: BattalionChangeJoinableNotify
+Field: IsJoinable
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SkillShieldWallAffectInfo
+Field: IsHit
+Code:
+bVar7 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SkillShieldWallAffectInfo
+Field: IsAffectingTargetStats
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x29) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SpawnLayerInfo
+Field: IsActivated
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PaidAttendanceInfo
+Field: IsVisibleNotificationMarker
+Code:
+bVar8 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar3,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_c
+
 Opcode: TozTimeAdjustment
 Field: Adjustment
 Code:
@@ -493,6 +954,65 @@ TozSerializableMessageLibNative::JsonSerializer<TozSerializableMessageLibNative:
     pcVar6 = local_188;
   }
   std::__n
+
+Opcode: ItemIndexOptionalSelector
+Field: IsBound
+Code:
+pcVar1 = "false";
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    uVar8 = 8;
+    local_190 = 0;
+    local_188 = (char *)0x0;
+    local_198 = 0x6c6c756e08;
+  }
+  else {
+    lVar2 = 4;
+    puVar3 = &DAT_0901b5c8;
+    if (*(char *)(in_x0 + 0x19) == '\0') {
+      lVar2 = 5;
+      puVar3 = (undefined8 *)pcVar1;
+    }
+    local_190 = 0;
+    local_188 = (char *)0x0;
+    local_198 = (ulong)(byte)((int)lVar2 << 1);
+    __memcpy_chk((ulong)&local_198 | 1,puVar3,lVar2,0x17);
+    uVar8 = local_198 & 0xff;
+    *(undefined *)(((ulong)&local_198 | 1) + lVar2) = 0;
+  }
+  uVar4 = local_190;
+  pcVar6 = local_188;
+  if ((uVar8 & 1) == 0) {
+    uVar4 = uVar8 >> 1;
+    pcVar6 = (char *)((long)&local_198 + 1);
+  }
+  std::__ndk1::__put_characte
+
+Opcode: MountRendezvousInfo
+Field: IsLeftBoarding
+Code:
+bVar6 = *(char *)(in_x0 + 0x24) == '\0';
+  pcVar8 = "false";
+  lVar1 = 4;
+  if (bVar6) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar6) {
+    puVar2 = (undefined8 *)pcVar8;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar10 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: MountRendezvousInfo
 Field: IsImmediateBoarding
@@ -537,6 +1057,171 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
     pcVar8 = local_188;
   }
   std::__ndk1::__put
+
+Opcode: RewardInfo
+Field: IsUpgradeSlayingGrade
+Code:
+bVar8 = *(char *)(in_x0 + 0xe4) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ItemLockSwitchResponse
+Field: IsInRealmAccountWarehouse
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ItemLockSwitchResponse
+Field: IsLocked
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x19) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: MountBoardingRequest
+Field: IsLeftBoarding
+Code:
+bVar6 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar6) {
+    lVar1 = 5;
+  }
+  pcVar8 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar6) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar9 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MountBoardingRequest
+Field: IsImmediateBoarding
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x24) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: FavoriteCraftRecipeRegisterRequest
+Field: IsRegistered
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: NameTagHealthBarDisplayOptionDetailInfo
+Field: IsOwnNameTagDisplayed
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: NameTagHealthBarDisplayOptionDetailInfo
 Field: IsOwnCovenantNameDisplayed
@@ -647,6 +1332,75 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: BuildingWorkSummaryInfo
+Field: IsCovenantRecommended
+Code:
+bVar9 = *(char *)(in_x0 + 0x19) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: ItemLockSwitchRequest
+Field: IsInRealmAccountWarehouse
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ItemLockSwitchRequest
+Field: IsLocked
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x11) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
 Opcode: TozPong
 Field: ServerUtcNow
 Code:
@@ -659,6 +1413,125 @@ TozSerializableMessageLibNative::JsonSerializer<TozSerializableMessageLibNative:
     pcVar3 = local_188;
   }
   std::__n
+
+Opcode: PartyConfirmJoinApplicationResponse
+Field: IsApproved
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x28) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatSetIgnoreCovenantMarketUsableJoinElapsedTimeRequest
+Field: IgnoreCovenantMarketUsableJoinElapsedTime
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PlayerCovenantSupportInfo
+Field: HasCovenantSupportableFollower
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: StackableItemMultipleUseResponse
+Field: IsUpgradeSlayingGrade
+Code:
+bVar8 = *(char *)(in_x0 + 0xb0) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CharacterRecordInfo
+Field: IsPvpStatsAffectedCharacter
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x90) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__p
 
 Opcode: CovenantDiplomacySummaryInfo
 Field: AllianceCovenantGuids
@@ -687,6 +1560,219 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: ErFrontServerSessionInitializeInfo
+Field: RealmHasSpaceAvailable
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ErFrontServerSessionInitializeInfo
+Field: PopupCommunityAutomatically
+Code:
+pcVar10 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x19) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: PushNotificationOptionModifyRequest
+Field: IsEnabled
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PushNotificationOptionModifyRequest
+Field: IsNotifiedEvenWhenConnected
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x19) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: LootNotify
+Field: IsErosionInstallerReward
+Code:
+bVar8 = *(char *)(in_x0 + 0xa8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: FollowerDispatchOrderInfo
+Field: UseDispatchAutomation
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BattalionLeaderChangeRequest
+Field: IsAccept
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: BuildingWorkOrderInfo
+Field: IsRecommended
+Code:
+bVar9 = *(char *)(in_x0 + 0x34) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SpellstoneAdditionalBuffStatsInfo
+Field: IsImmuneToHealthPointsLoss
+Code:
+bVar8 = *(char *)(in_x0 + 0x18) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: SpellstoneAdditionalBuffStatsInfo
 Field: IsImmuneToHealthPointsGain
@@ -758,6 +1844,100 @@ Field: TozNetwork.Handshake.Compressor.ZlibCompressHandshakeResult
 Code:
 
 
+Opcode: ErFrontServerSessionReinitializeInfo
+Field: PopupCommunityAutomatically
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x78) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PartySummaryInfo
+Field: IsEnabled
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatAccomplishQuestRequest
+Field: ReceiveReward
+Code:
+bVar8 = *(char *)(in_x0 + 0x2c) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: StanceAcquireNotify
+Field: IsStanceInstallFreeChanceEnabled
+Code:
+bVar10 = *(char *)(in_x0 + 0x21) == '\0';
+  lVar1 = 4;
+  if (bVar10) {
+    lVar1 = 5;
+  }
+  pcVar14 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar10) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar14,puVar3,lVar1,0x17);
+  pcVar14[lVar1] = '\0';
+  uVar13 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar14;
+  if ((local_198 & 1) != 0) {
+    uVar13 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: SchemaColumn
 Field: DeployType
 Code:
@@ -789,6 +1969,32 @@ auVar11 = DatatoolReferenceNative::to_string(*(DataType *)(in_x0 + 0x14));
   std::__ndk
 
 Opcode: SchemaColumn
+Field: Key
+Code:
+bVar7 = *(char *)(in_x0 + 0x18) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar9 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SchemaColumn
 Field: Comment
 Code:
 TozSerializableMessageLibNative::
@@ -816,6 +2022,79 @@ TozSerializableMessageLibNative::
     pcVar10 = local_188;
   }
   std::__ndk
+
+Opcode: ReceivedRewardInfo
+Field: IsAnyRewardSentByMail
+Code:
+bVar6 = *(char *)(in_x0 + 0xa0) == '\0';
+  lVar1 = 4;
+  if (bVar6) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar6) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: ReceivedRewardInfo
+Field: IsUpgradeSlayingGrade
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x138) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BuffStatsInfo
+Field: IsImmuneToHealthPointsLoss
+Code:
+bVar8 = *(char *)(in_x0 + 0x14) == '\0';
+  pcVar10 = "false";
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)pcVar10;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: BuffStatsInfo
 Field: IsImmuneToHealthPointsGain
@@ -882,6 +2161,197 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
+Opcode: ErFrontServerSessionInitializeInfoNotify
+Field: CanCheatCommand
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x78) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CharacterMoveOrbitalToLocationParameterInfo
+Field: IsClockwise
+Code:
+bVar8 = *(char *)(in_x0 + 0x14) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ReinforcementInfo
+Field: IsInBattle
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PlayerMarketTransactionProcessInfo
+Field: IsStorable
+Code:
+bVar7 = *(char *)(in_x0 + 0x40) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar13 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar3,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar13 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: PlayerMarketTransactionProcessInfo
+Field: IsDirty
+Code:
+lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x120) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ServerDrivenPlayStartRequest
+Field: ResupplyOnStart
+Code:
+bVar8 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar3,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: DeathPenaltyAutoRecoveryInfo
+Field: IsFreeRecovery
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantInfo
+Field: NeedChangeName
+Code:
+bVar7 = *(char *)(in_x0 + 0x380) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__put_c
+
 Opcode: TlsLikeEncryptPremasterSecret
 Field: PremasterSecret
 Code:
@@ -895,6 +2365,172 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
+
+Opcode: PartyOptionInfo
+Field: CanInviteOrJoinApplyOnlyFriendOrSameCovenant
+Code:
+bVar9 = *(char *)(in_x0 + 0x36) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar13 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar2,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar13;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PartyOptionInfo
+Field: IsAutomatedNewComerApproval
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x37) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar2,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar13 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantSearchInfo
+Field: IsJoinApplied
+Code:
+bVar9 = *(char *)(in_x0 + 0x98) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar13 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar3,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar12 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar12 = local_190;
+    pcVar13 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: FavoriteCollectionRegisterResponse
+Field: IsRegistered
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PlayerStanceInfo
+Field: IsStanceInstallFreeChanceEnabled
+Code:
+bVar9 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: SpawnLayerDeactivateNotify
+Field: IsPermanentSpawnLayer
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PlayerDeleteConditionCheckResponse
+Field: IsPlayerDeleteBlockingLevel
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: PlayerDeleteConditionCheckResponse
 Field: IsInCovenant
@@ -940,6 +2576,126 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: StrongholdBuildingDemolishRequest
+Field: IsCompleteImmediately
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: StrongholdBuildingDowngradeRequest
+Field: IsCompleteImmediately
+Code:
+bVar8 = *(char *)(in_x0 + 0x1c) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ErosionInfo
+Field: IsWithoutPermission
+Code:
+bVar8 = *(char *)(in_x0 + 0xf8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ExpeditionBossNpcLocationInfoSynchronizeNotify
+Field: IsAlive
+Code:
+bVar7 = *(char *)(in_x0 + 0x20) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: SkillUseOptionInfo
+Field: UseManaPointsRestriction
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar8 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar8 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
+
 Opcode: SkillUseOptionInfo
 Field: UseCycle
 Code:
@@ -984,6 +2740,164 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: CostumeInfo
+Field: HasPreviouslyEquippedGuise
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CostumeInfo
+Field: IsWearUniform
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x31) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar8 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: MonsterBookNodeAnalysisLockSwitchRequest
+Field: IsAnalysisLocked
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PreregistrationInfo
+Field: IsAnyPlayerCreated
+Code:
+bVar7 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PreregistrationInfo
+Field: IsReservedPlayerCreated
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x29) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: RealmAccountIntegrationInfo
+Field: HidePopup
+Code:
+bVar7 = *(char *)(in_x0 + 0x38) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: RealmAccountIntegrationInfo
+Field: Deleted
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x39) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: TlsLikeEncryptClientHello
 Field: unknown_name
 Code:
@@ -1002,6 +2916,176 @@ Opcode: TlsLikeEncryptServerCompleted
 Field: TozNetwork.Handshake.TlsLikeEncryptor.TlsLikeEncryptServerCompleted
 Code:
 
+
+Opcode: InventoryOptionInfo
+Field: IsEquippedItemVisible
+Code:
+bVar9 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PushNotificationOptionModifyResponse
+Field: ModifiedPushNotificationOptionIsEnabled
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: MountCallingInfo
+Field: IsImmediateBoarding
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MountCallingInfo
+Field: IsMovingBoarding
+Code:
+pcVar9 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: StrongholdBuildingConstructRequest
+Field: IsCompleteImmediately
+Code:
+bVar8 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CollectionSlotItemInfo
+Field: IsEroded
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x1c) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SkillAffectTargetStatsAffectInfo
+Field: IsCritical
+Code:
+bVar8 = *(char *)(in_x0 + 0x10) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar11,puVar3,lVar2,0x17);
+  pcVar11[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: SkillAffectTargetStatsAffectInfo
 Field: IsBlocked
@@ -1047,6 +3131,27 @@ pcVar11 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
+Opcode: ChatQueryEntityInfoResponse
+Field: LoggedIn
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: AttackerListNotify
 Field: AttackerPlayerGuids
 Code:
@@ -1061,6 +3166,27 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: OccupiableNpcInfo
+Field: IsRandomBuffNpc
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x80) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: ContentsUnlockNotify
 Field: ContentsUnlockKinds
 Code:
@@ -1074,6 +3200,28 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: CovenantRealmTransferCheckInfo
+Field: HasRegisteredShopGoodsInCovenantShop
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: CovenantRealmTransferCheckInfo
 Field: HasRegisteredShopGoodsInGeneralShop
@@ -1141,6 +3289,75 @@ pcVar9 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
+Opcode: CovenantSynchronizeJoinAppliedPlayerIsConnectedNotify
+Field: IsConnected
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CrossRealmSeasonTimeCreviceEntryUpdateDataNotify
+Field: IsFull
+Code:
+bVar8 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MountBoardingInfo
+Field: IsLeftBoarding
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
+
 Opcode: MountBoardingInfo
 Field: IsImmediateBoarding
 Code:
@@ -1185,6 +3402,147 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: MountUpdateSkillSlotInfoResponse
+Field: IsUsedForContinuousCombat
+Code:
+bVar9 = *(char *)(in_x0 + 9) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PlayerItemUseNotify
+Field: IsUpgradeSlayingGrade
+Code:
+bVar8 = *(char *)(in_x0 + 0xa8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PartyMemberLootNotify
+Field: IsErosionInstallerReward
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantCompleteCampaignNotify
+Field: IsSuccess
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatSetLocalServerPushRequest
+Field: IsEnabled
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantDonationRequest
+Field: DonateEvenIfHavenInventoryIsFull
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: CheatCollectionUpdateNotify
 Field: ActivatedCollectionCategoryCuids
 Code:
@@ -1198,6 +3556,85 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: CheatChangeCashShopCheckBuyLimitOptionResponse
+Field: IsIgnoreToCheckBuyLimit
+Code:
+bVar8 = *(char *)(in_x0 + 0xc) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: QuestProgressInfo
+Field: StartByItem
+Code:
+bVar8 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ServerDrivenPlayOptionInfo
+Field: AlwaysUseWarp
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: ServerDrivenPlayOptionInfo
 Field: SwitchAtCurrentLocationInsideHuntingSite
@@ -1331,15 +3768,155 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: DefaultPreprocessResult
+Field: Success
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar4 = 4;
+  if (bVar8) {
+    lVar4 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar5 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar5 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar4 << 1);
+  __memcpy_chk(pcVar10,puVar5,lVar4,0x17);
+  pcVar10[lVar4] = '\0';
+  uVar6 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar6 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: FavoriteCollectionRegisterRequest
+Field: IsRegistered
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: TozTimeReconcile
 Field: TozNetwork.Protocol.TozTimeReconcile
 Code:
 
 
+Opcode: CheatChangeActivationSpawnLayerRequest
+Field: IsActivated
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: SessionInitializeInfo
 Field: unknown_name
 Code:
 
+
+Opcode: SkillStageFlowCancelNotify
+Field: IsCanceledStageAffectApplied
+Code:
+bVar8 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatSetExperiencePointsBlockedRequest
+Field: IsExperiencePointsBlocked
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MarketFavoriteItemRegisterResponse
+Field: IsOnSaleMarketFavoriteItemInfo
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
 
 Opcode: BattalionInfo
 Field: AllianceCovenantGuids
@@ -1369,15 +3946,278 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: BattalionInfo
+Field: IsJoinable
+Code:
+bVar7 = *(char *)(in_x0 + 0x160) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: RPCInvokingMessage
+Field: FireAndForget
+Code:
+bVar7 = *(char *)(in_x0 + 0x20) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: RPCInvokingMessage
+Field: HasCancellationToken
+Code:
+lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x21) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BlockBuildingNotify
+Field: IsBlock
+Code:
+bVar8 = *(char *)(in_x0 + 0x10) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
 Opcode: ErServerSessionInitializeInfo
 Field: __base__
 Code:
 
 
+Opcode: RewardItemIndexWithCount
+Field: IsCovenantReward
+Code:
+bVar7 = *(char *)(in_x0 + 0x40) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: StrongholdBuildingCraftRequest
+Field: IsCompleteImmediately
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: TlsLikeEncryptHandshakeResult
 Field: TozNetwork.Handshake.TlsLikeEncryptor.TlsLikeEncryptHandshakeResult
 Code:
 
+
+Opcode: CovenantRealmTransferExecuteRequest
+Field: UseItem
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantRealmTransferExecuteRequest
+Field: UseCurrency
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 9) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatSetUrfModeResponse
+Field: IsUrfMode
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatChangeCrossRealmMaintenanceRequest
+Field: IsUnderMaintenance
+Code:
+bVar9 = *(char *)(in_x0 + 9) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PvpRecordKillerPlayerInfo
+Field: HasTeased
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0xa0) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
 
 Opcode: TlsLikeEncryptServerHello
 Field: ServerRandom
@@ -1421,6 +4261,48 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: RoadLinkInfo
+Field: IsOneShotSpecialMove
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0xc) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantBattalionNotifyInfo
+Field: IsNotExposeToBattalionList
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: RPCCancellingMessage
 Field: TozRPC.RPCCancellingMessage
 Code:
@@ -1454,6 +4336,144 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: PlayerEquipmentInfo
+Field: HasPreviouslyEquippedGuise
+Code:
+lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x70) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantMarketHistoryInfo
+Field: IsRegister
+Code:
+bVar8 = *(char *)(in_x0 + 0x46) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar3,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: RealmAccountRealmTransferExecuteRequest
+Field: UseItem
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: RealmAccountRealmTransferExecuteRequest
+Field: UseCurrency
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x19) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: PvpRecordDeadPlayerInfo
+Field: HasPlayerLocationMonitoringRegistered
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x88) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: NpcInfo
+Field: IsInSeekHidingAttackTargetState
+Code:
+bVar9 = *(char *)(in_x0 + 0x220) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: NpcInfo
 Field: AttackerPlayerGuids
 Code:
@@ -1466,6 +4486,172 @@ TozSerializableMessageLibNative::
     pcVar12 = local_188;
   }
   std::__n
+
+Opcode: ErosionItemUseParameterInfo
+Field: IsWithoutPermission
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x14) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: OccupiableNpcSummaryInfo
+Field: IsRandomBuffNpc
+Code:
+bVar8 = *(char *)(in_x0 + 0x80) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: CheatCovenantRealmTransferBlockRequest
+Field: ApplyAll
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar9 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatSetUrfModeRequest
+Field: IsUrfMode
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatSetLoggingResponse
+Field: IsLogging
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CrossRealmSeasonTimeCreviceEntryInitialDataNotify
+Field: IsFull
+Code:
+bVar8 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantDonationResponse
+Field: IsAnyRewardSentByMail
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x50) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
 
 Opcode: TozMessage
 Field: TozNetwork.Protocol.TozMessage
@@ -1499,6 +4685,52 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: MonsterBookNodeStateInfo
+Field: IsAnalysisLocked
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x38) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SkillAffectTargetAffectInfo
+Field: IsHit
+Code:
+bVar7 = *(char *)(in_x0 + 0x18) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
 Opcode: CharacterInfo
 Field: BuffInfos
 Code:
@@ -1527,6 +4759,137 @@ TozSerializableMessageLibNative::
     pcVar9 = local_188;
   }
   std::__ndk
+
+Opcode: CharacterInfo
+Field: IsHarmfulSkillTargetableInAnyFactionRelation
+Code:
+lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 400) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatChangeLevelRequest
+Field: ShowAllLevelUpEffect
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0xc) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BattalionConfirmInvitationResponse
+Field: IsApproved
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: StrongholdBattleEndRewardNotify
+Field: IsAnyRewardSentByMail
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: StrongholdBattleCarriageLivingTotemCombatStateSynchronizeNotify
+Field: IsInCombatInProgressState
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PlayerInfo
+Field: IsInSelfieMode
+Code:
+pcVar10 = "false";
+  lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 600) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)pcVar10;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar3,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar12 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar12 = local_190;
+    pcVar13 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: PlayerInfo
 Field: IsFissioned
@@ -1615,6 +4978,194 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
+Opcode: StanceInstallResponse
+Field: IsStanceInstallFreeChanceEnabled
+Code:
+lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x48) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar3,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar12 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar12 = local_190;
+    pcVar13 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CollectionCompleteNotify
+Field: IsAnyRewardSentByMail
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x38) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ExpeditionJoinRequestInfo
+Field: IsAllowVolunteerJoinApply
+Code:
+bVar7 = *(char *)(in_x0 + 0x20) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ExpeditionJoinRequestInfo
+Field: IsVolunteerJoinApplicationAutomaticApproval
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x21) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: MountDeboardedInfo
+Field: IsImmediateMountDespawn
+Code:
+bVar8 = *(char *)(in_x0 + 9) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar10 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: TerritoryErosionItemConfigurationInfo
+Field: IsPermitted
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: StrongholdBuildingRepairRequest
+Field: IsCompleteImmediately
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CrossRealmSeasonInfo
+Field: IsUnderMaintenance
+Code:
+bVar9 = *(char *)(in_x0 + 0x19) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: CrossRealmSeasonInfo
 Field: MatchedRealmCuids
 Code:
@@ -1629,6 +5180,58 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: CheatRankingBuffApplySwitchRequest
+Field: IsApplied
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: StrongholdBuildingUpgradeRequest
+Field: IsCompleteImmediately
+Code:
+bVar8 = *(char *)(in_x0 + 0x1c) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: CachedMessages
 Field: Container
 Code:
@@ -1642,6 +5245,71 @@ TozSerializableMessageLibNative::
     pcVar6 = local_188;
   }
   std::__nd
+
+Opcode: CrossRealmCovenantQueryResponse
+Field: IsJoinApplied
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CrossRealmCovenantQueryResponse
+Field: IsInvited
+Code:
+pcVar11 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x21) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: BattalionOptionInfo
+Field: IsAllowVolunteer
+Code:
+pcVar10 = "false";
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)pcVar10;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: BattalionOptionInfo
 Field: IsAllowVolunteerJoinApply
@@ -1709,6 +5377,105 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
+Opcode: RegisteredGoodsInfo
+Field: IsBound
+Code:
+bVar7 = *(char *)(in_x0 + 0x38) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: RegisteredGoodsInfo
+Field: IsStorable
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x39) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatKillSurroundingCharactersRequest
+Field: IsSkipDyingAndFinishable
+Code:
+bVar9 = *(char *)(in_x0 + 0xd) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: AnniversaryStrongholdOccupationCovenantInfo
+Field: IsOccupyAltarPhaseInProgress
+Code:
+bVar8 = *(char *)(in_x0 + 0x20) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: TerritoryErosionInitialDataNotify
 Field: ErosionInfos
 Code:
@@ -1722,6 +5489,49 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: CovenantQueryResponse
+Field: IsJoinApplied
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantQueryResponse
+Field: IsInvited
+Code:
+pcVar11 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x21) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: ServerGroupAuthenticateInfo
 Field: __base__
@@ -1743,6 +5553,53 @@ TozSerializableMessageLibNative::
   }
   std::__ndk
 
+Opcode: DestroyedGearInfoByEnhancement
+Field: IsBound
+Code:
+bVar8 = *(char *)(in_x0 + 0x21) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: DestroyedGearInfoByEnhancement
+Field: IsStorable
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x22) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: CheatDeregisterCheatEnabledPlayerNameResponse
 Field: CheatEnabledPlayerNames
 Code:
@@ -1756,6 +5613,28 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: PlayerSummaryInfo
+Field: CovenantInvitable
+Code:
+pcVar9 = "false";
+  lVar1 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x70) == '\0') {
+    lVar1 = 5;
+    puVar3 = (undefined8 *)pcVar9;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: PlayerSummaryInfo
 Field: IsInServerDrivenPlay
@@ -1801,6 +5680,95 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
+Opcode: StrongholdBattleCovenantBattalionMemberDisplayInfo
+Field: IsHeadPieceDisplayed
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x38) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantRecommendBuildingWorkRequest
+Field: IsRecommended
+Code:
+bVar8 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: FollowerDispatchReservationInfo
+Field: IsBuildingWorkRecommended
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x40) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PartyConfirmInvitationResponse
+Field: IsApproved
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: ItemExpireNotify
 Field: ExpiredItemCuids
 Code:
@@ -1815,6 +5783,100 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: CovenantResearchRequest
+Field: IsCompleteImmediately
+Code:
+bVar8 = *(char *)(in_x0 + 0x28) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ServerDrivenPlayResupplyingStateInfo
+Field: IsAutoResupplying
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ServerDrivenPlayResupplyingStateInfo
+Field: IsResupplyingWithTeleport
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 9) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SkillResponse
+Field: IsExecutingBegun
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: BattalionCovenantGrantedSkillNotify
 Field: CovenantGrantedSkillCuids
 Code:
@@ -1828,6 +5890,33 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: CampaignStartOptionInfo
+Field: IsAllowVolunteerJoinApply
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: CampaignStartOptionInfo
 Field: IsVolunteerJoinApplicationAutomaticApproval
@@ -1969,6 +6058,50 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: CheatStartCovenantCampaignRequest
+Field: IsAllowVolunteerJoinApply
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatStartCovenantCampaignRequest
+Field: IsVolunteerJoinApplicationAutomaticApproval
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x19) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
 Opcode: CheatUnlockAllContentsResponse
 Field: UnusedContentsUnlockKinds
 Code:
@@ -1982,6 +6115,146 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: FavoriteCraftRecipeRegisterResponse
+Field: IsRegistered
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: AchievementInfo
+Field: IsRewarded
+Code:
+bVar8 = *(char *)(in_x0 + 0x38) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar3,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: CovenantJoinApplicationInfo
+Field: IsConnected
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x38) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatSetInvulnerableRequest
+Field: IsInvulnerable
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: DistrictFavorBossInfo
+Field: IsFavorBossActivated
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0xc) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatRealmAccountRealmTransferBlockRequest
+Field: ApplyAll
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar9 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__put_ch
 
 Opcode: RsaPublicKeyNotify
 Field: PublicKeyXmlString
@@ -2011,6 +6284,132 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: FieldMigrationReadyRequest
+Field: IsInstanceField
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: FieldMigrationReadyRequest
+Field: IsTeleport
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 9) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatSetExperiencePointsBlockedResponse
+Field: IsExperiencePointsBlocked
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: StrongholdBattleAttackEndDateTimeChangeNotify
+Field: IsAffectedFromLivingTotemSkill
+Code:
+bVar9 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: ItemInfo
+Field: IsBound
+Code:
+bVar7 = *(char *)(in_x0 + 0x20) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar7) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar4 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar4 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar4,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  pcVar11 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: ItemInfo
 Field: IsStorable
@@ -2054,10 +6453,242 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: BuildingBaseBuildingExistenceSynchronizeNotify
+Field: IsBaseBuildingExist
+Code:
+bVar8 = *(char *)(in_x0 + 0x10) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CashShopMerchandiseInfo
+Field: IsAutoUsing
+Code:
+bVar9 = *(char *)(in_x0 + 0x61) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CashShopSubCategoryInfo
+Field: IsShowDateTime
+Code:
+bVar7 = *(char *)(in_x0 + 0x50) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar11 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CashShopSubCategoryInfo
+Field: IsHideSubCategory
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x78) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: GearEnhancementSuccessNotify
+Field: DisplaySystemMessage
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar8 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: GearEnhancementSuccessNotify
+Field: DisplayChatMessage
+Code:
+pcVar9 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x31) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar8 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar8 = local_188;
+  }
+  std::__ndk1::__put
+
 Opcode: ProtocolConstants
 Field: TozNetwork.Protocol.ProtocolConstants
 Code:
 
+
+Opcode: CovenantBanishMemberNotify
+Field: UpdatePlayerLastCovenantWithdrawalDateTime
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PlayerLoginRequest
+Field: IsFastLogin
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PlayerLoginResponse
+Field: CanCheatCommand
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x28) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PotionAutoUsageOptionInfo
+Field: IsAutoUse
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
 
 Opcode: PlayerCovenantWatchSynchronizeNotify
 Field: CovenantGuids
@@ -2072,6 +6703,79 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: FavorQueryResponse
+Field: IsFavorBossActivated
+Code:
+bVar7 = *(char *)(in_x0 + 0x48) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: FavorQueryResponse
+Field: HasAcceptedFavorBossToday
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x49) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SpawnLayerActivateNotify
+Field: IsPermanentSpawnLayer
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
 
 Opcode: VersionCheckResult
 Field: Code
@@ -2102,6 +6806,59 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__ndk
+
+Opcode: StrongholdBattleBuildingCombatStateSynchronizeNotify
+Field: IsInCombatInProgressState
+Code:
+bVar9 = *(char *)(in_x0 + 0x21) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CombatLootOptionInfo
+Field: IncludePotion
+Code:
+bVar8 = *(char *)(in_x0 + 0xb) == '\0';
+  pcVar11 = "false";
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)pcVar11;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: CombatLootOptionInfo
 Field: IncludeBuffItem
@@ -2146,6 +6903,54 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__pu
 
+Opcode: SkillEndNotify
+Field: IsAllStagesComplete
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x24) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SkillAutoUseManaPointsRestrictOptionInfo
+Field: IsManaPointsUsageRestricted
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
+
 Opcode: SkillAutoUseManaPointsRestrictOptionInfo
 Field: IsForceUseSkillsInPvp
 Code:
@@ -2189,6 +6994,33 @@ lVar2 = 4;
     pcVar10 = local_188;
   }
   std::__ndk1::__p
+
+Opcode: NameTagHealthBarDisplayOptionInfo
+Field: IsOwnUniformDisplayedInStrongholdBattle
+Code:
+bVar9 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar9) {
+    lVar2 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar12,puVar3,lVar2,0x17);
+  pcVar12[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: NameTagHealthBarDisplayOptionInfo
 Field: IsDisplayModeAutoSelect
@@ -2255,6 +7087,32 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: MountDeboardingInfo
+Field: IsImmediateMountDespawn
+Code:
+bVar8 = *(char *)(in_x0 + 9) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar10 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: ProtocolCheckRequest
 Field: Hash
 Code:
@@ -2269,6 +7127,101 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__ndk
+
+Opcode: PartyConfirmRecommendationForInviteeResponse
+Field: IsApproved
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x58) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatDistrictBlockRequest
+Field: IsBlocked
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ItemTransmutationResultInfo
+Field: IsSuccess
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: GameNotificationOptionInfo
+Field: HeroBossSpawnNotifyDisplayOption
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar8) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: GameNotificationOptionInfo
 Field: DistrictBossSpawnNotifyDisplayOption
@@ -2314,10 +7267,194 @@ pcVar10 = (char *)((ulong)&local_198 | 1);
   }
   std::__ndk1::__put
 
+Opcode: InstanceEventActionCompleteNotify
+Field: IsSuccess
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: NxLogBaseParameterInfo
+Field: IsByNxCmd
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: KickPreexistingSessionConfirmResponse
+Field: KickPreexistingSession
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatRankingBuffApplySwitchResponse
+Field: IsApplied
+Code:
+bVar8 = *(char *)(in_x0 + 0xc) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: PushNotificationOptionInfo
+Field: IsEnabled
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PushNotificationOptionInfo
+Field: IsNotifiedEvenWhenConnected
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x19) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar8 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: ChatBattalionRequest
+Field: IsNotice
+Code:
+bVar8 = *(char *)(in_x0 + 0x30) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: GracefulShutdownMessage
 Field: TozNetwork.ServerGroup.GracefulShutdownMessage
 Code:
 
+
+Opcode: MonsterBookNodeAcquireRequest
+Field: IsAcquireByItem
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
 
 Opcode: SchemaTable
 Field: RegDate
@@ -2376,6 +7513,173 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: FavoriteStatKindChangeResponse
+Field: IsRegistered
+Code:
+bVar9 = *(char *)(in_x0 + 0xd) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MountUpdateSkillSlotInfoRequest
+Field: IsUsedForContinuousCombat
+Code:
+bVar9 = *(char *)(in_x0 + 9) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SpawnLayerAlreadyActivatedNotify
+Field: IsPermanentSpawnLayer
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: StrongholdBattleJoinedCovenantHistoryInfo
+Field: IsDismissed
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x48) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SeekHidingAttackTargetStateNotify
+Field: IsSeekHidingAttackTargetState
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BattalionChatInfo
+Field: IsNotice
+Code:
+bVar8 = *(char *)(in_x0 + 0xb8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantCurrencyDonationResponse
+Field: IsAnyRewardSentByMail
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x40) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: SessionKeyAuthenticate
 Field: SessionKey
 Code:
@@ -2405,6 +7709,100 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: CheatPlayerRealmTransferBlockRequest
+Field: ApplyAll
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatPlayerRealmTransferBlockRequest
+Field: Block
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 9) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: RealmAccountPresentApplicationCheckInfoResponse
+Field: IsLoginedWithSafeDevice
+Code:
+bVar7 = *(char *)(in_x0 + 0xc) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: RealmAccountPresentApplicationCheckInfoResponse
+Field: IsInVillage
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0xd) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: LZ4CompressHandshakeResult
 Field: __base__
 Code:
@@ -2414,6 +7812,74 @@ Opcode: LZ4CompressHandshakeResult
 Field: TozLZ4.Handshake.LZ4CompressHandshakeResult
 Code:
 
+
+Opcode: CovenantDiplomacyConfirmReinforcementInvitationRequest
+Field: IsApproved
+Code:
+bVar8 = *(char *)(in_x0 + 0x20) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CovenantDiplomacyReinforcementInvitationRejectNotify
+Field: IsCallByExpired
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: GearAdditionalInfo
+Field: IsEroded
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0xc) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
 
 Opcode: CovenantTradeSalesManageRequest
 Field: GoodsGuidWithItemCuidInfos
@@ -2428,6 +7894,32 @@ TozSerializableMessageLibNative::
     pcVar8 = local_188;
   }
   std::__nd
+
+Opcode: CheatToggleShowQuestDebugResponse
+Field: IsEnabled
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
 
 Opcode: ErTozMessage
 Field: __base__
@@ -2448,6 +7940,93 @@ TozSerializableMessageLibNative::
     pcVar7 = local_188;
   }
   std::__ndk
+
+Opcode: CovenantAcquireCovenantMemberRoleRewardResponse
+Field: IsAnyRewardSentByMail
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SeasonPassInfo
+Field: IsPaidRewardUnlocked
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SeasonPassInfo
+Field: IsPlusRewardUnlocked
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x31) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: PlayerRealmTransferCheckInfo
+Field: IsInCovenant
+Code:
+pcVar8 = "false";
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)pcVar8;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: PlayerRealmTransferCheckInfo
 Field: IsMarketCheckNeeded
@@ -2580,6 +8159,53 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: BuildingInfo
+Field: IsBaseBuildingExist
+Code:
+bVar8 = *(char *)(in_x0 + 0x1d4) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: BuildingInfo
+Field: IsBlocked
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x1d5) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: XorHandshake
 Field: xorStaticKey
 Code:
@@ -2623,6 +8249,28 @@ auVar8 = XorEncryptor::to_string(*(XorHandshakeMessageType *)(in_x0 + 0x38));
     pcVar7 = local_188;
   }
   std::__ndk
+
+Opcode: ItemBoundAndErodedSelector
+Field: IsBound
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar9 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar9 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: ItemBoundAndErodedSelector
 Field: IsStorable
@@ -2682,6 +8330,147 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: QueryPlayerBattalionJoinableResponse
+Field: IsJoinableBattalion
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: ErFrontServerSessionWaitingQueueNotify
+Field: RealmHasSpaceAvailable
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantSupportInfoChangeNotify
+Field: HasCovenantSupportableFollower
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatAddOnScreenDebugMessageNotify
+Field: NewerOnTop
+Code:
+bVar8 = *(char *)(in_x0 + 0x24) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: OtherPlayerLootNotify
+Field: IsErosionInstallerReward
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x48) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatSetRealmAccountPresentRegisterBlockRequest
+Field: Block
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: BattalionCovenantDiplomacyNotify
 Field: AllianceCovenantGuids
 Code:
@@ -2696,6 +8485,27 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: CheatTeleportToNpcRequest
+Field: IsRegularOnly
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: SchemaDataInfo
 Field: SchemaDataTables
 Code:
@@ -2709,6 +8519,31 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: RoadPathInfo
+Field: IsOneShotSpecialMove
+Code:
+bVar8 = *(char *)(in_x0 + 0x34) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_c
 
 Opcode: BaseInfo
 Field: Token
@@ -2743,6 +8578,54 @@ Opcode: ErServerAuthenticateInfo
 Field: __base__
 Code:
 
+
+Opcode: HeadPieceDisplayOptionModifyRequest
+Field: IsHeadPieceDisplayed
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CombatTargetOptionInfo
+Field: TargetDyingOrRecoveryStateCharacter
+Code:
+bVar8 = *(char *)(in_x0 + 0xb) == '\0';
+  pcVar11 = "false";
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)pcVar11;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: CombatTargetOptionInfo
 Field: KeepContinuousCombatAndAutoMoveOnManualMove
@@ -2945,6 +8828,28 @@ pcVar12 = (char *)((ulong)&local_198 | 1);
   std::__ndk1::__pu
 
 Opcode: ItemIndex
+Field: IsBound
+Code:
+pcVar9 = "false";
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)pcVar9;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: ItemIndex
 Field: IsStorable
 Code:
 pcVar11 = (char *)((ulong)&local_198 | 1);
@@ -2988,6 +8893,53 @@ lVar1 = 4;
   }
   std::__ndk1::__p
 
+Opcode: CovenantRealmTransferCheckInfoResponse
+Field: IsAppliedRealmAccountPresentToRealm
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x88) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: InfoAuthenticateComplete
+Field: Success
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar10 = local_198 >> 1 & 0x7f;
+  pcVar9 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar10 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: InfoAuthenticateComplete
 Field: SessionKey
 Code:
@@ -3001,6 +8953,80 @@ TozSerializableMessageLibNative::
     pcVar11 = local_188;
   }
   std::__nd
+
+Opcode: CheatKillFocusedCharacterRequest
+Field: IsSkipDyingAndFinishable
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CheatSetIgnoreCovenantMarketUsableJoinElapsedTimeResponse
+Field: IgnoreCovenantMarketUsableJoinElapsedTime
+Code:
+bVar8 = *(char *)(in_x0 + 0xc) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: GearEnhancementResultInfo
+Field: IsEnhancementSuccess
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar9,puVar3,lVar2,0x17);
+  pcVar9[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: GearEnhancementResultInfo
 Field: IsConfirmedEnhancement
@@ -3080,6 +9106,79 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: SkillGroundTargetingInfo
+Field: IsOriginatedAtCasterLocationProxy
+Code:
+bVar9 = *(char *)(in_x0 + 0x18) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MailQueryResponse
+Field: HasMore
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x20) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: FavoriteStatKindChangeRequest
+Field: IsRegistered
+Code:
+bVar9 = *(char *)(in_x0 + 9) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar6 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar6 = local_188;
+  }
+  std::__ndk1::__put_ch
+
 Opcode: PlayerCovenantInfo
 Field: JoinAppliedCovenantGuids
 Code:
@@ -3093,6 +9192,257 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: SeamlessNpcInfo
+Field: IsInVillage
+Code:
+bVar7 = *(char *)(in_x0 + 0x38) == '\0';
+  lVar1 = 4;
+  if (bVar7) {
+    lVar1 = 5;
+  }
+  pcVar9 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar9;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SeamlessNpcInfo
+Field: IsPublicResurrector
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x39) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatAcceptQuestRequest
+Field: TeleportToQuestMissionLocation
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x28) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CheatAcceptQuestRequest
+Field: ReceivePrecedingQuestReward
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x29) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar7 = pcVar8;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: FissionedStateUpdateNotify
+Field: IsFissioned
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: MailInfo
+Field: IsRead
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x38) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: MailInfo
+Field: IsAttachmentsReceived
+Code:
+pcVar12 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x39) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar11 = pcVar12;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put
+
+Opcode: CheatChangeCashShopCheckBuyLimitOptionRequest
+Field: IsIgnoreToCheckBuyLimit
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CollisionFreeSynchronizeNotify
+Field: IsCollisionFree
+Code:
+bVar8 = *(char *)(in_x0 + 0x10) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: CharacterRotateInfo
+Field: IsClockwise
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x28) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CashShopWindowDressingInfo
+Field: IsShowDateTime
+Code:
+pcVar10 = "false";
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x48) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)pcVar10;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: CashShopWindowDressingInfo
 Field: IsHideAfterBuyCompleted
@@ -3135,6 +9485,69 @@ lVar1 = 4;
   if ((local_198 & 1) != 0) {
     uVar3 = local_190;
     pcVar11 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: HeadPieceDisplayOptionModifyResponse
+Field: IsHeadPieceDisplayed
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BattalionMemberLootNotify
+Field: IsErosionInstallerReward
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x30) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: PlayerInitializeInfo
+Field: IsEnteredInField
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
   }
   std::__ndk1::__p
 
@@ -3194,6 +9607,80 @@ TozSerializableMessageLibNative::
   }
   std::__nd
 
+Opcode: ToyMerchandisePaymentInfo
+Field: IsSubscription
+Code:
+bVar8 = *(char *)(in_x0 + 0x68) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar11 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar11,puVar2,lVar1,0x17);
+  pcVar11[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar10 = pcVar11;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: SkillComboResetNotify
+Field: IsExpired
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: GearErodedRestorationResultInfo
+Field: IsEroded
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__pu
+
 Opcode: GearErodedRestorationResultInfo
 Field: IsBound
 Code:
@@ -3238,6 +9725,69 @@ lVar2 = 4;
   }
   std::__ndk1::__p
 
+Opcode: CovenantUpdateNameNotify
+Field: NeedChangeName
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: CovenantCampBuildingCraftRequest
+Field: IsCompleteImmediately
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SkillRequest
+Field: IsToggleBuffSkillOn
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x34) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__p
+
 Opcode: AnniversaryAchievementPointInfo
 Field: RewardedGoalPoints
 Code:
@@ -3251,6 +9801,54 @@ TozSerializableMessageLibNative::
     pcVar3 = local_188;
   }
   std::__nd
+
+Opcode: CheatSetInvulnerableResponse
+Field: IsInvulnerable
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: StrongholdBattleAttackDeclareInfo
+Field: IsAllowVolunteerJoinApply
+Code:
+pcVar1 = "false";
+  lVar2 = 4;
+  puVar3 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x48) == '\0') {
+    lVar2 = 5;
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar10 = local_188;
+  }
+  std::__ndk1::__pu
 
 Opcode: StrongholdBattleAttackDeclareInfo
 Field: IsVolunteerJoinApplicationAutomaticApproval
@@ -3317,6 +9915,59 @@ pcVar10 = (char *)((ulong)&local_198 | 1);
     pcVar10 = local_188;
   }
   std::__ndk1::__pu
+
+Opcode: MailBuildingRepairLayoutInfo
+Field: IsComplete
+Code:
+bVar8 = *(char *)(in_x0 + 0x31) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: DisplayOptionInfo
+Field: IsRelatedTerritoryVisibleInWorldMap
+Code:
+bVar7 = *(char *)(in_x0 + 8) == '\0';
+  pcVar1 = "false";
+  lVar2 = 4;
+  if (bVar7) {
+    lVar2 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar7) {
+    puVar3 = (undefined8 *)pcVar1;
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar2 << 1);
+  __memcpy_chk(pcVar10,puVar3,lVar2,0x17);
+  pcVar10[lVar2] = '\0';
+  uVar4 = local_198 >> 1 & 0x7f;
+  pcVar11 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar4 = local_190;
+    pcVar11 = local_188;
+  }
+  std::__ndk1::__put_cha
 
 Opcode: DisplayOptionInfo
 Field: IsAllianceCovenantVisibleInMiniMap
@@ -3404,3 +10055,241 @@ pcVar10 = (char *)((ulong)&local_198 | 1);
     pcVar1 = local_188;
   }
   std::__ndk1::__put
+
+Opcode: QuestCinePlayingSynchronizeNotify
+Field: IsQuestCinePlaying
+Code:
+bVar8 = *(char *)(in_x0 + 0x10) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: BuildingWorkRequestBaseInfo
+Field: IsRecommended
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x28) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar7,puVar2,lVar1,0x17);
+  pcVar7[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar7 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: BuildingWorkRequestBaseInfo
+Field: IsCompleteImmediately
+Code:
+pcVar8 = (char *)((ulong)&local_198 | 1);
+  lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x29) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar8,puVar2,lVar1,0x17);
+  pcVar8[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar8 = local_188;
+  }
+  std::__ndk1::__pu
+
+Opcode: CheatAllStancesAcquireResponse
+Field: IsStanceInstallFreeChanceEnabled
+Code:
+bVar8 = *(char *)(in_x0 + 0x21) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar13 = (char *)((ulong)&local_198 | 1);
+  puVar3 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar3 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar13,puVar3,lVar1,0x17);
+  pcVar13[lVar1] = '\0';
+  uVar12 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar12 = local_190;
+    pcVar13 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: BattalionConfirmJoinApplicationRequest
+Field: IsConfirmJoinApplication
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x10) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p
+
+Opcode: SessionKeyAuthenticateComplete
+Field: Success
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: RealmInfo
+Field: IsInboundRealmTransferable
+Code:
+bVar9 = *(char *)(in_x0 + 0x70) == '\0';
+  lVar1 = 4;
+  if (bVar9) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar9) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: CheatEnabledModificationNotify
+Field: CheatEnabled
+Code:
+bVar8 = *(char *)(in_x0 + 8) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar10 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar10,puVar2,lVar1,0x17);
+  pcVar10[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  pcVar5 = pcVar10;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar5 = local_188;
+  }
+  std::__ndk1::__put_ch
+
+Opcode: MarketGoodsInfo
+Field: IsStorable
+Code:
+bVar8 = *(char *)(in_x0 + 0x48) == '\0';
+  lVar1 = 4;
+  if (bVar8) {
+    lVar1 = 5;
+  }
+  pcVar12 = (char *)((ulong)&local_198 | 1);
+  puVar2 = &DAT_0901b5c8;
+  if (bVar8) {
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar12,puVar2,lVar1,0x17);
+  pcVar12[lVar1] = '\0';
+  uVar11 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar11 = local_190;
+    pcVar12 = local_188;
+  }
+  std::__ndk1::__put_c
+
+Opcode: CheatSetLoggingRequest
+Field: IsLogging
+Code:
+lVar1 = 4;
+  puVar2 = &DAT_0901b5c8;
+  if (*(char *)(in_x0 + 0x18) == '\0') {
+    lVar1 = 5;
+    puVar2 = (undefined8 *)"false";
+  }
+  local_190 = 0;
+  local_188 = (char *)0x0;
+  local_198 = (ulong)(byte)((int)lVar1 << 1);
+  __memcpy_chk(pcVar9,puVar2,lVar1,0x17);
+  pcVar9[lVar1] = '\0';
+  uVar3 = local_198 >> 1 & 0x7f;
+  if ((local_198 & 1) != 0) {
+    uVar3 = local_190;
+    pcVar9 = local_188;
+  }
+  std::__ndk1::__p

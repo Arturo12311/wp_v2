@@ -1,8 +1,7 @@
 defmodule TextSegmenter do
   def segment_and_extract(text) do
-    # [_, after_members] = String.split(text, ~s'\\"Members\\" : {', parts: 2)
-    # after_members = "{" <> after_members  # Add the opening brace back
 
+    #cuts out unnecessary data before: \"Members\"
     after_members =
       case String.split(text, ~s'\\"Members\\" : {', parts: 2) do
         [_, after_members] ->
@@ -12,7 +11,7 @@ defmodule TextSegmenter do
           text
       end
 
-    chunk_text(after_members, [])
+    chunk_text(after_members, []) #returns a list of chunks. each chunk is a map with %{first_param, string_constant, length, following_code}
   end
 
   defp chunk_text(text, acc) do
@@ -33,7 +32,7 @@ defmodule TextSegmenter do
         {nil, text}
 
       {start, _} ->
-        {pre, post} = String.split_at(text, start)
+        {_, post} = String.split_at(text, start)
 
         case extract_to_semicolon(post) do
           nil ->
@@ -45,7 +44,7 @@ defmodule TextSegmenter do
                 extract_next_chunk(remaining)
 
               chunk ->
-                following_code = extract_following_code(remaining)
+                following_code = extract_following_code(remaining) # index in text where next chunk begins
 
                 {%{chunk | following_code: following_code},
                  String.slice(remaining, String.length(following_code)..-1)}
@@ -74,7 +73,7 @@ defmodule TextSegmenter do
         case params do
           [first_param, string_constant, length | _] ->
             case validate_length(length) do
-              {:ok, validated_length} ->
+              {:ok, validated_length} -> # return the data if chunk is valid
                 %{
                   first_param: String.trim(first_param),
                   string_constant: extract_string(string_constant),
@@ -174,18 +173,54 @@ defmodule ChunkClassifier do
            ~r/^\s*TozSerializableMessageLibNative::JsonSerializer<(.*?),void>::Serialize/,
            chunk
          ) do
+      [_, "unsigned_char"] -> {:int, 2}
+      [_, "signed_char"] -> {:int, 2}
+      [_, "unsigned_short"] -> {:int, 2}
+      [_, "short"] -> {:int, 2}
       [_, "int"] -> {:int, 4}
       [_, "long"] -> {:int, 4}
       [_, "long_long"] -> {:uint, 8}
-      [_, "short"] -> {:int, 2}
-      [_, "char"] -> :char
+      [_, "unsigned_int"] -> {:uint, 4}
       [_, "float"] -> :float
-      [_, "FString"] -> :string
-      [_, "FVector"] -> :vector
-      [_, "FDateTime"] -> :datetime
-      [_, "FTzCuid"] -> :cuid
+      [_, "FString"] -> :FString
+      [_, "FVector"] -> :FVector
+      [_, "FDateTime"] -> :FDateTime
+      [_, "FTimespan"] -> :FTimespan
+      [_, "FRotator"] -> :FRotator
+      [_, "FIntVector2D"] -> :FIntVector2D
+      [_, "FGuid"] -> :FGuid
       [_, type] -> parse_complex_type(type)
       _ -> nil
+    end
+  end
+
+  defp extract_structure_info(chunk) do
+    cond do
+      Regex.match?(~r/^(\w+)::ToJsonString\(\);/, chunk) ->
+        [_, class_name] = Regex.run(~r/^(\w+)::ToJsonString\(\);/, chunk)
+        class_name
+      true ->
+        nil
+    end
+  end
+
+  defp extract_enum_type(chunk) do
+    case Regex.run(~r/StaticEnum<([^>]+)>/, chunk) do
+      [_, enum_type] -> {:enum, enum_type}
+      nil -> nil
+    end
+  end
+
+  defp extract_boolean_type(chunk) do
+    pattern = ~r/if\s*\([^)]+\)\s*
+               .*?=\s*"true"\s*
+               .*?else\s*
+               .*?=\s*"false"/xs
+
+    if Regex.match?(pattern, chunk) do
+      :bool
+    else
+      nil
     end
   end
 
@@ -272,51 +307,6 @@ defmodule ChunkClassifier do
     end
   end
 
-  defp extract_enum_type(chunk) do
-    cond do
-      Regex.match?(~r/StaticEnum<([^>]+)>\(\)/, chunk) and
-      Regex.match?(~r/UEnum::GetNameStringByValue/, chunk) ->
-        case Regex.run(~r/StaticEnum<E([^>]+)>/, chunk) do
-          [_, enum_type] -> {:enum, remove_prefix(enum_type)}
-          _ -> {:enum, "Unknown"}
-        end
-      String.starts_with?(chunk, "E") ->
-        {:enum, remove_prefix(chunk)}
-      true ->
-        nil
-    end
-  end
-
-  defp extract_boolean_type(chunk) do
-    if boolean?(chunk), do: :bool, else: nil
-  end
-
-  defp boolean?(chunk) do
-    # Rule 1: Must contain a comparison with '\0'
-    null_comparison = Regex.match?(~r/\*\(char \*\)\(.*?\) == '\\0'/, chunk)
-
-    # Rule 2: Must contain an assignment of "true" or "false"
-    true_false_assignment = Regex.match?(~r/(?:puVar\d+ = \(undefined8 \*\)|pcVar\d+ =) *"(?:true|false)"/, chunk)
-
-    # Rule 3: Must have an if-else structure
-    if_else_structure = Regex.match?(~r/if \(.*?\) \{.*?\} else \{.*?\}/s, chunk) or
-                        Regex.match?(~r/bVar\d+ = .*?;.*?if \(bVar\d+\)/s, chunk)
-
-    # Rule 4: Should involve a length variable set to 4 or 5
-    length_var = Regex.match?(~r/lVar\d+ = [45];/, chunk)
-
-    # Rule 5: Likely includes memory operations
-    memory_ops = Regex.match?(~r/__memcpy_chk/, chunk)
-
-    # Additional check: Look for the pattern of assigning to puVar based on a condition
-    conditional_assign = Regex.match?(~r/puVar\d+ = (?:&DAT_\w+|\(undefined8 \*\)"(?:true|false)");.*?if \(.*?\).*?puVar\d+ = /s, chunk)
-
-    # Combine all rules
-    (null_comparison and true_false_assignment and if_else_structure and length_var and memory_ops) or
-    (null_comparison and true_false_assignment and conditional_assign)
-  end
-
-
   defp extract_message_type(chunk) do
     cond do
       Regex.match?(~r/if \(\*\(long \*\*\)\(.*?\) == \(long \*\)0x0\)/, chunk) and
@@ -324,19 +314,6 @@ defmodule ChunkClassifier do
         {:nullable, :message}
       Regex.match?(~r/::to_string\(\(uint\)\*\(byte\*\)\(in_x0\+\d+\)\);/, chunk) ->
         {:nullable, :enum}
-      true ->
-        nil
-    end
-  end
-
-  defp extract_structure_info(chunk) do
-    cond do
-      Regex.match?(~r/^(\w+)::ToJsonString\(\);/, chunk) ->
-        [_, class_name] = Regex.run(~r/^(\w+)::ToJsonString\(\);/, chunk)
-        remove_prefix(class_name)
-      Regex.match?(~r/^(\w+)$/, chunk) ->
-        [_, class_name] = Regex.run(~r/^(\w+)$/, chunk)
-        remove_prefix(class_name)
       true ->
         nil
     end
@@ -415,7 +392,7 @@ defmodule DataProcessorAndWriter do
         %{opcode_name: opcode_name, field_name: name, code: find_code_for_field(extracted_data, name)}
       end)
 
-      update_in(acc, [:unknown_fields], &(&1 ++ unknown_fields)) # update :unknown_fields accumulator list
+      update_in(acc, [:unknown_fields], &(&1 ++ unknown_fields)) #update :unknown_fields accumulator list
     end)
   end
 
